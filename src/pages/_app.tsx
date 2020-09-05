@@ -9,10 +9,6 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../lib/theme";
 
-import "../styles/github_markdown.css";
-import "../styles/prism.css";
-import "../styles/katex.min.css";
-
 function MyApp({ Component, pageProps }: AppProps) {
   React.useEffect(() => {
     // Remove the server-side injected CSS.
@@ -28,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Bioinformaticsしたい!</title>
         <meta
           name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width"
+          content="width=device-width,minimum-scale=1,initial-scale=1"
         />
       </Head>
       <ThemeProvider theme={theme}>

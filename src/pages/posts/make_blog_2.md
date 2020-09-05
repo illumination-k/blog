@@ -79,13 +79,13 @@ module.exports = withMDX({
 })
 ```
 
-pageExtensionsに`md`を追加することでmarkdownを直でレンダリングできるようになります。さらにコードシンタクスとかkatex対応とかに対応しています。
+pageExtensionsに`md`を追加することでmarkdownを直でレンダリングできるようになります。さらにコードシンタクスとかkatexとかに対応しています([参考](https://blog.hellorusk.net/posts/20191209))。
 もし自前でやろうと思ったら多分`getStaticProps`とかの中でファイル読み込んでremarkとrehypeでパースして`dangerousInnerHTML`とかで読み込むことになる気がしますし、それに比べると良い気がしました。
 この便利さを考えると、mdx pluginを使ってmarkdown書くのが一番ラクだなあと思いました。
 
 ## レンダリングする方法
 
-Markdownをレンダリングする方法を一番素直に考えると、以下のようなコードが想定されます。`[postId].jsx`的な感じです。
+Markdownをレンダリングする方法を一番素直に考えると、以下のようなコードが想定されます。`[postId].jsx`的な感じです。contentLoaderは名前で察してくれるとありがたいです。
 
 ```jsx
 import next/dynamic;
@@ -132,7 +132,7 @@ export async function getStaticPaths() {
 }
 ```
 
-やっていることは単純で`fs`モジュールを使ってメタデータを全部とってきて、そのパスに対応するmarkdownファイルと、Layoutにメタデータを渡します。
+やっていることは単純で、`getStaticPaths`で`fs`モジュールを使ってmarkdownファイルの一覧を取得した後、`getStaticProps`でファイルの場所に戻して、ついでにメタデータをとってきて、そのパスに対応するmarkdownファイルと、Layoutにメタデータを渡します。
 このときにLayoutもメタデータで指定したいなら、
 
 ```yaml
@@ -203,7 +203,7 @@ export default ({meta, children}) => <Layout meta={meta} children={children} />
 
 ```
 
-のように変換してしまいます（実際はもう少し色々やりますが）。
+のように変換してしまいます（実際はもう少し色々やりたいですね、headersを木にするくらいはしておきたい）。
 
 こうすれば、markdownファイルを置くだけでカスタムコンポーネント付きのmdxに解釈されてレンダリングされるようになります。
 
@@ -215,4 +215,4 @@ export default ({meta, children}) => <Layout meta={meta} children={children} />
 
 とか入れたくなったときに入れられることです。パースは`mdx`に準拠してやってるので、突然mdxフォーマットで書いても自動で対応されます。
 
-個人的にいい案だろって思ってるんですが、誰もこんなアプローチとってないので少し不安だったりします。なんか問題があるのだろうか。
+個人的にいい案だろって思ってるんですが、誰もこんなアプローチとってないので少し不安だったりします。なんか問題があるのだろうか（もっといい案が知りたい）。

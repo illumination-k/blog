@@ -3,6 +3,11 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/core/styles";
 import theme from "../lib/theme";
 
+// @ts-ignore
+import css from "!!raw-loader!../styles/github_markdown.css";
+// @ts-ignore
+import prismCss from "!!raw-loader!../styles/prism.css";
+
 export default class MyDocument extends Document {
   render() {
     return (
@@ -61,6 +66,12 @@ MyDocument.getInitialProps = async (ctx) => {
     // Styles fragment is rendered after the app and page rendering finish.
     styles: [
       ...React.Children.toArray(initialProps.styles),
+      <style
+        key="custom"
+        dangerouslySetInnerHTML={{
+          __html: `${css}\n${prismCss}`,
+        }}
+      />,
       sheets.getStyleElement(),
     ],
   };

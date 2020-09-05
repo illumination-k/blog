@@ -50,6 +50,15 @@ function extractHeaderAndMeta(options) {
       type: "export",
       value: `export default ({meta, children}) => <${component} children={children} meta={meta} />`
     }
+
+    const export_amp = {
+      default: false,
+      type: "export",
+      value: `export const config = { amp: true }`
+
+    }
+
+    tree.children.unshift(export_amp)
     tree.children.unshift(export_default)
     tree.children.unshift(meta)
     tree.children.unshift(import_layout)
