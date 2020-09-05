@@ -1,5 +1,6 @@
 ---
 title: Next.jsでブログを作ってみた
+description: Wordpressでブログを作っていたが、パフォーマンスが遅いのでNext.jsで作り直した。
 layout:
     path: ../../components/BlogPostLayout
     component: BlogPostLayout
@@ -19,7 +20,7 @@ WordPressが激重だしこんなに機能はいらないな、と思ったの�
 
 ### ブログ機能
 
-- [] 静的ホスティング（Netrifyとかで管理したい）
+- 静的ホスティング（Netrifyとかで管理したい）
 - markdownとmdxで記事を書いてGithubにpushすれば自動で更新される。
 - Toc機能
 - Qiitaみたいなサイドバー

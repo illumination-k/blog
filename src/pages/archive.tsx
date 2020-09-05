@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Layout from "../components/Layout";
-import { getMdxNames } from "../lib/contentLoader";
+import { getNames } from "../lib/contentLoader";
 
 const Archive = (props) => {
   const { posts } = props;
@@ -21,7 +21,7 @@ const Archive = (props) => {
 };
 
 export async function getStaticProps() {
-  const mdxNames = await getMdxNames();
+  const mdxNames = await getNames();
 
   return {
     props: {

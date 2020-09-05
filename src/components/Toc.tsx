@@ -2,7 +2,7 @@ import React from "react";
 
 const Toc = ({ headings }) => {
   return (
-    <details>
+    <>
       <summary>Table of Contents</summary>
       <div>
         {headings.map((heading, idx) => {
@@ -17,7 +17,7 @@ const Toc = ({ headings }) => {
           );
         })}
       </div>
-    </details>
+    </>
   );
 };
 

@@ -1,5 +1,6 @@
 ---
 title: "MDX or Markdown ?"
+description: ブログ記事を書くのに、MDXを使うのか、Markdownを使うのか
 layout:
     path: ../../components/BlogPostLayout
     component: BlogPostLayout

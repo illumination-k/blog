@@ -7,18 +7,22 @@ export async function getFilePath(filename) {
   return path.join(POSTDIRPATH, filename);
 }
 
-export async function getMdxFileNames() {
+export async function getFileNames() {
   // return mdx filenames (eg., make_blog_1.mdx)
   const postsDirPath = POSTDIRPATH;
   const mdxFileNames = await fs
     .readdirSync(postsDirPath)
-    .filter((filename) => path.parse(filename).ext === ".mdx");
+    .filter(
+      (filename) =>
+        path.parse(filename).ext === ".mdx" ||
+        path.parse(filename).ext === ".md"
+    );
   return mdxFileNames;
 }
 
-export async function getPathToMdxFiles() {
+export async function getPathToFiles() {
   // return full path to mdx files (eg., )
-  const mdxFileNames = await getMdxFileNames();
+  const mdxFileNames = await getFileNames();
   const pathToMdxFiles = mdxFileNames.map((filename) =>
     path.join(POSTDIRPATH, filename)
   );
@@ -26,9 +30,9 @@ export async function getPathToMdxFiles() {
   return pathToMdxFiles;
 }
 
-export async function getMdxNames() {
+export async function getNames() {
   // remove extensions from mdxFileNames (eg., make_blog_1)
-  const mdxFileNames = await getMdxFileNames();
+  const mdxFileNames = await getFileNames();
   const mdxNames = mdxFileNames.map((filename) =>
     filename.replace(/\.mdx*/, "")
   );

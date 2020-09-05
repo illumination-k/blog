@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
+import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
 import {
@@ -13,7 +14,10 @@ import {
 } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import HomeIcon from "@material-ui/icons/Home";
+import TwitterIcon from "@material-ui/icons/Twitter";
+import GitHubIcon from "@material-ui/icons/GitHub";
 import Container from "@material-ui/core/Container";
+import { Icon } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -27,6 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       flexGrow: 1,
       display: "none",
+      textAlign: "left",
       [theme.breakpoints.up("sm")]: {
         display: "block",
       },
@@ -81,21 +86,12 @@ export default function SearchAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ backgroundColor: "black" }}>
         <Container>
           <Toolbar>
-            <IconButton
-              edge="start"
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="home button"
-              onClick={onClick}
-            >
-              <HomeIcon />
-            </IconButton>
-            <Typography className={classes.title} variant="h6" noWrap>
-              Bioinfomaticsしたい！
-            </Typography>
+            <Button className={classes.title} onClick={onClick} color="inherit">
+              <Typography>Bioinfomaticsしたい！</Typography>
+            </Button>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -109,6 +105,15 @@ export default function SearchAppBar() {
                 inputProps={{ "aria-label": "search" }}
               />
             </div>
+            <IconButton
+              href="https://twitter.com/illumination27"
+              color="inherit"
+            >
+              <TwitterIcon style={{ color: "deepskyblue" }} />
+            </IconButton>
+            <IconButton href="https://github.com/illumination-k">
+              <GitHubIcon style={{ color: "white" }} />
+            </IconButton>
           </Toolbar>
         </Container>
       </AppBar>
