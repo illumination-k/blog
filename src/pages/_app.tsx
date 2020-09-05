@@ -30,12 +30,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css"
-          integrity="sha384-BdGj8xC2eZkQaxoQ8nSLefg4AV4/AwB3Fj+8SUSo7pnKP6Eoy18liIKTPn9oBYNG"
-          crossOrigin="anonymous"
-        />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
