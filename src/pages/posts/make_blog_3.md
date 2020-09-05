@@ -25,7 +25,7 @@ layout:
 
 ### Katex
 
-[Katex Release](https://github.com/KaTeX/KaTeX/releases/tag/v0.12.0)にいって`katex.zip`とかをダウンロードして内部の`katex.css`か`katex.min.css`を`styles`などに移す。そのあとPrism.jsと同様にして`_app.tsx`でimportする。
+[Katex Release](https://github.com/KaTeX/KaTeX/releases/tag/v0.12.0)にいって`katex.zip`とかをダウンロードして内部の`katex.css`か`katex.min.css`とfontsを`styles`などに移す。そのあとPrism.jsと同様にして`_app.tsx`でimportする。
 
 ### Github markdown css
 
