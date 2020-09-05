@@ -2,6 +2,8 @@ import Link from "next/link";
 import Layout from "../components/Layout";
 import { getNames } from "../lib/contentLoader";
 
+export const config = { amp: true };
+
 const Archive = (props) => {
   const { posts } = props;
   console.log(posts);

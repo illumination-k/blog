@@ -6,7 +6,7 @@ const remarkHeadings = require('remark-autolink-headings')
 const remarkFootnotes = require('remark-footnotes')
 
 const customLoader = require("./customLoaderLib/extractHeaderAndMeta")
-const ToMathml = require("./customLoaderLib/katexToMathml")
+const toMathml = require("./customLoaderLib/toMathml")
 // const remarkToc = require('remark-toc')
 
 const highlighter = require("./customLoaderLib/highlighter")
@@ -19,7 +19,7 @@ const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [
-      remarkFrontmatter, remarkSlug, remarkHeadings, remarkFootnotes, customLoader, highlighter, remarkMath, ToMathml],
+      remarkFrontmatter, remarkSlug, remarkHeadings, remarkFootnotes, customLoader, highlighter, remarkMath, toMathml],
     // rehypePlugins: [rehypeKatex, katexToMathml, highlighter],
   }
 })

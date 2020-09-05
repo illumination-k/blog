@@ -24,20 +24,14 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     title: {
       flexGrow: 1,
-      display: "none",
       textAlign: "left",
-      [theme.breakpoints.up("sm")]: {
-        display: "block",
-      },
+      display: "block",
     },
   })
 );
 
 export default function SearchAppBar() {
   const classes = useStyles();
-  const router = useRouter();
-
-  const onClick = () => router.push("/");
 
   return (
     <div className={classes.root}>

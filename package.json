@@ -26,7 +26,6 @@
     "next-mdx-enhanced": "^4.0.0",
     "next-seo": "^4.7.3",
     "path": "^0.12.7",
-    "prism-react-renderer": "https://github.com/illumination-k/prism-react-renderer.git",
     "prismjs": "^1.21.0",
     "prop-types": "^15.7.2",
     "raw-loader": "^4.0.1",

@@ -32,7 +32,7 @@ WordPressが激重だしこんなに機能はいらないな、と思ったの�
 
 - material-ui
 - Prism.jsでのcode syntax
-- Katexでの数式
+- amp-mathmlでの数式
 - Github markdown css
 
 ### Google関係

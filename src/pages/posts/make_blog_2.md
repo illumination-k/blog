@@ -79,7 +79,7 @@ module.exports = withMDX({
 })
 ```
 
-pageExtensionsに`md`を追加することでmarkdownを直でレンダリングできるようになります。さらにコードシンタクスとかkatexとかに対応しています([参考](https://blog.hellorusk.net/posts/20191209))。
+pageExtensionsに`md`を追加することでmarkdownを直でレンダリングできるようになります。さらにコードシンタクスとかkatexとかに対応しています([参考](https://blog.hellorusk.net/posts/20191209))。AMPには対応してないようですが。
 もし自前でやろうと思ったら多分`getStaticProps`とかの中でファイル読み込んでremarkとrehypeでパースして`dangerousInnerHTML`とかで読み込むことになる気がしますし、それに比べると良い気がしました。
 この便利さを考えると、mdx pluginを使ってmarkdown書くのが一番ラクだなあと思いました。
 

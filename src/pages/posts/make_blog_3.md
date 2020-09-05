@@ -12,16 +12,18 @@ layout:
 
 - material-ui
 - Prism.jsでのcode syntax
-- Katexでの数式
+- amp-mathmlによる数式
 - Github markdown css
 
-である。順番的に簡単なものから進めていく。
+である。AMP対応するには鬼門である。
 
 ## Styleの適用
 
-### Prism.js
+### Prism.js && Github markdown css
 
-[prism.js](https://prismjs.com)公式サイトからcssをダウンロードしておく。CDN使ってもいいが、パフォーマンス的にローカルに置いたほうがいい気がする。そのあと、`_app.tsx`内部でimportする。
+[prism.js](https://prismjs.com)公式サイトからcssをダウンロードしておく。[github-markdown-css](https://github.com/sindresorhus/github-markdown-css)からダウンロードする。github-markdown-cssの方は自動生成なので`!important`とかが使われていてAMPに対応できないのでそのへんは除いてしまう。そのあと、raw-loaderを使ってcssを_app.tsxでimportして、直接埋め込む。できるならMarkdownのページだけで読み込みたいが...
+
+custom loaderでcodeをTokenに落とす作業をしておけばAMPでもコードがハイライトされる。順番の関係か、prismjsはダーク系のテーマにしたのに黒くならなかったので、github-markdown-css側で背景を黒にしておいた。
 
 **example**
 
@@ -34,23 +36,19 @@ const MOD: usize = 1e9 as usize + 7;
 >>> pd.read_csv("/path/to/file.csv")
 ```
 
-### Katex
+### amp-mathml
 
-[Katex Release](https://github.com/KaTeX/KaTeX/releases/tag/v0.12.0)にいって`katex.zip`とかをダウンロードして内部の`katex.css`か`katex.min.css`とfontsを`styles`などに移す。そのあとPrism.jsと同様にして`_app.tsx`でimportする。
+KatexはAMPに対応できない。remarkをパースして、amp-mathmlを埋め込む。インラインの数式、どうやればいけるんだろう。
 
 **example**
 
-文中の$\frac{a}{b}$数式。
-
 数式
+
+t$\frac{a}{b}$a
 
 $$
 \sum_{k=1}^{n}{\frac{N}{k}} = O(N\log{n})
 $$
-
-### Github markdown css
-
-[github-markdown-css](https://github.com/sindresorhus/github-markdown-css)からダウンロードする。`_app.tsx`でimportする。このとき、Prism.jsのCSSが上書きされてしまうので、`pre`のところのバックグラウンドカラーをオフにしておく。
 
 ### material-ui
 
@@ -62,6 +60,8 @@ yarn add @material-ui/core
 
 というのは、サーバーサイドレンダリングを`next.js`でするときに、CSSの読み込みがリセットされてしまうことがあるらしい([参考](https://blog.narumium.net/2020/01/29/next-js-with-material-uiでスタイルが崩れる/))。実際に自分の画面でも崩れていて、結構時間を溶かした。
 幸いなことに、material-uiの公式がテンプレート例を作成してくれているので([javascript](https://github.com/mui-org/material-ui/tree/master/examples/nextjs), [typescript](https://github.com/mui-org/material-ui/tree/master/examples/nextjs-with-typescript))、`_app.tsx`と`_document.tsx`を書き換えておく。あとnext.jsのリンクとmaterial-uiのリンクもclassNameの問題とかでうまく行かないことがあるので、書き換えしておく。
+
+それとコンポーネントの中に`!important`を生み出すやつがいるので、生み出されたら`next build && export`でhtml作って原因コンポーネントは削除しておく。InputBase的なやつが怪しかった。
 
 ## 感想
 

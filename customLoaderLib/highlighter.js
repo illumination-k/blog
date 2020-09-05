@@ -48,10 +48,10 @@ refractor.register(require("refractor/lang/wasm.js"));
 refractor.register(require("refractor/lang/yaml.js"));
 
 
-function highlighter(options = {}) {
+function highlighter() {
   return (tree) => {
-    visit(tree, "code", (node, index, parent) => {
-      const [lang, filename] = (node.lang || "").split(":");
+    visit(tree, "code", (node) => {
+      const [lang] = (node.lang || "").split(":");
       if (lang) {
         node.lang = lang;
         if (!refractor.registered(lang)) {
