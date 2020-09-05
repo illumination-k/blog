@@ -11,7 +11,7 @@ import theme from "../lib/theme";
 
 import "../styles/github_markdown.css";
 import "../styles/prism.css";
-import "../styles/katex.css";
+import "../styles/katex.min.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   React.useEffect(() => {
