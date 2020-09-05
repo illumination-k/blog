@@ -1,12 +1,10 @@
 ---
 title: Next.jsでブログを作ってみた
-description: Wordpressでブログを作っていたが、パフォーマンスが遅いのでNext.jsで作り直した。
+description: Wordpressでブログを作っていたが、パフォーマンスが遅いのでNext.jsで作り直した。ほしい要件、使うフレームワークの選定など。
 layout:
     path: ../../components/BlogPostLayout
     component: BlogPostLayout
 ---
-
-<!-- contents start -->
 
 ## TL;DR
 
@@ -27,6 +25,7 @@ WordPressが激重だしこんなに機能はいらないな、と思ったの�
 - category別に別れた記事一覧
 - 記事の検索機能
 - tag機能
+- gitと連動したhistory機能
 - 連載機能（連載タグがついた記事が順番にページネーションできる、みたいな。長い記事を書きがちなので）
 
 ### スタイル
@@ -41,7 +40,7 @@ WordPressが激重だしこんなに機能はいらないな、と思ったの�
 - SEO
 - Google Analytics
 - AMP対応（やれるだけ）
-- Google Adsense (認可されたら)
+- Google Adsense
 
 ### その他の希望
 
@@ -63,6 +62,4 @@ WordPressが激重だしこんなに機能はいらないな、と思ったの�
 
 ということで、ブログ作っていきます。ついでなので、悪戦苦闘している分を記事にして残しておきたいと思っています。
 
-
-<!-- content end -->
 
