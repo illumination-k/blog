@@ -90,6 +90,11 @@ Markdownをレンダリングする方法を一番素直に考えると、以下
 ```jsx
 import next/dynamic;
 import Layout from "../components/Layout";
+import {
+    getFilePath,
+    getFileMeta,
+    getMdNames,
+} from "../lib/contentLoader"
 
 const BlogPostPage = ({filename, meta}) => {
     const MDContent = dynamic(() => import(`../post/${filename}`))
@@ -103,7 +108,7 @@ const BlogPostPage = ({filename, meta}) => {
 export async function getStaticProps({ params} ) {
     const filename = params.postId + ".md"
     const filepath = await getFilePath(filename);
-    const meta = await getFileMeta(filepath)
+    const meta = await getFileMeta(filepath);
     return {
         props: {
             filename: filename,
