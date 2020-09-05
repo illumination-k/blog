@@ -1,13 +1,15 @@
+import Container from "@material-ui/core/Container";
+
 import Header from "./Header";
 import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <>
       <Header />
-      {children}
+      <Container>{children}</Container>
       <Footer />
-    </div>
+    </>
   );
 };
 

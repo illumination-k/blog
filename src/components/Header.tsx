@@ -1,11 +1,9 @@
-import Menu from "./Menu";
-const info = require("../../package.json");
+import SearchAppBar from "./SearchAppBar";
 
 const Header = () => {
   return (
-    <div>
-      Header
-      <Menu />
+    <div style={{ marginBottom: "1rem" }}>
+      <SearchAppBar />
     </div>
   );
 };

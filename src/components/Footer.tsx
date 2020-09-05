@@ -1,7 +1,11 @@
-const info = require("../../package.json");
+import Copyright from "./Copyright";
 
 const Footer = () => {
-  return <div>footer</div>;
+  return (
+    <div style={{ marginTop: "1rem" }}>
+      <Copyright />
+    </div>
+  );
 };
 
 export default Footer;
