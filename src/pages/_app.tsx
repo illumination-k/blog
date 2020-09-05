@@ -10,6 +10,8 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../lib/theme";
 
 import "../styles/github_markdown.css";
+import "../styles/prism.css";
+import "../styles/katex.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   React.useEffect(() => {
@@ -33,14 +35,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           href="https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css"
           integrity="sha384-BdGj8xC2eZkQaxoQ8nSLefg4AV4/AwB3Fj+8SUSo7pnKP6Eoy18liIKTPn9oBYNG"
           crossOrigin="anonymous"
-        />
-        <link
-          href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.9.0/themes/prism-tomorrow.min.css"
-          rel="stylesheet"
-        />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
       </Head>
       <ThemeProvider theme={theme}>
