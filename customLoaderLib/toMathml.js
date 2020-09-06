@@ -1,8 +1,6 @@
-const yaml = require('js-yaml');
+module.exports = toMathml
 
-module.exports = katexToMathml
-
-function katexToMathml() {
+function toMathml() {
     return transformer
 
     function transformer(ast){
@@ -19,17 +17,22 @@ function katexToMathml() {
                 ast.children[index] = newNode;
             }
 
-            if (n.type === "inlineMath") {
-                const newNode = {
-                    type: "jsx",
-                    value: `<amp-mathml
-                    layout="container"
-                    inline
-                    data-formula="\\[${n.value}\\]"
-                    />`,
-                    position: n.position,
-                };
-                ast.children[index] = newNode;
+            if (n.type === "paragraph") {
+                n.children.forEach((nn, ii) => {
+                    if (nn.type === "inlineMath") {
+                        const newNode = {
+                            type: "jsx",
+                            value: `<amp-mathml
+                            layout="container"
+                            inline
+                            data-formula="\\[${nn.value}\\]"
+                            />`,
+                            position: nn.position,
+                        };
+                        n.children[ii] = newNode;
+                    }
+                })
+                // }
             }
         });
     }

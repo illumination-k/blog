@@ -6,7 +6,6 @@ export const config = { amp: true };
 
 const Archive = (props) => {
   const { posts } = props;
-  console.log(posts);
   const links = posts.map((path, idx) => (
     <li key={idx}>
       <Link href={`/posts/${path}`}>
