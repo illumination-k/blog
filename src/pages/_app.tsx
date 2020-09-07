@@ -2,12 +2,15 @@
 import type { AppProps /*, AppContext */ } from "next/app";
 
 import React from "react";
+import Router from "next/router";
 import PropTypes from "prop-types";
 import Head from "next/head";
 
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "@libs/theme";
+import * as gtag from "@libs/gtag";
+Router.events.on("routeChangeComplete", (url) => gtag.pageview(url));
 
 function MyApp({ Component, pageProps }: AppProps) {
   React.useEffect(() => {

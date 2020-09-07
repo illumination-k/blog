@@ -30,7 +30,7 @@ const index = (props) => {
         description="Bioinformaticsがしたい実験系生物学生のブログ"
       />
       <h1>Recent Posts</h1>
-      <Grid container spacing={1} xs>
+      <Grid container spacing={1}>
         {cards}
       </Grid>
     </Layout>

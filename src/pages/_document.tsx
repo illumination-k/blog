@@ -1,7 +1,10 @@
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/core/styles";
+
+import AmpAnalytics from "@components/amp/AmpAnalytics";
 import theme from "@libs/theme";
+import { GA_TRACKING_ID } from "@libs/gtag";
 
 // @ts-ignore
 import css from "!!raw-loader!../styles/github_markdown.css";
@@ -21,6 +24,24 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <AmpAnalytics
+            type="googleanalytics"
+            script={{
+              vars: {
+                account: GA_TRACKING_ID,
+                gtag_id: GA_TRACKING_ID,
+                config: {
+                  [GA_TRACKING_ID]: { groups: "default" },
+                },
+              },
+              triggers: {
+                trackPageview: {
+                  on: "visible",
+                  request: "pageview",
+                },
+              },
+            }}
+          />
         </body>
       </Html>
     );
