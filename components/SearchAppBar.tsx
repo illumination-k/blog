@@ -1,5 +1,4 @@
 import React from "react";
-import { useRouter } from "next/router";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -10,7 +9,7 @@ import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import Container from "@material-ui/core/Container";
-import Link from "../components/Link";
+import Link from "@components/Link";
 
 import AmpAvator from "./amp/AmpAvator";
 
@@ -37,9 +36,6 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function SearchAppBar() {
   const classes = useStyles();
-  const router = useRouter();
-
-  const onClikcAbout = () => router.push("/about");
 
   return (
     <div className={classes.root}>

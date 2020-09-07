@@ -1,5 +1,7 @@
 import fs from "fs";
 import path from "path";
+import glob from "glob"
+import matter from "gray-matter"
 
 const POSTDIRPATH = path.join(process.cwd(), "src", "pages", "posts");
 
@@ -48,4 +50,17 @@ export async function getCategories() {
   });
 
   return categories;
+}
+
+export async function getAllPosts() {
+  const posts = await glob.sync(path.join(POSTDIRPATH, "**", "*.md"));
+  return posts
+}
+
+export async function getMeta(filepath) {
+  const file = fs.readFileSync(filepath);
+  const raw = matter(file);
+  const meta = raw.data
+
+  return meta
 }
