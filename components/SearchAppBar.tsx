@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 // import InputBase from "@material-ui/core/InputBase"; !importantを生んでそう
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
+import HomeIcon from "@material-ui/icons/Home";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import Container from "@material-ui/core/Container";
@@ -20,16 +21,25 @@ const useStyles = makeStyles((theme: Theme) =>
       marginBottom: "1rem",
     },
     menuButton: {
-      marginRight: theme.spacing(2),
+      textAlign: "left",
+      flexGrow: 1,
+      display: "block",
+      [theme.breakpoints.up("sm")]: {
+        display: "none",
+      },
     },
     title: {
       flexGrow: 1,
       textAlign: "left",
-      display: "block",
+      display: "none",
+      [theme.breakpoints.up("sm")]: {
+        display: "block",
+      },
     },
     icons: {
       width: theme.spacing(3),
       height: theme.spacing(3),
+      marginLeft: "auto",
     },
   })
 );
@@ -42,9 +52,16 @@ export default function SearchAppBar() {
       <AppBar position="static" style={{ backgroundColor: "black" }}>
         <Container>
           <Toolbar>
-            {/* <Button className={classes.title} onClick={onClick} color="inherit">
-              <Typography>Bioinformaticsしたい！</Typography>
-            </Button> */}
+            <div className={classes.menuButton}>
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                href="/"
+              >
+                <HomeIcon />
+              </IconButton>
+            </div>
             <Link href="/" className={classes.title}>
               <Button color="inherit">
                 <Typography style={{ color: "white" }}>
@@ -56,6 +73,7 @@ export default function SearchAppBar() {
               href="https://twitter.com/illumination27"
               color="inherit"
               aria-label="mytwitter"
+              edge="end"
             >
               <TwitterIcon
                 style={{ color: "deepskyblue" }}
@@ -65,13 +83,14 @@ export default function SearchAppBar() {
             <IconButton
               href="https://github.com/illumination-k"
               aria-label="mygithub"
+              edge="end"
             >
               <GitHubIcon
                 style={{ color: "white" }}
                 className={classes.icons}
               />
             </IconButton>
-            <IconButton href="/about">
+            <IconButton href="/about" aria-label="about" edge="end">
               <AmpAvator
                 width="27"
                 height="27"

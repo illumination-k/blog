@@ -1,7 +1,10 @@
 import React from "react";
-import Layout from "@components/Layout";
+import { NextSeo } from "next-seo";
 
 import Grid from "@material-ui/core/Grid";
+
+// custom components
+import Layout from "@components/Layout";
 import BlogPostCard from "@components/BlogPostCard";
 
 import { getAllPosts, getMeta } from "@libs/contentLoader";
@@ -10,9 +13,10 @@ export const config = { amp: true };
 
 const index = (props) => {
   const { post_info } = props;
-  const cards = post_info.map((post) => (
-    <Grid item xs={12}>
+  const cards = post_info.map((post, idx) => (
+    <Grid item xs={12} key={idx}>
       <BlogPostCard
+        key={idx}
         meta={post.meta}
         url={`posts/${post.categoryId}/${post.name}`}
       />
@@ -21,7 +25,11 @@ const index = (props) => {
 
   return (
     <Layout>
-      <h2>Home</h2>
+      <NextSeo
+        title="Bioinformaticsしたい！"
+        description="Bioinformaticsがしたい実験系生物学生のブログ"
+      />
+      <h1>Recent Posts</h1>
       <Grid container spacing={1} xs>
         {cards}
       </Grid>
