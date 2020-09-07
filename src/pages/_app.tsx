@@ -7,7 +7,7 @@ import Head from "next/head";
 
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import theme from "../lib/theme";
+import theme from "@libs/theme";
 
 function MyApp({ Component, pageProps }: AppProps) {
   React.useEffect(() => {
@@ -22,10 +22,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Bioinformaticsしたい!</title>
-        <meta
+        {/* <meta
           name="viewport"
           content="width=device-width,minimum-scale=1,initial-scale=1"
-        />
+        /> */}
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />

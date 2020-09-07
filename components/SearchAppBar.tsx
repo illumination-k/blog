@@ -59,13 +59,17 @@ export default function SearchAppBar() {
             <IconButton
               href="https://twitter.com/illumination27"
               color="inherit"
+              aria-label="mytwitter"
             >
               <TwitterIcon
                 style={{ color: "deepskyblue" }}
                 className={classes.icons}
               />
             </IconButton>
-            <IconButton href="https://github.com/illumination-k">
+            <IconButton
+              href="https://github.com/illumination-k"
+              aria-label="mygithub"
+            >
               <GitHubIcon
                 style={{ color: "white" }}
                 className={classes.icons}

@@ -1,4 +1,4 @@
-import Layout from "../../components/Layout";
+import Layout from "@components/Layout";
 import { Paper } from "@material-ui/core";
 export const config = { amp: true };
 

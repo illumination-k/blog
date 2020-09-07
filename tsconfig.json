@@ -26,10 +26,15 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@libs/*": ["./libs/*"],
+      "@components/*": ["./components/*"]
+    }
   },
   "include": [
-    "src/**/*", "next.config.js",
+    "src/**/*", "next.config.js", "libs/contentLoader.tsx", "components", "components", "libs/theme.tsx",
   ],
   "exclude": [
     "node_modules"

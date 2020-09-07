@@ -5,12 +5,12 @@ const remarkSlug = require("remark-slug");
 const remarkHeadings = require('remark-autolink-headings')
 const remarkFootnotes = require('remark-footnotes')
 
-const customLoader = require("./customLoaderLib/extractHeaderAndMeta")
-const toMathml = require("./customLoaderLib/toMathml")
-const toAmpImg = require("./customLoaderLib/toAmpImg")
-// const remarkToc = require('remark-toc')
 
-const highlighter = require("./customLoaderLib/highlighter")
+// custom loader
+const extractHeaderAndMeta = require("./libs/custom-loader/extractHeaderAndMeta")
+const toMathml = require("./libs/custom-loader/toMathml")
+const toAmpImg = require("./libs/custom-loader/toAmpImg")
+const highlighter = require("./libs/custom-loader/highlighter")
 
 // rehype plugins
 // const rehypeKatex = require('rehype-katex')
@@ -24,7 +24,7 @@ const withMDX = require('@next/mdx')({
       remarkSlug, 
       remarkHeadings, 
       remarkFootnotes, 
-      customLoader, 
+      extractHeaderAndMeta, 
       highlighter, 
       remarkMath, 
       toMathml,

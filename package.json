@@ -17,6 +17,7 @@
     "@mdx-js/loader": "^1.6.16",
     "@next/mdx": "^9.5.2",
     "@types/material-ui": "^0.21.8",
+    "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-prismjs": "^2.0.1",
     "fs": "^0.0.1-security",
     "github-markdown-css": "^4.0.0",

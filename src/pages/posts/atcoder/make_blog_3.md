@@ -2,7 +2,7 @@
 title: Next.jsで作ったブログにStyleを適用していく
 description: Wordpressでブログを作っていたが、パフォーマンスが遅いのでNext.jsで作り直した。markdwonでレンダリングできるようになったので、Styleを適用していく。
 layout:
-    path: ../../components/BlogPostLayout
+    path: "@components/BlogPostLayout"
     component: BlogPostLayout
 ---
 

@@ -7,9 +7,9 @@ export async function getFilePath(filename) {
   return path.join(POSTDIRPATH, filename);
 }
 
-export async function getFileNames() {
+export async function getFileNames(categories) {
   // return mdx filenames (eg., make_blog_1.mdx)
-  const postsDirPath = POSTDIRPATH;
+  const postsDirPath = path.join(POSTDIRPATH, categories);
   const mdxFileNames = await fs
     .readdirSync(postsDirPath)
     .filter(
@@ -20,9 +20,9 @@ export async function getFileNames() {
   return mdxFileNames;
 }
 
-export async function getPathToFiles() {
+export async function getPathToFiles(categories) {
   // return full path to mdx files (eg., )
-  const mdxFileNames = await getFileNames();
+  const mdxFileNames = await getFileNames(categories);
   const pathToMdxFiles = mdxFileNames.map((filename) =>
     path.join(POSTDIRPATH, filename)
   );
@@ -30,12 +30,22 @@ export async function getPathToFiles() {
   return pathToMdxFiles;
 }
 
-export async function getNames() {
+export async function getNames(categories) {
   // remove extensions from mdxFileNames (eg., make_blog_1)
-  const mdxFileNames = await getFileNames();
+  const mdxFileNames = await getFileNames(categories);
   const mdxNames = mdxFileNames.map((filename) =>
     filename.replace(/\.mdx*/, "")
   );
 
   return mdxNames;
+}
+
+export async function getCategories() {
+  const dirPath = path.join(process.cwd(), "src", "pages", "posts");
+  const categories = await fs.readdirSync(dirPath).filter((name) => {
+    const stats = fs.statSync(path.join(dirPath, name));
+    return stats.isDirectory();
+  });
+
+  return categories;
 }

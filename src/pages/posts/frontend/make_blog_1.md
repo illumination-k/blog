@@ -2,7 +2,7 @@
 title: Next.jsでブログを作ってみた
 description: Wordpressでブログを作っていたが、パフォーマンスが遅いのでNext.jsで作り直した。ほしい要件、使うフレームワークの選定など。
 layout:
-    path: ../../components/BlogPostLayout
+    path: "@components/BlogPostLayout"
     component: BlogPostLayout
 ---
 
