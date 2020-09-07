@@ -10,8 +10,9 @@ import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import Container from "@material-ui/core/Container";
-
 import Link from "../components/Link";
+
+import AmpAvator from "./amp/AmpAvator";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -27,11 +28,18 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: "left",
       display: "block",
     },
+    icons: {
+      width: theme.spacing(3),
+      height: theme.spacing(3),
+    },
   })
 );
 
 export default function SearchAppBar() {
   const classes = useStyles();
+  const router = useRouter();
+
+  const onClikcAbout = () => router.push("/about");
 
   return (
     <div className={classes.root}>
@@ -52,10 +60,24 @@ export default function SearchAppBar() {
               href="https://twitter.com/illumination27"
               color="inherit"
             >
-              <TwitterIcon style={{ color: "deepskyblue" }} />
+              <TwitterIcon
+                style={{ color: "deepskyblue" }}
+                className={classes.icons}
+              />
             </IconButton>
             <IconButton href="https://github.com/illumination-k">
-              <GitHubIcon style={{ color: "white" }} />
+              <GitHubIcon
+                style={{ color: "white" }}
+                className={classes.icons}
+              />
+            </IconButton>
+            <IconButton href="/about">
+              <AmpAvator
+                width="27"
+                height="27"
+                src="/avatar/avatar.jpg"
+                alt="illumination-k"
+              />
             </IconButton>
           </Toolbar>
         </Container>

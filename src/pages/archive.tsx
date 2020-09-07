@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Layout from "../components/Layout";
 import { getNames } from "../lib/contentLoader";
+// import Image from "/images/lighthouse-wordpress-top"
 
 export const config = { amp: true };
 

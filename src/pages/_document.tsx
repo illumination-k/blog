@@ -7,6 +7,8 @@ import theme from "../lib/theme";
 import css from "!!raw-loader!../styles/github_markdown.css";
 // @ts-ignore
 import prismCss from "!!raw-loader!../styles/prism.css";
+// @ts-ignore
+import globalCss from "!!raw-loader!../styles/global.css";
 
 export default class MyDocument extends Document {
   render() {
@@ -69,7 +71,7 @@ MyDocument.getInitialProps = async (ctx) => {
       <style
         key="custom"
         dangerouslySetInnerHTML={{
-          __html: `${css}\n${prismCss}`,
+          __html: `${globalCss}\n${css}\n${prismCss}`,
         }}
       />,
       sheets.getStyleElement(),

@@ -10,7 +10,11 @@ layout:
 
 WordPressが激重だしこんなに機能はいらないな、と思ったので、1からブログでも作るか、と思いました。
 後、VScodeで記事を書きたいので、markdownとかそのへんをpushして終わりにしたい。コピペしたくない。
-あと画像とかをQiitaみたいに簡単に貼り付けたい（VSCodeならできる）。WordpressはPHPがわからなくてカスタマイズが進まない。ブラックボックスが多すぎる。
+WordpressはPHPがわからなくてカスタマイズが進まない。ブラックボックスが多すぎる。
+
+Wordpressのトップ画面はこんな感じなので、これよりはよくしたい。あとWordpressはAMPにフルでは対応できていない（数式とか）なので、そのへんも頑張りたい。
+
+![lighthouse-wordpress-top](/images/lighthouse-wordpress-top.PNG)
 
 ## 要件
 
