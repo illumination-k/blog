@@ -3,7 +3,6 @@ import React from "react";
 const Toc = ({ headings }) => {
   return (
     <>
-      <summary>Table of Contents</summary>
       <div>
         {headings.map((heading, idx) => {
           return (

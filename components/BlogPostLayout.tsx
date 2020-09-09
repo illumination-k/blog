@@ -5,6 +5,7 @@ import { NextSeo } from "next-seo";
 
 import Layout from "./Layout";
 import Toc from "./Toc";
+import ClippedDrawer from "./Drawer";
 
 const BlogPostLayout = ({ meta, children }) => {
   return (
@@ -12,12 +13,17 @@ const BlogPostLayout = ({ meta, children }) => {
       <Layout>
         <NextSeo title={meta.title} description={meta.description} />
         <Grid container spacing={1} className="markdown-body">
-          <Grid item xs>
+          <Grid item xs style={{ padding: "2rem" }}>
             <h1>{meta.title}</h1>
+
             <details>
+              <summary>Table of Contents</summary>
               <Toc headings={meta.toc} />
             </details>
             {children}
+          </Grid>
+          <Grid item xs>
+            <ClippedDrawer listitems={<Toc headings={meta.toc} />} />
           </Grid>
         </Grid>
       </Layout>

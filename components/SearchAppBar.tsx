@@ -17,8 +17,12 @@ import AmpAvator from "./amp/AmpAvator";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      display: "flex",
       flexGrow: 1,
       marginBottom: "1rem",
+    },
+    appBar: {
+      zIndex: theme.zIndex.drawer + 1,
     },
     menuButton: {
       textAlign: "left",
@@ -49,7 +53,11 @@ export default function SearchAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{ backgroundColor: "black" }}>
+      <AppBar
+        position="static"
+        className={classes.appBar}
+        style={{ backgroundColor: "black" }}
+      >
         <Container>
           <Toolbar>
             <div className={classes.menuButton}>
