@@ -78,7 +78,7 @@ export default function SearchAppBar() {
               </Button>
             </Link>
             <IconButton
-              href="https://twitter.com/illumination27"
+              href="https://twitter.com/IlluminationK"
               color="inherit"
               aria-label="mytwitter"
               edge="end"

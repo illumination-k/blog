@@ -53,7 +53,7 @@ const meta = dynamic(() => import(`../_posts/${filename}`)).then((m) => m.meta);
 
 以下のような感じです
 
-```js
+```js:title=next.config.js
 // remark plugins
 const remarkMath = require('remark-math')
 const remarkFrontmatter = require('remark-frontmatter')

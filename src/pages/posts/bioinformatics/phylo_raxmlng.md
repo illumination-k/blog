@@ -1,6 +1,6 @@
 ---
 title: MUSCLE + trimal + RAxML-ng-mpiを使って最尤法で系統解析
-description: 遺伝子の機能や、進化を考察する上でタンパク質を用いた系統解析は重要な解析手法の一つとして知られている。今回は、MUSCLEを用いてマルチプルアラインメントを作成し、非保存領域をTrimAlで除去したあと、RAxMLを用いて最尤法によって系統解析を行う。。
+description: 遺伝子の機能や、進化を考察する上でタンパク質を用いた系統解析は重要な解析手法の一つとして知られている。今回は、MUSCLEを用いてマルチプルアラインメントを作成し、非保存領域をTrimAlで除去したあと、RAxMLを用いて最尤法によって系統解析を行う。
 layout:
     path: "@components/BlogPostLayout"
     component: BlogPostLayout
