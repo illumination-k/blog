@@ -1,39 +1,35 @@
-module.exports = toMathml
+const visit = require("unist-util-visit");
+
+module.exports = toMathml;
 
 function toMathml() {
-    return transformer
+  return transformer;
 
-    function transformer(ast){
-        ast.children.forEach((n, index) => {
-            if (n.type === "math") {
-                const newNode = {
-                    type: "jsx",
-                    value: `<amp-mathml
-                    layout="container"
-                    data-formula="\\[${n.value}\\]"
-                    />`,
-                    position: n.position,
-                };
-                ast.children[index] = newNode;
-            }
+  function transformToJsxNode(parent, index, value, position) {
+    const newNode = {
+      type: "jsx",
+      value: value,
+      position: position,
+    };
 
-            if (n.type === "paragraph") {
-                n.children.forEach((nn, ii) => {
-                    if (nn.type === "inlineMath") {
-                        const newNode = {
-                            type: "jsx",
-                            value: `<amp-mathml
+    parent.children[index] = newNode;
+  }
+
+  function transformer(ast) {
+    visit(ast, "math", mathVisitor);
+    function mathVisitor(node, index, parent) {
+      const value = `<amp-mathml layout="container" data-formula="\\[${node.value}\\]" />`;
+      transformToJsxNode(parent, index, value, node.position);
+    }
+
+    visit(ast, "inlineMath", inlineMathVistor);
+    function inlineMathVistor(node, index, parent) {
+      const value = `<amp-mathml
                             layout="container"
                             inline
-                            data-formula="\\[${nn.value}\\]"
-                            />`,
-                            position: nn.position,
-                        };
-                        n.children[ii] = newNode;
-                    }
-                })
-                // }
-            }
-        });
+                            data-formula="\\[${node.value}\\]"
+                            />`;
+      transformToJsxNode(parent, index, value, node.position);
     }
+  }
 }

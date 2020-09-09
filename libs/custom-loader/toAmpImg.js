@@ -10,8 +10,14 @@ module.exports = toAmpImg;
 function toAmpImg() {
   return transformer;
 
-  function transformNode(parent, index, url, alt, width, height, position) {
+  function makeValue(url, alt, dimensions) {
+    const width = dimensions.width;
+    const height = dimensions.height;
     const value = `<amp-img layout="responsive" src="${url}" alt="${alt}" height="${height}" width="${width}" />`;
+    return value;
+  }
+
+  function transformToJsxNode(parent, index, value, position) {
     const newNode = {
       type: "jsx",
       value: value,
@@ -32,23 +38,16 @@ function toAmpImg() {
       if (url.startsWith("/")) {
         path = p.join(process.cwd(), "public", url);
         const dimensions = sizeOf(path);
-        const height = dimensions.height;
-        const width = dimensions.width;
+        const value = makeValue(url, alt, dimensions);
 
-        transformNode(parent, index, url, alt, width, height, position);
+        transformToJsxNode(parent, index, value, position);
       } else if (url.startsWith("http") || url.startsWith("ftp")) {
         const res = sr("GET", url);
         const buf = Buffer.from(res.getBody());
-        const size = sizeOf(buf);
-        transformNode(
-          parent,
-          index,
-          url,
-          alt,
-          size.width,
-          size.height,
-          position
-        );
+        const dimensions = sizeOf(buf);
+        const value = makeValue(url, alt, dimensions);
+
+        transformToJsxNode(parent, index, value, position);
       }
     }
   }

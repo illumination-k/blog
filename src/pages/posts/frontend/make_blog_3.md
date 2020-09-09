@@ -23,6 +23,69 @@ layout:
 
 [prism.js](https://prismjs.com)公式サイトからcssをダウンロードしておく。[github-markdown-css](https://github.com/sindresorhus/github-markdown-css)からダウンロードする。github-markdown-cssの方は自動生成なので`!important`とかが使われていてAMPに対応できないのでそのへんは除いてしまう。そのあと、raw-loaderを使ってcssを_app.tsxでimportして、直接埋め込む。できるならMarkdownのページだけで読み込みたいが...
 
+ちょっとmaterial-ui成分も入ってしまっているが、`_document.js`は以下の感じ。
+
+```js
+import React from "react";
+import Document, { Html, Head, Main, NextScript } from "next/document";
+import { ServerStyleSheets } from "@material-ui/core/styles";
+
+import theme from "@libs/theme";
+
+// @ts-ignore
+import css from "!!raw-loader!../styles/github_markdown.css";
+// @ts-ignore
+import prismCss from "!!raw-loader!../styles/prism.css";
+// @ts-ignore
+import globalCss from "!!raw-loader!../styles/global.css";
+
+export default class MyDocument extends Document {
+  render() {
+    return (
+      <Html lang="ja">
+        <Head>
+          {/* PWA primary color */}
+          <meta name="theme-color" content={theme.palette.primary.main} />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
+
+// `getInitialProps` belongs to `_document` (instead of `_app`),
+// it's compatible with server-side generation (SSG).
+MyDocument.getInitialProps = async (ctx) => {
+  const sheets = new ServerStyleSheets();
+  const originalRenderPage = ctx.renderPage;
+
+  ctx.renderPage = () =>
+    originalRenderPage({
+      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+    });
+
+  const initialProps = await Document.getInitialProps(ctx);
+
+  return {
+    ...initialProps,
+    // Styles fragment is rendered after the app and page rendering finish.
+    styles: [
+      ...React.Children.toArray(initialProps.styles),
+      <style
+        key="custom"
+        dangerouslySetInnerHTML={{
+          __html: `${globalCss}\n${css}\n${prismCss}`,
+        }}
+      />,
+      sheets.getStyleElement(),
+    ],
+  };
+};
+```
+
 custom loaderでcodeをTokenに落とす作業をしておけばAMPでもコードがハイライトされる。順番の関係か、prismjsはダーク系のテーマにしたのに黒くならなかったので、github-markdown-css側で背景を黒にしておいた。
 
 **example**
