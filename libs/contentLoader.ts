@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
-import glob from "glob"
-import matter from "gray-matter"
+import glob from "glob";
+import matter from "gray-matter";
 
 const POSTDIRPATH = path.join(process.cwd(), "src", "pages", "posts");
 
@@ -12,14 +12,14 @@ export async function getFilePath(filename) {
 export async function getFileNames(categories) {
   // return mdx filenames (eg., make_blog_1.mdx)
   const postsDirPath = path.join(POSTDIRPATH, categories);
-  const mdxFileNames = await fs
+  const fileNames = await fs
     .readdirSync(postsDirPath)
     .filter(
       (filename) =>
         path.parse(filename).ext === ".mdx" ||
         path.parse(filename).ext === ".md"
     );
-  return mdxFileNames;
+  return fileNames;
 }
 
 export async function getPathToFiles(categories) {
@@ -54,13 +54,13 @@ export async function getCategories() {
 
 export async function getAllPosts() {
   const posts = await glob.sync(path.join(POSTDIRPATH, "**", "*.md"));
-  return posts
+  return posts;
 }
 
 export async function getMeta(filepath) {
   const file = fs.readFileSync(filepath);
   const raw = matter(file);
-  const meta = raw.data
+  const meta = raw.data;
 
-  return meta
+  return meta;
 }
