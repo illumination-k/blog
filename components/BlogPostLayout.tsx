@@ -13,7 +13,7 @@ const BlogPostLayout = ({ meta, children }) => {
       <Layout>
         <NextSeo title={meta.title} description={meta.description} />
         <Grid container spacing={1} className="markdown-body">
-          <Grid item xs style={{ padding: "2rem" }}>
+          <Grid item xs={12} style={{ marginRight: "2rem" }}>
             <h1>{meta.title}</h1>
 
             <details>
@@ -22,7 +22,7 @@ const BlogPostLayout = ({ meta, children }) => {
             </details>
             {children}
           </Grid>
-          <Grid item xs>
+          <Grid item>
             <ClippedDrawer listitems={<Toc headings={meta.toc} />} />
           </Grid>
         </Grid>
