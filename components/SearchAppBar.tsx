@@ -10,6 +10,8 @@ import HomeIcon from "@material-ui/icons/Home";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import Container from "@material-ui/core/Container";
+
+//@ts-ignore
 import Link from "@components/Link";
 
 import AmpAvator from "./amp/AmpAvator";
@@ -51,6 +53,16 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function SearchAppBar() {
   const classes = useStyles();
 
+  const title = (
+    //@ts-ignore
+    <Link href="/" className={classes.title}>
+      <Button color="inherit">
+        <Typography style={{ color: "white" }}>
+          Bioinformaticsしたい！
+        </Typography>
+      </Button>
+    </Link>
+  );
   return (
     <div className={classes.root}>
       <AppBar
@@ -70,13 +82,7 @@ export default function SearchAppBar() {
                 <HomeIcon />
               </IconButton>
             </div>
-            <Link href="/" className={classes.title}>
-              <Button color="inherit">
-                <Typography style={{ color: "white" }}>
-                  Bioinformaticsしたい！
-                </Typography>
-              </Button>
-            </Link>
+            {title}
             <IconButton
               href="https://twitter.com/IlluminationK"
               color="inherit"

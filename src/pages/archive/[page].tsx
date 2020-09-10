@@ -4,7 +4,7 @@ import { NextSeo } from "next-seo";
 import Grid from "@material-ui/core/Grid";
 
 // custom components
-import Layout from "@components/Layout";
+import ListLayout from "@components/ListLayout";
 import BlogPostCard from "@components/BlogPostCard";
 
 import { getAllPosts } from "@libs/contentLoader";
@@ -26,7 +26,7 @@ const ArchivePage = (props) => {
     </Grid>
   ));
   return (
-    <Layout>
+    <ListLayout>
       <NextSeo
         title="Bioinformaticsしたい！: Archive"
         description={`Bioinformaticsがしたい実験系生物学生のブログ: Archive ${page}`}
@@ -36,13 +36,14 @@ const ArchivePage = (props) => {
         {cards}
       </Grid>
       <Pager path="/archive" page={page} total_pages={total_pages} />
-    </Layout>
+    </ListLayout>
   );
 };
 
 export async function getStaticProps({ params }) {
   const page = parseInt(params.page, 10);
-  const props = await getPageInfo(page, COUNT_PER_PAGE);
+  const all_posts = await getAllPosts();
+  const props = await getPageInfo(all_posts, page, COUNT_PER_PAGE);
 
   return {
     props: props,

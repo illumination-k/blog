@@ -5,10 +5,13 @@ export function range(stop) {
   return Array.from({ length: stop }, (_, i) => i + 1);
 }
 
-export async function getPageInfo(page: number, COUNT_PER_PAGE: number) {
+export async function getPageInfo(
+  all_posts: Array<string>,
+  page: number,
+  COUNT_PER_PAGE: number
+) {
   const end = page * COUNT_PER_PAGE;
   const start = end - COUNT_PER_PAGE;
-  const all_posts = await getAllPosts();
   const posts = all_posts.slice(start, end);
   const post_info = await Promise.all(
     posts.map(async (post) => {

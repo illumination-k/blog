@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { NextSeo } from "next-seo";
 
 import Grid from "@material-ui/core/Grid";
@@ -6,6 +7,7 @@ import Grid from "@material-ui/core/Grid";
 // custom components
 import Layout from "@components/Layout";
 import BlogPostCard from "@components/BlogPostCard";
+import Drawer from "@components/Drawer";
 
 import { getAllPosts, getMeta } from "@libs/contentLoader";
 
@@ -18,7 +20,7 @@ const index = (props) => {
       <BlogPostCard
         key={idx}
         meta={post.meta}
-        url={`posts/${post.categoryId}/${post.name}`}
+        url={`/posts/${post.categoryId}/${post.name}`}
       />
     </Grid>
   ));
@@ -33,6 +35,7 @@ const index = (props) => {
       <Grid container spacing={1}>
         {cards}
       </Grid>
+      <Drawer />
     </Layout>
   );
 };

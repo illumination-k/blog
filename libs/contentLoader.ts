@@ -5,8 +5,8 @@ import matter from "gray-matter";
 
 const POSTDIRPATH = path.join(process.cwd(), "src", "pages", "posts");
 
-export async function getFilePath(filename) {
-  return path.join(POSTDIRPATH, filename);
+export async function getFilePath(filename, categoryId) {
+  return path.join(POSTDIRPATH, categoryId, filename);
 }
 
 export async function getFileNames(categories) {

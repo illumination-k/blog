@@ -5,16 +5,20 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
 const BlogPostCard = ({ meta, url }) => {
+  const title = (
+    //@ts-ignore
+    <Link href={url} rel={url}>
+      <Buttun color="inherit">
+        <Typography variant="h5" style={{ color: "black" }}>
+          {meta.title}
+        </Typography>
+      </Buttun>
+    </Link>
+  );
   return (
     <Card variant="outlined">
       <CardContent>
-        <Link href={url}>
-          <Buttun color="inherit">
-            <Typography variant="h5" style={{ color: "black" }}>
-              {meta.title}
-            </Typography>
-          </Buttun>
-        </Link>
+        {title}
         <Typography>{meta.description}</Typography>
       </CardContent>
     </Card>

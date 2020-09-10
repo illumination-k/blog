@@ -1,16 +1,18 @@
 import React from "react";
+import Link from "next/link";
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
+
 import Drawer from "@material-ui/core/Drawer";
-import AppBar from "@material-ui/core/AppBar";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
+
 import List from "@material-ui/core/List";
-import Typography from "@material-ui/core/Typography";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+
+import Typography from "@material-ui/core/Typography";
+
+import HomeIcon from "@material-ui/icons/Home";
+import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 
 const drawerWidth = 240;
 
@@ -18,9 +20,6 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: "flex",
-    },
-    appBar: {
-      zIndex: theme.zIndex.drawer + 1,
     },
     drawer: {
       width: drawerWidth,
@@ -35,10 +34,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     drawerContainer: {
       overflow: "auto",
-    },
-    content: {
-      flexGrow: 1,
-      padding: theme.spacing(3),
+      textAlign: "left",
     },
   })
 );
@@ -57,12 +53,49 @@ const ClippedDrawer = ({ listitems }) => {
         }}
       >
         <Toolbar />
-        <div className={classes.drawerContainer}>
-          <br /> {listitems}
+        <div className={classes.drawerContainer} style={{ padding: "1rem" }}>
+          <Typography variant="h5">Site Map</Typography>
+          <List>
+            <ListItem button>
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <Link href={"/"}>
+                <a>Top</a>
+              </Link>
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon>
+                <NavigateNextIcon />
+              </ListItemIcon>
+              <Link href={"/categories"}>
+                <a>Categories</a>
+              </Link>
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon>
+                <NavigateNextIcon />
+              </ListItemIcon>
+              <Link href={"/archive/1"}>
+                <a>Archive</a>
+              </Link>
+            </ListItem>
+          </List>
+          {listitems}
         </div>
       </Drawer>
+      <style jsx>{`
+        a {
+          text-decoration: none;
+          font-size: 1.2em;
+        }
+      `}</style>
     </div>
   );
+};
+
+ClippedDrawer.defaultProps = {
+  listitems: <></>,
 };
 
 export default ClippedDrawer;
