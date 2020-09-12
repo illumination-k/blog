@@ -56,11 +56,9 @@ export default function SearchAppBar() {
   const title = (
     //@ts-ignore
     <Link href="/" className={classes.title}>
-      <Button color="inherit">
-        <Typography style={{ color: "white" }}>
-          Bioinformaticsしたい！
-        </Typography>
-      </Button>
+      <Typography style={{ color: "white", fontSize: "2em" }}>
+        illumination-dev
+      </Typography>
     </Link>
   );
   return (

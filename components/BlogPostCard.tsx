@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 const BlogPostCard = ({ meta, url }) => {
   const title = (
     //@ts-ignore
-    <Link href={url} rel={url}>
+    <Link href={url} rel="canonical">
       <Buttun color="inherit">
         <Typography variant="h5" style={{ color: "black" }}>
           {meta.title}
