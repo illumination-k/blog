@@ -4,7 +4,7 @@
   "main": "index.tsx",
   "scripts": {
     "dev": "next",
-    "build": "next build && next export",
+    "build": "next build",
     "start": "next start",
     "cache-posts": "node script/makePostsCache.js" 
   },

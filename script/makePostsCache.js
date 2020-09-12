@@ -2,7 +2,6 @@ const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
 const glob = require("glob");
-const Fuse = require("fuse.js");
 const remark = require(`remark`);
 const strip = require(`strip-markdown`);
 const { tokenize } = require(`kuromojin`);
@@ -60,8 +59,6 @@ async function makePostsCache() {
         category,
       ];
       const words = [...new Set(all_words)];
-
-      console.log(words);
 
       return {
         id: id,
