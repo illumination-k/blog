@@ -1,9 +1,9 @@
-import SearchAppBar from "./SearchAppBar";
+import AppBar from "./AppBar";
 
 const Header = () => {
   return (
     <div style={{ marginBottom: "1rem" }}>
-      <SearchAppBar />
+      <AppBar />
     </div>
   );
 };

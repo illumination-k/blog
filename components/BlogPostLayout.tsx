@@ -1,29 +1,14 @@
 import React from "react";
 
 import Grid from "@material-ui/core/Grid";
-import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { NextSeo } from "next-seo";
 
 import Layout from "./Layout";
 import Toc from "./Toc";
-import Drawer from "./Drawer";
-import { mergeClasses } from "@material-ui/styles";
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: "flex",
-    },
-    content: {
-      flexGrow: 1,
-      padding: theme.spacing(3),
-    },
-  })
-);
+import ClippedDrawer from "./Drawer";
 
 const BlogPostLayout = ({ meta, children }) => {
-  const classes = useStyles();
   const listitems = (
     <>
       <Typography variant="h5" style={{ marginBottom: "0.5rem" }}>
@@ -36,11 +21,11 @@ const BlogPostLayout = ({ meta, children }) => {
     <>
       <Layout>
         <NextSeo title={meta.title} description={meta.description} />
-        <Grid container spacing={1} className={classes.content}>
+        <Grid container spacing={1}>
           <Grid
             item
             xs={12}
-            style={{ marginRight: "2rem", flexGrow: 1 }}
+            style={{ marginRight: "2rem" }}
             className="markdown-body"
           >
             <h1>{meta.title}</h1>
@@ -60,9 +45,14 @@ const BlogPostLayout = ({ meta, children }) => {
               })}
             </details>
             {children}
+            <div style={{ textAlign: "right" }}>
+              <amp-social-share type="twitter" width="40" height="40" />
+              <amp-social-share type="facebook" width="40" height="40" />
+              <amp-social-share type="line" width="40" height="40" />
+            </div>
           </Grid>
-          <Grid container>
-            <Drawer listitems={listitems} />
+          <Grid item>
+            <ClippedDrawer listitems={listitems} />
           </Grid>
         </Grid>
       </Layout>

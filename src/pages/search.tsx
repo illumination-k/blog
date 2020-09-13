@@ -1,3 +1,5 @@
+import { NextSeo } from "next-seo";
+
 import Layout from "@components/Layout";
 import BlogPostCard from "@components/BlogPostCard";
 import Grid from "@material-ui/core/Grid";
@@ -21,6 +23,10 @@ const SearchResult = (props) => {
   });
   return (
     <Layout>
+      <NextSeo
+        title="search results"
+        description={`search result, query=${props.query}`}
+      />
       <h1>Search Results</h1>
       <h2>Query: {props.query}</h2>
       <Grid container spacing={1}>

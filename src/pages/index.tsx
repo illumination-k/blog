@@ -1,5 +1,6 @@
 import React from "react";
-import Link from "next/link";
+import Head from "next/head";
+
 import { NextSeo } from "next-seo";
 
 import Grid from "@material-ui/core/Grid";
@@ -27,10 +28,10 @@ const index = (props) => {
 
   return (
     <Layout>
-      <NextSeo
-        title="Bioinformaticsしたい！"
-        description="Bioinformaticsがしたい実験系生物学生のブログ"
-      />
+      <Head>
+        <link rel="canonical" href="https://illumination-k.dev"></link>
+      </Head>
+      <NextSeo title="illumination-dev" description="illumination-dev" />
       <h1>Recent Posts</h1>
       <Grid container spacing={1}>
         {cards}

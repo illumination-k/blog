@@ -3,6 +3,7 @@
 .pnp.js
 .next/
 out/
+tmp/
 
 # testing
 /coverage

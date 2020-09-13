@@ -18,7 +18,6 @@ import Typography from "@material-ui/core/Typography";
 
 import HomeIcon from "@material-ui/icons/Home";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
-import SearchIcon from "@material-ui/icons/Search";
 
 const drawerWidth = 240;
 
