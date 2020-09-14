@@ -33,7 +33,8 @@ async function filterToken(text) {
     .filter((token) => POS_LIST.includes(token.pos))
     .map((token) => token.surface_form)
     .filter((word) => !IGNORE_REGEX.test(word))
-    .filter((word) => word.length >= 2);
+    .filter((word) => word.length >= 2)
+    .map((word) => word.toLowerCase());
 }
 
 async function makePostsCache() {

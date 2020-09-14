@@ -2,6 +2,8 @@ import fs from "fs";
 import path from "path";
 import glob from "glob";
 import matter from "gray-matter";
+import getHistory from "@libs/getGitHistory";
+import getGitHistory from "@libs/getGitHistory";
 
 const POSTDIRPATH = path.join(process.cwd(), "src", "pages", "posts");
 
@@ -59,8 +61,10 @@ export async function getAllPosts() {
 
 export async function getMeta(filepath) {
   const file = fs.readFileSync(filepath);
+  const date = getGitHistory(filepath);
+
   const raw = matter(file);
-  const meta = raw.data;
+  const meta = Object.assign(raw.data, date);
 
   return meta;
 }

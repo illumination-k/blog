@@ -9,7 +9,7 @@ const BlogPostCard = ({ meta, url }) => {
     //@ts-ignore
     <Link href={url} rel="canonical">
       <Buttun color="inherit">
-        <Typography variant="h5" style={{ color: "black" }}>
+        <Typography variant="h2" style={{ color: "black", fontSize: "1.8em" }}>
           {meta.title}
         </Typography>
       </Buttun>
@@ -20,6 +20,9 @@ const BlogPostCard = ({ meta, url }) => {
       <CardContent>
         {title}
         <Typography>{meta.description}</Typography>
+        <Typography style={{ color: "gray", fontSize: "1em" }}>
+          published: {meta.published} update: {meta.update}
+        </Typography>
       </CardContent>
     </Card>
   );

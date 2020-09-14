@@ -63,6 +63,7 @@ export async function getStaticProps({ params }) {
 
   let props = await getPageInfo(categoryIdPosts, page, COUNT_PER_PAGE);
   props["categoryId"] = params.categoryId;
+
   return {
     props: props,
   };
