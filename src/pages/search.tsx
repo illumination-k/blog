@@ -40,17 +40,10 @@ const SearchResult = (props) => {
 };
 
 export async function getServerSideProps(ctx) {
-  const fs = require("fs");
-
-  // const posts = await require("../../cache/data.json");
-  const getGitHistory = require("@libs/getGitHistory");
-  const path = require("path");
   const FlexSearch = require("flexsearch");
   const query = ctx.query.q;
 
-  const cachePath = path.join(process.cwd(), "cache", "data.json");
-  const json = await fs.readFileSync(cachePath);
-  const posts = JSON.parse(json);
+  const { posts } = require("../../cache/data");
 
   let index = new FlexSearch({
     tokenize: function (str) {
@@ -67,24 +60,13 @@ export async function getServerSideProps(ctx) {
 
   const res = await index.search(query);
   const meta = res.map((r) => {
-    const filePath = path.join(
-      process.cwd(),
-      "src",
-      "pages",
-      "posts",
-      r.category,
-      r.id + ".md"
-    );
-
-    const { update, published } = getGitHistory(filePath);
-
     return {
       id: r.id,
       category: r.category,
       title: r.data.title,
       description: r.data.description,
-      update: update,
-      published: published,
+      update: r.update,
+      published: r.published,
     };
   });
 

@@ -6,6 +6,8 @@ const remark = require(`remark`);
 const strip = require(`strip-markdown`);
 const { tokenize } = require(`kuromojin`);
 
+const getGitHistory = require("../libs/getGitHistory");
+
 const POSTDIRPATH = path.join(process.cwd(), "src", "pages", "posts");
 
 function getAllPosts() {
@@ -42,6 +44,7 @@ async function makePostsCache() {
 
   const posts = await Promise.all(
     filepaths.map(async (filepath) => {
+      const { update, published } = getGitHistory(filepath);
       const id = path.parse(filepath).base.replace(".md", "");
       const category = path.basename(path.parse(filepath).dir);
       const contents = fs.readFileSync(filepath);
@@ -64,6 +67,8 @@ async function makePostsCache() {
       return {
         id: id,
         category: category,
+        update: update,
+        published: published,
         data: {
           title: matterResult.data.title,
           description: matterResult.data.description,
@@ -73,9 +78,11 @@ async function makePostsCache() {
     })
   );
 
-  const fileContents = `${JSON.stringify(posts)}`;
+  const jsonFileContents = `${JSON.stringify(posts)}`;
+  const jsFileContents = `export const posts = ${jsonFileContents}`;
   const outdir = path.join(process.cwd(), "cache");
-  fs.writeFileSync(path.join(outdir, "data.json"), fileContents);
+  fs.writeFileSync(path.join(outdir, "data.json"), jsonFileContents);
+  fs.writeFileSync(path.join(outdir, "data.js"), jsFileContents);
 }
 
 makePostsCache();

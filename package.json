@@ -10,7 +10,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn cache-posts && git add cache/data.json"
+      "pre-commit": "yarn cache-posts && git add cache/data.json cache/data.js"
     }
   },
   "author": "illumination-k",

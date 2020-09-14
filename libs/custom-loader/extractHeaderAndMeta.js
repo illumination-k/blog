@@ -1,6 +1,9 @@
 "use strict";
 
 const yaml = require("js-yaml");
+const fs = require("fs");
+const path = require("path");
+const getGitHistory = require("../getGitHistory");
 
 module.exports = extractHeaderAndMeta;
 
@@ -8,12 +11,23 @@ function extractHeaderAndMeta(options) {
   const settings = options || {};
   const depth = settings.maxDepth || 3;
 
+  const cachePath = path.join(process.cwd(), "cache", "data.json");
+  const posts = JSON.parse(fs.readFileSync(cachePath));
+
   return transformer;
 
   function transformer(tree) {
     let meta_obj = yaml.safeLoad(
       tree.children.filter((t) => t.type === "yaml")[0].value
     );
+
+    const post = posts.filter(
+      (post) =>
+        post.data.title == meta_obj.title &&
+        post.data.description == meta_obj.description
+    );
+
+    console.log(post);
 
     const headings = tree.children
       .filter((t) => t.type === "heading")
