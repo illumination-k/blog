@@ -40,11 +40,17 @@ const SearchResult = (props) => {
 };
 
 export async function getServerSideProps(ctx) {
-  const posts = await require("../../cache/data.json");
+  const fs = require("fs");
+
+  // const posts = await require("../../cache/data.json");
   const getGitHistory = require("@libs/getGitHistory");
   const path = require("path");
   const FlexSearch = require("flexsearch");
   const query = ctx.query.q;
+
+  const cachePath = path.join(process.cwd(), "cache", "data.json");
+  const json = await fs.readFileSync(cachePath);
+  const posts = JSON.parse(json);
 
   let index = new FlexSearch({
     tokenize: function (str) {
