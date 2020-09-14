@@ -73,9 +73,9 @@ async function makePostsCache() {
     })
   );
 
-  const fileContents = `export const posts = ${JSON.stringify(posts)}`;
+  const fileContents = `${JSON.stringify(posts)}`;
   const outdir = path.join(process.cwd(), "cache");
-  fs.writeFileSync(path.join(outdir, "data.js"), fileContents);
+  fs.writeFileSync(path.join(outdir, "data.json"), fileContents);
 }
 
 makePostsCache();

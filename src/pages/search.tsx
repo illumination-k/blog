@@ -13,6 +13,8 @@ const SearchResult = (props) => {
     const meta = {
       title: res.title,
       description: res.description,
+      published: res.published,
+      update: res.update,
     };
     const url = `/posts/${res.category}/${res.id}`;
     return (
@@ -38,7 +40,9 @@ const SearchResult = (props) => {
 };
 
 export async function getServerSideProps(ctx) {
-  const { posts } = await require("../../cache/data");
+  const posts = await require("../../cache/data.json");
+  const getGitHistory = require("@libs/getGitHistory");
+  const path = require("path");
   const FlexSearch = require("flexsearch");
   const query = ctx.query.q;
 
@@ -56,12 +60,27 @@ export async function getServerSideProps(ctx) {
   // console.log(posts[0].data.words.split(" "));
 
   const res = await index.search(query);
-  const meta = res.map((r) => ({
-    id: r.id,
-    category: r.category,
-    title: r.data.title,
-    description: r.data.description,
-  }));
+  const meta = res.map((r) => {
+    const filePath = path.join(
+      process.cwd(),
+      "src",
+      "pages",
+      "posts",
+      r.category,
+      r.id + ".md"
+    );
+
+    const { update, published } = getGitHistory(filePath);
+
+    return {
+      id: r.id,
+      category: r.category,
+      title: r.data.title,
+      description: r.data.description,
+      update: update,
+      published: published,
+    };
+  });
 
   return {
     props: { query: query, meta: meta },
