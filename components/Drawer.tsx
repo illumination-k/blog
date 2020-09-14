@@ -1,11 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import {
-  createStyles,
-  Theme,
-  makeStyles,
-  fade,
-} from "@material-ui/core/styles";
+import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 
 import Drawer from "@material-ui/core/Drawer";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -39,7 +34,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     drawerContainer: {
       overflow: "auto",
-      textAlign: "left",
     },
   })
 );

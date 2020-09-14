@@ -92,7 +92,6 @@ async function makePostsCache() {
       const all_words = [
         ...text_words,
         ...title_words,
-        category,
       ];
       const words = [...new Set(all_words)];
 
@@ -100,7 +99,6 @@ async function makePostsCache() {
         id: id,
         data: {
           title: matterResult.data.title,
-          description: matterResult.data.description,
           words: words.join(" "),
         },
       };
