@@ -53,7 +53,9 @@ const ClippedDrawer = ({ listitems }) => {
       >
         <Toolbar />
         <div className={classes.drawerContainer} style={{ padding: "1rem" }}>
-          <Typography variant="h5">Site Map</Typography>
+          <Typography variant="h2" style={{ fontSize: "1.7em" }}>
+            Site Map
+          </Typography>
           <List>
             <ListItem button>
               <ListItemIcon>

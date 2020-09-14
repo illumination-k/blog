@@ -27,7 +27,12 @@ function extractHeaderAndMeta(options) {
         post.data.description == meta_obj.description
     );
 
-    console.log(post);
+    const { update, published, id, category } = post[0];
+
+    meta_obj["published"] = published;
+    meta_obj["update"] = update;
+
+    meta_obj["url"] = `/posts/${category}/${id}`;
 
     const headings = tree.children
       .filter((t) => t.type === "heading")

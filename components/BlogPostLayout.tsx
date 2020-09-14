@@ -1,5 +1,6 @@
 import React from "react";
 
+import Head from "next/head";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
@@ -25,7 +26,10 @@ const BlogPostLayout = ({ meta, children }) => {
   const classes = useStyles();
   const listitems = (
     <>
-      <Typography variant="h5" style={{ marginBottom: "0.5rem" }}>
+      <Typography
+        variant="h2"
+        style={{ marginBottom: "0.5rem", fontSize: "1.7em" }}
+      >
         Table of Contents
       </Typography>
       <Toc headings={meta.toc} />
@@ -34,9 +38,14 @@ const BlogPostLayout = ({ meta, children }) => {
 
   const contents = (
     <div className={classes.contents}>
+      <Head>
+        <link rel="canonical" href={`https://illumination-k.dev/${meta.url}`} />
+      </Head>
       <Grid item xs={12} className="markdown-body">
         <h1>{meta.title}</h1>
-
+        <Typography style={{ color: "gray" }}>
+          <b>published:</b> {meta.published} <b>update:</b> {meta.update}
+        </Typography>
         <details>
           <summary>Table of Contents</summary>
           {meta.toc.map((heading, idx) => {
