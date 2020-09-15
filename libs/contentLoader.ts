@@ -61,10 +61,22 @@ export async function getAllPosts() {
 
 export async function getMeta(filepath) {
   const file = fs.readFileSync(filepath);
-  const date = getGitHistory(filepath);
+  const cachePath = path.join(process.cwd(), "cache", "data.json");
+  const posts = JSON.parse(fs.readFileSync(cachePath).toString());
+  // const date = getGitHistory(filepath);
 
   const raw = matter(file);
-  const meta = Object.assign(raw.data, date);
+  const { title, description } = raw.data;
+  const post = posts.filter(
+    (post) => post.data.title == title && post.data.description == description
+  );
+
+  const { update, published } = post[0];
+
+  const meta = Object.assign(raw.data, {
+    update: update,
+    published: published,
+  });
 
   return meta;
 }

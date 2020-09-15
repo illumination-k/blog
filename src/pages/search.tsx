@@ -56,7 +56,6 @@ export async function getServerSideProps(ctx) {
   });
 
   await index.add(posts);
-  // console.log(posts[0].data.words.split(" "));
 
   const res = await index.search(query);
   const meta = res.map((r) => {
