@@ -5,6 +5,11 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
 const BlogPostCard = ({ meta, url }) => {
+  const maxLength = 120;
+  let description: string = meta.description;
+  if (description.length > maxLength) {
+    description = description.substring(0, maxLength) + "...";
+  }
   const title = (
     //@ts-ignore
     <Link href={url} rel="canonical">
@@ -19,7 +24,7 @@ const BlogPostCard = ({ meta, url }) => {
     <Card variant="outlined">
       <CardContent>
         {title}
-        <Typography>{meta.description}</Typography>
+        <Typography>{description}</Typography>
         <Typography style={{ color: "gray", fontSize: "1em" }}>
           published: {meta.published} update: {meta.update}
         </Typography>
