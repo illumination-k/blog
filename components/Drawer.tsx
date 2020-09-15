@@ -11,8 +11,11 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 
 import Typography from "@material-ui/core/Typography";
 
+import IconButton from "@material-ui/core/IconButton";
+
 import HomeIcon from "@material-ui/icons/Home";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import SearchIcon from "@material-ui/icons/Search";
 
 const drawerWidth = 240;
 
@@ -30,6 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     drawerPaper: {
+      backgroundColor: "whitesmoke",
       width: drawerWidth,
     },
     drawerContainer: {

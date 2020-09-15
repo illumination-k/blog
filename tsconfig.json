@@ -34,7 +34,7 @@
     }
   },
   "include": [
-    "src/**/*", "next.config.js", "libs/contentLoader.ts", "components", "components", "libs/theme.tsx", "libs/[categoryId].tsx",
+    "src/**/*", "next.config.js", "libs/contentLoader.ts", "components", "components", "libs/theme.tsx",
   ],
   "exclude": [
     "node_modules"

@@ -32,6 +32,8 @@ function extractHeaderAndMeta(options) {
     meta_obj["update"] = update;
 
     meta_obj["url"] = `/posts/${category}/${id}`;
+    meta_obj["id"] = id;
+    meta_obj["category"] = category;
 
     const headings = ast.children
       .filter((t) => t.type === "heading")

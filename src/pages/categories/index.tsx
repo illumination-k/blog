@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-
+import Head from "next/head";
+import { NextSeo } from "next-seo";
 import Layout from "@components/ListLayout";
 
 import List from "@material-ui/core/List";
@@ -29,6 +30,10 @@ const Category = (props) => {
 
   return (
     <>
+      <Head>
+        <link rel="canonical" href="https://illumination-k.dev/categories" />
+      </Head>
+      <NextSeo title="illumination-dev: category" description="category page" />
       <Layout>
         <Typography variant="h4">Categories</Typography>
         <List>{links}</List>
