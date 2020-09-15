@@ -12,9 +12,9 @@ export async function getPageInfo(
 ) {
   const end = page * COUNT_PER_PAGE;
   const start = end - COUNT_PER_PAGE;
-  const posts = all_posts.slice(start, end);
-  const post_info = await Promise.all(
-    posts.map(async (post) => {
+
+  const all_post_info = await Promise.all(
+    all_posts.map(async (post) => {
       const meta = await getMeta(post);
       const { dir, name } = path.parse(post);
       const categoryId = path.basename(dir);
@@ -26,6 +26,13 @@ export async function getPageInfo(
     })
   );
 
+  const all_sorted_post_info = all_post_info.sort(function (a: any, b: any) {
+    const a_date = new Date(a.meta.update);
+    const b_date = new Date(b.meta.update);
+    return b_date.getDate() - a_date.getDate();
+  });
+
+  const post_info = all_sorted_post_info.slice(start, end);
   const total_pages = Math.ceil(all_posts.length / COUNT_PER_PAGE);
 
   return {

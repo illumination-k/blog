@@ -25,10 +25,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Bioinformaticsしたい!</title>
-        {/* <meta
-          name="viewport"
-          content="width=device-width,minimum-scale=1,initial-scale=1"
-        /> */}
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />

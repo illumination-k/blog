@@ -38,9 +38,6 @@ const BlogPostLayout = ({ meta, children }) => {
 
   const contents = (
     <div className={classes.contents}>
-      <Head>
-        <link rel="canonical" href={`https://illumination-k.dev/${meta.url}`} />
-      </Head>
       <Grid item xs={12} className="markdown-body">
         <h1>{meta.title}</h1>
         <Typography style={{ color: "gray" }}>
@@ -62,9 +59,9 @@ const BlogPostLayout = ({ meta, children }) => {
         </details>
         {children}
         <div style={{ textAlign: "right" }}>
-          <amp-social-share type="twitter" />
-          <amp-social-share type="facebook" />
-          <amp-social-share type="line" />
+          <amp-social-share type="twitter" aria-label="twitterShare" />
+          <amp-social-share type="facebook" aria-label="facebookShare" />
+          <amp-social-share type="line" aria-label="lineShare" />
         </div>
       </Grid>
     </div>
@@ -72,6 +69,9 @@ const BlogPostLayout = ({ meta, children }) => {
 
   return (
     <>
+      <Head>
+        <link rel="canonical" href={`https://illumination-k.dev/${meta.url}`} />
+      </Head>
       <NextSeo title={meta.title} description={meta.description} />
       <Layout>
         {contents}

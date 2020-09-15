@@ -3,7 +3,6 @@
 const yaml = require("js-yaml");
 const fs = require("fs");
 const path = require("path");
-const getGitHistory = require("../getGitHistory");
 
 module.exports = extractHeaderAndMeta;
 
@@ -16,9 +15,9 @@ function extractHeaderAndMeta(options) {
 
   return transformer;
 
-  function transformer(tree) {
+  function transformer(ast) {
     let meta_obj = yaml.safeLoad(
-      tree.children.filter((t) => t.type === "yaml")[0].value
+      ast.children.filter((t) => t.type === "yaml")[0].value
     );
 
     const post = posts.filter(
@@ -34,7 +33,7 @@ function extractHeaderAndMeta(options) {
 
     meta_obj["url"] = `/posts/${category}/${id}`;
 
-    const headings = tree.children
+    const headings = ast.children
       .filter((t) => t.type === "heading")
       .filter((t) => t.depth <= depth);
 
@@ -56,8 +55,13 @@ function extractHeaderAndMeta(options) {
       value: meta_value,
     };
 
-    const layout_path = meta_obj["layout"]["path"];
-    const component = meta_obj["layout"]["component"];
+    let layout_path = "@components/BlogPostLayout";
+    let component = "BlogPostLayout";
+    if ("layout" in meta_obj) {
+      layout_path = meta_obj["layout"]["path"];
+      component = meta_obj["layout"]["component"];
+    }
+
     const import_value = `import ${component} from "${layout_path}"`;
     const import_layout = {
       type: "import",
@@ -76,9 +80,9 @@ function extractHeaderAndMeta(options) {
       value: `export const config = { amp: true }`,
     };
 
-    tree.children.unshift(export_amp);
-    tree.children.unshift(export_default);
-    tree.children.unshift(meta);
-    tree.children.unshift(import_layout);
+    ast.children.unshift(export_amp);
+    ast.children.unshift(export_default);
+    ast.children.unshift(meta);
+    ast.children.unshift(import_layout);
   }
 }
