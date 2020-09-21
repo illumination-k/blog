@@ -6,11 +6,13 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "cache-posts": "node script/makePostsCache.js" 
+    "make-sitemap": "node sitemap.js",
+    "cache-posts": "node script/makePostsCache.js"
   },
   "husky": {
     "hooks": {
-      "pre-push": "yarn cache-posts && git add cache/data.json cache/data.js && git commit -m 'add cache'"
+      "pre-commit": "yarn make-sitemap && yarn cache-posts && git add public/sitemap.xml",
+      "pre-push": "yarn build &&  git add cache/data.json cache/data.js"
     }
   },
   "author": "illumination-k",
@@ -38,6 +40,7 @@
     "next": "^9.5.4-canary.3",
     "next-offline": "^5.0.2",
     "next-seo": "^4.7.3",
+    "nextjs-sitemap-generator": "^1.1.1",
     "path": "^0.12.7",
     "prop-types": "^15.7.2",
     "raw-loader": "^4.0.1",

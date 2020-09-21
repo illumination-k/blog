@@ -4,7 +4,7 @@ import Copyright from "./Copyright";
 const Footer = () => {
   return (
     <div style={{ marginTop: "1rem" }}>
-      <div style={{ textAlign: "center", color: "gray" }}>
+      <div style={{ textAlign: "center" }}>
         <Link href="/privacypolicy">
           <a>Privacy Policy</a>
         </Link>
@@ -14,6 +14,7 @@ const Footer = () => {
         a {
           text-decoration: none;
           font-size: 1em;
+          color: gray;
         }
       `}</style>
     </div>
