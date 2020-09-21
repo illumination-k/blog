@@ -11,8 +11,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn make-sitemap && yarn cache-posts && git add public/sitemap.xml",
-      "pre-push": "yarn build &&  git add cache/data.json cache/data.js"
+      "pre-commit": "yarn build && yarn make-sitemap && git add public/sitemap.xml",
+      "pre-push": "yarn cache-posts && git add cache/data.json cache/data.js"
     }
   },
   "author": "illumination-k",
