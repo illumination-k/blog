@@ -29,8 +29,8 @@ const CategoryPage = (props) => {
   return (
     <Layout>
       <NextSeo
-        title={`Bioinformaticsしたい！: ${categoryId}`}
-        description={`Bioinformaticsがしたい実験系生物学生のブログ: Category ${page}`}
+        title={`illumination-dev: ${categoryId}`}
+        description={`illumination-dev: Category ${page}`}
       />
       <h1>{`Recent Posts: ${categoryId}`}</h1>
       <Grid container spacing={1}>

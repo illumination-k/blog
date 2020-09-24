@@ -28,8 +28,8 @@ const ArchivePage = (props) => {
   return (
     <ListLayout>
       <NextSeo
-        title="Bioinformaticsしたい！: Archive"
-        description={`Bioinformaticsがしたい実験系生物学生のブログ: Archive ${page}`}
+        title="illumination-dev Blog: Archive"
+        description={`illumination-dev Blog : Archive ${page}`}
       />
       <h1>Recent Posts</h1>
       <Grid container spacing={1}>
