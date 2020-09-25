@@ -1,5 +1,5 @@
 ---
-title: JSONでPNGをやりとりする(python <-> JavaScript(React))
+title: JSONで画像をやりとりする python <-> JavaScript(React)
 description: Python、特にmatplotlibで作成したPNGファイルをJSONにSerializeしてフロントエンド側に送りたいときにどうすればいいのかについて
 ---
 
@@ -26,7 +26,7 @@ print(matplotlib.__version__)
 x = np.linspace(0, 10, 10000)
 
 fig, ax = plt.subplots()
-ax.plot(x, nByten(x))
+ax.plot(x, np.sin(x))
 ```
 
 これについて、png/svgをJSONにシリアライズします。svgはそのままシリアライズできますが、pngについてはbase64 encodingが必要です。pngじゃなくてjpegとかでも同様です。
@@ -65,7 +65,7 @@ print(json.dumps({"png": png}))
 
 ### SVG rendering from JSON
 
-innerHTMLとして埋め込むこともできますが、今回は[react-inlinesvg](https://www.npmjs.com/package/react-inlinesvg)というパッケージを使ってしまいます。
+innerHTMLとして埋め込むこともできますが、今回は[react-inlinesvg](https://www.npmjs.com/package/react-inlinesvg)というパッケージを使ってしまいます。propsで受け渡されていることにしましょう。
 
 ```bash
 npm i react-inlinesvg
@@ -75,7 +75,9 @@ npm i react-inlinesvg
 import React from 'react';
 import SVG from 'react-inlinesvg';
 
-export default () => <SVG src={json_data.svg} />
+const Svg = ({json_data: json_data}) => {
+    return <SVG src={json_data.svg} />
+}
 ```
 
 ### PNG rendering from JSON
@@ -85,7 +87,7 @@ export default () => <SVG src={json_data.svg} />
 ```jsx
 import React from 'react'
 
-const Png = () => {
+const Png = ({json_data: json_data}) => {
     const buf = Buffer.from(json_data.png, "base64")
     const blob = new Blog([buf], { type: "image/png" })
     const uri = URL.createObjectURL(blob)
