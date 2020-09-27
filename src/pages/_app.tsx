@@ -24,7 +24,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Bioinformaticsしたい!</title>
+        <title>illumination-dev</title>
+        <link rel="manifest" href="/manifest.json" />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
