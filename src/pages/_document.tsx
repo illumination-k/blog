@@ -20,6 +20,7 @@ export default class MyDocument extends Document {
         <Head>
           {/* PWA primary color */}
           <link rel="manifest" href="/manifest.json" />
+          <link rel="shortcut icon" href="/icons/favicon.ico" />
           <meta name="theme-color" content={theme.palette.primary.main} />
         </Head>
         <body>
