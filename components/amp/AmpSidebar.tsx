@@ -46,8 +46,8 @@ const AmpSidebar = ({ listitems }) => {
         <NavigationIcon>Navigation</NavigationIcon>
       </AmpFab>
       <amp-sidebar id="ampsidebar" className="ampsidebar" layout="nodisplay">
-        <Toolbar />
         <div style={{ padding: "1rem" }}>
+          <AmpSearchForm />
           <Typography variant="h2" style={{ fontSize: "1.7em" }}>
             Site Map
           </Typography>
@@ -77,7 +77,6 @@ const AmpSidebar = ({ listitems }) => {
               </Link>
             </ListItem>
           </List>
-          <AmpSearchForm />
           {listitems}
         </div>
       </amp-sidebar>

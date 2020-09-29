@@ -22,6 +22,16 @@ const useStyles = makeStyles((theme: Theme) =>
         marginRight: 240,
       },
     },
+    socialshare_container: {
+      textAlign: "left",
+      [theme.breakpoints.up("sm")]: {
+        textAlign: "right",
+      },
+    },
+    socialshare_button: {
+      borderRadius: "30px",
+      margin: "0.1rem",
+    },
   })
 );
 
@@ -61,10 +71,28 @@ const BlogPostLayout = ({ meta, children }) => {
           })}
         </details>
         {children}
-        <div style={{ textAlign: "right" }}>
-          <amp-social-share type="twitter" aria-label="twitterShare" />
-          <amp-social-share type="facebook" aria-label="facebookShare" />
-          <amp-social-share type="line" aria-label="lineShare" />
+        <div className={classes.socialshare_container}>
+          <amp-social-share
+            type="twitter"
+            className={classes.socialshare_button}
+            aria-label="twitterShare"
+            width="40"
+            height="40"
+          />
+          <amp-social-share
+            className={classes.socialshare_button}
+            type="facebook"
+            aria-label="facebookShare"
+            width="40"
+            height="40"
+          />
+          <amp-social-share
+            className={classes.socialshare_button}
+            type="line"
+            aria-label="lineShare"
+            width="40"
+            height="40"
+          />
         </div>
       </Grid>
     </div>

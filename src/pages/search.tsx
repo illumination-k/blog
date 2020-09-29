@@ -1,9 +1,8 @@
 import { NextSeo } from "next-seo";
 
-import Layout from "@components/Layout";
+import Layout from "@components/ListLayout";
 import BlogPostCard from "@components/BlogPostCard";
 import Grid from "@material-ui/core/Grid";
-import Drawer from "@components/Drawer";
 
 export const config = { amp: true };
 
@@ -34,7 +33,6 @@ const SearchResult = (props) => {
       <Grid container spacing={1}>
         {listitems}
       </Grid>
-      <Drawer />
     </Layout>
   );
 };

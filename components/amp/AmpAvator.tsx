@@ -5,7 +5,7 @@ const AmpAvator = ({ width, height, src, alt }) => {
       height={height}
       src={src}
       className="avator"
-      alt="illumination-k"
+      alt={alt}
     />
   );
 };

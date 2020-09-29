@@ -74,9 +74,20 @@ const AmpFab: React.FC<Props> = (props) => {
 export default AmpFab;
 ```
 
-場所の定義はここでやってしまってもいいが、`amp-sidebar`と`AmpFab`をあわせて`AmpSidebar`コンポーネントを作成したかったので、そこで定義することにした。画面が大きいときは固定したサイドバーを表示するので、固定したサイドバーが表示されなくなったときに`Fab`が表示されるように設定してある。
+場所の定義はここでやってしまってもいいが、`amp-sidebar`と`AmpFab`をあわせて`AmpSidebar`コンポーネントを作成したかったので、そこで定義することにした。
 
 ## AmpSidebar(amp-sidebar+float button)
+
+画面が大きいときは固定したサイドバーを表示するので、固定したサイドバーが表示されなくなったときに`Fab`が表示されるように設定してある。右下に固定するのに必要な部分は以下のcss部分。
+
+```css
+margin: 0;
+top: "auto";
+right: 20;
+bottom: 20;
+left: "auto";
+position: "fixed";
+```
 
 注意が必要なのは、`amp-sidebar`は`<body>`の直下にないとだめなので、`<div>`などで囲ってしまうと、Warningが表示される。なので、Fragmentで囲う必要がある。
 
@@ -125,7 +136,7 @@ const AmpSidebar = ({ children }) => {
 };
 
 AmpSidebar.defaultProps = {
-  listitems: <></>,
+  children: <></>,
 };
 
 export default AmpSidebar;
@@ -172,7 +183,7 @@ const Layout = ({ children }) => {
     <>
       <Header />
       {children}
-      <AmpSidebar>
+      <AmpSidebar />
       <Footer />
     </>
   );

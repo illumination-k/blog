@@ -13,11 +13,12 @@ const BlogPostCard = ({ meta, url }) => {
   const title = (
     //@ts-ignore
     <Link href={url} rel="canonical">
-      <Buttun color="inherit">
-        <Typography variant="h2" style={{ color: "black", fontSize: "1.8em" }}>
-          {meta.title}
-        </Typography>
-      </Buttun>
+      <Typography
+        variant="h2"
+        style={{ color: "black", fontSize: "1.8em", marginBottom: "0.5rem" }}
+      >
+        {meta.title}
+      </Typography>
     </Link>
   );
   return (

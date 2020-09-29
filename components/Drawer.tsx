@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     drawerContainer: {
       overflow: "auto",
+      padding: "1rem",
     },
   })
 );
@@ -55,7 +56,7 @@ const ClippedDrawer = ({ listitems }) => {
         }}
       >
         <Toolbar />
-        <div className={classes.drawerContainer} style={{ padding: "1rem" }}>
+        <div className={classes.drawerContainer}>
           <Typography variant="h2" style={{ fontSize: "1.7em" }}>
             Site Map
           </Typography>
