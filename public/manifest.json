@@ -3,7 +3,6 @@
     "theme_color": "#f69435",
     "background_color": "#f69435",
     "display": "standalone",
-    "scope": "/",
     "start_url": "/",
     "icons": [
         {
@@ -27,7 +26,6 @@
             "type": "image/png"
         }
     ],
-    "app_name": "illumination-k development",
-    "short_name": "illumination-k.dev",
+    "short_name": "ik.dev",
     "description": "Homepage of illumination-k"
 }
