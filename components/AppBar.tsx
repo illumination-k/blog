@@ -49,6 +49,41 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+const IconButtons = () => {
+  const classes = useStyles();
+  return (
+    <>
+      {" "}
+      <IconButton
+        href="https://twitter.com/IlluminationK"
+        color="inherit"
+        aria-label="mytwitter"
+        edge="end"
+      >
+        <TwitterIcon
+          style={{ color: "deepskyblue" }}
+          className={classes.icons}
+        />
+      </IconButton>
+      <IconButton
+        href="https://github.com/illumination-k"
+        aria-label="mygithub"
+        edge="end"
+      >
+        <GitHubIcon style={{ color: "white" }} className={classes.icons} />
+      </IconButton>
+      <IconButton href="/about" aria-label="about" edge="end">
+        <AmpAvator
+          width="27"
+          height="27"
+          src="/avatar/avatar.jpg"
+          alt="illumination-k"
+        />
+      </IconButton>
+    </>
+  );
+};
+
 export default function HeaderAppBar() {
   const classes = useStyles();
 
@@ -80,35 +115,7 @@ export default function HeaderAppBar() {
               </IconButton>
             </div>
             {title}
-            <IconButton
-              href="https://twitter.com/IlluminationK"
-              color="inherit"
-              aria-label="mytwitter"
-              edge="end"
-            >
-              <TwitterIcon
-                style={{ color: "deepskyblue" }}
-                className={classes.icons}
-              />
-            </IconButton>
-            <IconButton
-              href="https://github.com/illumination-k"
-              aria-label="mygithub"
-              edge="end"
-            >
-              <GitHubIcon
-                style={{ color: "white" }}
-                className={classes.icons}
-              />
-            </IconButton>
-            <IconButton href="/about" aria-label="about" edge="end">
-              <AmpAvator
-                width="27"
-                height="27"
-                src="/avatar/avatar.jpg"
-                alt="illumination-k"
-              />
-            </IconButton>
+            <IconButtons />
           </Toolbar>
         </Container>
       </AppBar>

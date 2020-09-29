@@ -12,6 +12,7 @@ import { NextSeo } from "next-seo";
 import Layout from "./Layout";
 import Toc from "./Toc";
 import Drawer from "./Drawer";
+import AmpSidebar from "./amp/AmpSidebar";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -83,6 +84,7 @@ const BlogPostLayout = ({ meta, children }) => {
         {contents}
         <Grid>
           <Drawer listitems={listitems} />
+          <AmpSidebar listitems={listitems} />
         </Grid>
       </Layout>
     </>

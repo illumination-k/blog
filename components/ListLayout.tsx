@@ -1,6 +1,7 @@
 import Layout from "@components/Layout";
 import Drawer from "@components/Drawer";
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
+import AmpSidebar from "./amp/AmpSidebar";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -17,6 +18,7 @@ const ListLayout = ({ children }) => {
   return (
     <Layout>
       <div className={classes.contents}> {children}</div>
+      <AmpSidebar />
       <Drawer />
     </Layout>
   );
