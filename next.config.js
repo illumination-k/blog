@@ -36,6 +36,7 @@ const withMDX = require("@next/mdx")({
 });
 
 const withPWA = require("next-pwa");
+const runtimeCaching = require("next-pwa/cache");
 
 module.exports = withPWA(
   withMDX(
@@ -45,6 +46,7 @@ module.exports = withPWA(
     {
       pwa: {
         disable: process.env.NODE_ENV === "development",
+        runtimeCaching,
         dest: "public",
         publicExcludes: ["!robots.txt", "!sitemap.xml"],
       },
