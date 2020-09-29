@@ -20,7 +20,7 @@ const PrivacyPolicy = () => {
       <Layout>
         <div style={{ textAlign: "center" }}>
           {" "}
-          <Paper style={{ textAlign: "center", padding: "1rem" }}>
+          <Paper style={{ padding: "1rem" }}>
             <Typography>
               当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を使用しています。このGoogleアナリティクスはデータの収集のためにCookieを使用しています。このデータは匿名で収集されており、個人を特定するものではありません。
             </Typography>

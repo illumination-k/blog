@@ -25,7 +25,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>illumination-dev</title>
-        <link rel="manifest" href="/manifest.json" />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />

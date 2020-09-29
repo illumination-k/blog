@@ -1,9 +1,10 @@
 {
+    "name": "illumination-k dev",
     "theme_color": "#f69435",
     "background_color": "#f69435",
     "display": "standalone",
     "scope": "/",
-    "start_url": "/?utm_source=pwa",
+    "start_url": "/",
     "icons": [
         {
             "src": "/icon-192x192.png",

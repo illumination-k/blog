@@ -4,17 +4,6 @@
     height: 180rem;       /* ※縦横を同値に */    
 }
 
-.amp-img-container {
-  position: relative;
-  width: 100%;
-  display: flex;
-}
-
-.amp-img-container amp-img img {
-  object-fit: contain;
-  /* background: #eee; */
-}
-
 .code-title {
   background: #2e96b5;
   color: #eee;
