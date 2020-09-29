@@ -11,7 +11,6 @@ import Container from "@material-ui/core/Container";
 
 //@ts-ignore
 import Link from "@components/Link";
-
 import AmpAvator from "./amp/AmpAvator";
 
 const useStyles = makeStyles((theme: Theme) =>

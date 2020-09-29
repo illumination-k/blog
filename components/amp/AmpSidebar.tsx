@@ -18,13 +18,11 @@ import NavigationIcon from "@material-ui/icons/Navigation";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
+    fab: {
       display: "block",
       [theme.breakpoints.up("sm")]: {
         display: "none",
       },
-    },
-    fab: {
       margin: 0,
       top: "auto",
       right: 20,
@@ -38,10 +36,11 @@ const useStyles = makeStyles((theme: Theme) =>
 const AmpSidebar = ({ listitems }) => {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <>
       <AmpFab
         on="tap:ampsidebar.toggle"
         variant="extended"
+        aria-label="amp-fab"
         className={classes.fab}
       >
         <NavigationIcon>Navigation</NavigationIcon>
@@ -87,7 +86,7 @@ const AmpSidebar = ({ listitems }) => {
           background-color: white;
         }
       `}</style>
-    </div>
+    </>
   );
 };
 

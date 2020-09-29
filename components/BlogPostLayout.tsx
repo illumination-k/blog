@@ -4,6 +4,7 @@ import Head from "next/head";
 import Grid from "@material-ui/core/Grid";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
 
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 
@@ -76,16 +77,16 @@ const BlogPostLayout = ({ meta, children }) => {
       </Head>
       <NextSeo title={meta.title} description={meta.description} />
       <Layout>
-        <Breadcrumbs aria-label="breadcrumb">
-          <Link href="/"> Home </Link>
-          <Link href={`/categories/${meta.category}/1`}>{meta.category}</Link>
-          <p>{meta.title}</p>
-        </Breadcrumbs>
-        {contents}
-        <Grid>
-          <Drawer listitems={listitems} />
-          <AmpSidebar listitems={listitems} />
-        </Grid>
+        <Container>
+          <Breadcrumbs aria-label="breadcrumb">
+            <Link href="/"> Home </Link>
+            <Link href={`/categories/${meta.category}/1`}>{meta.category}</Link>
+            <p>{meta.title}</p>
+          </Breadcrumbs>
+          {contents}
+        </Container>
+        <AmpSidebar listitems={listitems} />
+        <Drawer listitems={listitems} />
       </Layout>
     </>
   );
