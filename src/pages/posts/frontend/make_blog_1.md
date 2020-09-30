@@ -14,7 +14,13 @@ WordpressはPHPがわからなくてカスタマイズが進まない。ブラ�
 
 Wordpressのトップ画面はこんな感じなので、これよりはよくしたい。あとWordpressはAMPにフルでは対応できていない（数式とか）なので、そのへんも頑張りたい。
 
+**Before**
+
 ![lighthouse-wordpress-top](/images/lighthouse-wordpress-top.PNG)
+
+**After 2020/09/30**
+
+![lighthouse-next-blog](/images/lighthouse-nextblog-top.PNG)
 
 ## 要件
 
