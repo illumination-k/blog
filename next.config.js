@@ -35,22 +35,6 @@ const withMDX = require("@next/mdx")({
   },
 });
 
-const withPWA = require("next-pwa");
-const runtimeCaching = require("next-pwa/cache");
-
-module.exports = withPWA(
-  withMDX(
-    {
-      pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-    },
-    {
-      pwa: {
-        disable: process.env.NODE_ENV === "development",
-        runtimeCaching,
-        dest: "public",
-        sw: "service-worker.js",
-        publicExcludes: ["!robots.txt", "!sitemap.xml"],
-      },
-    }
-  )
-);
+module.exports = withMDX({
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+});
