@@ -47,6 +47,7 @@ const AmpSidebar = ({ listitems }) => {
       </AmpFab>
       <amp-sidebar id="ampsidebar" className="ampsidebar" layout="nodisplay">
         <div style={{ padding: "1rem" }}>
+          <Toolbar />
           <AmpSearchForm />
           <Typography variant="h2" style={{ fontSize: "1.7em" }}>
             Site Map
