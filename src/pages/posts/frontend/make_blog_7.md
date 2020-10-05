@@ -5,7 +5,7 @@ description: Next.jsで作ったAMPオンリーのブログをPWAにも対応さ
 
 ## TL;DR
 
-Next.jsのPWA対応というと[next-offline]()とか[next-pwa]()が有名かと思います。しかし、AMPページのキャッシュはこれらがデフォルトで対応していないので、自前でやる必要があります。自分はこの2つのパッケージを使って色々やってて永遠にPWA対応できなかったので、AMPと同時に対応しようとしている人は注意が必要です。
+Next.jsのPWA対応というと[next-offline](https://github.com/hanford/next-offline)とか[next-pwa](https://github.com/shadowwalker/next-pwa)が有名かと思います。しかし、AMPページのキャッシュはこれらがデフォルトで対応していないので、自前でやる必要があります([参考issue](https://github.com/shadowwalker/next-pwa/issues/65))。自分はこの2つのパッケージを使って色々やってて永遠にPWA対応できなかったので、AMPと同時に対応しようとしている人は注意が必要です。
 
 とはいえ、やることはほとんど[example/amp-first](https://github.com/vercel/next.js/tree/ebd1434a847bb086d13fe4e6671b3b9f482e32c6/examples/amp-first)をコピペするだけなのですが...。
 
@@ -127,9 +127,9 @@ PWA対応したいコンポーネントのbodyに以下を入れます。
 
 ```jsx
 <amp-install-serviceworker
-src="/serviceworker.js"
-data-iframe-src="/install-serviceworker.html"
-layout="nodisplay"
+    src="/serviceworker.js"
+    data-iframe-src="/install-serviceworker.html"
+    layout="nodisplay"
 />
 ```
 

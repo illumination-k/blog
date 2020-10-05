@@ -4,6 +4,7 @@ const remarkFrontmatter = require("remark-frontmatter");
 const remarkSlug = require("remark-slug");
 const remarkHeadings = require("remark-autolink-headings");
 const remarkFootnotes = require("remark-footnotes");
+const remarkGfm = require("remark-gfm");
 
 // custom loader
 const extractHeaderAndMeta = require("./libs/custom-loader/extractHeaderAndMeta");
@@ -30,6 +31,7 @@ const withMDX = require("@next/mdx")({
       remarkMath,
       toMathml,
       toAmpImg,
+      remarkGfm,
     ],
     // rehypePlugins: [rehypeKatex, katexToMathml, highlighter],
   },

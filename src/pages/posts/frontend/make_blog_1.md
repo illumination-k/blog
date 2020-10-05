@@ -49,7 +49,7 @@ Wordpressのトップ画面はこんな感じなので、これよりはよく�
 
 - SEO
 - Google Analytics
-- AMP対応（やれるだけ）
+- AMP対応
 - Google Adsense
 
 ### その他の希望
