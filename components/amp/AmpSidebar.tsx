@@ -14,7 +14,7 @@ import AmpSearchForm from "@components/amp/AmpSearchForm";
 import AmpFab from "./AmpFab";
 
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
-import NavigationIcon from "@material-ui/icons/Navigation";
+import MenuIcon from "@material-ui/icons/Menu";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -43,7 +43,7 @@ const AmpSidebar = ({ listitems }) => {
         aria-label="amp-fab"
         className={classes.fab}
       >
-        <NavigationIcon>Navigation</NavigationIcon>
+        <MenuIcon />
       </AmpFab>
       <amp-sidebar id="ampsidebar" className="ampsidebar" layout="nodisplay">
         <div style={{ padding: "1rem" }}>

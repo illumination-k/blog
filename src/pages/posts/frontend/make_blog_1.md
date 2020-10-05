@@ -28,29 +28,31 @@ Wordpressのトップ画面はこんな感じなので、これよりはよく�
 
 ### ブログ機能
 
-- 静的ホスティング（Netrifyとかで管理したい）
-- markdownとmdxで記事を書いてGithubにpushすれば自動で更新される。
-- Toc機能
-- Qiitaみたいなサイドバー
-- category別に別れた記事一覧
-- 記事の検索機能
-- tag機能
-- gitと連動したhistory機能
-- 連載機能（連載タグがついた記事が順番にページネーションできる、みたいな。長い記事を書きがちなので）
+- [x] Verticalでホスティング
+- [x] カスタムドメイン
+- [x] markdownとmdxで記事を書いてGithubにpushすれば自動で更新される。
+- [x] Toc機能
+- [x] Qiitaみたいなサイドバー
+- [x] category別に別れた記事一覧
+- [x] 記事の検索機能
+- [ ] tag機能
+- [x] gitと連動したhistory機能
+- [ ] 連載機能（連載タグがついた記事が順番にページネーションできる、みたいな。長い記事を書きがちなので）
 
 ### スタイル
 
-- material-ui
-- Prism.jsでのcode syntax
-- amp-mathmlでの数式
-- Github markdown css
+- [x] material-ui
+- [x] Prism.jsでのcode syntax
+- [x] amp-mathmlでの数式
+- [x] Github markdown css
 
 ### Google関係
 
-- SEO
-- Google Analytics
-- AMP対応
-- Google Adsense
+- [x] SEO
+- [x] Google Analytics
+- [x] AMP対応
+- [x] PWA対応
+- [ ] Google Adsense
 
 ### その他の希望
 
