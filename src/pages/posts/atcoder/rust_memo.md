@@ -53,6 +53,8 @@ let r = s.binary_search(&1);
 assert!(match r { Ok(1..=4) => true, _ => false, }); // < ここをみるとrangeでmatchさせることはできる。
 ```
 
+雑にテストしてみると、このときの`i`は4を返す。
+
 ```rust
 fn main() {
     let s = [0, 1, 1, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55];
@@ -63,3 +65,16 @@ fn main() {
     };
 }
 ```
+
+なので、upper_boundしたければ
+
+```rust
+fn upper_bound(x: &usize, s: Vec<usize>) -> usize {
+    match s.binary_search(x) {
+        Ok(i) => i+1,
+        Err(i) => i
+    }
+}
+```
+
+でいいんだけど、lower_boundのやり方がわからない。
