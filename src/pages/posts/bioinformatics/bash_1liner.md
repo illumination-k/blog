@@ -88,6 +88,9 @@ files=$(ls | grep -v *.csv)
 d=$(ls -d */)
 # 最後の/を除く場合
 d=$(ls -d */ | sed 's/\/$//')
+
+#lsの全体のbasenameをとってくる
+d=$(ls | awk -F / 'print $NF')
 ```
 
 ## ファイル名を操作する
