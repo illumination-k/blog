@@ -74,4 +74,11 @@ Wordpressのトップ画面はこんな感じなので、これよりはよく�
 
 ということで、ブログ作っていきます。ついでなので、悪戦苦闘している分を記事にして残しておきたいと思っています。
 
+## 実際の作業へのリンク
 
+- [#2 MDX or Markdown ?](https://illumination-k.dev/posts/frontend/make_blog_2)
+- [#3 Next.jsで作ったブログにStyleを適用していく](https://illumination-k.dev/posts/frontend/make_blog_3)
+- [#4 Next.jsでカスタムローダーを使ってmdxをAMP対応させる](https://illumination-k.dev/posts/frontend/make_blog_4)
+- [#5 next.jsで作ってみたブログに検索機能を導入する](https://illumination-k.dev/posts/frontend/make_blog_5)
+- [#6 next.jsで作ってみたブログにamp-sidebarを導入する](https://illumination-k.dev/posts/frontend/make_blog_6)
+- [#7 Next.jsで作ったブログをAMPとPWAに対応させる](https://illumination-k.dev/posts/frontend/make_blog_7)
