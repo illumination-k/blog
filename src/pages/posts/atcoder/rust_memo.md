@@ -53,7 +53,7 @@ let r = s.binary_search(&1);
 assert!(match r { Ok(1..=4) => true, _ => false, }); // < ここをみるとrangeでmatchさせることはできる。
 ```
 
-雑にテストしてみると、このときの`i`は4を返す。
+雑にテストしてみると、atcoderのversion(1.42.0)では、`i`は4を返す。これはversionごとにも挙動が違うらしい。rustコミュニティでも[議論](https://github.com/rust-lang/rfcs/issues/2184)はされているようなんだけど、いつ実装されるのかは不明。
 
 ```rust
 fn main() {
@@ -66,7 +66,7 @@ fn main() {
 }
 ```
 
-なので、upper_boundしたければ
+なので、upper_boundしたければ下記の感じでできるはず。まあおとなしく自分で書いたほうがいい気がします。
 
 ```rust
 fn upper_bound(x: &usize, s: Vec<usize>) -> usize {
@@ -76,5 +76,3 @@ fn upper_bound(x: &usize, s: Vec<usize>) -> usize {
     }
 }
 ```
-
-でいいんだけど、lower_boundのやり方がわからない。
