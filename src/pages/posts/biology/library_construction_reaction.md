@@ -97,5 +97,5 @@ Transposonの一種であるTn5を用いる反応です。DNAをランダムに�
 - [DNA Ligation](https://www.addgene.org/protocols/dna-ligation/)
 - [Dropseq/seq-well](https://teichlab.github.io/scg_lib_structs/methods_html/Drop-seq.html)
 - [Library construction for next-generation sequencing: Overviews and challenges Head et al., 2018](https://www.future-science.com/doi/10.2144/000114133)
-- [USER® Enzyme](https://www.neb.com/products/m5505-user-enzyme#Product Information)
+- [USER® Enzyme](https://www.neb.com/products/m5505-user-enzyme)
 - [Applications of USER® and Thermolabile USER II Enzymes](https://www.neb.com/applications/cloning-and-synthetic-biology/user-cloning/applications-of-user-and-thermolabile-user-ii-enzymes)
