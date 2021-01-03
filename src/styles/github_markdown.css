@@ -280,11 +280,13 @@
 .markdown-body pre {
   font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
   font-size: 12px;
+  
 }
 
 .markdown-body pre {
   margin-top: 0;
   margin-bottom: 0;
+  color: white;
 }
 
 .markdown-body input::-webkit-inner-spin-button,
