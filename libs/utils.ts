@@ -29,7 +29,7 @@ export async function getPageInfo(
   const all_sorted_post_info = all_post_info.sort(function (a: any, b: any) {
     const a_date = new Date(a.meta.update);
     const b_date = new Date(b.meta.update);
-    return b_date.getDate() - a_date.getDate();
+    return b_date.valueOf() - a_date.valueOf();
   });
 
   const post_info = all_sorted_post_info.slice(start, end);
@@ -40,4 +40,16 @@ export async function getPageInfo(
     page: page,
     total_pages: total_pages,
   };
+}
+
+export function get_formatted_date(date_string: string) {
+  if (date_string === "") {
+    return date_string;
+  }
+  const date = new Date(date_string);
+  const formatted = `
+  ${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}
+  `.replace(/\n|\r/g, "");
+
+  return formatted;
 }
