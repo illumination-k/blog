@@ -15,6 +15,8 @@ import Toc from "./Toc";
 import Drawer from "./Drawer";
 import AmpSidebar from "./amp/AmpSidebar";
 
+import { get_formatted_date } from "@libs/utils";
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     contents: {
@@ -49,12 +51,17 @@ const BlogPostLayout = ({ meta, children }) => {
     </>
   );
 
+  // date settings
+  const published = get_formatted_date(meta.published);
+  const update = get_formatted_date(meta.update);
+
+  // contents settings
   const contents = (
     <div className={classes.contents}>
       <Grid item xs={12} className="markdown-body">
         <h1>{meta.title}</h1>
         <Typography style={{ color: "gray" }}>
-          <b>published:</b> {meta.published} <b>update:</b> {meta.update}
+          <b>published:</b> {published} <b>update:</b> {update}
         </Typography>
         <details>
           <summary>Table of Contents</summary>

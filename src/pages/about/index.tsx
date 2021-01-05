@@ -11,6 +11,7 @@ const About: React.FC<{}> = () => {
         <Typography>Name: illumination-k</Typography>
         <Typography>University: Kyoto University</Typography>
         <Typography>Faculty: Graduate School of Biostudies</Typography>
+        <Typography>Mail: illumination.k.27|gmail.com (| {"->"} @)</Typography>
       </Paper>
       <Paper>
         <h2 style={{ textAlign: "center" }}>Skills</h2>
