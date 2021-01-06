@@ -89,7 +89,7 @@ import React from 'react'
 
 const Png = ({json_data: json_data}) => {
     const buf = Buffer.from(json_data.png, "base64")
-    const blob = new Blog([buf], { type: "image/png" })
+    const blob = new Blob([buf], { type: "image/png" })
     const uri = URL.createObjectURL(blob)
 
     return <img src={uri} />
