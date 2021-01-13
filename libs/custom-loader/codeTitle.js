@@ -17,15 +17,24 @@ function codeTitle() {
         const newLang = lang.slice(0, separatorIndex);
         const title = lang.slice(separatorIndex + prefix.length);
 
-        const className = "code-title";
+        const titleNodeclassName = "code-title";
 
         const titleNode = {
           type: "html",
           value: `
-        <div class="${className}"><span>${title}</span></div>
+        <div class="${titleNodeclassName}"><span>${title}</span></div>
         `.trim(),
         };
 
+        const languageNameNode = "language-name";
+        const languageNode = {
+          type: "html",
+          value: `
+          <div class="${languageNameNode}"><span>${newLang}</span></div>
+          `.trim(),
+        };
+
+        ast.children.splice(index, 0, languageNode);
         ast.children.splice(index, 0, titleNode);
         node.lang = newLang;
       }
