@@ -15,7 +15,7 @@ dockerを使ってcross buildしてくれる[cross](https://github.com/rust-embe
 
 使い方は非常に簡単で、`actions-rs/cargo@v1`を使う際に`with`の中で`use-cross`を`true`にするだけでcrossを利用できる。
 
-```yml
+```yaml
 - uses: actions-rs/cargo@v1
   with:
     use-cross: true

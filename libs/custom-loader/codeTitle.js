@@ -22,19 +22,10 @@ function codeTitle() {
         const titleNode = {
           type: "html",
           value: `
-        <div class="${titleNodeclassName}"><span>${title}</span></div>
-        `.trim(),
-        };
-
-        const languageNameNode = "language-name";
-        const languageNode = {
-          type: "html",
-          value: `
-          <div class="${languageNameNode}"><span>${newLang}</span></div>
+            <div class="${titleNodeclassName}"><span>${title}</span></div>
           `.trim(),
         };
 
-        ast.children.splice(index, 0, languageNode);
         ast.children.splice(index, 0, titleNode);
         node.lang = newLang;
       }
