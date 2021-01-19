@@ -5,6 +5,8 @@ import Grid from "@material-ui/core/Grid";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 
@@ -34,6 +36,10 @@ const useStyles = makeStyles((theme: Theme) =>
       borderRadius: "30px",
       margin: "0.1rem",
     },
+    modification_request: {
+      maxWidth: 480,
+      marginLeft: "auto",
+    },
   })
 );
 
@@ -49,6 +55,20 @@ const BlogPostLayout = ({ meta, children }) => {
       </Typography>
       <Toc headings={meta.toc} />
     </>
+  );
+
+  const modification_request = (
+    <Card variant="outlined" className={classes.modification_request}>
+      <CardContent>
+        <Typography style={{ fontSize: 15, marginBottom: "" }}>
+          記事に間違い等ありましたら、お気軽に以下までご連絡ください
+        </Typography>
+        <p style={{ margin: 0 }}>
+          E-mail: illumination.k.27|gmail.com ("|" replaced to "@")
+        </p>
+        <p style={{ margin: 0 }}>Twitter: @illuminationK</p>
+      </CardContent>
+    </Card>
   );
 
   // date settings
@@ -101,6 +121,7 @@ const BlogPostLayout = ({ meta, children }) => {
             height="40"
           />
         </div>
+        {modification_request}
       </Grid>
     </div>
   );

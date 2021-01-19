@@ -94,7 +94,7 @@ gene.scaled <- summarizeToGene(tx.exp, tx2gene, countsFromAbundance = "scaledTPM
 scaledTPM < gene.scaled$counts
 ```
 
-などのように、して得られるカウント値のようなものです。NumReadsからカウントするのではなく、abundance(この場合はTPM)からカウントして、それをライブラリサイズによってスケーリングしたものです。この場合の`xxxxTPM`はTPM由来ということで、TPMのように扱うのは好ましくないです。
+などのようにして得られるカウント値のようなものです。NumReadsからカウントするのではなく、abundance(この場合はTPM)からカウントして、それをライブラリサイズによってスケーリングしたものです。この場合の`xxxxTPM`はTPM由来ということで、TPMのように扱うのは好ましくないです。
 
 ちなみにですが、それぞれのscale方法は以下です。また、`tximportObject$counts`で得られるものは、サンプルごとにsumをとるとすべてNumReadsの総数と等しくなります。
 
