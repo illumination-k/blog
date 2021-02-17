@@ -25,7 +25,7 @@ Name    Length  EffectiveLength TPM     NumReads
 |TPM|正しい意味でのTPM。この値をこの後の解析に使うことが推奨されている|
 |NumReads|salmonによって転写産物にマップされたリード数|
 
-## tximport
+## tximportでファイルを読み込む
 
 `quant.sf`ファイルを読み込めます。
 
@@ -91,7 +91,7 @@ names(tx.exp)
 ```r
 gene.scaled <- summarizeToGene(tx.exp, tx2gene, countsFromAbundance = "scaledTPM")
 
-scaledTPM < gene.scaled$counts
+scaledTPM <- gene.scaled$counts
 ```
 
 などのようにして得られるカウント値のようなものです。NumReadsからカウントするのではなく、abundance(この場合はTPM)からカウントして、それをライブラリサイズによってスケーリングしたものです。この場合の`xxxxTPM`はTPM由来ということで、TPMのように扱うのは好ましくないです。
