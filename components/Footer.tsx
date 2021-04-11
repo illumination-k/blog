@@ -1,9 +1,11 @@
 import Link from "next/link";
 import Copyright from "./Copyright";
+import AmpAd from "./amp/AmpAdsense";
 
 const Footer = () => {
   return (
     <div style={{ marginTop: "1rem" }}>
+      <AmpAd />
       <div style={{ textAlign: "center" }}>
         <Link href="/privacypolicy">
           <a>Privacy Policy</a>
