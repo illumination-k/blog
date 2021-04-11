@@ -22,11 +22,6 @@ export default class MyDocument extends Document {
           <link rel="manifest" href="/manifest.json" />
           <link rel="shortcut icon" href="/icons/favicon.ico" />
           <meta name="theme-color" content={theme.palette.primary.main} />
-          <script
-            data-ad-client="ca-pub-3483824909024831"
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-          ></script>
         </Head>
         <body>
           <Main />
