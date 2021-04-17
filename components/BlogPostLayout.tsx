@@ -16,6 +16,7 @@ import Layout from "./Layout";
 import Toc from "./Toc";
 import Drawer from "./Drawer";
 import AmpSidebar from "./amp/AmpSidebar";
+import Ofuse from "./Ofuse";
 
 import { get_formatted_date } from "@libs/utils";
 
@@ -67,6 +68,7 @@ const BlogPostLayout = ({ meta, children }) => {
           E-mail: illumination.k.27|gmail.com ("|" replaced to "@")
         </p>
         <p style={{ margin: 0 }}>Twitter: @illuminationK</p>
+        <Ofuse />
       </CardContent>
     </Card>
   );

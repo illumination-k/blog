@@ -13,6 +13,7 @@ const toAmpImg = require("./libs/custom-loader/toAmpImg");
 const highlighter = require("./libs/custom-loader/highlighter");
 const codeTitle = require("./libs/custom-loader/codeTitle");
 
+
 // rehype plugins
 // const rehypeKatex = require('rehype-katex')
 // const rehypePrism = require('@mapbox/rehype-prism');
@@ -37,6 +38,19 @@ const withMDX = require("@next/mdx")({
   },
 });
 
-module.exports = withMDX({
+module.exports = withMDX(
+  {
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
 });
+
+// module.exports = {
+//   async redirects() {
+//     return [
+//       {
+//         source: "/posts",
+//         destination: "/archive",
+//         permanent: true,
+//       }
+//     ]
+//   }
+// }

@@ -75,7 +75,7 @@ npm i react-inlinesvg
 import React from 'react';
 import SVG from 'react-inlinesvg';
 
-const Svg = ({json_data: json_data}) => {
+const Svg = ({json_data}) => {
     return <SVG src={json_data.svg} />
 }
 ```
@@ -87,7 +87,7 @@ const Svg = ({json_data: json_data}) => {
 ```jsx
 import React from 'react'
 
-const Png = ({json_data: json_data}) => {
+const Png = ({json_data}) => {
     const buf = Buffer.from(json_data.png, "base64")
     const blob = new Blob([buf], { type: "image/png" })
     const uri = URL.createObjectURL(blob)

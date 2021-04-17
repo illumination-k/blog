@@ -15,6 +15,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 
 import AmpSearchForm from "@components/amp/AmpSearchForm";
+import Ofuse from "@components/Ofuse";
 
 const drawerWidth = 240;
 
@@ -89,17 +90,7 @@ const ClippedDrawer = ({ listitems }) => {
           <AmpSearchForm />
           {listitems}
           <br></br>
-          <p>
-            当HPを応援してくれる方は下のリンクからお布施をいただけると非常に励みになります。
-          </p>
-          <b>
-            <a
-              href="https://ofuse.me/illuminationk"
-              style={{ textAlign: "center" }}
-            >
-              ofuse
-            </a>
-          </b>
+          <Ofuse />
         </div>
       </Drawer>
       <style jsx>{`
