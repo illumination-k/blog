@@ -16,6 +16,8 @@ import AmpFab from "./AmpFab";
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 
+import Ofuse from "@components/Ofuse";
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     fab: {
@@ -78,6 +80,7 @@ const AmpSidebar = ({ listitems }) => {
               </Link>
             </ListItem>
           </List>
+          <Ofuse />
           {listitems}
         </div>
       </amp-sidebar>

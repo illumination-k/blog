@@ -14,6 +14,10 @@ WordpressはPHPがわからなくてカスタマイズが進まない。ブラ�
 
 Wordpressのトップ画面はこんな感じなので、これよりはよくしたい。あとWordpressはAMPにフルでは対応できていない（数式とか）なので、そのへんも頑張りたい。
 
+現状のブログコードはこちら
+
+[illumination-k/blog](https://github.com/illumination-k/blog)
+
 **Before**
 
 ![lighthouse-wordpress-top](/images/lighthouse-wordpress-top.PNG)
@@ -21,6 +25,7 @@ Wordpressのトップ画面はこんな感じなので、これよりはよく�
 **After 2020/09/30**
 
 ![lighthouse-next-blog](/images/lighthouse-nextblog-top.PNG)
+
 
 ## 要件
 
