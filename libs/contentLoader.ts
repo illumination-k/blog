@@ -64,7 +64,6 @@ export async function getAllPosts() {
 }
 
 export async function getMeta(filepath: string) {
-  console.log(filepath)
   const fs = require("fs");
   const file = fs.readFileSync(filepath);
   const cachePath = path.join(process.cwd(), "cache", "data.json");
