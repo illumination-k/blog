@@ -84,7 +84,7 @@ RUN pipenv install --system && rm -rf /tmp/*
 WORKDIR /
 ```
 
-```yaml:title=docker-compose
+```yaml:title=docker-compose.yml
 version: "3.0"
 
 services:
@@ -117,7 +117,7 @@ services:
 SQLalechemyのためにモデルを定義します。今回はTODOテーブルを作成します。
 テーブルは自動で作成されてほしいので、
 
-```python
+```python:title=app/model.py
 # Create Table
 metadata = MetaData(Engine)
 Base.metadata.create_all(bind=Engine, checkfirst=True)
@@ -171,7 +171,7 @@ def to_dict(model) -> dict:
 
 `TODO`に対する`POST`と`GET`を定義します。`Post`の際に、必ず`title`と`description`をリクエストボディに入れてほしいので、`pydantic`でDataクラスを定義しています。
 
-```python
+```python:app/main.py
 from app.model import db_session, Todo, to_dict
 from fastapi import FastAPI, HTTPException, status
 from fastapi.responses import JSONResponse

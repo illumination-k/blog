@@ -21,6 +21,8 @@ export async function getFileNames(categories) {
         path.parse(filename).ext === ".mdx" ||
         path.parse(filename).ext === ".md"
     );
+
+  console.log(fileNames)
   return fileNames;
 }
 
@@ -59,7 +61,7 @@ export async function getAllPosts() {
   return posts;
 }
 
-export async function getMeta(filepath) {
+export async function getMeta(filepath: string) {
   const file = fs.readFileSync(filepath);
   const cachePath = path.join(process.cwd(), "cache", "data.json");
   const posts = JSON.parse(fs.readFileSync(cachePath).toString());
