@@ -11,7 +11,7 @@ SQLに関するメモ。入門レベルです。
 
 ### SELECT
 
-みたい列名を指定できる。すべての基本。
+見たい列名を指定できる。すべての基本。
 
 ```sql
 SELECT id, name FROM A
@@ -61,6 +61,23 @@ SELECT id, IFNULL(
 ) as name, COALESCE(id, name, "?")
 ```
 
+### LIMIT
+
+持ってくるレコードの数の制限。
+
+```sql
+SELECT id FROM A LIMIT 1
+```
+
+### OFFSET
+
+何番目からレコードを取得するか。ソートと組み合わせて使うことが多そう。
+
+```sql
+SELECT id FROM A ORDER BY id OFFSET 1
+```
+
+
 ### 変数定義
 
 `DECLARE`が必要？
@@ -70,6 +87,49 @@ DECLARE N INT;
 SET N = 0;
 ```
 
-## ふわっと思ったこと
+### 判定
 
-- 同一判定が`==`じゃなくて`=`
+NULLかどうか
+
+```sql
+N IS NULL --or
+N IS NOT NULL
+```
+
+大小比較などは普通の記号は使える。同一判定は`==`ではなく`=`を使う。
+
+## Window関数
+
+`GROUP BY`だとまとめられてしまうけど、まとめずに新しい列を作成する。`PARTITION BY`を使ってどの列を対象とするかを決定する。通常の集計関数と、Window関数専用の関数がある。
+
+### 基本
+
+```sql
+-- GROUP BY
+SELECT gid, SUM(val) FROM t GROUP BY gid
+
+-- WINDOW
+SELECT gid, SUM(val) OVER (PARTITION BY gid) FROM t
+```
+
+### ORDER BY
+
+window関数内での`ORDER BY`はwindow関数が処理する順序を指定する。`SUM`を使うと、その行までの和が得られる。
+
+```sql
+SELECT gid, SUM(val) OVER (PARTITION BY gid ORDER BY val) FROM t
+```
+
+### ROW
+
+どこからどこまで処理するかを指定できる。
+
+開始位置、終了位置で使える変数は以下
+
+|name|description|
+|---|---|
+|CURRENT ROW|現在行|
+|UNBOUNDED PRECEDING|PARTITIONの最初|
+|UNBOUNDED FOLLOWING|PARTITIONの最後|
+|N(INT) PRECEDING|現在行のN行前|
+|N(INT) FOLLOWING|現在行のN行後|
