@@ -67,12 +67,12 @@ $$
 ```rust
 fn main() {
     let nums = vec![2, 3, 5];
-    let counter = 0;
+    let mut counter = 0;
 
     for bit in 0..1<<nums.len() {
         // 2進数のときの1の数をカウント
         let popcount = bit.count_ones();
-        let mul = 1;
+        let mut mul = 1;
 
         for i in 0..nums.len() {
             if bit & 1 << nums.len() {

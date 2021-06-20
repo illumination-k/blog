@@ -1,5 +1,5 @@
 const path = require("path");
-import { getAllPosts, getMeta } from "./contentLoader";
+import { getMeta } from "./contentLoader";
 
 export function range(stop) {
   return Array.from({ length: stop }, (_, i) => i + 1);

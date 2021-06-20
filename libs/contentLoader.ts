@@ -1,9 +1,12 @@
 import fs from "fs";
 import path from "path";
+
+//@ts-ignore
 import glob from "glob";
+
+//@ts-ignore
 import matter from "gray-matter";
-import getHistory from "@libs/getGitHistory";
-import getGitHistory from "@libs/getGitHistory";
+
 
 const POSTDIRPATH = path.join(process.cwd(), "src", "pages", "posts");
 
@@ -22,7 +25,6 @@ export async function getFileNames(categories) {
         path.parse(filename).ext === ".md"
     );
 
-  console.log(fileNames)
   return fileNames;
 }
 
@@ -62,6 +64,8 @@ export async function getAllPosts() {
 }
 
 export async function getMeta(filepath: string) {
+  console.log(filepath)
+  const fs = require("fs");
   const file = fs.readFileSync(filepath);
   const cachePath = path.join(process.cwd(), "cache", "data.json");
   const posts = JSON.parse(fs.readFileSync(cachePath).toString());
