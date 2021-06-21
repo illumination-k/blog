@@ -109,22 +109,22 @@ $$
 
 が成り立つ。
 
-### 証明
+### 包除原理による証明
 
-~やってることは正しい気がするが最後の式変形何がどうなった。~
+<s>やってることは正しい気がするが最後の式変形何がどうなった。</s>
 
 任意の$x (1 \leq x \leq k)$において、素数$p_i$の倍数かつ$n$以下の自然数の集合を$|A_i|$とする。このとき、$|A_i| = \frac{n}{p_i}$とかける（ex., 100以下の2の倍数は100/2個）。
 
 また、一般に、任意の積集合において、
 
 $$
-|A_{j_1} \cap A_{j_2} \cap ... \cap A_{j_k}| = \frac{n}{p_{j_1}p_{j_2}...p{j_k}} \\
+|A_{j_1} \cap A_{j_2} \cap ... \cap A_{j_k}| = \frac{n}{p_{j_1}p_{j_2}...p_{j_k}} \\
 (1 \leq j_1 < j_2 < ... < j_k \leq k)
 $$
 
 が成り立つ（ex., 100以下の10の倍数は2の倍数かつ5の倍数なので、100/(2*5)）。
 
-ここで、和集合$|A_{j_1} \cup A_{j_2} \cup ... \cup A_{j_k}|$は、素数$p_{j_1},p_{j_2},...,p{j_k}$の倍数を1個ずつカウントした集合であるので、
+ここで、和集合$|A_{j_1} \cup A_{j_2} \cup ... \cup A_{j_k} |$は、素数$p_{j_1},p_{j_2},...,p_{j_k}$の倍数を1個ずつカウントした集合であるので、
 
 $$
 \phi(n) = n - |A_{j_1} \cup A_{j_2} \cup ... \cup A_{j_k}|
@@ -138,7 +138,7 @@ $$
 \begin{aligned}
     |A_{j_1} \cup A_{j_2} \cup ... \cup A_{j_k}| &=
     \sum_{i=1}^k(-1)^{i-1}\sum_{1\leq j_1\leq j_2 ...\leq j_i \leq k}|A_{j_1} \cap A_{j_2} \cap ... \cap A_{j_i}| \\
-    &=\sum_{i=1}^k(-1)^{i-1}\sum_{1\leq j_1\leq j_2 ...\leq j_i \leq k}\frac{n}{p_{j_1}p_{j_2}...p{j_k}} \\
+    &=\sum_{i=1}^k(-1)^{i-1}\sum_{1\leq j_1\leq j_2 ...\leq j_i \leq k}\frac{n}{p_{j_1}p_{j_2}...p_{j_k}} \\
     &= n\left( 1 - \left( 1 - \frac{1}{p_1}\right)\left( 1 - \frac{1}{p_2}\right)....\left( 1 - \frac{1}{p_k}\right)\right) \\
     &= n - \phi(n) \\ \\
 
@@ -147,3 +147,15 @@ $$
 $$
 
 となり示せた。
+
+### 乗法的性質を使った証明
+
+包除原理から離れてしまうが、個人的にはこっちのほうが理解しやすかった。
+
+#### 参考動画
+
+<amp-youtube
+    data-videoid="oG5z08Hj1NE"
+    layout="fixed"
+    width="320" height="180">
+</amp-youtube>

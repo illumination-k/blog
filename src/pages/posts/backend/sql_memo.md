@@ -17,7 +17,9 @@ SQLに関するメモ。入門レベルです。
 SELECT id, name FROM A
 ```
 
-`DISTINCT`をつければ重複を排除できる。
+### DISTINCT
+
+`DISTINCT`をつければ重複を排除できる。`SELECT`以外でも使える。
 
 ```sql
 SELECT DISTINCT id, name FROM A

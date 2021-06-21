@@ -6,6 +6,25 @@ const path = require("path");
 
 module.exports = extractHeaderAndMeta;
 
+function getLayout(meta_obj) {
+  let layout_path = "@components/BlogPostLayout";
+  let component = "BlogPostLayout";
+  if ("layout" in meta_obj) {
+    layout_path = meta_obj["layout"]["path"];
+    component = meta_obj["layout"]["component"];
+  }
+
+  const import_value = `import ${component} from "${layout_path}"`;
+  const import_layout = {
+    type: "import",
+    value: import_value,
+  };
+
+  return {import_layout: import_layout, component: component}
+}
+
+function getHistory() {}
+
 function extractHeaderAndMeta(options) {
   const settings = options || {};
   const depth = settings.maxDepth || 3;
@@ -57,18 +76,9 @@ function extractHeaderAndMeta(options) {
       value: meta_value,
     };
 
-    let layout_path = "@components/BlogPostLayout";
-    let component = "BlogPostLayout";
-    if ("layout" in meta_obj) {
-      layout_path = meta_obj["layout"]["path"];
-      component = meta_obj["layout"]["component"];
-    }
 
-    const import_value = `import ${component} from "${layout_path}"`;
-    const import_layout = {
-      type: "import",
-      value: import_value,
-    };
+    // import layout
+    const {import_layout, component} = getLayout(meta_obj)
 
     const export_default = {
       default: true,
