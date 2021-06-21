@@ -135,6 +135,10 @@ const BlogPostLayout = ({ meta, children }) => {
       </Head>
       <NextSeo title={meta.title} description={meta.description} />
       <Layout>
+        <amp-auto-ads
+          type="adsense"
+          data-ad-client="ca-pub-3483824909024831"
+        ></amp-auto-ads>
         <Container>
           <Breadcrumbs aria-label="breadcrumb">
             <Link href="/"> Home </Link>
