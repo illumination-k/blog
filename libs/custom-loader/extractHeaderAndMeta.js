@@ -24,7 +24,26 @@ function getLayout(meta_obj) {
 }
 
 // importしたい他のコンポーネントなどがあれば入れる
-function getImports(meta_obj) {}
+function getImports(meta_obj) {
+  function makeImportsNode(component, path) {
+    const value = `import ${component} from "${path}"`;
+    const node = {
+      type: "import",
+      value: value
+    }
+
+    return node
+  }
+
+  let nodes = []
+  if ("import" in meta_obj) {
+    nodes = meta_obj["import"].map((obj) => (
+      makeImportsNode(obj["component"], obj["path"])
+    ))
+  }
+
+  return nodes
+}
 
 function extractHeaderAndMeta(options) {
   const settings = options || {};
@@ -79,7 +98,10 @@ function extractHeaderAndMeta(options) {
 
 
     // import layout
-    const {import_layout, component} = getLayout(meta_obj)
+    const {import_layout, component} = getLayout(meta_obj);
+
+    // import component
+    const import_nodes = getImports(meta_obj);
 
     const export_default = {
       default: true,
@@ -97,5 +119,7 @@ function extractHeaderAndMeta(options) {
     ast.children.unshift(export_default);
     ast.children.unshift(meta);
     ast.children.unshift(import_layout);
+
+    import_nodes.forEach((n) => {ast.children.unshift(n)})
   }
 }

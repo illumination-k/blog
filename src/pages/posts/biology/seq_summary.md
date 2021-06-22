@@ -1,6 +1,9 @@
 ---
 title: 代表的な次世代シーケンサーを用いたseqの原理についてまとめていく
 description: NGS解析技術の発展に伴い、様々なseqと呼ばれる技術が発展しています。それらの原理についてまとめていきます。
+import:
+    - component: Seq
+      path: "@components/seq/Seq"
 ---
 
 ## TL;DR
