@@ -6,6 +6,20 @@ const path = require("path");
 
 module.exports = extractHeaderAndMeta;
 
+function makeImportValue(component, path) {
+  return `import ${component} from "${path}"`
+}
+
+function makeImportsNode(component, path) {
+  const value = makeImportValue(component, path);
+  const node = {
+    type: "import",
+    value: value
+  }
+
+  return node
+}
+
 function getLayout(meta_obj) {
   let layout_path = "@components/BlogPostLayout";
   let component = "BlogPostLayout";
@@ -14,7 +28,7 @@ function getLayout(meta_obj) {
     component = meta_obj["layout"]["component"];
   }
 
-  const import_value = `import ${component} from "${layout_path}"`;
+  const import_value = makeImportValue(component, layout_path);
   const import_layout = {
     type: "import",
     value: import_value,
@@ -25,16 +39,6 @@ function getLayout(meta_obj) {
 
 // importしたい他のコンポーネントなどがあれば入れる
 function getImports(meta_obj) {
-  function makeImportsNode(component, path) {
-    const value = `import ${component} from "${path}"`;
-    const node = {
-      type: "import",
-      value: value
-    }
-
-    return node
-  }
-
   let nodes = []
   if ("import" in meta_obj) {
     nodes = meta_obj["import"].map((obj) => (
