@@ -23,7 +23,8 @@ function getLayout(meta_obj) {
   return {import_layout: import_layout, component: component}
 }
 
-function getHistory() {}
+// importしたい他のコンポーネントなどがあれば入れる
+function getImports(meta_obj) {}
 
 function extractHeaderAndMeta(options) {
   const settings = options || {};
