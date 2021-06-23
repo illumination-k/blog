@@ -35,10 +35,10 @@ const ListLayout = ({ children }) => {
       <Container>
         {ampDisplay}
         <div className={classes.contents}> {children}</div>
+        <div style={{ marginBottom: "0.5rem" }}></div>
         {ampDisplay}
       </Container>
       <AmpSidebar />
-
       <Drawer />
     </Layout>
   );
