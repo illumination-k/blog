@@ -12,6 +12,7 @@ import Typography from "@material-ui/core/Typography";
 
 import LabelIcon from "@material-ui/icons/Label";
 import { getCategories } from "@libs/contentLoader";
+import { Grid } from "@material-ui/core";
 
 export const config = { amp: true };
 
@@ -35,9 +36,12 @@ const Category = (props) => {
       </Head>
       <NextSeo title="illumination-dev: category" description="category page" />
       <Layout>
-        <Typography variant="h4">Categories</Typography>
-
-        <List>{links}</List>
+        <Grid container>
+          <Grid item xs={6}>
+            <Typography variant="h4">Categories</Typography>
+            <List>{links}</List>
+          </Grid>
+        </Grid>
       </Layout>
     </>
   );
