@@ -21,8 +21,8 @@ const ListLayout = ({ children }) => {
   return (
     <Layout>
       <Container>
+        <div className={classes.contents}>{children}</div>
         <Grid container className={classes.contents}>
-          {children}
           <div style={{ marginBottom: "0.5rem" }}></div>
           <AmpDisplay xs={12} className={classes.contents} />
         </Grid>
