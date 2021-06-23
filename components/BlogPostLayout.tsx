@@ -155,9 +155,7 @@ const BlogPostLayout = ({ meta, children }) => {
           </div>
         </Grid>
 
-        <Grid item md={6}>
-          {adDisplay}
-        </Grid>
+        <Grid item>{adDisplay}</Grid>
         <Grid item md={6}>
           {modification_request}
         </Grid>
