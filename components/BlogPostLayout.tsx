@@ -37,10 +37,10 @@ const useStyles = makeStyles((theme: Theme) =>
       borderRadius: "30px",
       margin: "0.1rem",
     },
-    modification_request: {
-      maxWidth: 480,
-      marginLeft: "auto",
-    },
+    // modification_request: {
+    //   maxWidth: 480,
+    //   marginLeft: "auto",
+    // },
   })
 );
 
@@ -59,7 +59,7 @@ const BlogPostLayout = ({ meta, children }) => {
   );
 
   const modification_request = (
-    <Card variant="outlined" className={classes.modification_request}>
+    <Card variant="outlined">
       <CardContent>
         <Typography style={{ fontSize: 15, marginBottom: "" }}>
           記事に間違い等ありましたら、お気軽に以下までご連絡ください
@@ -95,7 +95,7 @@ const BlogPostLayout = ({ meta, children }) => {
   // contents settings
   const contents = (
     <div className={classes.contents}>
-      <Grid container className="markdown-body">
+      <Grid container spacing={2} className="markdown-body">
         <Grid item xs={12}>
           <amp-ad
             width="100vw"
@@ -155,10 +155,10 @@ const BlogPostLayout = ({ meta, children }) => {
           </div>
         </Grid>
 
-        <Grid item xs={6}>
+        <Grid item md={6}>
           {adDisplay}
         </Grid>
-        <Grid item xs={6}>
+        <Grid item md={6}>
           {modification_request}
         </Grid>
       </Grid>

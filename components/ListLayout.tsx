@@ -4,6 +4,7 @@ import AmpDisplay from "@components/amp/AmpDisplay";
 import Container from "@material-ui/core/Container";
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 import AmpSidebar from "./amp/AmpSidebar";
+import { Grid } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -20,10 +21,12 @@ const ListLayout = ({ children }) => {
   return (
     <Layout>
       <Container>
-        <AmpDisplay xs={12} />
-        <div className={classes.contents}> {children}</div>
-        <div style={{ marginBottom: "0.5rem" }}></div>
-        <AmpDisplay xs={12} />
+        <Grid container>
+          <AmpDisplay xs={12} />
+          <div className={classes.contents}> {children}</div>
+          <div style={{ marginBottom: "0.5rem" }}></div>
+          <AmpDisplay xs={12} />
+        </Grid>
       </Container>
       <AmpSidebar />
       <Drawer />

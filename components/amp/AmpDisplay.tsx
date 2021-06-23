@@ -1,8 +1,8 @@
 import { Grid } from "@material-ui/core";
 
-const AmpDisplay = ({ xs }) => {
+const AmpDisplay = (props) => {
   return (
-    <Grid item xs={xs}>
+    <Grid item {...props}>
       <amp-ad
         width="100vw"
         height="320"
