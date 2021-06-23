@@ -36,6 +36,7 @@ const Category = (props) => {
       <NextSeo title="illumination-dev: category" description="category page" />
       <Layout>
         <Typography variant="h4">Categories</Typography>
+
         <List>{links}</List>
       </Layout>
     </>

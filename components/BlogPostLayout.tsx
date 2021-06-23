@@ -73,6 +73,21 @@ const BlogPostLayout = ({ meta, children }) => {
     </Card>
   );
 
+  const adDisplay = (
+    <amp-ad
+      width="100vw"
+      height="320"
+      type="adsense"
+      data-ad-client="ca-pub-3483824909024831"
+      data-ad-slot="3530822685"
+      data-auto-format="rspv"
+      data-full-width=""
+    >
+      {/* @ts-ignore */}
+      <div overflow=""></div>
+    </amp-ad>
+  );
+
   // date settings
   const published = get_formatted_date(meta.published);
   const update = get_formatted_date(meta.update);
@@ -80,50 +95,72 @@ const BlogPostLayout = ({ meta, children }) => {
   // contents settings
   const contents = (
     <div className={classes.contents}>
-      <Grid item xs={12} className="markdown-body">
-        <h1>{meta.title}</h1>
-        <Typography style={{ color: "gray" }}>
-          <b>published:</b> {published} <b>update:</b> {update}
-        </Typography>
-        <details>
-          <summary>Table of Contents</summary>
-          {meta.toc.map((heading, idx) => {
-            return (
-              <div key={idx}>
-                <a href={heading.url}>
-                  {`\xa0`.repeat((heading.depth - 1) * 2) + "-"}
-                  &nbsp;
-                  {heading.text}
-                </a>
-              </div>
-            );
-          })}
-        </details>
-        {children}
-        <div className={classes.socialshare_container}>
-          <amp-social-share
-            type="twitter"
-            className={classes.socialshare_button}
-            aria-label="twitterShare"
-            width="40"
-            height="40"
-          />
-          <amp-social-share
-            className={classes.socialshare_button}
-            type="facebook"
-            aria-label="facebookShare"
-            width="40"
-            height="40"
-          />
-          <amp-social-share
-            className={classes.socialshare_button}
-            type="line"
-            aria-label="lineShare"
-            width="40"
-            height="40"
-          />
-        </div>
-        {modification_request}
+      <Grid container className="markdown-body">
+        <Grid item xs={12}>
+          <amp-ad
+            width="100vw"
+            height="320"
+            type="adsense"
+            data-ad-client="ca-pub-3483824909024831"
+            data-ad-slot="9343059166"
+            data-auto-format="rspv"
+            data-full-width=""
+          >
+            {/* @ts-ignore */}
+            <div overflow=""></div>
+          </amp-ad>
+        </Grid>
+        <Grid item xs={12}>
+          <h1>{meta.title}</h1>
+          <Typography style={{ color: "gray" }}>
+            <b>published:</b> {published} <b>update:</b> {update}
+          </Typography>
+          <details>
+            <summary>Table of Contents</summary>
+            {meta.toc.map((heading, idx) => {
+              return (
+                <div key={idx}>
+                  <a href={heading.url}>
+                    {`\xa0`.repeat((heading.depth - 1) * 2) + "-"}
+                    &nbsp;
+                    {heading.text}
+                  </a>
+                </div>
+              );
+            })}
+          </details>
+          {children}
+          <div className={classes.socialshare_container}>
+            <amp-social-share
+              type="twitter"
+              className={classes.socialshare_button}
+              aria-label="twitterShare"
+              width="40"
+              height="40"
+            />
+            <amp-social-share
+              className={classes.socialshare_button}
+              type="facebook"
+              aria-label="facebookShare"
+              width="40"
+              height="40"
+            />
+            <amp-social-share
+              className={classes.socialshare_button}
+              type="line"
+              aria-label="lineShare"
+              width="40"
+              height="40"
+            />
+          </div>
+        </Grid>
+
+        <Grid item xs={6}>
+          {adDisplay}
+        </Grid>
+        <Grid item xs={6}>
+          {modification_request}
+        </Grid>
       </Grid>
     </div>
   );
