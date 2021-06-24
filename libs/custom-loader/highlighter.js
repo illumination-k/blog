@@ -49,8 +49,8 @@ refractor.register(require("refractor/lang/yaml.js"));
 
 
 function highlighter() {
-  return (tree) => {
-    visit(tree, "code", (node) => {
+  return (ast) => {
+    visit(ast, "code", (node) => {
       const [lang] = (node.lang || "").split(":");
       if (lang) {
         node.lang = lang;

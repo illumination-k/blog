@@ -12,9 +12,12 @@ function codeTitle() {
   function transformer(ast) {
     visit(ast, "code", (node, index) => {
       const lang = node.lang || "";
+
       const separatorIndex = lang.lastIndexOf(prefix);
+      let newLang = lang;
+
       if (separatorIndex !== -1) {
-        const newLang = lang.slice(0, separatorIndex);
+        newLang = lang.slice(0, separatorIndex);
         const title = lang.slice(separatorIndex + prefix.length);
 
         const titleNodeclassName = "code-title";
@@ -27,8 +30,9 @@ function codeTitle() {
         };
 
         ast.children.splice(index, 0, titleNode);
-        node.lang = newLang;
       }
+
+      node.lang = newLang;
     });
   }
 }

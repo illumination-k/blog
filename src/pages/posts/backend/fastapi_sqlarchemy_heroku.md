@@ -127,7 +127,7 @@ Base.metadata.create_all(bind=Engine, checkfirst=True)
 
 また、`_asdict`メソッドがないので、自前で辞書型に変換する関数を定義しています。
 
-```python:app/model.py
+```python:title=app/model.py
 from sqlalchemy import Column, create_engine, MetaData
 from sqlalchemy.orm import scoped_session, sessionmaker
 
@@ -171,7 +171,7 @@ def to_dict(model) -> dict:
 
 `TODO`に対する`POST`と`GET`を定義します。`Post`の際に、必ず`title`と`description`をリクエストボディに入れてほしいので、`pydantic`でDataクラスを定義しています。
 
-```python:app/main.py
+```python:title=app/main.py
 from app.model import db_session, Todo, to_dict
 from fastapi import FastAPI, HTTPException, status
 from fastapi.responses import JSONResponse
