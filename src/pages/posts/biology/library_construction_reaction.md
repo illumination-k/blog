@@ -55,9 +55,20 @@ cDNAを合成する際に、3'末端に意図的にpolyC配列を付加し、そ
 
 ![tso](https://www.thermofisher.com/jp/ja/home/life-science/cloning/cloning-learning-center/invitrogen-school-of-molecular-biology/rt-education/reverse-transcriptase-attributes/jcr:content/MainParsys/image_2e9f/foregroundimg.img.320.high.png/1500204713321.png)
 
+## Klenow Fragment
+
+突出末端を平滑化する際や、平滑末端にA tailを付加する際に使われます。実際にはDNA polymerase Ⅰで、鋳型、プライマー存在下でdNTPを基質として鋳型に相補的なDNAを合成します。dATPと一緒に反応させることで、A tailを付加することができます。5'-> 3' exonuclease活性を持たず、一本鎖特異的な5' -> 3'exonuclease活性を持ちます。
+
+1. 5' -> 3' DNA polymerase活性
+![klenow](https://catalog.takara-bio.co.jp/IMAGES/2130a.gif)
+
+2. 一本鎖特異的な3' -> 5'exonuclease活性
+![klenow exonuclease](https://catalog.takara-bio.co.jp/IMAGES/2130c.gif)
+
 ## Ligation
 
 ligationはDNA同士をつなげる反応で、ライブラリ調製以外にもベクター作成など様々な場所で利用されます。よく使われるのは制限酵素で切断したベクターと、その突出末端を相補的に持つ挿入用のDNAを繋げる方法です。下図にあるように、相補的な突出末端を持つDNA同士を繋げることができます。酵素によっては平滑末端でも繋げられます。平滑末端で処理する場合はリン酸化等をすることが必要なのが一般的です([参考](https://lifescience.toyobo.co.jp/upload/upld86/protocol-c/cloning86pc01.pdf))。
+
 
 ![ligation](https://media.addgene.org/data/easy-thumbnails/filer_public/cms/filer_public/21/27/212780f6-b140-440b-b414-1ec4353167d6/ligation.gif__900x316_q85_crop_subsampling-2_upscale.png)
 
