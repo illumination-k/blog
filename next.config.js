@@ -40,17 +40,21 @@ const withMDX = require("@next/mdx")({
 
 module.exports = withMDX(
   {
-  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-});
+    pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+    async redirects() {
+      return [
+        {
+          source: "/archive",
+          destination: "/archive/1",
+          permanent: true,
+        },
+        {
+          source: "/posts",
+          destination: "/posts/1",
+          permanent: true,
+        }
+      ]
+    }
+  }
+);
 
-// module.exports = {
-//   async redirects() {
-//     return [
-//       {
-//         source: "/posts",
-//         destination: "/archive",
-//         permanent: true,
-//       }
-//     ]
-//   }
-// }

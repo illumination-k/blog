@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
       width: drawerWidth,
       display: "none",
       flexShrink: 0,
+      whiteSpace: "nowrap",
       [theme.breakpoints.up("sm")]: {
         display: "block",
       },

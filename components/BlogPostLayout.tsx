@@ -16,6 +16,7 @@ import Layout from "./Layout";
 import Toc from "./Toc";
 import Drawer from "./Drawer";
 import AmpSidebar from "./amp/AmpSidebar";
+import AmpAdsense from "./amp/AmpAdsense";
 import Ofuse from "./Ofuse";
 
 import { get_formatted_date } from "@libs/utils";
@@ -37,10 +38,6 @@ const useStyles = makeStyles((theme: Theme) =>
       borderRadius: "30px",
       margin: "0.1rem",
     },
-    // modification_request: {
-    //   maxWidth: 480,
-    //   marginLeft: "auto",
-    // },
   })
 );
 
@@ -73,21 +70,6 @@ const BlogPostLayout = ({ meta, children }) => {
     </Card>
   );
 
-  const adDisplay = (
-    <amp-ad
-      width="100vw"
-      height="320"
-      type="adsense"
-      data-ad-client="ca-pub-3483824909024831"
-      data-ad-slot="3530822685"
-      data-auto-format="rspv"
-      data-full-width=""
-    >
-      {/* @ts-ignore */}
-      <div overflow=""></div>
-    </amp-ad>
-  );
-
   // date settings
   const published = get_formatted_date(meta.published);
   const update = get_formatted_date(meta.update);
@@ -97,19 +79,9 @@ const BlogPostLayout = ({ meta, children }) => {
     <div className={classes.contents}>
       <Grid container spacing={2} className="markdown-body">
         <Grid item xs={12}>
-          <amp-ad
-            width="100vw"
-            height="320"
-            type="adsense"
-            data-ad-client="ca-pub-3483824909024831"
-            data-ad-slot="9343059166"
-            data-auto-format="rspv"
-            data-full-width=""
-          >
-            {/* @ts-ignore */}
-            <div overflow=""></div>
-          </amp-ad>
+          <AmpAdsense />
         </Grid>
+
         <Grid item xs={12}>
           <h1>{meta.title}</h1>
           <Typography style={{ color: "gray" }}>
@@ -156,7 +128,7 @@ const BlogPostLayout = ({ meta, children }) => {
         </Grid>
 
         <Grid item xs={12}>
-          {adDisplay}
+          <AmpAdsense />
         </Grid>
         <Grid item md={6} />
         <Grid item md={6}>
@@ -173,10 +145,6 @@ const BlogPostLayout = ({ meta, children }) => {
       </Head>
       <NextSeo title={meta.title} description={meta.description} />
       <Layout>
-        <amp-auto-ads
-          type="adsense"
-          data-ad-client="ca-pub-3483824909024831"
-        ></amp-auto-ads>
         <Container>
           <Breadcrumbs aria-label="breadcrumb">
             <Link href="/"> Home </Link>

@@ -5,6 +5,14 @@ export function range(stop) {
   return Array.from({ length: stop }, (_, i) => i + 1);
 }
 
+export function sortPost(post_info) {
+  return post_info.sort(function (a: any, b: any) {
+    const a_date = new Date(a.meta.update);
+    const b_date = new Date(b.meta.update);
+    return b_date.valueOf() - a_date.valueOf();
+  });
+}
+
 export async function getPageInfo(
   all_posts: Array<string>,
   page: number,
@@ -26,11 +34,7 @@ export async function getPageInfo(
     })
   );
 
-  const all_sorted_post_info = all_post_info.sort(function (a: any, b: any) {
-    const a_date = new Date(a.meta.update);
-    const b_date = new Date(b.meta.update);
-    return b_date.valueOf() - a_date.valueOf();
-  });
+  const all_sorted_post_info = sortPost(all_post_info);
 
   const post_info = all_sorted_post_info.slice(start, end);
   const total_pages = Math.ceil(all_posts.length / COUNT_PER_PAGE);

@@ -25,9 +25,9 @@ description: 競技プログラミングに関する自分用のメモ
 
 |演算|平均計算量|
 |---|---|
-|`s \| l`|$O(len(s) + len(l))$|
-|`s & l`|$O(min(len(s), len(l))$|
-|`s - l`|$O(len(s))$|
+|s \| l|$O(len(s) + len(l))$|
+|s & l|$O(min(len(s), len(l))$|
+|s - l|$O(len(s))$|
 
 ## 調和級数の計算量
 
