@@ -15,15 +15,59 @@
   border-radius: 4px 4px 0 0;;
 }
 
-s5 {color:#6baed6;}
-s7 {color:#fc9272;}
-p5 {color:#08519c;}
-p7 {color:#a50f15;}
-me {color:#969696;}
-tso {color:#2ca25f;}
-cbc {color:#f768a1;}
-umi {color:#807dba;}
-t7 {color:blue;}
-pe1 {color:#bcbddc;}
-pe2 {color:#9ebcda;}
-w1 {color:#f03b20;}
+/*
+Language Name on Code Block
+*/
+
+.markdown-body pre {
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
+.markdown-body pre > code[class*="language"]::before {
+  background: #808080;
+  border-radius: 0 0 0.25rem 0.25rem;
+  color: white;
+  font-size: 14px;
+  letter-spacing: 0.025rem;
+  padding: 0.1rem 0.5rem;
+  position: absolute;
+  top: 0.3rem;
+  right: 0.3rem;
+  opacity: 0.4;
+}
+
+.markdown-body pre > code[class="language-rust"]::before {
+  content: "Rust";
+  opacity: 0.8;
+}
+
+.markdown-body pre > code[class="language-python"]::before {
+  content: "Python";
+  opacity: 0.8;
+}
+
+.markdown-body pre > code[class="language-js"]::before {
+  content: "JavaScript";
+  opacity: 0.8;
+}
+
+.markdown-body pre > code[class="language-jsx"]::before {
+  content: "JSX";
+  opacity: 0.8;
+}
+
+.markdown-body pre > code[class="language-bash"]::before {
+  content: "bash";
+  opacity: 0.8;
+}
+
+.markdown-body pre > code[class="language-html"]::before {
+  content: "html";
+  opacity: 0.8;
+}
+
+.markdown-body pre > code[class="language-css"]::before {
+  content: "css";
+  opacity: 0.8;
+}

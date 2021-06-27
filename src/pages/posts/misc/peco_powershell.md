@@ -79,5 +79,5 @@ Set-PSReadLineKeyHandler -Chord Ctrl+r -ScriptBlock {
 - [PowerShell の入力履歴](https://www.vwnet.jp/Windows/w10/PSHistry.htm)
 - [pocoで捗る日常生活](https://krymtkts.github.io/posts/2019-07-28-have-a-good-day-with-poco)
 - [Windows PowerShell Profiles](https://docs.microsoft.com/en-us/previous-versions//bb613488(v=vs.85)?redirectedfrom=MSDN#understanding-the-profiles)
-- [https://docs.microsoft.com/ja-jp/powershell/module/psreadline/set-psreadlinekeyhandler?view=powershell-7.1](https://docs.microsoft.com/ja-jp/powershell/module/psreadline/set-psreadlinekeyhandler?view=powershell-7.1)
+- [Set-PSReadLineKeyHandler](https://docs.microsoft.com/ja-jp/powershell/module/psreadline/set-psreadlinekeyhandler?view=powershell-7.1)
 - [peco](https://github.com/peco/peco)

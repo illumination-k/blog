@@ -1,4 +1,5 @@
 // remark plugins
+const stringify = require('remark-stringify')
 const remarkMath = require("remark-math");
 const remarkFrontmatter = require("remark-frontmatter");
 const remarkSlug = require("remark-slug");
@@ -22,10 +23,11 @@ const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [
+      stringify,
       remarkFrontmatter,
       remarkSlug,
       remarkHeadings,
-      remarkFootnotes,
+      [remarkFootnotes, ["yaml", "toml"]],
       extractHeaderAndMeta,
       codeTitle,
       highlighter,

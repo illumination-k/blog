@@ -253,6 +253,13 @@ web: uvicorn app.main:app --reload --host=0.0.0.0 --port=${PORT:-5000}
 
 あとはデプロイしたら終わりです。
 
+
+:::div
+
+test
+
+:::
+
 ## 終わりに
 
 FastAPI、型があって嬉しいですね。
