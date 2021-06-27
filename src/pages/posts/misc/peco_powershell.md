@@ -13,7 +13,7 @@ pecoはzshとよく併用されていますが、Powershellでも使えるイン
 
 Chocolateyを使ってインストールします。管理者権限が必要なので、管理者権限つきのpowershellを開く必要があります。
 
-```
+```powershell
 choco install peco
 ```
 
@@ -21,7 +21,7 @@ choco install peco
 
 Powershellの入力履歴は`(Get-PSReadlineOption).HistorySavePath`で表示されるパスにあるテキストファイルに保存されています。なので、Powershellで履歴を得るには
 
-```
+```powershell
 Get-Content (Get-PSReadlineOption).HistorySavePath | Select-Object -Unique
 ```
 
@@ -31,13 +31,13 @@ Get-Content (Get-PSReadlineOption).HistorySavePath | Select-Object -Unique
 
 得られた出力結果を実行するには`Invoke-Expression`を使います。
 
-```
+```powershell
 Get-Content (Get-PSReadlineOption).HistorySavePath | Select-Object -Unique | peco | Invoke-Expression
 ```
 
 ということで、実行する関数は
 
-```bash
+```powershell
 function pecoHistory() {
     Get-Content (Get-PSReadlineOption).HistorySavePath | Select-Object -Unique | peco | Invoke-Expression
 }
@@ -49,7 +49,7 @@ function pecoHistory() {
 
 Powershellの`.bashrc`みたいなやつです。
 
-```bash
+```powershell
 echo $profile # pathの確認
 notepad $profile # メモ帳で開く
 ```
@@ -62,7 +62,7 @@ notepad $profile # メモ帳で開く
 
 PowershellでKeybindを設定するには、`Set-PSReadLineKeyHandler`を使います。組み込み関数の場合は`-Function`以下に書けばいいんですが、自前のスクリプトを実行する場合は`-ScriptBlock`を使います。ScriptBlock内では、登録した`pecoHistory`コマンドを入力させて、それを実行しています。
 
-```
+```powershell
 Set-PSReadLineKeyHandler -Chord Ctrl+r -ScriptBlock {
     [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
     [Microsoft.PowerShell.PSConsoleReadLine]::Insert("pecoHistory")

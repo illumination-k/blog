@@ -12,7 +12,7 @@ import:
 
 ## ライブラリ調整について
 Illumina社のNGS技術は`sequence by synthesis (SBS)`と呼ばれる技術が使われています。`SBS`を使うには、アダプターと呼ばれる認識配列が必要です。
-ライブラリ調整とは、様々な反応を駆使して、読みたいDNAの両端にアダプターをつける反応です。このアダプターとして使われる配列も色々ありますが、2021現在において最もよく使われているのはTruseqのアダプターと、Nexteraのアダプターだと思われます。その他のアダプターなどについては[]()を参照してください。
+ライブラリ調整とは、様々な反応を駆使して、読みたいDNAの両端にアダプターをつける反応です。このアダプターとして使われる配列も色々ありますが、2021現在において最もよく使われているのはTruseqのアダプターと、Nexteraのアダプターだと思われます。その他のアダプターなどについては[Illumina adapter sequences document](https://teichlab.github.io/scg_lib_structs/data/illumina-adapter-sequences-1000000002694-14.pdf)を参照してください。
 
 よく使われている反応については、[弊ブログの記事](https://illumination-k.dev/posts/biology/library_construction_reaction)などを参照していただけると幸いです。
 
@@ -138,5 +138,14 @@ annotation={<>       <P5>Illumina P5</P5>              <T7>i5</T7>             <
 - [A-Tailing with Klenow Fragment (3'-->5' exo-)](https://international.neb.com/protocols/2013/11/06/a-tailing-with-klenow-fragment-3-5-exo)
 - [Marie-Theres Gansauge, Tobias Gerber, Isabelle Glocke, Petra Korlević, Laurin Lippik, Sarah Nagel, Lara Maria Riehl, Anna Schmidt, Matthias Meyer, Single-stranded DNA library preparation from highly degraded DNA using T4 DNA ligase, Nucleic Acids Research, Volume 45, Issue 10, 2 June 2017, Page e79, https://doi.org/10.1093/nar/gkx033](https://academic.oup.com/nar/article/45/10/e79/2948436)
 - [NGS超入門](https://www.adres.ehime-u.ac.jp/news/NGS1.pdf)
+
+## 参考動画
+
+<amp-youtube
+    data-videoid="fCd6B5HRaZ8"
+    layout="fixed"
+    width="320" height="180">
+</amp-youtube>
+
 
 [^1]: TruseqというよりNEBNextかもしれないが、Nexteraはタグメンテーションするので明確にこれとは違うライブラリ調整法である。
