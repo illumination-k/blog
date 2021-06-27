@@ -47,6 +47,11 @@ Language Name on Code Block
   opacity: 0.8;
 }
 
+.markdown-body pre > code[class="language-r"]::before {
+  content: "R";
+  opacity: 0.8;
+}
+
 .markdown-body pre > code[class="language-js"]::before {
   content: "JavaScript";
   opacity: 0.8;
@@ -54,6 +59,16 @@ Language Name on Code Block
 
 .markdown-body pre > code[class="language-jsx"]::before {
   content: "JSX";
+  opacity: 0.8;
+}
+
+.markdown-body pre > code[class="language-ts"]::before {
+  content: "TypeScript";
+  opacity: 0.8;
+}
+
+.markdown-body pre > code[class="language-tsx"]::before {
+  content: "TSX";
   opacity: 0.8;
 }
 

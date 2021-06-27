@@ -14,6 +14,7 @@ const toAmpImg = require("./libs/custom-loader/toAmpImg");
 const highlighter = require("./libs/custom-loader/highlighter");
 const codeTitle = require("./libs/custom-loader/codeTitle");
 
+const path = require('path')
 
 // rehype plugins
 // const rehypeKatex = require('rehype-katex')
@@ -56,6 +57,12 @@ module.exports = withMDX(
           permanent: true,
         }
       ]
+    },
+
+    webpack(config, options) {
+      config.resolve.alias['@component'] = path.join(__dirname, "component")
+      config.resolve.alias['@libs'] = path.join(__dirname, "libs")
+      return config
     }
   }
 );
