@@ -34,7 +34,7 @@ const BlogPostCard = ({ meta, url }) => {
   const title = (
     <>
       <Grid item>
-        <CategoryChip category={category} />
+        <CategoryChip category={category} style={{ marginTop: "0.1rem" }} />
       </Grid>
       <Grid item>
         <Link href={url} rel="canonical">

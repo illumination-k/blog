@@ -171,6 +171,7 @@ const BlogPostLayout = ({ meta, children }) => {
         <Container>
           <Breadcrumbs aria-label="breadcrumb">
             <Link href="/"> Home </Link>
+            <Link href="/categories">Categories</Link>
             <Link href={`/categories/${meta.category}/1`}>{meta.category}</Link>
             <p>{meta.title}</p>
           </Breadcrumbs>

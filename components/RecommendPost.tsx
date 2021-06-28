@@ -5,10 +5,8 @@ import Grid from "@material-ui/core/Grid";
 import CategoryChip from "./CategoryChip";
 import Link from "@components/Link";
 import { Typography } from "@material-ui/core";
-import { trimDescription } from "@libs/utils";
 
 const RecommendPost = ({ title, url, category, description }) => {
-  const maxLength = 120;
   return (
     <Card variant="outlined" style={{ margin: "1rem" }}>
       <CardContent>
@@ -27,7 +25,7 @@ const RecommendPost = ({ title, url, category, description }) => {
             </Link>
           </Grid>
           <Grid item xs={12}>
-            <p>{trimDescription(description, maxLength)}</p>
+            <p>{description}</p>
           </Grid>
         </Grid>
       </CardContent>

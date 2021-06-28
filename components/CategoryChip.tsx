@@ -1,6 +1,7 @@
 import Chip from "@material-ui/core/Chip";
 
-const CategoryChip = ({ category }) => {
+const CategoryChip = (props) => {
+  const { category, ...rest } = props;
   const categoryURL = `/categories/${category}/1`;
 
   return (
@@ -12,6 +13,7 @@ const CategoryChip = ({ category }) => {
       href={categoryURL}
       variant="outlined"
       color="primary"
+      {...rest}
     />
   );
 };
