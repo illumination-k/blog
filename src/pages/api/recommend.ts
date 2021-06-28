@@ -34,6 +34,7 @@ function getRecommend(category: string | null, size: number) {
     const recommend = recommend_post.map((p) => ({
         title: p.data.title,
         description: trimDescription(p.data.description, 120),
+        url: `/posts/${p.category}/${p.id}`,
         update: p.update,
         published: p.published,
         category: p.category,
