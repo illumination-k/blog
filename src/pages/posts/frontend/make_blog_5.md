@@ -132,6 +132,14 @@ package.jsonのbuildとかの部分を以下のように変更する。
 
 こうすると、commitするたびに自動で`makeCache.js`が走るので楽。
 
+huskyで設定した`pre-commit`の動作を走らせたくないときは、
+
+```bash
+git commit -m "no-hooks!" --no-verify
+```
+
+でスルー出来る。
+
 ## search page
 
 ということでsearch pageを作っていく。`getServerSideProps`はctx変数をうけとる。ctxには大体の情報が入っている。今回はquery結果だけほしいので`ctx.query`だけ使う。
