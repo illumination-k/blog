@@ -1,6 +1,6 @@
 ---
-title: "next.jsで作ってみたブログに検索機能を導入する"
-description: "next.jsで作ってみたブログに形態素解析とflexsearchで検索機能を導入する"
+title: "Next.jsで作ってみたブログに検索機能を導入する"
+description: "Next.jsで作ってみたブログに形態素解析とflexsearchで検索機能を導入する"
 ---
 
 ## TL;DR
