@@ -80,12 +80,12 @@ async function makePostsCache() {
   );
   
   const index = posts.map((v) => ({ title: v.data.title, url: v.url, body: v.data.words }))
-  const indexJson = `${JSON.stringify(index)}`
+  // const indexJson = `${JSON.stringify(index)}`
 
-  const jsonFileContents = `${JSON.stringify(posts)}`;
+  // const jsonFileContents = `${JSON.stringify(posts)}`;
   const jsFileContents = `export const posts = ${jsonFileContents}`;
   const outdir = path.join(process.cwd(), "cache");
-  fs.writeFileSync(path.join(outdir, "index.json"), indexJson)
+  // fs.writeFileSync(path.join(outdir, "index.json"), indexJson)
   fs.writeFileSync(path.join(outdir, "data.json"), jsonFileContents);
   fs.writeFileSync(path.join(outdir, "data.js"), jsFileContents);
 }
