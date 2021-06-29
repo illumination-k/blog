@@ -57,7 +57,7 @@ Wordpressのトップ画面はこんな感じなので、これよりはよく�
 - [x] Google Analytics
 - [x] AMP対応
 - [x] PWA対応
-- [ ] Google Adsense
+- [x] Google Adsense
 
 ### その他の希望
 

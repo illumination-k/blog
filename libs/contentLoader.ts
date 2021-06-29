@@ -76,11 +76,12 @@ export async function getMeta(filepath: string) {
     (post) => post.data.title == title && post.data.description == description
   );
 
-  const { update, published } = post[0];
+  const { update, published, category } = post[0];
 
   const meta = Object.assign(raw.data, {
     update: update,
     published: published,
+    category: category
   });
 
   return meta;

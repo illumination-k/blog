@@ -18,6 +18,7 @@ import Drawer from "./Drawer";
 import AmpSidebar from "./amp/AmpSidebar";
 import AmpAdsense from "./amp/AmpAdsense";
 import Ofuse from "./Ofuse";
+import RecommendPost from "./RecommendPost";
 
 import { get_formatted_date } from "@libs/utils";
 
@@ -70,6 +71,8 @@ const BlogPostLayout = ({ meta, children }) => {
     </Card>
   );
 
+  // category
+  const category = meta.category;
   // date settings
   const published = get_formatted_date(meta.published);
   const update = get_formatted_date(meta.update);
@@ -131,8 +134,28 @@ const BlogPostLayout = ({ meta, children }) => {
           <AmpAdsense />
         </Grid>
         <Grid item md={6} />
-        <Grid item md={6}>
+        <Grid item xs={12} md={6}>
           {modification_request}
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h2">Other Articles</Typography>
+          <amp-list
+            width="auto"
+            height="200"
+            layout="fixed-height"
+            src={`/api/recommend?category=${category}`}
+            items="."
+          >
+            {/* @ts-ignore */}
+            <template type="amp-mustache">
+              <RecommendPost
+                title={"{{title}}"}
+                url={"{{url}}"}
+                category={"{{category}}"}
+                description={"{{description}}"}
+              />
+            </template>
+          </amp-list>
         </Grid>
       </Grid>
     </div>
@@ -148,6 +171,7 @@ const BlogPostLayout = ({ meta, children }) => {
         <Container>
           <Breadcrumbs aria-label="breadcrumb">
             <Link href="/"> Home </Link>
+            <Link href="/categories">Categories</Link>
             <Link href={`/categories/${meta.category}/1`}>{meta.category}</Link>
             <p>{meta.title}</p>
           </Breadcrumbs>

@@ -57,3 +57,11 @@ export function get_formatted_date(date_string: string) {
 
   return formatted;
 }
+
+export function trimDescription(description: string, maxLength: number) {
+  if (description.length > maxLength) {
+    return description.substring(0, maxLength) + "...";
+  } else {
+    return description;
+  }
+}
