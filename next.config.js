@@ -60,9 +60,9 @@ module.exports = withMDX(
     },
 
     webpack(config, options) {
-      config.resolve.alias['@component'] = path.join(__dirname, "component")
-      config.resolve.alias['@libs'] = path.join(__dirname, "libs")
-      config.resolve.fallback = {"fs": false}
+      config.resolve.alias['@component'] = path.join(__dirname, "component");
+      config.resolve.alias['@libs'] = path.join(__dirname, "libs");
+      config.resolve.fallback = {"fs": false};
       return config
     },
 
