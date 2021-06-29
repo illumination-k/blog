@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Copyright from "./Copyright";
-import AmpAd from "./amp/AmpAdsense";
 
 const Footer = () => {
   return (

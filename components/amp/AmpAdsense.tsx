@@ -7,6 +7,9 @@ export default function AmpAd() {
       data-ad-client={"ca-pub-3483824909024831"}
       data-auto-format="rspv"
       data-full-width=""
-    ></amp-ad>
+    >
+      {/* @ts-ignore */}
+      <div overflow=""></div>
+    </amp-ad>
   );
 }
