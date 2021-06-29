@@ -75,7 +75,7 @@ const IconButtons = () => {
         <AmpAvator
           width="27"
           height="27"
-          src="/avatar/avatar_25.webp"
+          src="/avatar/avatar_54x.webp"
           srcset="/avatar/avatar_10.webp"
           alt="illumination-k"
         />
