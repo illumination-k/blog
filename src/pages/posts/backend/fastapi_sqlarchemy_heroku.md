@@ -214,7 +214,7 @@ async def post_todos(data: Data):
     return JSONResponse(status_code=status.HTTP_201_CREATED, content="created!")
 ```
 
-`http://localhost:8002/docs`にアクセスしてSwagger UIでGetとPostのテストをしてみてください。[このへんまでのcommit](https://github.com/illumination-k/fastapi-heroku/tree/14c99ef3be19ee7af66e154d41cd74cab7fab840)
+`http://localhost:8002/docs`にアクセスしてSwagger UIでGetとPostのテストをしてみてください。[このへんまでのcommit](https://github.com/illumination-k/fastapi-heroku/tree/14c99ef3be19ee7af66e154d41cd74cab7fab840)です。
 
 ## Herokuにデプロイ
 
@@ -252,13 +252,6 @@ web: uvicorn app.main:app --reload --host=0.0.0.0 --port=${PORT:-5000}
 ```
 
 あとはデプロイしたら終わりです。
-
-
-:::div
-
-test
-
-:::
 
 ## 終わりに
 

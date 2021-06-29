@@ -166,11 +166,6 @@
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/bioinformatics/bash_1liner</loc>
-		<lastmod>2021-06-29</lastmod>
-	</url>
-
-	<url>
 		<loc>https://illumination-k.dev/posts/bioinformatics/bioinformatics_file_format</loc>
 		<lastmod>2021-06-29</lastmod>
 	</url>
@@ -286,6 +281,11 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/misc/bash_1liner</loc>
+		<lastmod>2021-06-29</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/misc/peco_powershell</loc>
 		<lastmod>2021-06-29</lastmod>
 	</url>
@@ -297,6 +297,11 @@
 
 	<url>
 		<loc>https://illumination-k.dev/posts/python/django_pylance_import</loc>
+		<lastmod>2021-06-29</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/python/python_class_init</loc>
 		<lastmod>2021-06-29</lastmod>
 	</url>
 
