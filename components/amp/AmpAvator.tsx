@@ -1,9 +1,10 @@
-const AmpAvator = ({ width, height, src, alt }) => {
+const AmpAvator = ({ width, height, src, srcset, alt }) => {
   return (
     <amp-img
       width={width}
       height={height}
       src={src}
+      srcset={srcset}
       className="avator"
       alt={alt}
     />

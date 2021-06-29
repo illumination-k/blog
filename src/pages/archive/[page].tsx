@@ -1,4 +1,5 @@
 import Pager from "@components/Pager";
+import Head from "next/head";
 import { NextSeo } from "next-seo";
 
 import Grid from "@material-ui/core/Grid";
@@ -27,6 +28,9 @@ const ArchivePage = (props) => {
   ));
   return (
     <ListLayout>
+      <Head>
+        <link rel="canonical" href={`https://illumination-k.dev/archive/${page}c`}></link>
+      </Head>
       <NextSeo
         title="illumination-dev Blog: Archive"
         description={`illumination-dev Blog : Archive ${page}`}
