@@ -67,6 +67,7 @@ module.exports = withMDX(
     },
 
     // future: { webpack5: true }
+    webpack5: true,
   }
 );
 

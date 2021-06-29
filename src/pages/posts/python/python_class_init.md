@@ -105,8 +105,7 @@ print("classname:", mike.class_name, "name:", mike.name)
 2. tupleなどのimmutableなオブジェクトの初期化
     - [\_\_new\_\_ ってなに？](https://python.ms/new/)
 3. メタクラスを利用してクラスを切り替える
-    - [メタクラスと
-クラスデコレータってなに？](https://python.ms/metaclass/)
+    - [メタクラスとクラスデコレータってなに？](https://python.ms/metaclass/)
     - [\_\_new\_\_と\_\_init\_\とメタクラスと](https://qiita.com/FGtatsuro/items/49f907a809e53b874b18)
     - [[python]メタプログラミングの基礎(\_\_init\_\_, \_\_new\_\_, \_\_metaclass\_\_)](https://dackdive.hateblo.jp/entry/2015/08/02/100000)
 

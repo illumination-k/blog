@@ -52,7 +52,6 @@ const IconButtons = () => {
   const classes = useStyles();
   return (
     <>
-      {" "}
       <IconButton
         href="https://twitter.com/IlluminationK"
         color="inherit"
@@ -76,7 +75,7 @@ const IconButtons = () => {
           width="27"
           height="27"
           src="/avatar/avatar_54x.webp"
-          srcset="/avatar/avatar_10.webp"
+          srcset="/avatar/avatar_54x.webp"
           alt="illumination-k"
         />
       </IconButton>
