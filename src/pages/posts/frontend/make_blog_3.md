@@ -21,11 +21,95 @@ layout:
 
 ### Prism.js && Github markdown css
 
-[prism.js](https://prismjs.com)公式サイトからcssをダウンロードしておく。[github-markdown-css](https://github.com/sindresorhus/github-markdown-css)からダウンロードする。github-markdown-cssの方は自動生成なので`!important`とかが使われていてAMPに対応できないのでそのへんは除いてしまう。そのあと、raw-loaderを使ってcssを_app.tsxでimportして、直接埋め込む。できるならMarkdownのページだけで読み込みたいが...
+[prism.js](https://prismjs.com)公式サイトからcssをダウンロードしておく。[github-markdown-css](https://github.com/sindresorhus/github-markdown-css)からダウンロードする。github-markdown-cssの方は自動生成なので`!important`とかが使われていてAMPに対応できないのでそのへんは除いてしまう。
+
+**2021/07/01改稿**
+
+webpack5を使っていると`asset modules`を使うことで`raw-loader`の機能が実装できる。まずは`next.config.js`に設定を書く。フルAMPなので、cssをimportすることは想定していない。
+
+```js:title=next.config.js
+module.exports = {
+  webpack(config, options) {
+    config.module.rules.push({
+      test: /\.css/,
+      resourceQuery: /raw/,
+      type: 'asset/source'
+    })
+    return config
+  },
+}
+```
+
+これでcssファイルを`raw-loader`のように読み込める。
+
+```js:title=_document.js
+import React from "react";
+import Document, { Html, Head, Main, NextScript } from "next/document";
+import { ServerStyleSheets } from "@material-ui/core/styles";
+
+import theme from "@libs/theme";
+
+// @ts-ignore
+import css from "../styles/github_markdown.css?raw";
+// @ts-ignore
+import prismCss from "../styles/prism.css?raw";
+// @ts-ignore
+import globalCss from "../styles/global.css?raw";
+
+export default class MyDocument extends Document {
+  render() {
+    return (
+      <Html lang="ja">
+        <Head>
+          {/* PWA primary color */}
+          <meta name="theme-color" content={theme.palette.primary.main} />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
+
+// `getInitialProps` belongs to `_document` (instead of `_app`),
+// it's compatible with server-side generation (SSG).
+MyDocument.getInitialProps = async (ctx) => {
+  const sheets = new ServerStyleSheets();
+  const originalRenderPage = ctx.renderPage;
+
+  ctx.renderPage = () =>
+    originalRenderPage({
+      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+    });
+
+  const initialProps = await Document.getInitialProps(ctx);
+
+  return {
+    ...initialProps,
+    // Styles fragment is rendered after the app and page rendering finish.
+    styles: [
+      ...React.Children.toArray(initialProps.styles),
+      <style
+        key="custom"
+        dangerouslySetInnerHTML={{
+          __html: `${globalCss}\n${css}\n${prismCss}`,
+        }}
+      />,
+      sheets.getStyleElement(),
+    ],
+  };
+};
+```
+
+<details>
+  <summary>2020/9/7 raw-loaderを使った実装</summary>
+そのあと、raw-loaderを使ってcssを_app.tsxでimportして、直接埋め込む。できるならMarkdownのページだけで読み込みたいが...
 
 ちょっとmaterial-ui成分も入ってしまっているが、`_document.js`は以下の感じ。
 
-```js
+```js:title=_document.js
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/core/styles";
@@ -85,8 +169,10 @@ MyDocument.getInitialProps = async (ctx) => {
   };
 };
 ```
+</details>
 
-custom loaderでcodeをTokenに落とす作業をしておけばAMPでもコードがハイライトされる。順番の関係か、prismjsはダーク系のテーマにしたのに黒くならなかったので、github-markdown-css側で背景を黒にしておいた。
+
+custom loaderで[refactor](https://github.com/wooorm/refractor)を使ってcodeをTokenに落とす作業をしておけばAMPでもコードがハイライトされる。順番の関係か、prismjsはダーク系のテーマにしたのに黒くならなかったので、github-markdown-css側で背景を黒にしておいた。
 
 **example**
 
