@@ -7,11 +7,11 @@ import theme from "@libs/theme";
 import { GA_TRACKING_ID } from "@libs/gtag";
 
 // @ts-ignore
-import css from "!!raw-loader!../styles/github_markdown.css";
+import css from "../styles/github_markdown.css?raw";
 // @ts-ignore
-import prismCss from "!!raw-loader!../styles/prism.css";
+import prismCss from "../styles/prism.css?raw";
 // @ts-ignore
-import globalCss from "!!raw-loader!../styles/global.css";
+import globalCss from "../styles/global.css?raw";
 
 export default class MyDocument extends Document {
   render() {

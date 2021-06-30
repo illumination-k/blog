@@ -14,7 +14,7 @@ const toAmpImg = require("./libs/custom-loader/toAmpImg");
 const highlighter = require("./libs/custom-loader/highlighter");
 const codeTitle = require("./libs/custom-loader/codeTitle");
 
-const path = require('path')
+const path = require('path');
 
 // rehype plugins
 // const rehypeKatex = require('rehype-katex')
@@ -63,6 +63,13 @@ module.exports = withMDX(
       config.resolve.alias['@component'] = path.join(__dirname, "component");
       config.resolve.alias['@libs'] = path.join(__dirname, "libs");
       config.resolve.fallback = {"fs": false};
+
+      // console.log(config.module.rules)
+      config.module.rules.push({
+        test: /\.css/,
+        resourceQuery: /raw/,
+        type: 'asset/source'
+      })
       return config
     },
 
