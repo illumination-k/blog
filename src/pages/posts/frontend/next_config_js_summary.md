@@ -66,10 +66,15 @@ module.exports = {
     ...
     resolve: {
         fallback: {
+            ...config.resolve.fallback,
             "fs": false
         },
     }
 }
 ```
 
-にしたら治った。TODOとして意味を調べる必要がある。
+にしたら治った。治ったが、[webpack5のドキュメント](https://webpack.js.org/configuration/resolve/#resolvefallback)読むと`fallback`の機能は
+
+> Redirect module requests when normal resolving fails.
+
+なので、読み込まないようにしているだけ？実際、buildは動くので多分大丈夫なんだけど、`target: 'node'`とかを使った方がいいかもしれない。
