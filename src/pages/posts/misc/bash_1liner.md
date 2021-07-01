@@ -198,7 +198,42 @@ cat sample.csv | column -t -s $"," | less -S
 cat sample.csv | tr , \\t > sample.tsv
 ```
 
+## 変数が定義されているかを確認する
+
+`[ -v variable ]`で確認できる。
+
+```bash
+
+foo="foo"
+
+if [[ -v foo ]]; then
+    echo $foo
+fi
+
+if [[ ! -v who ]]; then
+    echo "who is not defined
+fi
+```
+
+## シェルスクリプト内でaliasを使う
+
+非対話モードでは`alias`はデフォルトでは動かない。
+
+```bash
+man bash | grep "Alias"
+```
+
+>  Aliases are not expanded when the shell is not interactive, unless the expand_aliases shell option is set using shopt (see the description of shopt under SHELL BUILTIN COMMANDS below).
+
+```bash
+shopt -s expand_aliases
+```
+
+をすれば動く。関数で同様のことができるのでそっちを使った方が楽かもしれない。
+
 ## 参考
 
 - [BashFAQ100](http://mywiki.wooledge.org/BashFAQ/100)
 - [ファイルの拡張子の一括置換](https://qiita.com/fujieee/items/6c3fcca4de52b84a03c1)
+- [set -uしてるときに変数が定義されてるかチェックする](https://qiita.com/tadsan/items/0109d651780844acce09)
+- [Bashシェルスクリプト内でaliasコマンドを使う方法](https://genzouw.com/entry/2020/03/16/090918/1947/)

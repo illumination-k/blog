@@ -241,3 +241,4 @@ setenforce Permissive
 - [Linux: SUID、SGID、スティッキービットまとめ](https://qiita.com/aosho235/items/16434a490f9a05ddb0dc)
 - [Linuxコマンドのお勉強 再帰的にパーミッションを変更](https://qiita.com/NoTASK/items/9b0b466f9bd4eea3efe9)
 - [umaskコマンドについて詳しくまとめました 【Linuxコマンド集】](https://eng-entrance.com/linux-command-umask)
+- [理由がわかれば怖くない！SELinux とのつきあい方](https://blog.fenrir-inc.com/jp/2016/09/selinux.html)
