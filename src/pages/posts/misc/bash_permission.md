@@ -111,7 +111,7 @@ chmod --help
 
 - `-rwsr-xr-x`: `chmod 4755 file`
 - `drwxr-sr-x`: `chmod 2755 dir`
-- `drwxrwxrxt`: `chdmo 1777 dir`
+- `drwxrwxrxt`: `chmod 1777 dir`
 
 #### 2. アルファベットで指定
 
@@ -166,7 +166,6 @@ find . -type d | xargs chmod 755
 # file 
 find . -type f | xargs chmod 755
 # 特定拡張子
-
 find . -name '*.sh' | xargs chmod 755
 ```
 
