@@ -36,9 +36,9 @@ drwxrwx---
 
 |範囲|意味|
 |---|---|
-|[2, 4]|所有者の権限|
-|[5, 7]|所有グループの権限|
-|[8, 10]|その他|
+|`[2, 4]`|所有者の権限|
+|`[5, 7]`|所有グループの権限|
+|`[8, 10]`|その他|
 
 ### パーミッション記号の意味
 
@@ -89,9 +89,9 @@ chmod --help
 
 |権限|値|
 |---|---|
-|読み取り権限 (r)|4|
-|書き込み権限 (w)|2|
-|実行権限 (x)|1|
+|読み取り権限 (`r`)|4|
+|書き込み権限 (`w`)|2|
+|実行権限 (`x`)|1|
 
 **例**
 
@@ -174,7 +174,7 @@ find . -name '*.sh' | xargs chmod 755
 
 あるディレクトリにおいて作成されるファイルに常に同じパーミッションを割り当てたくなる時がある。その場合は`umask`コマンドが使える
 
-`umask`コマンドは、**付与しない権限**を指定する。
+`umask`コマンドは、**付与しない権限**を指定する。ディレクトリの場合は実行可能の設定は可能だが、ファイルの場合は実行可能に設定することはできないため、ファイルを実行可能にする場合は、後からchmodコマンドで指定する必要がある。
 
 ### 1. 数字で指定
 
@@ -182,11 +182,62 @@ find . -name '*.sh' | xargs chmod 755
 
 |**付与しない**権限|値|
 |---|---|
-|読み取り権限 (r)|4|
-|書き込み権限 (w)|2|
-|実行権限 (x)|1|
+|読み取り権限 (`r`)|4|
+|書き込み権限 (`w`)|2|
+|実行権限 (`x`)|1|
 
 **例**
 
 - `-rwxr-xr-x`: `umask 022`
 - `-rw-rw----`: `umask 117`
+
+### 2. アルファベットで指定
+
+`umask -S 変更対象=変更内容`でアルファベットで指定することもできる。この場合も、**付与しない権限**を指定することに注意する。
+
+- `-rwxr-xr-x`: `umask g=x,a=x`
+- `-rw-rw----`: `umask u=x,g=x,a=rwx`
+
+## SELinux
+
+**あまりちゃんと理解できていない**
+
+通常のパーミッションとは別に、MAC (Mandatory Access Control)を追加することで従来のLinuxの権限より粒度の小さい権限を設定することが可能。
+
+> SELinux (Security-Enhanced Linux) は Linux カーネルに MAC (Mandatory Access Control) を追加するもので、標準の Discretionary Access Controls (DAC: 任意アクセス制御) がチェックされた後で許可された操作をチェックします。これは米国国家安全保障局 (National Security Agency) が開発したもので、定義されたポリシーを基に Linx システム内のファイルやプロセスおよびその他のアクションにルールを強制できます。
+
+- [SECURITY-ENHANCED LINUX](https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/security-enhanced_linux/chap-security-enhanced_linux-introduction)
+
+SELinuxの権限は`ls -Z`や`ps -Z`で確認することができる。
+
+### 動作モード
+
+|モード|説明|
+|---|---|
+|Enforcing|SELinux 有効。ルール外の動作があれば止める。|
+|Permissive|SELinux 有効。ただしルール外の動作はログに記録するのみ。|
+|Disable|SELinux 無効。|
+
+動作モードの確認・設定
+
+```bash
+# 確認
+getenforce
+# Enforcing
+
+# 設定
+setenforce Permissive
+```
+
+### SELinuxが有効なLinux上でdockerを使う方法
+
+ボリュームを指定する際に`:z`か`:Z`の接尾語を使用することで共有コンテントとラベルをDockerに伝えることで、privateかつ個別にボリュームを指定できる(参考: [Docker-docs-ja](http://docs.docker.jp/engine/userguide/dockervolumes.html#id6))。
+
+## 参考
+
+- [Linuxの権限確認と変更(chmod)（超初心者向け）](https://qiita.com/shisama/items/5f4c4fa768642aad9e06)
+- [【Linuxパーミッション】SGIDとは？と設定方法](https://eng-entrance.com/linux-permission-sgid)
+- [【初心者でもすぐわかる】SUIDとは？と設定方法](https://eng-entrance.com/linux-permission-suid)
+- [Linux: SUID、SGID、スティッキービットまとめ](https://qiita.com/aosho235/items/16434a490f9a05ddb0dc)
+- [Linuxコマンドのお勉強 再帰的にパーミッションを変更](https://qiita.com/NoTASK/items/9b0b466f9bd4eea3efe9)
+- [umaskコマンドについて詳しくまとめました 【Linuxコマンド集】](https://eng-entrance.com/linux-command-umask)
