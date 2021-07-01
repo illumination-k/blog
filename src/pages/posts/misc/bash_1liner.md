@@ -170,6 +170,7 @@ echo $last
 `.txt` -> `.csv`
 
 ```bash
+rename .txt .csv *.txt # linuxのみ？
 ls *.txt | sed -e s/\.txt// | awk '{print $1 ".txt " $1 ".csv"}' | xargs -n 2 mv
 ```
 
