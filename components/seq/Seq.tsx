@@ -58,11 +58,11 @@ const Seq = ({ fchain, rchain, annotation }) => {
           maxWidth: "80em",
         }}
       >
-        <span>5'- </span>
-        {fchain} - 3'
+        <span>5&apos;- </span>
+        {fchain} - 3&apos;
         <br />
-        <span>3'- </span>
-        {rchain} - 5'
+        <span>3&apos;- </span>
+        {rchain} - 5&apos;
         <br />
         <span></span>
         {annotation} <br />

@@ -9,7 +9,6 @@ import TwitterIcon from "@material-ui/icons/Twitter";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import Container from "@material-ui/core/Container";
 
-//@ts-ignore
 import Link from "@components/Link";
 import AmpAvator from "./amp/AmpAvator";
 
@@ -87,7 +86,6 @@ export default function HeaderAppBar() {
   const classes = useStyles();
 
   const title = (
-    //@ts-ignore
     <Link href="/" className={classes.title}>
       <Typography style={{ color: "white", fontSize: "2em" }}>
         illumination-dev
