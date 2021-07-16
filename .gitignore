@@ -22,5 +22,8 @@ nohup*
 log*
 .vscode/
 
+# tool
+cmfmt.exe
+
 # whitelist
 !logo*

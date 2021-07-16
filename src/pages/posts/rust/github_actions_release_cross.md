@@ -59,6 +59,8 @@ jobs:
 
 最終的にクロスビルドとrelease and uploadをあわせたymlはこちら。matrixを使って複数のプラットフォームでのビルドをしている。muslを指定しないと古いCentOSでは動かないという致命的な問題があるのでmuslとgnuを両方指定している。普通はWindowsとか入れとくといいと思う。
 
+Windowsを入れる場合は、ubuntu上で普通にビルドできる。ただ出力ファイルに`.exe`が必要なのでそこだけ注意すればいい。
+
 ```yml:title=Release.yml
 name: Release
 
@@ -81,10 +83,15 @@ jobs:
             target: x86_64-unknown-linux-musl
             artifact_name: example
             asset_name: example-x86_64-unknown-linux-musl
+          - os: ubuntu-latest
+            target: x86_64-pc-windows-gnu
+            artifact_name: example.exe
+            asset_name: example-x86_64-pc-windows-gnu.exe
           - os: macos-latest
             target: x86_64-apple-darwin
             artifact_name: example
             asset_name: example-x86_64-apple-darwin
+
 
     runs-on: ${{ matrix.os }}
 
@@ -98,7 +105,7 @@ jobs:
           toolchain: stable
           override: true
 
-      - name: Test musl build with all features
+      - name: Cross build with all features
         uses: actions-rs/cargo@v1
         with:
           use-cross: true 
