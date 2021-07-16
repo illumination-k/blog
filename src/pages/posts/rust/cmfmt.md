@@ -12,7 +12,7 @@ description: Markdown内のコードをフォーマットしたいので、作�
 
 そこで、今回はMarkdown内のコードを任意のフォーマッターを使って整形して出力するツール**cmfmt**を作ったので宣伝します。
 
-> [cmfmt](https://github.com/illumination-k/cmfmt)
+[![illumination-k/cmfmt - GitHub](https://gh-card.dev/repos/illumination-k/cmfmt.svg)](https://github.com/illumination-k/cmfmt)
 
 ## 使い方
 
