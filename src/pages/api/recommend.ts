@@ -11,11 +11,15 @@ function shuffle(array) {
     return array
 }
 
-function getRecommend(category: string | null, size: number) {
+function getRecommend(category: string | null, id: string | null, size: number) {
     let { posts } = require("../../../cache/data");
     let recommend_post: any[] = []
 
     posts = shuffle(posts);
+    if (id) {
+        posts.filter((p) => p.id === id);
+    }
+
     if (category) {
         recommend_post = posts.filter((p) => { return p.category === category})
         posts = posts.filter((p) => p.category !== category);
@@ -45,8 +49,9 @@ function getRecommend(category: string | null, size: number) {
 
 export default function handler(req, res) {
     const category = req.query.category;
+    const id = req.query.id;
 
-    const recommend = getRecommend(category, 5);
+    const recommend = getRecommend(category, id, 5);
 
     res.status(200).json(recommend) 
 }
