@@ -161,11 +161,6 @@
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/atcoder/rust_memo</loc>
-		<lastmod>2021-07-17</lastmod>
-	</url>
-
-	<url>
 		<loc>https://illumination-k.dev/posts/backend/fastapi_sqlarchemy_heroku</loc>
 		<lastmod>2021-07-17</lastmod>
 	</url>
@@ -342,6 +337,11 @@
 
 	<url>
 		<loc>https://illumination-k.dev/posts/rust/polars_pandas</loc>
+		<lastmod>2021-07-17</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/rust/rust_tips</loc>
 		<lastmod>2021-07-17</lastmod>
 	</url>
 
