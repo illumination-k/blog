@@ -1,0 +1,55 @@
+name: illumination-k
+mail: illumination-k@gmail.com
+birthday: 1994/08/27
+sex: male
+
+skills:
+  programingLanguages:
+    - Python
+    - Rust
+    - JavaScript
+    - R
+    - SQL
+    - HTML
+    - CSS
+
+  frameworks:
+    - Django
+    - React
+    - Next.js
+
+  database:
+    - MySQL
+    - SQLite3
+    - MongoDB
+    - Redis
+
+  bioinfomatics:
+    - RNA-seq
+    - Chip-seq
+    - ATAC-seq
+    - miRNA-seq
+    - single cell RNA-seq
+    - Variant Calling
+    - htslib
+    - Phylogeny
+
+education:
+  en:
+    - Bachelor of Agriculture, Kyoto University, Kyoto (2018/03)
+    - Master of Biostudy, Kyoto University, Kyoto (2020/03)
+    - Doctor of Biostudy, Kyoto University, Kyoto (2023/03 expected)
+  ja:
+    - 京都大学農学部応用生命科学科 2018年卒業
+    - 京都大学大学院生命科学研究科統合生命科学専攻博士前期課程 2020修了
+    - 京都大学大学院生命科学研究科統合生命科学専攻博士後期課程 2023修了見込み
+
+quantifications:
+  en:
+    - Fundamental Information Technology Engineer Examination (2018/12)
+    - JSBi Certified Bioinformatics Engineer (2019/12)
+  ja:
+    - 普通自動車免許 2016/03
+    - 基本情報技術者試験 2018/12 合格
+    - バイオインフォマティクス技術者認定試験 2019/12 合格
+

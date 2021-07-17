@@ -105,4 +105,15 @@ const About: React.FC<{}> = () => {
   );
 };
 
+export async function getStatciProps() {
+  const fs = require("fs");
+  const yaml = require("js-yaml");
+  const profilesFile = fs.readFileSync(process.cwd(), "data", "profiles.yaml");
+  console.log(profilesFile);
+
+  return {
+    props: "test",
+  };
+}
+
 export default About;

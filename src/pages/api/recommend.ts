@@ -17,7 +17,7 @@ function getRecommend(category: string | null, id: string | null, size: number) 
 
     posts = shuffle(posts);
     if (id) {
-        posts.filter((p) => p.id === id);
+        posts = posts.filter((p) => p.id !== id);
     }
 
     if (category) {
@@ -50,7 +50,6 @@ function getRecommend(category: string | null, id: string | null, size: number) 
 export default function handler(req, res) {
     const category = req.query.category;
     const id = req.query.id;
-
     const recommend = getRecommend(category, id, 5);
 
     res.status(200).json(recommend) 
