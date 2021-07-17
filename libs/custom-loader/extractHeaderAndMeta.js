@@ -69,14 +69,17 @@ function extractHeaderAndMeta(options) {
         post.data.description == meta_obj.description
     );
 
-    const { update, published, id, category } = post[0];
+    if (post[0]) {
+      const { update, published, id, category } = post[0];
+      meta_obj["published"] = published;
+      meta_obj["update"] = update;
+  
+      meta_obj["url"] = `/posts/${category}/${id}`;
+      meta_obj["id"] = id;
+      meta_obj["category"] = category;
+    }
 
-    meta_obj["published"] = published;
-    meta_obj["update"] = update;
 
-    meta_obj["url"] = `/posts/${category}/${id}`;
-    meta_obj["id"] = id;
-    meta_obj["category"] = category;
 
     const headings = ast.children
       .filter((t) => t.type === "heading")
