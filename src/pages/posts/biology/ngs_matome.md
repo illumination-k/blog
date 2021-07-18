@@ -6,6 +6,8 @@ layout:
     component: BlogPostLayout
 ---
 
+import Grid from "@material-ui/core/Grid";
+
 ## TL;DR
 バイオインフォマティクスっぽいことも書こうかなと。
 次世代シーケンサーの解析って言ってもピンとこない人が多いような気がするので、知識の整理も兼ねてその辺から軽く書いていこうと思います。生物わかんない人にわかるように頑張ろうと思います...（多分無理説ありますが）
@@ -19,13 +21,14 @@ PCR法は、極微量しかとれないDNAをin vitroで爆発的に増やす手
 3. DNAポリメラーゼによってDNAを伸長させます。
 4. 1~3を繰り返すことで$2^n$個の同一のDNAを得ます。
 
-<amp-img 
+<Grid item md={6}><amp-img 
     src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PCR.svg/500px-PCR.svg.png"
-    layout="fixed"
+    layout="responsive"
     height="750"
     width="300"
     alt="fig1"
-/>
+/></Grid>
+
 
 ということで$O(2^n)$のオーダーでDNAを増やすことできます。すごい！
 

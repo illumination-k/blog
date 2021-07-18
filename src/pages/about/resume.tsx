@@ -166,20 +166,20 @@ const Resume = (props) => {
             </div>
           </Grid>
 
-          <Grid item xs={6}>
+          <Grid item sm={6}>
             <Typography variant="h3" className={classes.partTitle}>
               Educations
             </Typography>
             <Educations education={education} />
           </Grid>
 
-          <Grid item xs={6}>
+          <Grid item sm={6}>
             <Typography variant="h3" className={classes.partTitle}>
               Careers
             </Typography>
             <Careers careers={careers} />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item sm={6}>
             <Grid>
               <Typography variant="h3" className={classes.partTitle}>
                 Quantifications
@@ -187,7 +187,7 @@ const Resume = (props) => {
               <SimpleList list={profile.quantifications.en} />
             </Grid>
           </Grid>
-          <Grid item xs={6} style={{ textAlign: "center" }}>
+          <Grid item sm={6} style={{ textAlign: "center" }}>
             <Typography variant="h3" className={classes.partTitle}>
               Skills
             </Typography>

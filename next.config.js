@@ -10,6 +10,7 @@ const remarkGfm = require("remark-gfm");
 // custom loader
 const extractHeaderAndMeta = require("./libs/custom-loader/extractHeaderAndMeta");
 const toMathml = require("./libs/custom-loader/toMathml");
+const toGithubRepoImage = require("./libs/custom-loader/toGithubRepoImage")
 const toAmpImg = require("./libs/custom-loader/toAmpImg");
 const highlighter = require("./libs/custom-loader/highlighter");
 const codeTitle = require("./libs/custom-loader/codeTitle");
@@ -34,6 +35,7 @@ const withMDX = require("@next/mdx")({
       highlighter,
       remarkMath,
       toMathml,
+      toGithubRepoImage,
       toAmpImg,
       remarkGfm,
     ],
