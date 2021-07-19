@@ -6,352 +6,617 @@
       xmlns:xhtml="http://www.w3.org/1999/xhtml">
       
 	<url>
-		<loc>https://illumination-k.dev/404</loc>
+		<loc>https://illumination-k.dev/en-US/404</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/500</loc>
+		<loc>https://illumination-k.dev/en-US/500</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/about/resume</loc>
+		<loc>https://illumination-k.dev/en-US/about/resume</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/about</loc>
+		<loc>https://illumination-k.dev/en-US/about</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/archive/1</loc>
+		<loc>https://illumination-k.dev/en-US/categories</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/archive/2</loc>
+		<loc>https://illumination-k.dev/en-US/offline</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/archive/3</loc>
+		<loc>https://illumination-k.dev/en-US/posts/atcoder/AtCoderLogs</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/archive/4</loc>
+		<loc>https://illumination-k.dev/en-US/posts/atcoder/competitive_memo</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/archive/5</loc>
+		<loc>https://illumination-k.dev/en-US/posts/atcoder/dfs_tree</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/categories/atcoder/1</loc>
+		<loc>https://illumination-k.dev/en-US/posts/atcoder/diktstra_2d_rust</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/categories/backend/1</loc>
+		<loc>https://illumination-k.dev/en-US/posts/atcoder/inclusion_and_exclusion_principle</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/categories/bioinformatics/1</loc>
+		<loc>https://illumination-k.dev/en-US/posts/atcoder/manhattan</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/categories/biology/1</loc>
+		<loc>https://illumination-k.dev/en-US/posts/backend/fastapi_sqlarchemy_heroku</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/categories/frontend/1</loc>
+		<loc>https://illumination-k.dev/en-US/posts/backend/sql_memo</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/categories/frontend/2</loc>
+		<loc>https://illumination-k.dev/en-US/posts/bioinformatics/bioinformatics_file_format</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/categories/misc/1</loc>
+		<loc>https://illumination-k.dev/en-US/posts/bioinformatics/cellranger_star</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/categories/python/1</loc>
+		<loc>https://illumination-k.dev/en-US/posts/bioinformatics/gatk4_interval_list</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/categories/rust/1</loc>
+		<loc>https://illumination-k.dev/en-US/posts/bioinformatics/gatk4_ranseq_bestpractice</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/categories</loc>
+		<loc>https://illumination-k.dev/en-US/posts/bioinformatics/go_anno_deepgoplus</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/index</loc>
+		<loc>https://illumination-k.dev/en-US/posts/bioinformatics/phylo_raxmlng</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/offline</loc>
+		<loc>https://illumination-k.dev/en-US/posts/bioinformatics/qsubpy_easy</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/1</loc>
+		<loc>https://illumination-k.dev/en-US/posts/bioinformatics/rust_fastqgz</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/2</loc>
+		<loc>https://illumination-k.dev/en-US/posts/bioinformatics/salmon_tximport</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/3</loc>
+		<loc>https://illumination-k.dev/en-US/posts/biology/library_construction_reaction</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/4</loc>
+		<loc>https://illumination-k.dev/en-US/posts/biology/ngs_matome</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/5</loc>
+		<loc>https://illumination-k.dev/en-US/posts/biology/seq_summary</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/atcoder/AtCoderLogs</loc>
+		<loc>https://illumination-k.dev/en-US/posts/frontend/codeblock_langname</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/atcoder/competitive_memo</loc>
+		<loc>https://illumination-k.dev/en-US/posts/frontend/javascript_random</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/atcoder/dfs_tree</loc>
+		<loc>https://illumination-k.dev/en-US/posts/frontend/json_png</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/atcoder/diktstra_2d_rust</loc>
+		<loc>https://illumination-k.dev/en-US/posts/frontend/make_blog_1</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/atcoder/inclusion_and_exclusion_principle</loc>
+		<loc>https://illumination-k.dev/en-US/posts/frontend/make_blog_2</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/atcoder/manhattan</loc>
+		<loc>https://illumination-k.dev/en-US/posts/frontend/make_blog_3</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/backend/fastapi_sqlarchemy_heroku</loc>
+		<loc>https://illumination-k.dev/en-US/posts/frontend/make_blog_4</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/backend/sql_memo</loc>
+		<loc>https://illumination-k.dev/en-US/posts/frontend/make_blog_5</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/bioinformatics/bioinformatics_file_format</loc>
+		<loc>https://illumination-k.dev/en-US/posts/frontend/make_blog_6</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/bioinformatics/cellranger_star</loc>
+		<loc>https://illumination-k.dev/en-US/posts/frontend/make_blog_7</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/bioinformatics/gatk4_interval_list</loc>
+		<loc>https://illumination-k.dev/en-US/posts/frontend/make_blog_8</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/bioinformatics/gatk4_ranseq_bestpractice</loc>
+		<loc>https://illumination-k.dev/en-US/posts/frontend/next_config_js_summary</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/bioinformatics/go_anno_deepgoplus</loc>
+		<loc>https://illumination-k.dev/en-US/posts/frontend/react_plotly_bundle</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/bioinformatics/phylo_raxmlng</loc>
+		<loc>https://illumination-k.dev/en-US/posts/misc/bash_1liner</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/bioinformatics/qsubpy_easy</loc>
+		<loc>https://illumination-k.dev/en-US/posts/misc/bash_permission</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/bioinformatics/rust_fastqgz</loc>
+		<loc>https://illumination-k.dev/en-US/posts/misc/peco_powershell</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/bioinformatics/salmon_tximport</loc>
+		<loc>https://illumination-k.dev/en-US/posts/python/colorbar_and_normvalue</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/biology/library_construction_reaction</loc>
+		<loc>https://illumination-k.dev/en-US/posts/python/django_pylance_import</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/biology/ngs_matome</loc>
+		<loc>https://illumination-k.dev/en-US/posts/python/python_class_init</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/biology/seq_summary</loc>
+		<loc>https://illumination-k.dev/en-US/posts/rust/actix_web_diesel</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/frontend/codeblock_langname</loc>
+		<loc>https://illumination-k.dev/en-US/posts/rust/cmfmt</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/frontend/javascript_random</loc>
+		<loc>https://illumination-k.dev/en-US/posts/rust/github_actions_release_cross</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/frontend/json_png</loc>
+		<loc>https://illumination-k.dev/en-US/posts/rust/polars_pandas</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/frontend/make_blog_1</loc>
+		<loc>https://illumination-k.dev/en-US/posts/rust/rust_tips</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/frontend/make_blog_2</loc>
+		<loc>https://illumination-k.dev/en-US/privacypolicy</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/frontend/make_blog_3</loc>
+		<loc>https://illumination-k.dev/en-US</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/frontend/make_blog_4</loc>
+		<loc>https://illumination-k.dev/ja/404</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/frontend/make_blog_5</loc>
+		<loc>https://illumination-k.dev/ja/500</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/frontend/make_blog_6</loc>
+		<loc>https://illumination-k.dev/ja/about/resume</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/frontend/make_blog_7</loc>
+		<loc>https://illumination-k.dev/ja/about</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/frontend/make_blog_8</loc>
+		<loc>https://illumination-k.dev/ja/archive/1</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/frontend/next_config_js_summary</loc>
+		<loc>https://illumination-k.dev/ja/archive/2</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/frontend/react_plotly_bundle</loc>
+		<loc>https://illumination-k.dev/ja/archive/3</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/misc/bash_1liner</loc>
+		<loc>https://illumination-k.dev/ja/archive/4</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/misc/bash_permission</loc>
+		<loc>https://illumination-k.dev/ja/archive/5</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/misc/peco_powershell</loc>
+		<loc>https://illumination-k.dev/ja/categories/atcoder/1</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/python/colorbar_and_normvalue</loc>
+		<loc>https://illumination-k.dev/ja/categories/backend/1</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/python/django_pylance_import</loc>
+		<loc>https://illumination-k.dev/ja/categories/bioinformatics/1</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/python/python_class_init</loc>
+		<loc>https://illumination-k.dev/ja/categories/biology/1</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/rust/cmfmt</loc>
+		<loc>https://illumination-k.dev/ja/categories/frontend/1</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/rust/github_actions_release_cross</loc>
+		<loc>https://illumination-k.dev/ja/categories/frontend/2</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/rust/polars_pandas</loc>
+		<loc>https://illumination-k.dev/ja/categories/misc/1</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/rust/rust_tips</loc>
+		<loc>https://illumination-k.dev/ja/categories/python/1</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/privacypolicy</loc>
+		<loc>https://illumination-k.dev/ja/categories/rust/1</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/categories</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/offline</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/1</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/2</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/3</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/4</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/5</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/atcoder/AtCoderLogs</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/atcoder/competitive_memo</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/atcoder/dfs_tree</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/atcoder/diktstra_2d_rust</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/atcoder/inclusion_and_exclusion_principle</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/atcoder/manhattan</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/backend/fastapi_sqlarchemy_heroku</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/backend/sql_memo</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/bioinformatics/bioinformatics_file_format</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/bioinformatics/cellranger_star</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/bioinformatics/gatk4_interval_list</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/bioinformatics/gatk4_ranseq_bestpractice</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/bioinformatics/go_anno_deepgoplus</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/bioinformatics/phylo_raxmlng</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/bioinformatics/qsubpy_easy</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/bioinformatics/rust_fastqgz</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/bioinformatics/salmon_tximport</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/biology/library_construction_reaction</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/biology/ngs_matome</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/biology/seq_summary</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/frontend/codeblock_langname</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/frontend/javascript_random</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/frontend/json_png</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/frontend/make_blog_1</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/frontend/make_blog_2</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/frontend/make_blog_3</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/frontend/make_blog_4</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/frontend/make_blog_5</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/frontend/make_blog_6</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/frontend/make_blog_7</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/frontend/make_blog_8</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/frontend/next_config_js_summary</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/frontend/react_plotly_bundle</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/misc/bash_1liner</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/misc/bash_permission</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/misc/peco_powershell</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/python/colorbar_and_normvalue</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/python/django_pylance_import</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/python/python_class_init</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/rust/actix_web_diesel</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/rust/cmfmt</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/rust/github_actions_release_cross</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/rust/polars_pandas</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/posts/rust/rust_tips</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja/privacypolicy</loc>
+		<lastmod>2021-07-19</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/ja</loc>
 		<lastmod>2021-07-19</lastmod>
 	</url>
 </urlset>
