@@ -61,11 +61,6 @@ module.exports = withMDX(
       ]
     },
 
-    i18n: {
-      locales: ['en-US', 'ja'],
-      defaultLocale: "ja"
-    },
-
     webpack(config, options) {
       config.resolve.alias['@component'] = path.join(__dirname, "component");
       config.resolve.alias['@libs'] = path.join(__dirname, "libs");
