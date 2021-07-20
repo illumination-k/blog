@@ -473,6 +473,67 @@ df.groupby("date").unwrap()
     .apply(|x| { println!("{:?}", x); Ok(x)});
 ```
 
+## hstack, vstack (concat)
+
+`pandas`の`concat`。`stack`とは機能が違うので注意が必要。pandasは合わない行があればNaNで埋めるがpolarsはエラーする。
+
+データフレームを準備する。
+
+```python
+df1 = pd.DataFrame({"A": [1, 2, 3], "B": [2, 3, 4]})
+df1_t = pd.DataFrame({"A": [4, 5, 6], "B": [5, 6, 7]})
+df2 = pd.DataFrame({"C": ["a", "b", "c"], "D": [0.1, 0.2, 0.3]})
+s1 = pd.Series([10, 11, 12], name="s1")
+s2 = pd.Series(["ABC", "NMK", "XYZ"], name="s2")
+```
+
+```rust
+let df1 = df!(
+    "A" => &[1, 2, 3],
+    "B" => &[2, 3, 4]
+).unwrap();
+
+let df1_t = df!(
+    "A" => &[4, 5, 6],
+    "B" => &[5, 6, 7]
+).unwrap();
+
+
+let df2 = df!(
+    "C" => &["a", "b", "c"],
+    "D" => &[0.1, 0.2, 0.3]
+).unwrap();
+
+let s1 = Series::new("S1", [10, 11, 12]);
+let s2 = Series::new("S2", ["ABC", "NMK", "XYZ"]);
+```
+
+### hstack
+
+```python
+pd.concat([df1, s1, s2], axis=1)
+pd.concat([df1, df2], axis=1)
+```
+
+```rust
+df1.hstack(&[s1, s2])
+// 無理やりデータフレーム同士をしようと思えばできる。
+let s_vec: Vec<Series> = df2.iter().map(|s| s.clone()).collect();
+df1.hstack(&s_vec)
+```
+
+### vstack
+
+```python
+pd.concat([df1, df2]) # 列名が違うところはNaNで埋められる。
+pd.concat([df1, df1_t])
+```
+
+```rust
+df1.vstack(&df2) // error
+df1.vstack(&df1_t)
+```
+
 ## 重複行の抽出
 
 ```python
@@ -547,7 +608,6 @@ CsvWriter::new(&mut f)
 
 - [ ] pivot
 - [ ] melt
-- [ ] vstack
 - [ ] join系
 - [ ] fillna系
 - [ ] sample_n
