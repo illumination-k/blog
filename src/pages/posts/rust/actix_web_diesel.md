@@ -74,7 +74,7 @@ DROP TABLE posts
 migrationします。
 
 ```bash
-dicel migration run
+diesel migration run
 ```
 
 これでセットアップは終わりです。
@@ -199,7 +199,7 @@ pub struct NewPost {
 }
 ```
 
-### CRUDの実装
+## CRUDの実装
 
 とりあえず`mod.rs`類を書きます。
 
@@ -224,9 +224,9 @@ mod routes;
 mod schema;
 ```
 
-#### GETとPostの実装
+### GETとPostの実装
 
-すべてのPostsを返します。
+すべてのPostsを返します。dieselはtokioをサポートしてないらしいので、`web::lock`を使っています。
 
 ```rust:title=routes/posts/get.rs
 use crate::database::Pool;
