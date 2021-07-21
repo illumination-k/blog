@@ -5,7 +5,7 @@ description: rustにも実はpandas likeなcrateがあることを知ったの�
 
 ## TL;DR
 
-rustにも実はpandas likeなcrateがあることを知ったのでpandasとの対応関係をまとめてた。最善である保証はありません。またVersionごとに破壊的変更がそこそこあるので、Versionに注意して置く必要があります。
+rustにも実はpandas likeなcrateがあることを知ったのでpandasとの対応関係をまとめてた。最善である保証はありません。またVersionごとに破壊的変更がそこそこあるので、Versionに注意する必要があります。
 
 これを使えば大きなファイルを素早く処理することができそうですが、さすがにrustなのでお手軽感はそんなになかった。
 
