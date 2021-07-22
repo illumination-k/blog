@@ -31,10 +31,16 @@ rustにも実はpandas likeなcrateがあることを知ったのでpandasとの
 
 色々featureもあって、日付変換やndarrayへの変換、ランダムサンプリングなどに対応している。あとはjsonのserdeやApache Parquet formatとかのIOとか。今回はndarrayとランダムサンプリングを試してみる。あとエラーハンドリングにanyhowを入れておく。
 
-```title=cargo.toml
+```toml:title=Cargo.toml
 [dependencies]
 anyhow = "1.0"
 polars = { version = "0.14.7", features = ["ndarray", "random"]}
+```
+
+Jupyterを使う場合は、
+
+```
+:dep polars = { version = "0.14.7", features = ["ndarray", "random"]}
 ```
 
 また、nightlyが必要なのでOverrideしておく。
@@ -475,7 +481,7 @@ df.groupby("date").unwrap()
 
 ## hstack, vstack (concat)
 
-`pandas`の`concat`。`stack`とは機能が違うので注意が必要。pandasは合わない行があればNaNで埋めるがpolarsはエラーする。
+`pandas`の`concat`。pandasの`stack`とは機能が違うので注意が必要。pandasは合わない行があればNaNで埋めるがpolarsはエラーする。
 
 データフレームを準備する。
 

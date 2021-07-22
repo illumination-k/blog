@@ -1,5 +1,5 @@
 // remark plugins
-const stringify = require('remark-stringify')
+const stringify = require("remark-stringify");
 const remarkMath = require("remark-math");
 const remarkFrontmatter = require("remark-frontmatter");
 const remarkSlug = require("remark-slug");
@@ -10,12 +10,12 @@ const remarkGfm = require("remark-gfm");
 // custom loader
 const extractHeaderAndMeta = require("./libs/custom-loader/extractHeaderAndMeta");
 const toMathml = require("./libs/custom-loader/toMathml");
-const toGithubRepoImage = require("./libs/custom-loader/toGithubRepoImage")
+const toGithubRepoImage = require("./libs/custom-loader/toGithubRepoImage");
 const toAmpImg = require("./libs/custom-loader/toAmpImg");
 const highlighter = require("./libs/custom-loader/highlighter");
 const codeTitle = require("./libs/custom-loader/codeTitle");
 
-const path = require('path');
+const path = require("path");
 
 // rehype plugins
 // const rehypeKatex = require('rehype-katex')
@@ -43,44 +43,40 @@ const withMDX = require("@next/mdx")({
   },
 });
 
-module.exports = withMDX(
-  {
-    pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-    async redirects() {
-      return [
-        {
-          source: "/archive",
-          destination: "/archive/1",
-          permanent: true,
-        },
-        {
-          source: "/posts",
-          destination: "/posts/1",
-          permanent: true,
-        }
-      ]
-    },
+module.exports = withMDX({
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+  async redirects() {
+    return [
+      {
+        source: "/archive",
+        destination: "/archive/1",
+        permanent: true,
+      },
+      {
+        source: "/posts",
+        destination: "/posts/1",
+        permanent: true,
+      },
+    ];
+  },
 
-    webpack(config, options) {
-      config.resolve.alias['@component'] = path.join(__dirname, "component");
-      config.resolve.alias['@libs'] = path.join(__dirname, "libs");
-      config.resolve.fallback = {"fs": false};
+  webpack(config, options) {
+    config.resolve.alias["@component"] = path.join(__dirname, "component");
+    config.resolve.alias["@libs"] = path.join(__dirname, "libs");
 
-      // console.log(config.module.rules)
-      config.module.rules.push({
-        test: /\.css/,
-        resourceQuery: /raw/,
-        type: 'asset/source'
-      })
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        "fs": false
-      };
-      return config
-    },
+    // console.log(config.module.rules)
+    config.module.rules.push({
+      test: /\.css/,
+      resourceQuery: /raw/,
+      type: "asset/source",
+    });
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+    };
+    return config;
+  },
 
-    // future: { webpack5: true }
-    webpack5: true,
-  }
-);
-
+  // future: { webpack5: true }
+  webpack5: true,
+});
