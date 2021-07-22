@@ -27,6 +27,12 @@ memberに属しているかどうかを判定したくてmemberメソッドみ�
 
 </AtCoderLog>
 
+<AtCoderLog title="ABC204-C" submissions={[`24450812`]}>
+
+$N, M < 2000$なので、BFSを全点でやっても$O(N(N+M))$で十分間に合う。
+
+</AtCoderLog>
+
 <AtCoderLog title="ABC204-D" submissions={[`24449140`]}>
 
 貪欲法を考えてだめだったやつ。DPに帰着できる。オーブンの分け方を全通り試すのは計算量的に無理。
