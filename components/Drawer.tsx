@@ -40,10 +40,6 @@ const useStyles = makeStyles((theme: Theme) =>
       overflow: "auto",
       padding: "1rem",
     },
-
-    nested: {
-      paddingLeft: theme.spacing(4),
-    },
   })
 );
 
@@ -82,24 +78,22 @@ const ClippedDrawer = ({ listitems }) => {
                 <a>Blog</a>
               </Link>
             </ListItem>
-            <List className={classes.nested}>
-              <ListItem button>
-                <ListItemIcon>
-                  <NavigateNextIcon />
-                </ListItemIcon>
-                <Link href={"/categories"}>
-                  <a>Categories</a>
-                </Link>
-              </ListItem>
-              <ListItem button>
-                <ListItemIcon>
-                  <NavigateNextIcon />
-                </ListItemIcon>
-                <Link href={"/archive"}>
-                  <a>Archive</a>
-                </Link>
-              </ListItem>
-            </List>
+            <ListItem button>
+              <ListItemIcon>
+                <NavigateNextIcon />
+              </ListItemIcon>
+              <Link href={"/categories"}>
+                <a>Categories</a>
+              </Link>
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon>
+                <NavigateNextIcon />
+              </ListItemIcon>
+              <Link href={"/archive"}>
+                <a>Archive</a>
+              </Link>
+            </ListItem>
           </List>
           <AmpSearchForm />
           {listitems}
