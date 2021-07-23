@@ -8,7 +8,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import Container from "@material-ui/core/Container";
 
 import Link from "@components/Link";
-import AmpAvator from "./amp/AmpAvator";
+import AmpAvator from "@components/amp/AmpAvator";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
