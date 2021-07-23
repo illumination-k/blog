@@ -3,65 +3,66 @@ import Head from "next/head";
 
 import { NextSeo } from "next-seo";
 
-import Grid from "@material-ui/core/Grid";
+import {
+  Grid,
+  Container,
+  Card,
+  CardContent,
+  Typography,
+} from "@material-ui/core";
 
 // custom components
-import Layout from "@components/DefaultLayout";
-import BlogPostCard from "@components/BlogPostCard";
-import Drawer from "@components/Drawer";
-
-import { getAllPosts, getMeta } from "@libs/contentLoader";
+import Layout from "@components/Layout";
+import Link from "@components/Link";
+import SocialIcons from "@components/SocialIcons";
 
 export const config = { amp: true };
 
-const index = (props) => {
-  const { post_info } = props;
-  const cards = post_info.map((post, idx) => (
-    <Grid item xs={12} key={idx}>
-      <BlogPostCard
-        key={idx}
-        meta={post.meta}
-        url={`/posts/${post.categoryId}/${post.name}`}
-      />
-    </Grid>
-  ));
-
+const index = () => {
   return (
     <Layout>
       <Head>
         <link rel="canonical" href="https://illumination-k.dev"></link>
       </Head>
       <NextSeo title="illumination-dev" description="illumination-dev" />
-      <h1>Recent Posts</h1>
-      <Grid container spacing={1}>
-        {cards}
-      </Grid>
-      <Drawer />
+      <Container maxWidth="md">
+        <Grid container spacing={1} style={{ textAlign: "center" }}>
+          <Grid item xs={12}>
+            <amp-img
+              alt="header"
+              src="/images/header-nature003.jpg"
+              width="1024"
+              height="341"
+              layout="responsive"
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <Card>
+              <CardContent>
+                <Link href="/posts">
+                  <Typography variant="h6">Blog</Typography>
+                </Link>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={6}>
+            <Card>
+              <CardContent>
+                <Link href="/about">
+                  <Typography variant="h6">About</Typography>
+                </Link>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs />
+          <Grid item xs={6}>
+            <SocialIcons />
+          </Grid>
+          <Grid item xs />
+        </Grid>
+      </Container>
     </Layout>
   );
 };
-
-export async function getStaticProps() {
-  const path = require("path");
-  const posts = await getAllPosts();
-  const post_info = await Promise.all(
-    posts.map(async (post) => {
-      const meta = await getMeta(post);
-      const { dir, name } = path.parse(post);
-      const categoryId = path.basename(dir);
-      return {
-        name,
-        categoryId,
-        meta,
-      };
-    })
-  );
-
-  return {
-    props: {
-      post_info: post_info,
-    },
-  };
-}
 
 export default index;
