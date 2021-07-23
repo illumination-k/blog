@@ -48,11 +48,6 @@ module.exports = withMDX({
   async redirects() {
     return [
       {
-        source: "/archive",
-        destination: "/archive/1",
-        permanent: true,
-      },
-      {
         source: "/posts",
         destination: "/posts/1",
         permanent: true,

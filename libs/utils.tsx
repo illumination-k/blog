@@ -1,16 +1,39 @@
 const path = require("path");
 import { getMeta } from "./contentLoader";
 
+export function updateMapArray<K, V>(map: Map<K, V[]>, key: K, value: V) {
+  const old: V[] = map.get(key) ?? new Array<V>();
+  map.set(key, [...old, value]);
+}
+
 export function range(stop) {
   return Array.from({ length: stop }, (_, i) => i + 1);
 }
 
-export function sortPost(post_info) {
+export function sortPost(
+  post_info,
+  sortedBy: "update" | "published" = "update"
+) {
   return post_info.sort(function (a: any, b: any) {
-    const a_date = new Date(a.meta.update);
-    const b_date = new Date(b.meta.update);
+    const a_date = new Date(a.meta[sortedBy]);
+    const b_date = new Date(b.meta[sortedBy]);
     return b_date.valueOf() - a_date.valueOf();
   });
+}
+
+export async function getMetaFromAllPosts(all_posts: Array<string>) {
+  return await Promise.all(
+    all_posts.map(async (post) => {
+      const meta = await getMeta(post);
+      const { dir, name } = path.parse(post);
+      const categoryId = path.basename(dir);
+      return {
+        name,
+        categoryId,
+        meta,
+      };
+    })
+  );
 }
 
 export async function getPageInfo(
@@ -56,6 +79,12 @@ export function get_formatted_date(date_string: string) {
   `.replace(/\n|\r/g, "");
 
   return formatted;
+}
+
+export function getDateKey(date_string: string): string {
+  const date = new Date(date_string);
+  const dateKey = `${date.getFullYear()}/${date.getMonth() + 1}`;
+  return dateKey;
 }
 
 export function trimDescription(description: string, maxLength: number) {
