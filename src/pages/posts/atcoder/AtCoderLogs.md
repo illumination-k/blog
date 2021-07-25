@@ -45,3 +45,19 @@ $S = \sum_{i=0}^{n} T[i]$のときに、$B = S - A$なので、$A \leq S - A$。
 
 </AtCoderLog>
 
+<AtCoderLog title="ABC205-D" submissions={[`24461315`]}>
+
+$A_i$に対してそれ以下で今まで出ていない数字の数を$C_i$とおく。
+
+例えば、
+
+```
+A: 3 5 6 7
+C: 2 3 3 3
+```
+
+また、クエリ$K_i$の答えを$ans[i]$とすると
+このとき、クエリ$K_i$が$C_n$より大きいとき、
+
+</AtCoderLog>
+

@@ -1,14 +1,5 @@
 import React from "react";
-import Link from "next/link";
-
 import Toolbar from "@material-ui/core/Toolbar";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import Typography from "@material-ui/core/Typography";
-
-import HomeIcon from "@material-ui/icons/Home";
-import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 
 import AmpSearchForm from "@components/amp/AmpSearchForm";
 import AmpFab from "./AmpFab";

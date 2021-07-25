@@ -2016,10 +2016,10 @@ flatted@^3.1.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.0.tgz#da07fb8808050aba6fdeac2294542e5043583f05"
   integrity sha512-XprP7lDrVT+kE2c2YlfiV+IfS9zxukiIOvNamPNsImNhXadSsQEbosItdL9bUQlCZXR13SvPk20BjWSWLA7m4A==
 
-flexsearch@^0.6.32:
-  version "0.6.32"
-  resolved "https://registry.yarnpkg.com/flexsearch/-/flexsearch-0.6.32.tgz#1e20684d317af65baa445cdd9864a5f5b320f510"
-  integrity sha512-EF1BWkhwoeLtbIlDbY/vDSLBen/E5l/f1Vg7iX5CDymQCamcx1vhlc3tIZxIDplPjgi0jhG37c67idFbjg+v+Q==
+flexsearch@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/flexsearch/-/flexsearch-0.7.2.tgz#c292f982c858747831c202245c99b1de0a81e526"
+  integrity sha512-Giy6ye2pPL2ZZT/36+TNsmYHqpzmuWF9Gwv5cHZwjiqhcIjvic1LcUpIAEJSFSc7va0bUHj1YfjXmFuDSreWrQ==
 
 foreach@^2.0.5:
   version "2.0.5"
