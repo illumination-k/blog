@@ -62,7 +62,6 @@ module.exports = withMDX(
     webpack(config, options) {
       config.resolve.alias['@component'] = path.join(__dirname, "component");
       config.resolve.alias['@libs'] = path.join(__dirname, "libs");
-      config.resolve.fallback = {"fs": false};
 
       // console.log(config.module.rules)
       config.module.rules.push({
@@ -77,7 +76,6 @@ module.exports = withMDX(
       return config
     },
 
-    // future: { webpack5: true }
     webpack5: true,
   }
 );
