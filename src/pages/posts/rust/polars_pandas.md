@@ -5,11 +5,19 @@ description: rustにも実はpandas likeなcrateがあることを知ったの�
 
 ## TL;DR
 
-rustにも実はpandas likeなcrateがあることを知ったのでpandasとの対応関係をまとめてた。最善である保証はありません。
+rustにも実はpandas likeなcrateがあることを知ったのでpandasとの対応関係をまとめてた。最善である保証はありません。またVersionごとに破壊的変更がそこそこあるので、Versionに注意する必要があります。
 
 これを使えば大きなファイルを素早く処理することができそうですが、さすがにrustなのでお手軽感はそんなになかった。
 
-plotterとかはjupyter対応してるので、もしかしてそのうちjupyterで使える可能性に期待しています。間違い等があればTwitterやメールにお願いします。
+[excvr](https://github.com/google/evcxr)を使うことでJupyter上で動かせます。Jupyter labを使うとPythonとRustの比較が非常にやりやすくて良い。
+
+![jupyter-image](/images/polars_pandas/jupyter_image.PNG)
+
+
+ただ補完や型の推測が効かないので少し困りました。`rust-analyzer`対応してほしい。  
+サンプルノートブックはこちら。docker-composeで起動できます。
+
+![github:illumination-k/polars-pandas](github:illumination-k/polars-pandas)
 
 ## polars
 
@@ -21,12 +29,18 @@ plotterとかはjupyter対応してるので、もしかしてそのうちjupyte
 
 ## Install
 
-色々featureもあって、並列実行やndarrayへの変換、ランダムサンプリングなどに対応している。あとはjsonのserdeやApache Parquet formatとかのIOとか。今回はndarrayと並列実行、ランダムサンプリングなどを試してみる。あとエラーハンドリングにanyhowを入れておく。
+色々featureもあって、日付変換やndarrayへの変換、ランダムサンプリングなどに対応している。あとはjsonのserdeやApache Parquet formatとかのIOとか。今回はndarrayとランダムサンプリングを試してみる。あとエラーハンドリングにanyhowを入れておく。
 
-```title=cargo.toml
+```toml:title=Cargo.toml
 [dependencies]
 anyhow = "1.0"
-polars = { version = "0.10", features = ["ndarray", "parallel", "random"]}
+polars = { version = "0.14.7", features = ["ndarray", "random"]}
+```
+
+Jupyterを使う場合は、
+
+```
+:dep polars = { version = "0.14.7", features = ["ndarray", "random"]}
 ```
 
 また、nightlyが必要なのでOverrideしておく。
@@ -53,6 +67,8 @@ python側も下記のimportを行っている前提です。
 
 ```python
 import pandas as pd
+print(pd.__version__)
+# 1.3.0
 ```
 
 ## SeriesとDataFrameとChunkedArrayの演算
@@ -63,10 +79,10 @@ import pandas as pd
 
 |演算名|vs number|
 |---|---|
-|add| `1.add(s)` \|\| `s + 1` |
-|sub| `1.sub(s)` \|\| `s - 1` |
-|div| `1.div(s)` \|\| `s / 1` |
-|mul| `1.mul(s)` \|\| `s * 1` |
+|add| `s + 1` |
+|sub| `s - 1` |
+|div| `s / 1` |
+|mul| `s * 1` |
 
 </div></details>
 
@@ -172,6 +188,21 @@ default featureのtemporalがあれば、時間のパースもできます。
 <div>
 </div></details>
 
+## Seriesの作成
+
+nameは任意。
+
+```python
+s = pd.Series([1, 2, 3], name="s")
+```
+
+`new`を使う場合は名前指定が必須です。`collect`のときは空文字列が名前になります。
+
+```rust
+let s = Series::new("s", [1, 2, 3]);
+let t: Series = [1, 2, 3].iter().collect();
+```
+
 ## DataFrameの作成
 
 ```python
@@ -186,6 +217,7 @@ df = pd.DataFrame({
 マクロが便利
 
 ```rust
+let s = 
 let mut df = df!("A" => &["a", "b", "a"],
              "B" => &[1, 3, 5],
              "C" => &[10, 11, 12],
@@ -246,48 +278,31 @@ df.select(("B", "A"))?;
 
 ```python
 df["E"] = df["B"] * 2
-# or
-df["E"] = df["B"].map(lambda x: x * 2)
-# or
-df.assign(E = lambda df: df.B * 2)
+df["F"] = df["B"].map(lambda x: x * 2)
+df = df.assign(G = lambda df: df.B * 2)
 ```
 
-polarsのcolumの追加は`add_column`関数で行える。  
+polarsのcolumの追加は`with_column`関数や`replace_or_add`関数で行える。  
 assignみたいないい感じの関数が見つからなかった。四則演算や簡単な演算はSeriesにして計算すればいける。`to_owned()`二回やってるの解消できる気がするけどできなかった。  
 無名関数を使いたい際には、一端`ChunkedArray`に変換してからapplyやmapを使う。`Series`は型を持たないが、`ChunkedArray`は型があるので演算ができる。  
 `DataFrame`構造体には`apply`が存在しているが、`&mut self`なので、本体が変わってしまう。なので`select`か`clone`してからみたいな処理になるけどどっちが早いのだろうか。
 
 ```rust
-df.add_column(
-    Series::new("E", &[2, 2, 2])
-)?;
+df.with_column(df.column("B").unwrap()
+                .i32().unwrap()
+                .apply(|x| x * 2)
+                .into_series()
+                .rename("E")
+                .to_owned());
+df.with_column(Series::new("F", &[2, 6, 10]));
+df.with_column(df.select("B").unwrap()
+                 .rename("B", "G").unwrap()
+                 .apply("G", |x| x * 2).unwrap()
+                 .column("G").unwrap()
+                 .to_owned());
 
-df.add_column(
-    df.column("B")?
-    .to_owned()
-    .rename("E")
-    .to_owned() * 2)?;
-// or
-   df.add_column(df.column("B")?.i32()?
-    .apply(|x| x * 2 )
-    .into_series()
-    .rename("E")
-    .to_owned())?;
-// or
-df.add_column(df.clone() // or df.select("B")
-    .rename("B", "E")?
-    .apply("E", |x| x * 2)?
-    .column("E")?
-    .to_owned())?;
-```
-
-また、新しいDataFrameを作りたければ`with_column`を使う。中身の書き方は`add_column`と同じ。
-
-```rust
-let new_df = df.with_column(df.column("B")?.i32()?
-    .apply(|x| x * 2 )
-    .into_series()
-    .rename("E").to_owned())?;
+df.with_column(df.column("B").unwrap().to_owned().rename("H").to_owned() * 2);
+df.replace_or_add("I", Series::new("I", &[2, 6, 10])).unwrap();
 ```
 
 ## 条件による行選択
@@ -295,18 +310,18 @@ let new_df = df.with_column(df.column("B")?.i32()?
 ### 単独条件
 
 ```python
-df.loc[:, df["B"] <= 4]
+df.loc[df["B"] <= 4]
 df.query("B <= 4")
 ```
 
 ```rust
-df.filter(&df.column(B)?.lt_eq(4))?;
+df.filter(&df.column("B")?.lt_eq(4))?;
 ```
 
 ### 複数条件
 
 ```python
-df.loc[:, (df["B"] == 1) | (df["C"] == 12)]
+df.loc[(df["B"] == 1) | (df["C"] == 12)]
 df.query("B == 1 | C == 12")
 ```
 
@@ -322,7 +337,7 @@ df.filter(&(
 
 ```python
 l = [1, 3]
-df.query("B in l")
+df.query("B in @l")
 ```
 
 たぶんChunkedArrayに変換してやるしかない、と思う。applyはSelfを返すので、`ChunkedArray<Int32Type>`から`ChunkedArray<BooleanType>`に変換はできない。なので、mapを使った後collectする必要がある。
@@ -337,10 +352,198 @@ df.filter(&(
 ))?;
 ```
 
+## GroupBy
+
+Groupby用にデータフレームを準備する。
+
+```python
+dates = [
+"2020-08-21",
+"2020-08-21",
+"2020-08-22",
+"2020-08-23",
+"2020-08-22",
+]
+
+temp = [20, 10, 7, 9, 1]
+rain = [0.2, 0.1, 0.3, 0.1, 0.01]
+
+d = dict(
+    date=dates,
+    temp=temp,
+    rain=rain
+)
+
+df = pd.DataFrame.from_dict(d)
+```
+
+```rust
+// docs example
+
+let dates = &[
+"2020-08-21",
+"2020-08-21",
+"2020-08-22",
+"2020-08-23",
+"2020-08-22",
+];
+// date format
+let fmt = "%Y-%m-%d";
+// create date series
+let s0 = Date32Chunked::parse_from_str_slice("date", dates, fmt)
+        .into_series();
+// create temperature series
+let s1 = Series::new("temp", [20, 10, 7, 9, 1].as_ref());
+// create rain series
+let s2 = Series::new("rain", [0.2, 0.1, 0.3, 0.1, 0.01].as_ref());
+// create a new DataFrame
+let df = DataFrame::new(vec![s0, s1, s2]).unwrap();
+println!("{:?}", df);
+
+// shape: (5, 3)
+// +--------------+------+------+
+// | date         | temp | rain |
+// | ---          | ---  | ---  |
+// | date32(days) | i32  | f64  |
+// +==============+======+======+
+// | 2020-08-21   | 20   | 0.2  |
+// +--------------+------+------+
+// | 2020-08-21   | 10   | 0.1  |
+// +--------------+------+------+
+// | 2020-08-22   | 7    | 0.3  |
+// +--------------+------+------+
+// | 2020-08-23   | 9    | 0.1  |
+// +--------------+------+------+
+// | 2020-08-22   | 1    | 0.01 |
+// +--------------+------+------+
+```
+
+### build-inの演算
+
+polarsでは
+
+- count
+- first
+- last
+- sum
+- min
+- max
+- mean
+- median
+- var
+- std
+- count
+- quantile
+- n_unique
+
+ができる。使い方は
+
+1. 特定の列でGroupby
+2. 演算したい列を指定 (指定なしなら全部)
+3. 演算
+
+#### 単一の演算
+
+```python
+df.groupby("date").var()
+df.groupby("date")[["temp"]].sum()
+```
+
+```rust
+df.groupby("date").unwrap().var();
+df.groupby("date").unwrap().select("temp").sum();
+```
+
+#### 複数の演算
+
+```python
+import numpy as np
+df.groupby("date").agg({"temp": [np.mean, np.var], "rain": [np.std]})
+```
+
+```rust
+df.groupby("date").unwrap()
+    .agg(&[("temp", &["sum", "min"]), ("rain", &["count", "first"])])
+```
+
+### 任意の演算
+
+```python
+df.groupby("date").apply(lambda x: print(x))
+```
+
+applyの返り値は`Result<DataFrame>`である必要がある。
+
+```rust
+df.groupby("date").unwrap()
+    .apply(|x| { println!("{:?}", x); Ok(x)});
+```
+
+## hstack, vstack (concat)
+
+`pandas`の`concat`。pandasの`stack`とは機能が違うので注意が必要。pandasは合わない行があればNaNで埋めるがpolarsはエラーする。
+
+データフレームを準備する。
+
+```python
+df1 = pd.DataFrame({"A": [1, 2, 3], "B": [2, 3, 4]})
+df1_t = pd.DataFrame({"A": [4, 5, 6], "B": [5, 6, 7]})
+df2 = pd.DataFrame({"C": ["a", "b", "c"], "D": [0.1, 0.2, 0.3]})
+s1 = pd.Series([10, 11, 12], name="s1")
+s2 = pd.Series(["ABC", "NMK", "XYZ"], name="s2")
+```
+
+```rust
+let df1 = df!(
+    "A" => &[1, 2, 3],
+    "B" => &[2, 3, 4]
+).unwrap();
+
+let df1_t = df!(
+    "A" => &[4, 5, 6],
+    "B" => &[5, 6, 7]
+).unwrap();
+
+
+let df2 = df!(
+    "C" => &["a", "b", "c"],
+    "D" => &[0.1, 0.2, 0.3]
+).unwrap();
+
+let s1 = Series::new("S1", [10, 11, 12]);
+let s2 = Series::new("S2", ["ABC", "NMK", "XYZ"]);
+```
+
+### hstack
+
+```python
+pd.concat([df1, s1, s2], axis=1)
+pd.concat([df1, df2], axis=1)
+```
+
+```rust
+df1.hstack(&[s1, s2])
+// 無理やりデータフレーム同士をしようと思えばできる。
+let s_vec: Vec<Series> = df2.iter().map(|s| s.clone()).collect();
+df1.hstack(&s_vec)
+```
+
+### vstack
+
+```python
+pd.concat([df1, df2]) # 列名が違うところはNaNで埋められる。
+pd.concat([df1, df1_t])
+```
+
+```rust
+df1.vstack(&df2) // error
+df1.vstack(&df1_t)
+```
+
 ## 重複行の抽出
 
 ```python
-df.loc[df.is_duplicates()]
+df.loc[df.duplicated()]
 ```
 
 ```rust
@@ -362,11 +565,13 @@ df.drop_duplicates(true, None)? // maintain_order, subset;
 ## numpy / ndarrayへの変換
 
 ```python
-df.values()
+df.values
 ```
 
+型を指定する必要があります。
+
 ```rust
-df.to_ndarray()?;
+df.to_ndarray<T>()?;
 ```
 
 ## read csv
@@ -407,10 +612,8 @@ CsvWriter::new(&mut f)
 
 ## TODO
 
-- [ ] groupby
-- [ ] pyvot
+- [ ] pivot
 - [ ] melt
-- [ ] vstack
 - [ ] join系
 - [ ] fillna系
 - [ ] sample_n

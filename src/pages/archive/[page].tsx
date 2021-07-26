@@ -5,7 +5,7 @@ import { NextSeo } from "next-seo";
 import Grid from "@material-ui/core/Grid";
 
 // custom components
-import ListLayout from "@components/ListLayout";
+import ListLayout from "@components/DefaultLayout";
 import BlogPostCard from "@components/BlogPostCard";
 
 import { getAllPosts } from "@libs/contentLoader";
@@ -29,7 +29,10 @@ const ArchivePage = (props) => {
   return (
     <ListLayout>
       <Head>
-        <link rel="canonical" href={`https://illumination-k.dev/archive/${page}c`}></link>
+        <link
+          rel="canonical"
+          href={`https://illumination-k.dev/archive/${page}c`}
+        ></link>
       </Head>
       <NextSeo
         title="illumination-dev Blog: Archive"

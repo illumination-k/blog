@@ -1,21 +1,12 @@
 import React from "react";
-import Link from "next/link";
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 
 import Drawer from "@material-ui/core/Drawer";
 import Toolbar from "@material-ui/core/Toolbar";
 
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-
-import Typography from "@material-ui/core/Typography";
-
-import HomeIcon from "@material-ui/icons/Home";
-import NavigateNextIcon from "@material-ui/icons/NavigateNext";
-
 import AmpSearchForm from "@components/amp/AmpSearchForm";
 import Ofuse from "@components/Ofuse";
+import Sitemap from "@components/Drawer/Sitemap";
 
 const drawerWidth = 240;
 
@@ -59,35 +50,7 @@ const ClippedDrawer = ({ listitems }) => {
       >
         <Toolbar />
         <div className={classes.drawerContainer}>
-          <Typography variant="h2" style={{ fontSize: "1.7em" }}>
-            Site Map
-          </Typography>
-          <List>
-            <ListItem button>
-              <ListItemIcon>
-                <HomeIcon />
-              </ListItemIcon>
-              <Link href={"/"}>
-                <a>Top</a>
-              </Link>
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <NavigateNextIcon />
-              </ListItemIcon>
-              <Link href={"/categories"}>
-                <a>Categories</a>
-              </Link>
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <NavigateNextIcon />
-              </ListItemIcon>
-              <Link href={"/archive/1"}>
-                <a>Archive</a>
-              </Link>
-            </ListItem>
-          </List>
+          <Sitemap />
           <AmpSearchForm />
           {listitems}
           <br></br>

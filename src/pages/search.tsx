@@ -1,6 +1,6 @@
 import { NextSeo } from "next-seo";
 
-import Layout from "@components/ListLayout";
+import Layout from "@components/DefaultLayout";
 import BlogPostCard from "@components/BlogPostCard";
 import Grid from "@material-ui/core/Grid";
 

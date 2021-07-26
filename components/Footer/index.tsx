@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@components/Link";
 import Copyright from "./Copyright";
 
 const Footer = () => {

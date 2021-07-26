@@ -1,0 +1,104 @@
+handlename: illumination-k
+
+email: illumination.k.27@gmail.com
+birthday: 1994/08/27
+sex: male
+place:
+  en: "Kyoto, Japan"
+  ja: "京都府"
+
+basicInfomation:
+  en:
+    name: Shogo Kawamura
+  ja:
+    name: 川村 昇吾
+
+github:
+  name: illumination-k
+  url: https://github.com/illumination-k
+
+skills:
+  programingLanguages:
+    - Python
+    - Rust
+    - JavaScript
+    - R
+    - SQL
+    - HTML
+    - CSS
+
+  frameworks:
+    - Django
+    - React
+    - Next.js
+
+  database:
+    - MySQL
+    - SQLite3
+    - MongoDB
+    - Redis
+
+  bioinfomatics:
+    - RNA-seq
+    - Chip-seq
+    - ATAC-seq
+    - miRNA-seq
+    - single cell RNA-seq
+    - Variant Calling
+    - htslib
+    - Phylogeny
+
+education:
+  en:
+    - name: Doctor of Biostudy, Kyoto University, Kyoto
+      date: 2020/04 - 2023/03 expected
+    - name: Master of Biostudy, Kyoto University, Kyoto 
+      date: 2018/04 - 2020/03
+    - name: Bachelor of Agriculture, Kyoto University, Kyoto 
+      date: 2014/04 - 2018/03
+  ja:
+    - name: 京都大学農学部応用生命科学科
+      date: 2018年卒業
+    - name: 京都大学大学院生命科学研究科統合生命科学専攻博士前期課程
+      date: 2020修了
+    - name: 京都大学大学院生命科学研究科統合生命科学専攻博士後期課程
+      date: 2023修了見込み
+
+careers:
+  en:
+    - name: JSPS Research Fellowship for Young Scientists (DC2)
+      type: fixed-term
+      period: 2021/04 - 2023/03
+      title: Elucidation of the gibberellin system in land plants
+    - name: Preferred Networks
+      type: internship
+      period: 2019/08 - 2019/09 (6 weeks)
+      title: Carcinoma Identification by Machine Learning
+    - name: Albert
+      type: internship
+      period: 2019/02 (2 weeks)
+      title: Identifying Outlier Images Based on Metrics Learning
+  ja:
+    - name: Albert
+      type: internship
+      period: 2019/02 (2 weeks)
+      title: Metrics Learningを用いた画像の異常判別
+    - name: Preferred Networks
+      type: internship
+      period: 2019/08 - 2019/09 (6 weeks)
+      title: 機械学習を用いた癌腫判別
+    - name: 日本学術振興会特別研究員DC2
+      type: fixed-term
+      period: 2021/04 - 2023/03
+      title: 陸上植物のジベレリンシステムの解明
+    
+
+quantifications:
+  en:
+    - Fundamental Information Technology Engineer Examination (2018/12)
+    - JSBi Certified Bioinformatics Engineer (2019/12)
+  ja:
+    - 普通自動車免許 2016/03
+    - 基本情報技術者試験 2018/12 合格
+    - バイオインフォマティクス技術者認定試験 2019/12 合格
+

@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Head from "next/head";
 import { NextSeo } from "next-seo";
-import Layout from "@components/ListLayout";
+import Layout from "@components/DefaultLayout";
 
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";

@@ -5,12 +5,10 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 import HomeIcon from "@material-ui/icons/Home";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import GitHubIcon from "@material-ui/icons/GitHub";
 import Container from "@material-ui/core/Container";
 
 import Link from "@components/Link";
-import AmpAvator from "./amp/AmpAvator";
+import AmpAvator from "@components/amp/AmpAvator";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -39,36 +37,15 @@ const useStyles = makeStyles((theme: Theme) =>
         display: "block",
       },
     },
-    icons: {
-      width: theme.spacing(3),
-      height: theme.spacing(3),
-      marginLeft: "auto",
-    },
   })
 );
 
 const IconButtons = () => {
-  const classes = useStyles();
   return (
     <>
-      <IconButton
-        href="https://twitter.com/IlluminationK"
-        color="inherit"
-        aria-label="mytwitter"
-        edge="end"
-      >
-        <TwitterIcon
-          style={{ color: "deepskyblue" }}
-          className={classes.icons}
-        />
-      </IconButton>
-      <IconButton
-        href="https://github.com/illumination-k"
-        aria-label="mygithub"
-        edge="end"
-      >
-        <GitHubIcon style={{ color: "white" }} className={classes.icons} />
-      </IconButton>
+      <Link href="/about">
+        <Typography style={{ color: "white" }}>About</Typography>
+      </Link>
       <IconButton href="/about" aria-label="about" edge="end">
         <AmpAvator
           width="27"

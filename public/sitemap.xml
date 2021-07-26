@@ -16,6 +16,11 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/about/resume</loc>
+		<lastmod>2021-07-26</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/about</loc>
 		<lastmod>2021-07-26</lastmod>
 	</url>
@@ -42,6 +47,11 @@
 
 	<url>
 		<loc>https://illumination-k.dev/archive/5</loc>
+		<lastmod>2021-07-26</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/archive</loc>
 		<lastmod>2021-07-26</lastmod>
 	</url>
 
@@ -161,11 +171,6 @@
 	</url>
 
 	<url>
-		<loc>https://illumination-k.dev/posts/atcoder/rust_memo</loc>
-		<lastmod>2021-07-26</lastmod>
-	</url>
-
-	<url>
 		<loc>https://illumination-k.dev/posts/backend/fastapi_sqlarchemy_heroku</loc>
 		<lastmod>2021-07-26</lastmod>
 	</url>
@@ -237,6 +242,11 @@
 
 	<url>
 		<loc>https://illumination-k.dev/posts/frontend/codeblock_langname</loc>
+		<lastmod>2021-07-26</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/frontend/javascript_random</loc>
 		<lastmod>2021-07-26</lastmod>
 	</url>
 
@@ -326,12 +336,27 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/rust/actix_web_diesel</loc>
+		<lastmod>2021-07-26</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/rust/cmfmt</loc>
+		<lastmod>2021-07-26</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/rust/github_actions_release_cross</loc>
 		<lastmod>2021-07-26</lastmod>
 	</url>
 
 	<url>
 		<loc>https://illumination-k.dev/posts/rust/polars_pandas</loc>
+		<lastmod>2021-07-26</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/rust/rust_tips</loc>
 		<lastmod>2021-07-26</lastmod>
 	</url>
 

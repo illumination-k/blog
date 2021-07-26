@@ -7,17 +7,17 @@ const path = require("path");
 module.exports = extractHeaderAndMeta;
 
 function makeImportValue(component, path) {
-  return `import ${component} from "${path}"`
+  return `import ${component} from "${path}"`;
 }
 
 function makeImportsNode(component, path) {
   const value = makeImportValue(component, path);
   const node = {
     type: "import",
-    value: value
-  }
+    value: value,
+  };
 
-  return node
+  return node;
 }
 
 function getLayout(meta_obj) {
@@ -34,19 +34,19 @@ function getLayout(meta_obj) {
     value: import_value,
   };
 
-  return {import_layout: import_layout, component: component}
+  return { import_layout: import_layout, component: component };
 }
 
 // importしたい他のコンポーネントなどがあれば入れる
 function getImports(meta_obj) {
-  let nodes = []
+  let nodes = [];
   if ("import" in meta_obj) {
-    nodes = meta_obj["import"].map((obj) => (
+    nodes = meta_obj["import"].map((obj) =>
       makeImportsNode(obj["component"], obj["path"])
-    ))
+    );
   }
 
-  return nodes
+  return nodes;
 }
 
 function extractHeaderAndMeta(options) {
@@ -69,14 +69,15 @@ function extractHeaderAndMeta(options) {
         post.data.description == meta_obj.description
     );
 
-    const { update, published, id, category } = post[0];
+    if (post[0]) {
+      const { update, published, id, category } = post[0];
+      meta_obj["published"] = published;
+      meta_obj["update"] = update;
 
-    meta_obj["published"] = published;
-    meta_obj["update"] = update;
-
-    meta_obj["url"] = `/posts/${category}/${id}`;
-    meta_obj["id"] = id;
-    meta_obj["category"] = category;
+      meta_obj["url"] = `/posts/${category}/${id}`;
+      meta_obj["id"] = id;
+      meta_obj["category"] = category;
+    }
 
     const headings = ast.children
       .filter((t) => t.type === "heading")
@@ -100,9 +101,8 @@ function extractHeaderAndMeta(options) {
       value: meta_value,
     };
 
-
     // import layout
-    const {import_layout, component} = getLayout(meta_obj);
+    const { import_layout, component } = getLayout(meta_obj);
 
     // import component
     const import_nodes = getImports(meta_obj);
@@ -124,6 +124,8 @@ function extractHeaderAndMeta(options) {
     ast.children.unshift(meta);
     ast.children.unshift(import_layout);
 
-    import_nodes.forEach((n) => {ast.children.unshift(n)})
+    import_nodes.forEach((n) => {
+      ast.children.unshift(n);
+    });
   }
 }

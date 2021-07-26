@@ -7,7 +7,6 @@ import glob from "glob";
 //@ts-ignore
 import matter from "gray-matter";
 
-
 const POSTDIRPATH = path.join(process.cwd(), "src", "pages", "posts");
 
 export async function getFilePath(filename, categoryId) {
@@ -58,8 +57,8 @@ export async function getCategories() {
   return categories;
 }
 
-export async function getAllPosts() {
-  const posts = await glob.sync(path.join(POSTDIRPATH, "**", "*.md"));
+export async function getAllPosts(rootPath: string = POSTDIRPATH) {
+  const posts = await glob.sync(path.join(rootPath, "**", "*.md"));
   return posts;
 }
 
@@ -81,7 +80,7 @@ export async function getMeta(filepath: string) {
   const meta = Object.assign(raw.data, {
     update: update,
     published: published,
-    category: category
+    category: category,
   });
 
   return meta;

@@ -72,8 +72,10 @@ const BlogPostLayout = ({ meta, children }) => {
     </Card>
   );
 
-  // category
+  // category and id for recommend posts
   const category = meta.category;
+  const id = meta.id;
+
   // date settings
   const published = get_formatted_date(meta.published);
   const update = get_formatted_date(meta.update);
@@ -144,7 +146,7 @@ const BlogPostLayout = ({ meta, children }) => {
             width="auto"
             height="200"
             layout="fixed-height"
-            src={`/api/recommend?category=${category}`}
+            src={`/api/recommend?category=${category}&id=${id}`}
             items="."
           >
             {/* @ts-ignore */}

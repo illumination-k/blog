@@ -1,4 +1,5 @@
 const visit = require("unist-util-visit");
+const utils = require("./utility");
 
 module.exports = toMathml;
 

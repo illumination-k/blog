@@ -12,6 +12,7 @@ import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 
 import AmpSearchForm from "@components/amp/AmpSearchForm";
 import AmpFab from "./AmpFab";
+import Sitemap from "@components/Drawer/Sitemap";
 
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -51,35 +52,7 @@ const AmpSidebar = ({ listitems }) => {
         <div style={{ padding: "1rem" }}>
           <Toolbar />
           <AmpSearchForm />
-          <Typography variant="h2" style={{ fontSize: "1.7em" }}>
-            Site Map
-          </Typography>
-          <List>
-            <ListItem button>
-              <ListItemIcon>
-                <HomeIcon />
-              </ListItemIcon>
-              <Link href={"/"}>
-                <a>Top</a>
-              </Link>
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <NavigateNextIcon />
-              </ListItemIcon>
-              <Link href={"/categories"}>
-                <a>Categories</a>
-              </Link>
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <NavigateNextIcon />
-              </ListItemIcon>
-              <Link href={"/archive/1"}>
-                <a>Archive</a>
-              </Link>
-            </ListItem>
-          </List>
+          <Sitemap />
           <Ofuse />
           {listitems}
         </div>

@@ -4,7 +4,7 @@ import { NextSeo } from "next-seo";
 import Grid from "@material-ui/core/Grid";
 
 // custom components
-import Layout from "@components/ListLayout";
+import Layout from "@components/DefaultLayout";
 import BlogPostCard from "@components/BlogPostCard";
 
 import { getCategories, getFileNames } from "@libs/contentLoader";

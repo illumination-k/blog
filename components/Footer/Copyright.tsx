@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 export default function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © illumination-k "}
+      {"Copyright © illumination-k 2020-"}
       {new Date().getFullYear()}
       {"."}
     </Typography>
