@@ -42,7 +42,7 @@ export async function getServerSideProps(ctx) {
   const { Document } = require("flexsearch");
 
   function newIndex() {
-    const index = new Document({
+    const config = {
       tokenize: function (str) {
         return str.split(" ");
       },
@@ -57,7 +57,9 @@ export async function getServerSideProps(ctx) {
           "published",
         ],
       },
-    });
+    };
+
+    const index = new Document(config);
 
     return index;
   }
