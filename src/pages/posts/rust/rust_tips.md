@@ -35,6 +35,7 @@ let cumsum = std::iter::once(&0).chain(&x).cumsum().collect::<Vec<usize>>();
 assert_eq!(cumsum, vec![0, 1, 3, 6])
 ```
 
+
 ## std::vecのbinary_search
 
 普通に便利なんだけど、同じ値が含まれていた場合、matchそのものは値全部にできるのだが、返ってくる値は最大のindexを返す。なので、lower_boundがしたいときは[superslice](https://docs.rs/superslice/1.0.0/superslice/)を使ったほうがよさそう。もしくは自分で書くか。
