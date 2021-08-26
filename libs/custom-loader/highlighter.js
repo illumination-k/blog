@@ -46,10 +46,12 @@ refractor.register(require("refractor/lang/swift.js"));
 refractor.register(require("refractor/lang/sql.js"));
 refractor.register(require("refractor/lang/wasm.js"));
 refractor.register(require("refractor/lang/yaml.js"));
+refractor.register(require("refractor/lang/nim.js"));
 refractor.register(require("refractor/lang/powershell"));
 refractor.register(require("refractor/lang/json"));
 refractor.register(require("refractor/lang/graphql"));
 refractor.register(require("refractor/lang/toml"));
+
 
 function highlighter() {
   return (ast) => {
