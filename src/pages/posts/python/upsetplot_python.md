@@ -105,7 +105,7 @@ plot(examples, sort_by="cardinality", show_counts="%d")
 plt.show()
 ```
 
-![upsetplot_basic_orientation](/public/images/upsetplot/upsetplot_basic_orientation.png)
+![upsetplot_basic_orientation](/images/upsetplot/upsetplot_basic_orientation.png)
 
 ![upsetplot_basic_sort](/images/upsetplot/upsetplot_basic_sort.png)
 

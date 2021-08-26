@@ -30,12 +30,15 @@ function toAmpImg() {
   function transformer(ast) {
     visit(ast, "image", visitor);
     function visitor(node, index, parent) {
-      const url = node.url;
+      let url = node.url;
       const alt = node.alt;
       const position = node.position;
       let path = url;
 
       if (url.startsWith("/")) {
+        if (url.startsWith("/public")) {
+          url = url.replace("/public", "")
+        }
         path = p.join(process.cwd(), "public", url);
         const dimensions = sizeOf(path);
         const value = makeValue(url, alt, dimensions);
