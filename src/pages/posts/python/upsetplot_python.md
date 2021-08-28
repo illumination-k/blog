@@ -15,7 +15,7 @@ Rでの実装例は[こちらのサイト](https://stats.biopapyrus.jp/r/graph/u
 
 まず、ベン図とUpset Plotが比較されている図を見てみます。
 
-![upsetplot_venn](/images/upsetplot/upsetplot_venn.gif)
+![md={6}:upsetplot_venn](/images/upsetplot/upsetplot_venn.gif)
 図1. venn図とupsetplot(Lex et al., 2014 Fig. 4)
 
 3つくらいだと一長一短という感じです。集合の量的関係を見る文にはUpset Plotのほうが向いていそうです。
@@ -27,7 +27,7 @@ Rでの実装例は[こちらのサイト](https://stats.biopapyrus.jp/r/graph/u
 
 また、集合間の量的関係を表すため、集合に属する数によってソートをかけるといったことも可能です。もちろん、拡張したデータに対してソートをすることもできます。
 
-![upsetplot_sort](/images/upsetplot/upsetplot_sort.gif)
+![md={8}:upsetplot_sort](/images/upsetplot/upsetplot_sort.gif)
 図3. upsetplotのソート(Lex et al., 2014 Fig. 6)
 
 ## pythonによる実装
@@ -76,7 +76,7 @@ plt.show()
 ```
 
 **出力**
-![venn](/images/upsetplot/venn.png)
+![md={4}:venn](/images/upsetplot/venn.png)
 
 量が歪だと少しわかりにくいかもしれません。
 
@@ -93,7 +93,7 @@ plt.show()
 ```
 
 **出力**
-![upsetplot_basic](/images/upsetplot/upsetplot_basic.png)
+![md={6}:upsetplot_basic](/images/upsetplot/upsetplot_basic.png)
 
 量的関係と集合関係を分離させることで、量的関係の視覚的な理解が容易くなっていると思います。逆に集合関係は少し理解が難しくなっているかもしれません。
 
@@ -105,9 +105,9 @@ plot(examples, sort_by="cardinality", show_counts="%d")
 plt.show()
 ```
 
-![upsetplot_basic_orientation](/images/upsetplot/upsetplot_basic_orientation.png)
+![md={6}:upsetplot_basic_orientation](/images/upsetplot/upsetplot_basic_orientation.png)
 
-![upsetplot_basic_sort](/images/upsetplot/upsetplot_basic_sort.png)
+![md={6}:upsetplot_basic_sort](/images/upsetplot/upsetplot_basic_sort.png)
 
 ### Upset Plotの拡張
 
@@ -152,7 +152,7 @@ upset.plot()
 plt.show()
 ```
 
-![upsetplot_ext_python](/images/upsetplot/upsetplot_ext_python.png)
+![md={6}:upsetplot_ext_python](/images/upsetplot/upsetplot_ext_python.png)
 
 ### カテゴリのリストからUpset Plotを作成する
 
