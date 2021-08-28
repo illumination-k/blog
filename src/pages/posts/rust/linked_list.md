@@ -12,8 +12,8 @@ description: RustでLinkedListを実装してみました。
 |method名|挙動|
 |---|---|
 |`get(i)`|i番目の要素を見る|
-|`set(i, x)`|i番目の要素をxにする|
-|`add(i, x)`|i番目にxを加える|
+|`set(i, x)`|i番目の要素を`x`にする|
+|`add(i, x)`|i番目に`x`を加える|
 |`remove(i)`|i番目の要素を削除する|
 
 の4つのメソッドを実装します。
@@ -22,7 +22,7 @@ description: RustでLinkedListを実装してみました。
 
 ### 構造体の定義
 
-公式は`NonNull`を使っていたので真似しました。`unsafe`使いまくる必要があるので怖いんですけど、公式がこうしていたので(?)。`RefCell`, `Rc`, `Weak`を使うのも良いというのを何件か見かけました。`unsafe`使わない実装もやってみたいですね。あと`PhantomData`なに？ってなってるので勉強します。
+公式は`NonNull`を使っていたので真似しました。`unsafe`使いまくる必要があるので怖いんですけど、公式がこうしていたので`unsafe`を使うことにしました。`RefCell`, `Rc`, `Weak`を使うのも良いというのを何件か見かけました。`unsafe`使わない実装もやってみたいですね。あと`PhantomData`なにってなってるので勉強します。
 
 ```rust
 use std::{marker::PhantomData, ptr::NonNull};
@@ -136,7 +136,7 @@ e.prev -> e -> e.next
 e.prev -> added -> e -> e.next
 ```
 
-のような感じです。この処理は公式では`splice_nodes`というメソッドで実装されているようです。この実装はもうちょっと複雑で、他のリストがあったとして、そのheadとtailのポインタを使うことで
+のような感じです。この処理の公式の実装は`splice_nodes`というメソッドで実装されているようです。この実装はもうちょっと複雑で、他のリストがあったとして、そのheadとtailのポインタを使うことで
 
 ```
 e.prev -> added_1 -> added_2 -> ... -> added_n -> e -> e.next

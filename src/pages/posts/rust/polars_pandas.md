@@ -7,9 +7,9 @@ description: rustにも実はpandas likeなcrateがあることを知ったの�
 
 rustにも実はpandas likeなcrateがあることを知ったのでpandasとの対応関係をまとめてた。最善である保証はありません。またVersionごとに破壊的変更がそこそこあるので、Versionに注意する必要があります。
 
-これを使えば大きなファイルを素早く処理することができそうですが、さすがにrustなのでお手軽感はそんなになかった。
+これを使えば大きなファイルを素早く処理できる可能性がありますが、さすがにrustなのでお手軽感はあまりありませんでした。
 
-[excvr](https://github.com/google/evcxr)を使うことでJupyter上で動かせます。Jupyter labを使うとPythonとRustの比較が非常にやりやすくて良い。
+[excvr](https://github.com/google/evcxr)を使えばJupyter上で動かせます。Jupyter labを使うとPythonとRustの比較が非常にやりやすくて良かったです。
 
 ![jupyter-image](/images/polars_pandas/jupyter_image.PNG)
 
@@ -25,11 +25,11 @@ rustにも実はpandas likeなcrateがあることを知ったのでpandasとの
 
 ### ChunkedArray
 
-多分特徴的なのが、`Series`から変換できる`ChunkedArray`という構造体を持つ点。`ChunkedArray`は型があるので様々な演算ができる。また、条件をつかった列選択を行う際には`ChunckedArray<BooleanType>`を使う必要がある。
+多分特徴的なのが、`Series`から変換できる`ChunkedArray`という構造体を持つ点。`ChunkedArray`は型があるので様々な演算ができる。また、条件をつかった列選択する際には`ChunckedArray<BooleanType>`を使う必要がある。
 
 ## Install
 
-色々featureもあって、日付変換やndarrayへの変換、ランダムサンプリングなどに対応している。あとはjsonのserdeやApache Parquet formatとかのIOとか。今回はndarrayとランダムサンプリングを試してみる。あとエラーハンドリングにanyhowを入れておく。
+色々featureもあって、日付変換やndarrayへの変換、ランダムサンプリングなどに対応している。あとはjsonのserdeやApache Parquet formatとかのI/Oとか。今回はndarrayとランダムサンプリングを試してみる。あとエラーハンドリングにanyhowを入れておく。
 
 ```toml:title=Cargo.toml
 [dependencies]
@@ -63,7 +63,7 @@ fn main() -> Result<()> {
 }
 ```
 
-python側も下記のimportを行っている前提です。
+Python側も下記のimportを行っている前提です。
 
 ```python
 import pandas as pd
@@ -73,7 +73,7 @@ print(pd.__version__)
 
 ## SeriesとDataFrameとChunkedArrayの演算
 
-非常に長いので畳んである。ChunkedArrayは大抵の演算ができる。Seriesの比較は条件による行選択の際に必要になってくるので見ておくとよいと思い気がする。
+非常に長いので畳んである。ChunkedArrayは大抵の演算ができる。Seriesの比較は条件による行選択の際に必要なので見ておくとよいです。
 
 <details><summary>numberとSeries</summary><div>
 
@@ -129,12 +129,12 @@ Series同士、Seriesとnumberを比較できる
 
 |演算|vs Series|vs number|
 |---|---|---|
-|=|`s1.eq(s2)`|`s1.eq(1)`|
-|!=|`s1.neq(s2)`|`s1.neq(1)`|
-|\>|`s1.gt(s2)`|`s1.gt(1)`|
-|=\>|`s1.gt_eq(s2)`|`s1.gt_eq(1)`|
-|\<|`s1.lt(s2)`|`s1.lt(1)`|
-|\<=|`s1.lt_eq(s2)`|`s1.lt_eq(1)`|
+|`=`|`s1.eq(s2)`|`s1.eq(1)`|
+|`!=`|`s1.neq(s2)`|`s1.neq(1)`|
+|`>`|`s1.gt(s2)`|`s1.gt(1)`|
+|`=>`|`s1.gt_eq(s2)`|`s1.gt_eq(1)`|
+|`<`|`s1.lt(s2)`|`s1.lt(1)`|
+|`<=`|`s1.lt_eq(s2)`|`s1.lt_eq(1)`|
 <div>
 </div></details>
 
@@ -248,7 +248,7 @@ df.column("A")?;
 
 ## 条件に応じた列選択
 
-どちらもcolumnsをとってきてfilterなりなんなりをすればよい。多分strメソッドを使った方がpandasっぽい？ rustは`get_columns`でcolumnsをもって来れる。もう少し何とかならないかな...
+どちらもcolumnsをとってきてfilterなりなんなりをすればよい。多分strメソッドを使うのがpandasっぽくて好きです。 Rustは`get_columns`でcolumnsをもって来ることができます。もう少し何とかならないかな...
 
 ```python
 df.loc[:, [c.startswith("A") for c in df.columns]]
@@ -283,7 +283,7 @@ df = df.assign(G = lambda df: df.B * 2)
 ```
 
 polarsのcolumの追加は`with_column`関数や`replace_or_add`関数で行える。  
-assignみたいないい感じの関数が見つからなかった。四則演算や簡単な演算はSeriesにして計算すればいける。`to_owned()`二回やってるの解消できる気がするけどできなかった。  
+assignみたいないい感じの関数が見つからなかった。四則演算や簡単な演算はSeriesにして計算すればいける。`to_owned()`2回やってるの解消できる気がするけどできなかった。  
 無名関数を使いたい際には、一端`ChunkedArray`に変換してからapplyやmapを使う。`Series`は型を持たないが、`ChunkedArray`は型があるので演算ができる。  
 `DataFrame`構造体には`apply`が存在しているが、`&mut self`なので、本体が変わってしまう。なので`select`か`clone`してからみたいな処理になるけどどっちが早いのだろうか。
 
@@ -340,7 +340,7 @@ l = [1, 3]
 df.query("B in @l")
 ```
 
-たぶんChunkedArrayに変換してやるしかない、と思う。applyはSelfを返すので、`ChunkedArray<Int32Type>`から`ChunkedArray<BooleanType>`に変換はできない。なので、mapを使った後collectする必要がある。
+たぶんChunkedArrayに変換してやる方法しか見つかりませんでした。applyはSelfを返すので、`ChunkedArray<Int32Type>`から`ChunkedArray<BooleanType>`に変換はできない。なので、mapを使った後collectする必要がある。
 
 ```rust
 let v: Vec<i32> = vec![1, 2];
@@ -552,7 +552,7 @@ df.filter(&df.is_duplicated()?)?;
 
 ## 重複行の削除
 
-両方ともsubsetを選ぶことで、同じように特定の列の重複行を削除することができる。
+両方ともsubsetを選ぶことで、同じように特定の列の重複行を削除できる。
 
 ```python
 df.drop_duplicates()
@@ -623,4 +623,4 @@ CsvWriter::new(&mut f)
 
 ## 感想
 
-できることは多い感じがします。Pandasみたいに柔軟に処理する分にはあまり使えなさそうですが、決まりきった処理ならこちらで記述すると生産効率が上がりそうな気がします。
+できることは多い感じがします。pandasみたいに柔軟な処理をする用途では使いにくそうですが、決まりきった処理ならpolarsで記述すると生産効率向上に寄与する可能性があります。
