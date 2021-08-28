@@ -20,17 +20,17 @@ Rでの実装例は[こちらのサイト](https://stats.biopapyrus.jp/r/graph/u
 
 3つくらいだと一長一短という感じです。集合の量的関係を見る文にはUpset Plotのほうが向いていそうです。
 
-また、upsetplotのメリットは、拡張性が高いということです。というのは、集合関係を行で表しているため、その行に別のデータを挿入することが可能です。例えば以下のように拡張できます。
+また、upsetplotのメリットは、拡張性が高いということです。というのは、集合関係を行で表しているため、その行に別のデータを挿入できます。例えば以下のように拡張できます。
 
 ![upsetplot_extensions](/images/upsetplot/upsetplot_extensions.gif)
 図2. upsetplotの拡張性(Lex et al., 2014 Fig. 1)
 
-また、集合間の量的関係を表すため、集合に属する数によってソートをかけるといったことも可能です。もちろん、拡張したデータに対してソートをすることもできます。
+また、集合間の量的関係を表すため、集合に属する数によってソートをかけるといったことも可能です。もちろん、拡張したデータに対してソートできます。
 
 ![md={8}:upsetplot_sort](/images/upsetplot/upsetplot_sort.gif)
 図3. upsetplotのソート(Lex et al., 2014 Fig. 6)
 
-## pythonによる実装
+## Pythonによる実装
 
 ### Install
 
@@ -78,7 +78,7 @@ plt.show()
 **出力**
 ![md={4}:venn](/images/upsetplot/venn.png)
 
-量が歪だと少しわかりにくいかもしれません。
+量が歪だと少しわかりにくいです。
 
 #### Upset Plot
 
@@ -95,7 +95,7 @@ plt.show()
 **出力**
 ![md={6}:upsetplot_basic](/images/upsetplot/upsetplot_basic.png)
 
-量的関係と集合関係を分離させることで、量的関係の視覚的な理解が容易くなっていると思います。逆に集合関係は少し理解が難しくなっているかもしれません。
+量的関係と集合関係を分離させることで、量的関係の視覚的な理解が容易くなっています。逆に集合関係は少し理解が難しくなります。
 
 向きを変えたり、ソートしたりも簡単にできます。
 
@@ -152,11 +152,11 @@ upset.plot()
 plt.show()
 ```
 
-![md={6}:upsetplot_ext_python](/images/upsetplot/upsetplot_ext_python.png)
+![upsetplot_ext_python](/images/upsetplot/upsetplot_ext_python.png)
 
 ### カテゴリのリストからUpset Plotを作成する
 
-実際のデータ(RNA-seqの発現変動遺伝子 etc.,)などでは、カテゴリ列から集合関係を作成する事が多いです。そのため、カテゴリが含まれる集合からUpset Plotを作成する方法につていも記載しておきます。
+実際のデータ(RNA-seqの発現変動遺伝子etc.,)などでは、カテゴリ列から集合関係を作成する事が多いです。そのため、カテゴリが含まれる集合からUpset Plotを作成する方法につていも記載しておきます。
 
 カテゴリの集合をそれぞれ`category_n`として、3つのカテゴリの集合についてUpset Plotを作成します。
 
