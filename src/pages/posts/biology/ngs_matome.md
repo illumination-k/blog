@@ -21,7 +21,7 @@ PCR法は、極微量しかとれないDNAをin vitroで爆発的に増やす手
 4. 1~3を繰り返すことで$2^n$個の同一のDNAを得ます。
 
 
-![md={6}:fig1](https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PCR.svg/500px-PCR.svg.png)
+![md={6}:fig1](/public/images/ngs_matome/500px-PCR.png)
 
 ということで$O(2^n)$のオーダーでDNAを増やすことできます。すごい。
 
