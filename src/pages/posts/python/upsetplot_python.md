@@ -181,11 +181,13 @@ upset_data = upset_data.set_index(list(upset_data.columns))
 upsetplot.plot(upset_data, subset_size="count", show_counts="%d", sort_categories_by=None)
 ```
 
-![upsetplot_category_examples](/images/upsetplot/upsetplot_category_examples.png)
+![md={6}:upsetplot_category_examples](/images/upsetplot/upsetplot_category_examples.png)
 
 慣れてしまえばデータフレーム操作は簡単ですが、最初結構戸惑ったのでメモ代わりに残しておきます。最初にTrueで初期化するのが重要です。
 
 ## Reference
 
 - [upsetplot Documentation](https://buildmedia.readthedocs.org/media/pdf/upsetplot/latest/upsetplot.pdf)
+<!-- textlint-disable -->
 - Alexander Lex, Nils Gehlenborg, Hendrik Strobelt, Romain Vuillemot, Hanspeter Pfister,UpSet: Visual-ization of Intersecting Sets, IEEE Transactions on Visualization and Computer Graphics (InfoVis ‘14), vol.20, no. 12, pp. 1983–1992, 2014. doi: doi.org/10.1109/TVCG.2014.2346248
+<!-- textlint-disable -->
