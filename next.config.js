@@ -52,6 +52,11 @@ module.exports = withMDX({
         destination: "/posts/1",
         permanent: true,
       },
+      {
+        source: "/posts/atcoder/:id",
+        destination: "/posts/algorithm/:id",
+        permanent: true,
+      }
     ];
   },
 

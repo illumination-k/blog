@@ -1,0 +1,18 @@
+{
+  "filters": {
+     "comments": true
+  },
+  "rules": {
+    "preset-ja-spacing": true,
+    "preset-ja-technical-writing": {
+      "max-kanji-continuous-len": {
+        "max": 12
+      },
+      "max-comma": {
+        "max": 10
+      },
+      "ja-no-mixed-period": false
+    },
+    "spellcheck-tech-word": true
+  }
+}

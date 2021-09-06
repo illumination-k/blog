@@ -8,7 +8,7 @@ layout:
 
 ## TL;DR
 
-バイオインフォマティクスをしていて、障壁になることの1つにファイルフォーマットが多すぎる、という問題があると思います。ツールを動かそうとするとこれとこれとこれが必要となって、どうやってこの形式のファイルを作ればいいんだ？ということはよくあります。備忘録を兼ねて、よく使うフォーマットと関連するツールについてまとめておきます。基本的なフォーマットは網羅してると思うんですが、また新しいフォーマットとかに出会えば追記していきます。
+バイオインフォマティクスをしていて、障壁になることの1つにファイルフォーマットが多すぎる、という問題があります。ツールを動かそうとすると出現するフォーマットが多く、どうやってこの形式のファイルを作ればいいんだということはよくあります。備忘録を兼ねて、よく使うフォーマットと関連するツールについてまとめておきます。基本的なフォーマットは網羅してるはずですが、また新しいフォーマットとかに出会えば追記していきます。
 
 ## よく使うファイルフォーマット一覧
 
@@ -22,8 +22,8 @@ layout:
 
 ### fasta
 
-いろんな場面で使いますが多分一番最初に見ることになるファイルフォーマットだと思います。
-`>`で始まるID行と、配列データそのものを保存する行に分かれています。配列行では改行が許されています。配列行ではIUB/IUPACで規定されている塩基配列コードとアミノ酸コードを使用することができます。詳しくは[Wikipedia](https://ja.wikipedia.org/wiki/FASTA)とかを参照してください。
+いろんな場面で使いますが多分一番最初に見ること人が多いファイルフォーマットです。
+`>`で始まるID行と、配列データそのものを保存する行に分かれています。配列行では改行が許されています。配列行ではIUB/IUPACで規定されている塩基配列コードとアミノ酸コードを使用できます。詳しくは[Wikipedia](https://ja.wikipedia.org/wiki/FASTA)とかを参照してください。
 
 #### fasta sample
 
@@ -43,7 +43,7 @@ IENY
 - blastdbの作成
 - マルチプルアラインメントの作成
 - 系統解析
-- bowtie2やSTARなどのマッピングツールのインデックスの作成
+- bowtie2やSTARなどのmapping toolのインデックスの作成
 - bedファイルなどから配列データへのアクセス
 
 などが主な使い道でしょうか。
@@ -61,7 +61,7 @@ IENY
 
 NGS解析で一番最初に作成されるファイルフォーマット。厳密には画像データが一次データですが、多分シーケンサーを持っていてそこからデータを直接扱っていない限りはこれ以前のファイルは見ないんじゃないんでしょうか。
 
-fastqファイルには、NGSで読まれたリードの名前を示す`@`から始まるヘッダ行、配列、配列のクオリティが記載されています。また、配列と配列クオリティを分けるために`+`から始まるヘッダが書かれた行が配列と配列クオリティの間に置かれています。また、fastaフォーマットとは違い、配列、配列クオリティ行内では改行が許されていません。
+fastqファイルには、NGSで読まれたリードの名前を示す`@`から始まるヘッダ行、配列、配列のクオリティが記載されています。また、配列と配列クオリティを分けるために`+`から始まるヘッダ行が配列と配列クオリティの間に置かれています。fastaフォーマットとは違い、配列、配列クオリティ行内では改行が許されていません。
 
 #### fastq sample
 
@@ -90,7 +90,7 @@ $$Q = -10log_{10}p$$
 
 #### マッピング・定量ツール (fastq-> SAM/BAM)
 
-SAM/BAMに変換する際には、以下のようなマッピングツールが使われていることが多いように思えます。RNA-seqの際にはイントロン等を考慮する必要があるので、DNAを読むときとは別に処理が必要になり、専用のマッピングツールを使う必要があります。Bisulfite SequenceなどはDNAですが、処理が特殊なので専用のマッピングツールが必要です。
+SAM/BAMに変換する際には、以下のようなMapping Toolが使われていることが多いように思えます。RNA-seqの際にはイントロン等を考慮する必要があるので、DNAを読むときとは別に処理が必要になり、専用のMapping Toolを使う必要があります。Bisulfite SequenceなどはDNAですが、処理が特殊なので専用のMapping Toolが必要です。
 
 ##### bulk NGS sequence
 
@@ -104,7 +104,7 @@ SAM/BAMに変換する際には、以下のようなマッピングツールが�
 
 その他にリードの分割やダウンサンプリングなどを行いたい場合にはfastaで紹介したような[seqkit](https://bioinf.shenwei.me/seqkit/)などが有用です。マージは`cat`とかでいいです。小ネタとして`gzip`形式のものでもcatでマージできます。
 
-bulkのRNA-seqでは以下のようなツールでSAM/BAMを介さずそのまま発現量テーブルを作成でます。また、これらのツールのほうが精度が高いらしいです。
+bulkのRNA-seqでは以下のようなツールでSAM/BAMを介さずそのまま発現量テーブルを作成でます。また、これらのツールのほうが精度は高いらしいです。
 
 |tool name|description|
 |---|---|
@@ -115,14 +115,14 @@ bulkのRNA-seqでは以下のようなツールでSAM/BAMを介さずそのま�
 
 ##### scRNA-seq
 
-scRNA-seqを扱う場合には、それ専用のツールがまたいろいろありますが、代表的なものとしては以下のようなものがあるかと思います。
+scRNA-seqを扱う場合には、それ専用のツールがまたいろいろありますが、代表的なものとしては以下のようなものがあります。
 
 |tool name|description|
 |---|---|
-|[UMI-tools](https://github.com/CGATOxford/UMI-tools)|もともとはUMIを扱うために作られたツール。正規表現でバーコードを扱うので、基本的になんでも扱える。MappingなどはSTARなど他のツールを使って行う必要がある。drop-seqとかsmart-seqとかのときに使う？|
+|[UMI-tools](https://github.com/CGATOxford/UMI-tools)|もともとはUMIを扱うために作られたツール。正規表現でバーコードを扱うので、基本的になんでも扱える。MappingなどはSTARなど他のツールを使って行う必要がある。drop-seqとかsmart-seqとかのときに使えます。|
 |[kalisto](https://pachterlab.github.io/kallisto/singlecell.html)|bulkのRNA-seq解析でも使うツール。scRNA-seqも扱えるらしい|
 |[Alevin](https://salmon.readthedocs.io/en/latest/alevin.html)|Salmonの開発元が提供しているscRNA-seqのための発現量定量ツール。UMI-Toolsよりはこっちが推奨されている|
-|[STAR-solo](https://f1000research.com/posters/8-1896)|STARの開発元が提供しているscRNA-seqのためのマッピングツール。Cellrangerと同一のアルゴリズムを使っていてCellRangerよりかなり早いらしい。|
+|[STAR-solo](https://f1000research.com/posters/8-1896)|STARの開発元が提供しているscRNA-seqのためのMapping Tool。Cellrangerと同一のアルゴリズムを使っていてCellRangerよりかなり早いらしい。|
 |[cellranger](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger)|10x Genomicsが提供しているツール。基本的に全部やってくれる。|
 
 ##### miRNA-seq
@@ -133,7 +133,7 @@ TCGAとかで扱われているmiRNA-seq解析はまた別の[パイプライン
 
 ### SAM/BAM
 
-マッピングを行ったあとに扱うようになるファイルフォーマット。BAMはSAMをバイナリ化したものでフォーマットとしては同一です。あまりSAMのまま扱うことはなく、BAMに変換されることが多いです。リードのヘッダ、配列、クオリティ、マッピング位置などほぼすべての情報が格納されている。情報が膨大なので、フォーマットの詳細は[マニュアル](https://samtools.github.io/hts-specs/SAMv1.pdf)を読んでほしいです。マニュアル以外の有用そうなリンクをまとめておきます。
+マッピングを行ったあと扱うようになるファイルフォーマットです。BAMはSAMをバイナリ化したものでフォーマットとしては同一です。あまりSAMのまま扱うことはなく、BAMに変換されることが多いです。リードのヘッダ、配列、クオリティ、マッピング位置などほぼすべての情報が格納されている。情報が膨大なので、フォーマットの詳細は[マニュアル](https://samtools.github.io/hts-specs/SAMv1.pdf)を読んでほしいです。マニュアル以外の有用そうなリンクをまとめておきます。
 
 #### SAM sample
 
@@ -171,7 +171,7 @@ duplicate readの除去や、マッピングクオリティによるフィルタ
 
 #### 発現量の定量 (bam -> csv etc.,)
 
-RNA-seqを行った後に行うのは大体発現量の定量かと思います。ツールとしては色々あると思いますが、代表的そうなものをも。cuffdiffなんかは有名ですが使用は推奨されていないようです。
+RNA-seqを行った後に行う代表的な解析は、発現量の定量です。ツールとしては色々ありますが、代表的そうなものを紹介します。cuffdiffなんかは有名ですが使用は推奨されていないようです。
 
 |tool name|description|
 |---|---|
@@ -183,12 +183,12 @@ RNA-seqを行った後に行うのは大体発現量の定量かと思います�
 
 #### 変異の検出 (bam -> vcf)
 
-SAM/BAMフォーマットからVariant Call Format(VCF)に変換するステップと考えてもいいと思います。基本的にはSNVの検出を想定しており、SVなどは考慮していません。よく使われていそうなツールは以下のようなものがあります。
+SAM/BAMフォーマットからVariant Call Format(VCF)に変換するステップと考えてもいいです。基本的にはSNVの検出を想定しており、SVなどは考慮していません。よく使われていそうなツールは以下のようなものがあります。
 
 |tool name|description|
 |---|---|
 |[bcftools](http://samtools.github.io/bcftools/bcftools.html)|mpileupコマンドでSNVの検出ができます。BAQ補正をすることでFPが出にくいらしいです|
-|[freebayes](https://github.com/ekg/freebayes)|使ったことがないのですが、ベイズ推定してるんだと思います。GATKもそうですが...|
+|[freebayes](https://github.com/ekg/freebayes)|使ったことがないのですが、ベイズ推定してるはずです。GATKもそうですが...。
 |[gatk](https://gatk.broadinstitute.org/hc/en-us)|多分一番有名なツールです。非常に処理が煩雑です|
 
 GATKに関する処理について、公式以外で役に立ちそうなリンクを貼っておきます。
@@ -197,7 +197,7 @@ GATKに関する処理について、公式以外で役に立ちそうなリン�
 
 #### ピークのコール (bam -> bed etc.,)
 
-ChIP-seqなどではリードが集中した領域をピークとして扱うことが多いです。この時もBAMから何らかのフォーマットへの変換が行われます。たいていはbedに準ずる形式に変換されます。代表的なツールは以下のようなものがあります。また、転写因子に関するChIPでは狭いピークが、ヒストン修飾などのChIPでは広いピークが見られますが、検出方法が異なるらしく、ツールを使い分ける必要があります。たいていbedかそれに準ずる形式のファイルに変換されます。
+ChIP-seqなどではリードが集中した領域をピークとして扱うことが多いです。この時もBAMから何らかのフォーマットへの変換が行われます。たいていはbedに準ずる形式へと変換されます。代表的なツールは以下のようなものがあります。また、転写因子に関するChIPでは狭いピークが、ヒストン修飾などのChIPでは広いピークが見られます。これらは、検出方法が異なるので、ツールやオプションを使い分ける必要があります。たいていbedかそれに準ずる形式のファイルに変換されます。
 
 |tool name|description|
 |---|---|
@@ -207,7 +207,7 @@ ChIP-seqなどではリードが集中した領域をピークとして扱うこ
 
 #### [htslib](https://github.com/samtools/htslib)
 
-samtoolsの本体です。SAM/BAMフォーマットを扱う際のAPIを提供しています。凝ったことをしたくなると使います。もともとはCで書かれていて、いろんな言語でWrapperが作成されています。個人的に知っているのは以下です。githubへのリンクを貼ります。
+samtoolsの本体です。SAM/BAMフォーマットを扱う際のAPIを提供しています。凝ったことをしたくなると使います。もともとはCで書かれていて、いろんな言語でWrapperが作成されています。個人的に知っているのは以下です。GitHubへのリンクを貼ります。
 
 - [pysam](https://github.com/pysam-developers/pysam)
 - [rust-htslib](https://github.com/rust-bio/rust-htslib)
@@ -225,7 +225,7 @@ samtools fasta input.bam > output.fasta
 
 ##### bam -> fastq
 
-samtoolsとかbedtoolsを使えば変換できます。あまり使うことはない気がします。k-merとか使って機械学習したいときとかにマップされたリードだけ使う、とかでしょうか？
+samtoolsとかbedtoolsを使えば変換できます。あまり使うことはない気がします。k-merとか使って機械学習したいときとかにマップされたリードだけ使う、などの用途が考えられます。
 
 ```bash
 # samtools
@@ -256,7 +256,7 @@ bamCoverage -b input.bam -o output.bedgraph -of bedgraph
 
 ##### bam -> bigwig
 
-deeptoolsの[bamCoverage](https://deeptools.readthedocs.io/en/develop/content/tools/bamCoverage.html)を使います。オプションとかは色々あって、ノーマライズなどもしてくれたりします。ChIPなどの解析の際はRPGC normalizeに対応しているので使うことは多いのではないでしょうか。RNA-seqでもRPKMやCPMに対応しています。TPMにも対応してほしいです。
+deeptoolsの[bamCoverage](https://deeptools.readthedocs.io/en/develop/content/tools/bamCoverage.html)を使います。オプションとかは色々あって、ノーマライズなどもしてくれたりします。ChIPなどの解析の際にも、RPGC normalizeに対応しているので使えます。RNA-seqでもRPKMやCPMに対応しています。TPMにも対応してほしいです。
 
 ```bash
 bamCoverage -b input.bam -o output.bw
@@ -264,7 +264,7 @@ bamCoverage -b input.bam -o output.bw
 
 ### bed
 
-[bedtools](https://bedtools.readthedocs.io/en/latest/)で扱います。pythonなどでは[pybedtools](https://daler.github.io/pybedtools/)のようなライブラリが提供されています。最初の三行(chrom, chromStart, chromEnd)が必須で、その他が自由なフォーマットです。一応ある程度は決まっていて、[UCSCのFAQ](https://genome.ucsc.edu/FAQ/FAQformat.html#format1)では、
+[bedtools](https://bedtools.readthedocs.io/en/latest/)で扱います。Pythonなどでは[pybedtools](https://daler.github.io/pybedtools/)のようなライブラリが提供されています。最初の三行(chrom, chromStart, chromEnd)が必須で、その他が自由なフォーマットです。一応ある程度は決まっていて、[UCSCのFAQ](https://genome.ucsc.edu/FAQ/FAQformat.html#format1)では、
 
 1. chrom: 染色体名
 2. chromStart: スタート位置(0-index)
@@ -303,7 +303,7 @@ Bedの亜種っぽい感じです。ProbabilityやTranscriptomeなど連続性�
 
 ### gff/gtf
 
-遺伝子のアノテーションなどは基本的にこのフォーマットでまとまっていることが多いと思います。GFFにはversion2とversion3があり、微妙にフォーマットが違います。また、GFF/GTFを扱うツールとしては以下のようなものがあります。
+遺伝子のアノテーションなどは基本的にこのフォーマットでまとまっていることが多いです。GFFにはversion2とversion3があり、微妙にフォーマットが違います。また、GFF/GTFを扱うツールとしては以下のようなものがあります。
 
 |tool name|description|
 |---|---|
@@ -379,7 +379,7 @@ bigwigはwigをバイナリ化したものです。UCSC genome browserで可視�
 - [pyvcf](https://pyvcf.readthedocs.io/en/latest/)
 - [vcfR](https://cran.r-project.org/web/packages/vcfR/vignettes/intro_to_vcfR.html)
 
-などが候補かと思います。
+などが候補です。
 
 #### vcf sample
 
@@ -423,7 +423,7 @@ bigwigはwigをバイナリ化したものです。UCSC genome browserで可視�
 
 ### twobit
 
-deeptoolsを使ってGCBiasを補正するときに使いました。他に使ったことはないです。たぶんfastaをビット形式で扱っているので、効率がいいのではないかと思います。UCSCの[ツール群](http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/)にある`faToTwoBit`を使えば作成できます。もう少し詳しい使い方などは[こちらのサイト](http://rnakato.hatenablog.jp/entry/2017/06/05/112755)が詳しいです。
+deeptoolsを使ってGCBiasを補正するときに使いました。他に使ったことはないです。たぶんfastaをビット形式で扱っているので、効率がいいです。UCSCの[ツール群](http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/)にある`faToTwoBit`を使えば作成できます。もう少し詳しい使い方などは[こちらのサイト](http://rnakato.hatenablog.jp/entry/2017/06/05/112755)が詳しいです。
 
 ### mirGFF
 
@@ -443,7 +443,7 @@ GFFに準拠したようなフォーマットでmiRNA系のNGSデータを統一
 - fasta
 - count matrix
 
-また、isomiRsというのはisomiRを考慮した解析を行う[isomiRs](https://www.bioconductor.org/packages/release/bioc/html/isomiRs.html)というR packageで用いられている形式になります。
+また、isomiRsというのはisomiRを考慮した解析する[isomiRs](https://www.bioconductor.org/packages/release/bioc/html/isomiRs.html)というR packageで用いられている形式になります。
 
 ## 最後に
 

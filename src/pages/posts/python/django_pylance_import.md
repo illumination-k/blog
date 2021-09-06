@@ -62,7 +62,7 @@ Pylanceは警告を出さなくなります。補完も効きます。
 
 しかし、いざdjangoを起動させようとすると`ValueError: attempted relative import beyond top-level package`が起こります。
 
-`sys.path`を使うのはありかもしれませんが、毎回書くのは嫌です。
+`sys.path`を使う方法もありますが、毎回書くのは嫌です。
 
 ## 解決策
 

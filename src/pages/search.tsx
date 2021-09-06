@@ -14,6 +14,7 @@ const SearchResult = (props) => {
       description: res.description,
       published: res.published,
       update: res.update,
+      category: res.category,
     };
     const url = `/posts/${res.category}/${res.id}`;
     return (
@@ -38,32 +39,50 @@ const SearchResult = (props) => {
 };
 
 export async function getServerSideProps(ctx) {
-  const FlexSearch = require("flexsearch");
+  const { Document } = require("flexsearch");
+
+  function newIndex() {
+    const config = {
+      tokenize: function (str) {
+        return str.split(" ");
+      },
+      document: {
+        id: "id",
+        field: ["data:words"],
+        store: [
+          "category",
+          "data:title",
+          "data:description",
+          "update",
+          "published",
+        ],
+      },
+    };
+
+    const index = new Document(config);
+
+    return index;
+  }
+
   const query = ctx.query.q;
 
   const { posts } = require("../../cache/data");
 
-  let index = new FlexSearch({
-    tokenize: function (str) {
-      return str.split(" ");
-    },
-    doc: {
-      id: "id",
-      field: ["data:words"],
-    },
-  });
+  let index = newIndex();
 
-  await index.add(posts);
+  for (const post of posts) {
+    await index.add(post);
+  }
 
-  const res = await index.search(query);
-  const meta = res.map((r) => {
+  const res = await index.search(query, { enrich: true });
+  const meta = res[0].result.map((r) => {
     return {
       id: r.id,
-      category: r.category,
-      title: r.data.title,
-      description: r.data.description,
-      update: r.update,
-      published: r.published,
+      category: r.doc.category,
+      title: r.doc.data.title,
+      description: r.doc.data.description,
+      update: r.doc.update,
+      published: r.doc.published,
     };
   });
 
