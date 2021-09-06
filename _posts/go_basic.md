@@ -21,12 +21,12 @@ GO解析は次世代シーケンサーやマイクロアレイの解析におい
 
 1つのGO Termは以下の要素を基本に構成されます。
 
-|Name|Description|Example|
-|---|---|---|
-|Gene Product|アノテーションされている遺伝子産物|UniProtKB:Q920D2 (rat Dhfr)|
-|GO Term|IDと名前(説明)|GO:0004146 (dihydrofolate reductase activity)|
-|Reference|アノテーションの根拠を示す論文||
-|Evidence Code|アノテーションの根拠の種類を示すコード(実験、系統解析 etc.,)|Inferred from Experiment (EXP)|
+| Name          | Description                                                  | Example                                       |
+| ------------- | ------------------------------------------------------------ | --------------------------------------------- |
+| Gene Product  | アノテーションされている遺伝子産物                           | UniProtKB:Q920D2 (rat Dhfr)                   |
+| GO Term       | IDと名前(説明)                                               | GO:0004146 (dihydrofolate reductase activity) |
+| Reference     | アノテーションの根拠を示す論文                               |                                               |
+| Evidence Code | アノテーションの根拠の種類を示すコード(実験、系統解析 etc.,) | Inferred from Experiment (EXP)                |
 
 ### extensions
 
@@ -34,19 +34,19 @@ GO解析は次世代シーケンサーやマイクロアレイの解析におい
 
 #### Molecular reationships
 
-|Name|Description|Example|
-|---|---|---|
-|has_regulation_target||has_regulation_target(UniProtKB:P08151 zinc finger protein GLI1)|
-|has_input||has_input(PomBase:SPAC26H5.0 pcf2)|
-|has_direct_input||has_direct_input(UniProtKB:Q7LBE3 Solute carrier family 26 member 9)|
+| Name                  | Description | Example                                                              |
+| --------------------- | ----------- | -------------------------------------------------------------------- |
+| has_regulation_target |             | has_regulation_target(UniProtKB:P08151 zinc finger protein GLI1)     |
+| has_input             |             | has_input(PomBase:SPAC26H5.0 pcf2)                                   |
+| has_direct_input      |             | has_direct_input(UniProtKB:Q7LBE3 Solute carrier family 26 member 9) |
 
 #### Contextual relationships
 
-|Name|Description|Example|
-|---|---|---|
-|part_of||part_of(WBbt:0006804 body wall muscle cell)|
-|occurs_in||occurs_in(CL:0000740 retinal ganglion cell)|
-|happens_during||happens_during(GO:0071470 cellular response to osmotic stress)|
+| Name           | Description | Example                                                        |
+| -------------- | ----------- | -------------------------------------------------------------- |
+| part_of        |             | part_of(WBbt:0006804 body wall muscle cell)                    |
+| occurs_in      |             | occurs_in(CL:0000740 retinal ganglion cell)                    |
+| happens_during |             | happens_during(GO:0071470 cellular response to osmotic stress) |
 
 ## GO Annotationの構造
 
@@ -54,20 +54,20 @@ GO Annotation全体はノードとしてGO Termを、エッジとして下で定
 
 階層構造における関係性を表すRelationは以下の通りです。
 
-|Name|Description|
-|---|---|
-|is a||
-|part of||
-|has part||
-|regulates||
+| Name      | Description |
+| --------- | ----------- |
+| is a      |             |
+| part of   |             |
+| has part  |             |
+| regulates |             |
 
 GO Termの一番上の階層として、以下の3つが割り当てられています。
 
-||略称|意味|
-|---|---|---|
-|Biological Process|BP|生物学的なプロセス|
-|Molecular Function|MP|遺伝子産物の分子的機能|
-|Cellular Component|CC|細胞の構成要素|
+|                    | 略称 | 意味                   |
+| ------------------ | ---- | ---------------------- |
+| Biological Process | BP   | 生物学的なプロセス     |
+| Molecular Function | MP   | 遺伝子産物の分子的機能 |
+| Cellular Component | CC   | 細胞の構成要素         |
 
 
 ## Reference
