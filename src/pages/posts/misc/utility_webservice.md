@@ -28,3 +28,7 @@ GitHub repositoryへのリンクをいい感じに作成してくれるサイト
 ### [SQL Fiddle](http://sqlfiddle.com/)
 
 SQLをWeb上で気軽に実行できるサイト。CSVやJSONからデータをテーブルを作成したり、データをimportしたりすることが可能。
+
+### [Material Icons](https://material-ui.com/components/material-icons/)
+
+`@material-icon`のほしいアイコンを検索できる。
