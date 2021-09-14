@@ -12,6 +12,8 @@ import css from "../styles/github_markdown.css?raw";
 import prismCss from "../styles/prism.css?raw";
 // @ts-ignore
 import globalCss from "../styles/global.css?raw";
+// @ts-ignore
+import ampSelectorCss from "../styles/amp_selector.css?raw";
 
 export default class MyDocument extends Document {
   render() {
@@ -94,7 +96,7 @@ MyDocument.getInitialProps = async (ctx) => {
       <style
         key="custom"
         dangerouslySetInnerHTML={{
-          __html: `${globalCss}\n${css}\n${prismCss}`,
+          __html: `${globalCss}\n${css}\n${prismCss}\n${ampSelectorCss}`,
         }}
       />,
       sheets.getStyleElement(),
