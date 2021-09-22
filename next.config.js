@@ -43,7 +43,13 @@ const withMDX = require("@next/mdx")({
   },
 });
 
+const i18n = {
+  locales: ["ja"],
+  defaultLocale: "ja"
+}
+
 module.exports = withMDX({
+  i18n: i18n,
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   async redirects() {
     return [

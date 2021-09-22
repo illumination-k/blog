@@ -9,8 +9,8 @@ GO解析は次世代シーケンサーやマイクロアレイの解析におい
 
 ## GO Termとは
 
-[The Gene Ontology Consortium](http://geneontology.org/docs/whoweare/)という団体が規定している、人によって定義されたアノテーションです。人によって定義されていることから、PFAMやKEGGなどといったデータと比べると客観性が欠ける、などといった指摘も見られます。  
-とはいえ、生物学的な知見を含んだアノテーションはGO Termくらいですし、Contributorの方々のおかげで信頼性はそれなりにあるのではないかと思います。2021年現在では、150,000を超える論文の実験データをもとにアノテーションがつけられており、実験的な裏付けのあるアノテーションは700,000を超えます([参考](http://geneontology.org/docs/introduction-to-go-resource/))。実際、タンパク質の機能推定を行うような手法では、正解データとしてGO Termが使われることが多いです。
+[The Gene Ontology Consortium](http://geneontology.org/docs/whoweare/)という団体が規定している、人によって定義されたアノテーションです。人によって定義されていることから、PFAMやKEGGなどといったデータと比べ客観性に欠ける、などといった指摘も見られます。  
+とはいえ、生物学的な知見を含んだアノテーションはGO Termくらいですし、Contributorの方々のおかげで信頼性は高くなっています。2021年現在では、150,000を超える論文の実験データをもとにアノテーションがつけられており、実験的な裏付けのあるアノテーションは700,000を超えます([参考](http://geneontology.org/docs/introduction-to-go-resource/))。実際、タンパク質の機能推定を行うような手法では、正解データとして多くの解析でGO Termが使われています。
 
 また、人によって付けられるという性質上、GO Termそのものが更新されることも多いため、解析の際にはできるだけ最新のGO Termのリストを使うことが推奨されます。
 
@@ -24,29 +24,32 @@ GO解析は次世代シーケンサーやマイクロアレイの解析におい
 | Name          | Description                                                  | Example                                       |
 | ------------- | ------------------------------------------------------------ | --------------------------------------------- |
 | Gene Product  | アノテーションされている遺伝子産物                           | UniProtKB:Q920D2 (rat Dhfr)                   |
-| GO Term       | IDと名前(説明)                                               | GO:0004146 (dihydrofolate reductase activity) |
+| GO Term       | IDと名前 (説明)                                               | GO:0004146 (dihydrofolate reductase activity) |
 | Reference     | アノテーションの根拠を示す論文                               |                                               |
 | Evidence Code | アノテーションの根拠の種類を示すコード(実験、系統解析 etc.,) | Inferred from Experiment (EXP)                |
 
 ### extensions
 
-基本要素以外にも、いくつかのアノテーションの拡張が行われています。拡張アノテーションは遺伝子や遺伝子産物、複合体、化学物質などの関係性を示す、**Molecular reationships**と、細胞種や解剖学、発達段階などとの関係性を示す**Contextual relationships**に大別されます。
+基本要素以外にも、いくつかのアノテーションの拡張が行われています。拡張アノテーションは以下の2つに大別されます。
+
+- 遺伝子や遺伝子産物、複合体、化学物質などの関係性を示す**Molecular reationships**
+- 細胞種や解剖学、発達段階などとの関係性を示す**Contextual relationships**に大別されます。
 
 #### Molecular reationships
 
 | Name                  | Description | Example                                                              |
 | --------------------- | ----------- | -------------------------------------------------------------------- |
-| has_regulation_target |             | has_regulation_target(UniProtKB:P08151 zinc finger protein GLI1)     |
-| has_input             |             | has_input(PomBase:SPAC26H5.0 pcf2)                                   |
-| has_direct_input      |             | has_direct_input(UniProtKB:Q7LBE3 Solute carrier family 26 member 9) |
+| has_regulation_target |             | has_regulation_target (UniProtKB:P08151 zinc finger protein GLI1)     |
+| has_input             |             | has_input (PomBase:SPAC26H5.0 pcf2)                                   |
+| has_direct_input      |             | has_direct_input (UniProtKB:Q7LBE3 Solute carrier family 26 member 9) |
 
 #### Contextual relationships
 
 | Name           | Description | Example                                                        |
 | -------------- | ----------- | -------------------------------------------------------------- |
-| part_of        |             | part_of(WBbt:0006804 body wall muscle cell)                    |
-| occurs_in      |             | occurs_in(CL:0000740 retinal ganglion cell)                    |
-| happens_during |             | happens_during(GO:0071470 cellular response to osmotic stress) |
+| part_of        |             | part_of (WBbt:0006804 body wall muscle cell)                    |
+| occurs_in      |             | occurs_in (CL:0000740 retinal ganglion cell)                    |
+| happens_during |             | happens_during (GO:0071470 cellular response to osmotic stress) |
 
 ## GO Annotationの構造
 
