@@ -49,7 +49,7 @@ const i18n = {
 }
 
 module.exports = withMDX({
-  i18n: i18n,
+  // i18n: i18n,
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   async redirects() {
     return [
