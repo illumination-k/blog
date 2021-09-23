@@ -33,3 +33,16 @@ const Header = () => {
 `height: 100%`を使う。
 
 - [Material-UIの「Data Grid」で高さを自動設定する](https://tech-it.r-net.info/program/react/309/)
+
+## Material-UI 4 -> 5のmigration
+
+```bash
+yarn add @mui/material @mui/styles @mui/lab @mui/icons-material @emotion/react @emotion/styled
+
+# If you use next,
+yarn add @emotion/server
+
+npx @mui/codemod v5.0.0/preset-safe .
+```
+
+で基本的には置換される。エラーは起きなくなるが、推奨されていないものが残ったりはするので適宜修正していく。`Next.js`の場合は、
