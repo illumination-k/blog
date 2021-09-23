@@ -9,6 +9,8 @@ const { tokenize } = require(`kuromojin`);
 const getGitHistory = require("../libs/getGitHistory");
 
 const POSTDIRPATH = path.join(process.cwd(), "src", "pages", "posts");
+const POS_LIST = [`名詞`, `動詞`, `形容詞`];
+const IGNORE_REGEX = /^[!-/:-@[-`{-~、-〜”’・]+$/;
 
 function getAllPosts() {
   const pattern = path.join(POSTDIRPATH, "**", "*.md");
@@ -28,15 +30,24 @@ function markdownToText(content) {
 }
 
 async function filterToken(text) {
-  const res = await tokenize(text);
-  const POS_LIST = [`名詞`, `動詞`, `形容詞`];
-  const IGNORE_REGEX = /^[!-/:-@[-`{-~、-〜”’・]+$/;
+  const res = tokenize(text).then(
+    (res) => {
+      return res
+      .filter((token) => POS_LIST.includes(token.pos))
+      .map((token) => token.surface_form)
+      .filter((word) => !IGNORE_REGEX.test(word))
+      .filter((word) => { 
+          if (word) {
+            return word.length >= 2 
+          }
+          return false
+        })
+      .map((word) => word.toLowerCase());
+    }
+  ).catch(
+    (error) => {console.log(error)}
+  )
   return res
-    .filter((token) => POS_LIST.includes(token.pos))
-    .map((token) => token.surface_form)
-    .filter((word) => !IGNORE_REGEX.test(word))
-    .filter((word) => word.length >= 2)
-    .map((word) => word.toLowerCase());
 }
 
 async function makePostsCache() {
@@ -44,6 +55,7 @@ async function makePostsCache() {
 
   const posts = await Promise.all(
     filepaths.map(async (filepath) => {
+      console.log(filepath)
       const { update, published } = getGitHistory(filepath);
       const id = path.parse(filepath).base.replace(".md", "");
       const category = path.basename(path.parse(filepath).dir);

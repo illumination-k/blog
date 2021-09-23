@@ -1,4 +1,4 @@
-===
+---
 title: material-uiに関するスクラップ
 description: material-uiに関するスクラップ
 ---
