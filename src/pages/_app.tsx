@@ -5,11 +5,7 @@ import React from "react";
 import Router from "next/router";
 import Head from "next/head";
 
-import {
-  ThemeProvider,
-  Theme,
-  StyledEngineProvider,
-} from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 
 import { CacheProvider, EmotionCache } from "@emotion/react";
 
@@ -30,13 +26,13 @@ interface MyAppProps extends AppProps {
 function MyApp(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
-  React.useEffect(() => {
-    // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector("#jss-server-side");
-    if (jssStyles) {
-      jssStyles.parentElement!.removeChild(jssStyles);
-    }
-  }, []);
+  // React.useEffect(() => {
+  //   // Remove the server-side injected CSS.
+  //   const jssStyles = document.querySelector("#jss-server-side");
+  //   if (jssStyles) {
+  //     jssStyles.parentElement!.removeChild(jssStyles);
+  //   }
+  // }, []);
 
   return (
     <CacheProvider value={emotionCache}>

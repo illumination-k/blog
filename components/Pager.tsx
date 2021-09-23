@@ -14,7 +14,7 @@ const Pager = ({ path, page, total_pages }) => {
         renderItem={(item) => (
           <PaginationItem
             component={Link}
-            href={`${path}/${item.page === 1 ? "1" : `${item.page}`}`}
+            href={`${path}/${item.page}`}
             rel="canonical"
             {...item}
           />

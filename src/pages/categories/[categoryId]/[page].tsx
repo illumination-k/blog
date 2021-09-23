@@ -36,7 +36,11 @@ const CategoryPage = (props) => {
       <Grid container spacing={1}>
         {cards}
       </Grid>
-      <Pager path="/archive" page={page} total_pages={total_pages} />
+      <Pager
+        path={`/categories/${categoryId}`}
+        page={page}
+        total_pages={total_pages}
+      />
     </Layout>
   );
 };
