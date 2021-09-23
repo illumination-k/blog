@@ -1,7 +1,7 @@
 import Layout from "@components/Layout";
 import Head from "next/head";
 import { NextSeo } from "next-seo";
-import { Container } from "@material-ui/core";
+import { Container } from "@mui/material";
 import IconButtons from "@components/SocialIcons";
 const AboutMe = ({ meta, children }) => {
   return (

@@ -13,9 +13,12 @@ import {
   ListItem,
   ListItemText,
   Divider,
-} from "@material-ui/core";
+} from "@mui/material";
 
-import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
+import { Theme } from "@mui/material/styles";
+
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 
 export const config = { amp: true };
 

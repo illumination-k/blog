@@ -6,10 +6,18 @@ import Router from "next/router";
 import PropTypes from "prop-types";
 import Head from "next/head";
 
-import { ThemeProvider } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import { ThemeProvider, Theme, StyledEngineProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 import theme from "@libs/theme";
 import * as gtag from "@libs/gtag";
+
+
+declare module '@mui/styles/defaultTheme' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
+
+
 Router.events.on("routeChangeComplete", (url) => gtag.pageview(url));
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -21,17 +29,17 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
-  return (
-    <>
-      <Head>
-        <title>illumination-dev</title>
-      </Head>
+  return <>
+    <Head>
+      <title>illumination-dev</title>
+    </Head>
+    <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>
-    </>
-  );
+    </StyledEngineProvider>
+  </>;
 }
 
 MyApp.propTypes = {

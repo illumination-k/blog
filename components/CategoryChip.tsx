@@ -1,4 +1,4 @@
-import Chip from "@material-ui/core/Chip";
+import Chip from "@mui/material/Chip";
 
 const CategoryChip = (props) => {
   const { category, ...rest } = props;

@@ -2,8 +2,8 @@ import Head from "next/head";
 import { NextSeo } from "next-seo";
 
 import Layout from "@components/Layout";
-import { Typography, Container } from "@material-ui/core";
-import { Paper } from "@material-ui/core";
+import { Typography, Container } from "@mui/material";
+import { Paper } from "@mui/material";
 
 export const config = { amp: true };
 

@@ -2,7 +2,7 @@ import { NextSeo } from "next-seo";
 
 import Layout from "@components/DefaultLayout";
 import BlogPostCard from "@components/BlogPostCard";
-import Grid from "@material-ui/core/Grid";
+import Grid from "@mui/material/Grid";
 
 export const config = { amp: true };
 

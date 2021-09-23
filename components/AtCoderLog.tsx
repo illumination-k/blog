@@ -1,9 +1,9 @@
 import React from "react";
 
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 import Link from "@components/Link";
-import Typography from "@material-ui/core/Typography";
+import Typography from "@mui/material/Typography";
 
 const AtCoderLog: React.FC<{ title: string; submissions: string[] }> = ({
   title,

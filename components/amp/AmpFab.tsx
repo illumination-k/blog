@@ -1,6 +1,6 @@
 import React from "react";
 
-import Fab, { FabProps } from "@material-ui/core/Fab";
+import Fab, { FabProps } from "@mui/material/Fab";
 
 interface AmpOnProps {
   on: string;

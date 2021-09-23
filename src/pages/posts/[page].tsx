@@ -1,7 +1,7 @@
 import Pager from "@components/Pager";
 import { NextSeo } from "next-seo";
 
-import Grid from "@material-ui/core/Grid";
+import Grid from "@mui/material/Grid";
 
 // custom components
 import ListLayout from "@components/DefaultLayout";

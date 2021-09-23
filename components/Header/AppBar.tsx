@@ -1,11 +1,13 @@
 import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
-import HomeIcon from "@material-ui/icons/Home";
-import Container from "@material-ui/core/Container";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import { Theme } from "@mui/material/styles";
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
+import HomeIcon from "@mui/icons-material/Home";
+import Container from "@mui/material/Container";
 
 import Link from "@components/Link";
 import AmpAvator from "@components/amp/AmpAvator";
@@ -41,22 +43,20 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const IconButtons = () => {
-  return (
-    <>
-      <Link href="/about">
-        <Typography style={{ color: "white" }}>About</Typography>
-      </Link>
-      <IconButton href="/about" aria-label="about" edge="end">
-        <AmpAvator
-          width="27"
-          height="27"
-          src="/avatar/avatar_54x.webp"
-          srcset="/avatar/avatar_54x.webp"
-          alt="illumination-k"
-        />
-      </IconButton>
-    </>
-  );
+  return <>
+    <Link href="/about">
+      <Typography style={{ color: "white" }}>About</Typography>
+    </Link>
+    <IconButton href="/about" aria-label="about" edge="end" size="large">
+      <AmpAvator
+        width="27"
+        height="27"
+        src="/avatar/avatar_54x.webp"
+        srcset="/avatar/avatar_54x.webp"
+        alt="illumination-k"
+      />
+    </IconButton>
+  </>;
 };
 
 export default function HeaderAppBar() {
@@ -79,12 +79,7 @@ export default function HeaderAppBar() {
         <Container>
           <Toolbar>
             <div className={classes.menuButton}>
-              <IconButton
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-                href="/"
-              >
+              <IconButton edge="start" color="inherit" aria-label="menu" href="/" size="large">
                 <HomeIcon />
               </IconButton>
             </div>

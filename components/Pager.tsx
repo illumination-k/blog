@@ -1,8 +1,9 @@
 import Link from "@components/Link";
-import { makeStyles, createStyles } from "@material-ui/core/styles";
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
 
-import Pagination from "@material-ui/lab/Pagination";
-import PaginationItem from "@material-ui/lab/PaginationItem";
+import Pagination from '@mui/material/Pagination';
+import PaginationItem from "@mui/lab/PaginationItem";
 
 const useStyles = makeStyles((theme) =>
   createStyles({

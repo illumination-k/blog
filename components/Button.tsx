@@ -1,5 +1,5 @@
 import React from "react";
-import MaterialButton, { ButtonProps } from "@material-ui/core/Button";
+import MaterialButton, { ButtonProps } from "@mui/material/Button";
 
 interface OnProps {
   on: string;

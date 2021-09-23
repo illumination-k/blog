@@ -1,10 +1,12 @@
 import Layout from "@components/Layout";
 import Drawer from "@components/Drawer";
 import AmpDisplay from "@components/amp/AmpDisplay";
-import Container from "@material-ui/core/Container";
-import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
+import Container from "@mui/material/Container";
+import { Theme } from "@mui/material/styles";
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 import AmpSidebar from "./amp/AmpSidebar";
-import { Grid } from "@material-ui/core";
+import { Grid } from "@mui/material";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

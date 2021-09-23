@@ -1,12 +1,14 @@
 import React from "react";
-import Toolbar from "@material-ui/core/Toolbar";
+import Toolbar from "@mui/material/Toolbar";
 
 import AmpSearchForm from "@components/amp/AmpSearchForm";
 import AmpFab from "./AmpFab";
 import Sitemap from "@components/Drawer/Sitemap";
 
-import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
-import MenuIcon from "@material-ui/icons/Menu";
+import { Theme } from "@mui/material/styles";
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
+import MenuIcon from "@mui/icons-material/Menu";
 
 import Ofuse from "@components/Ofuse";
 
@@ -40,7 +42,7 @@ const AmpSidebar = ({ listitems }) => {
         <MenuIcon />
       </AmpFab>
       <amp-sidebar id="ampsidebar" className="ampsidebar" layout="nodisplay">
-        <div style={{ padding: "1rem" }}>
+        <div style={{ padding: "1rem", backgroundColor: "white" }}>
           <Toolbar />
           <AmpSearchForm />
           <Sitemap />
@@ -48,11 +50,6 @@ const AmpSidebar = ({ listitems }) => {
           {listitems}
         </div>
       </amp-sidebar>
-      <style jsx>{`
-        .ampsidebar {
-          background-color: white;
-        }
-      `}</style>
     </>
   );
 };
