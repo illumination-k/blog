@@ -21,7 +21,7 @@ layout:
 
 ### Prism.js && Github markdown css
 
-[prism.js](https://prismjs.com)公式サイトからcssをダウンロードしておく。[github-markdown-css](https://github.com/sindresorhus/github-markdown-css)からダウンロードする。github-markdown-cssの方は自動生成なので`!important`とかが使われていてAMPに対応できないのでそのへんは除いてしまう。
+[prism.js](https://prismjs.com)公式サイトからcssをダウンロードしておく。[github-markdown-css](https://github.com/sindresorhus/github-markdown-css)からダウンロードする。`github-markdown-css`は自動生成なので`!important`とかが使われていてAMPに対応できないのでそのへんは除いてしまう。
 
 **2021/07/01改稿**
 
@@ -172,7 +172,7 @@ MyDocument.getInitialProps = async (ctx) => {
 </details>
 
 
-custom loaderで[refactor](https://github.com/wooorm/refractor)を使ってcodeをTokenに落とす作業をしておけばAMPでもコードがハイライトされる。順番の関係か、prismjsはダーク系のテーマにしたのに黒くならなかったので、github-markdown-css側で背景を黒にしておいた。
+custom loaderで[refactor](https://github.com/wooorm/refractor)を使ってcodeをTokenに落とす作業をしておけばAMPでもコードがハイライトされる。順番の関係か、prismjsはダーク系のテーマにしたのに黒くならなかったので、`github-markdown-css`側で背景を黒にしておいた。
 
 **example**
 
@@ -187,7 +187,9 @@ const MOD: usize = 1e9 as usize + 7;
 
 ### amp-mathml
 
-KatexはAMPに対応できない。custom loaderを使って、`type === "math"`と`type === "inlineMath"`に対応するamp-mathmlを埋め込む（先にremark-mathを使っておく必要がある）。インラインの数式はparagraphのchildrenなので注意が必要。
+KatexはAMPに対応できない。
+
+そこで、まず、`remark-math`を使って、`math`と`inlineMath`のノードに変換する。その後、custom loaderを使って、`type === "math"`と`type === "inlineMath"`に対応するamp-mathmlを埋め込む。インラインの数式はparagraphのchildrenなので注意が必要。
 
 **example**
 
@@ -201,16 +203,18 @@ $$
 
 ### material-ui
 
+**2021/09/23**
+
 ```bash
-yarn add @material-ui/core
+yarn add @mui/material @mui/styles @mui/lab @mui/icons-material @emotion/react @emotion/styled @emotion/server
 ```
 
-で終わりだと思ってたんだけど、そんなことはなかった。
+Material-UIのversionが上がったので、色々設定が必要になった。Emotionベースなので、AMP対応する場合は注意が必要。`@emotion/server`の`extractCriticalToChunks`を使うのが重要らしい([参考](https://spectrum.chat/emotion/development/emotion-with-amp-pages~710d31dc-1cec-4f38-b39a-6a4110a03859))。
 
 というのは、サーバーサイドレンダリングを`next.js`でするときに、CSSの読み込みがリセットされてしまうことがあるらしい([参考](https://blog.narumium.net/2020/01/29/next-js-with-material-uiでスタイルが崩れる/))。実際に自分の画面でも崩れていて、結構時間を溶かした。
-幸いなことに、material-uiの公式がテンプレート例を作成してくれているので([javascript](https://github.com/mui-org/material-ui/tree/master/examples/nextjs), [typescript](https://github.com/mui-org/material-ui/tree/master/examples/nextjs-with-typescript))、参考にしながら`_app.tsx`と`_document.tsx`を書き換えておく。あとnext.jsのリンクとmaterial-uiのリンクもclassNameの問題とかでうまく行かないことがあるので、Linkコンポーネントを作っておく。
+幸いなことに、material-uiの公式がテンプレート例を作成してくれている([javascript](https://github.com/mui-org/material-ui/tree/master/examples/nextjs), [typescript](https://github.com/mui-org/material-ui/tree/master/examples/nextjs-with-typescript))。これを参考にしながら`_app.tsx`と`_document.tsx`を書き換えておく。あとnext.jsのリンクとmaterial-uiのリンクもclassNameの問題とかでうまく行かないことがあるので、Linkコンポーネントを作っておく。
 
-それとコンポーネントの中に`!important`を生み出すやつがいるので、生み出されたら`next build && export`でhtml作って原因コンポーネントは削除しておく。InputBase的なやつが怪しかった。
+`!important`を使用しているコンポーネントは使用できないので注意が必要になる。
 
 ## 感想
 
