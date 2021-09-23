@@ -35,7 +35,7 @@ const ArchivePage = (props) => {
       <Grid container spacing={1}>
         {cards}
       </Grid>
-      <Pager path="/archive" page={page} total_pages={total_pages} />
+      <Pager path="/posts" page={page} total_pages={total_pages} />
     </ListLayout>
   );
 };

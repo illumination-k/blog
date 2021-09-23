@@ -17,8 +17,8 @@ import {
 
 import { Theme } from "@mui/material/styles";
 
-import createStyles from '@mui/styles/createStyles';
-import makeStyles from '@mui/styles/makeStyles';
+import createStyles from "@mui/styles/createStyles";
+import makeStyles from "@mui/styles/makeStyles";
 
 export const config = { amp: true };
 
@@ -96,13 +96,13 @@ const Careers = ({ careers }) => {
           <>
             <ListItem key={index}>
               <Grid container spacing={2}>
-                <Grid xs={6}>
+                <Grid item xs={6}>
                   <ListItemText
                     primary={item.name}
                     secondary={`${item.period}, ${item.type}`}
                   />
                 </Grid>
-                <Grid xs={6}>
+                <Grid item xs={6}>
                   <ListItemText primary={item.title} />
                 </Grid>
               </Grid>

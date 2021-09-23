@@ -3,24 +3,33 @@ import type { AppProps /*, AppContext */ } from "next/app";
 
 import React from "react";
 import Router from "next/router";
-import PropTypes from "prop-types";
 import Head from "next/head";
 
-import { ThemeProvider, Theme, StyledEngineProvider } from "@mui/material/styles";
+import {
+  ThemeProvider,
+  Theme,
+  StyledEngineProvider,
+} from "@mui/material/styles";
+
+import { CacheProvider, EmotionCache } from "@emotion/react";
+
 import CssBaseline from "@mui/material/CssBaseline";
 import theme from "@libs/theme";
+import createEmotionCache from "@libs/createEmotionCache";
+
 import * as gtag from "@libs/gtag";
-
-
-declare module '@mui/styles/defaultTheme' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface DefaultTheme extends Theme {}
-}
-
-
 Router.events.on("routeChangeComplete", (url) => gtag.pageview(url));
 
-function MyApp({ Component, pageProps }: AppProps) {
+// Client-side cache, shared for the whole session of the user in the browser.
+const clientSideEmotionCache = createEmotionCache();
+
+interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache;
+}
+
+function MyApp(props: MyAppProps) {
+  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
@@ -29,22 +38,17 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
-  return <>
-    <Head>
-      <title>illumination-dev</title>
-    </Head>
-    <StyledEngineProvider injectFirst>
+  return (
+    <CacheProvider value={emotionCache}>
+      <Head>
+        <title>illumination-dev</title>
+      </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>
-    </StyledEngineProvider>
-  </>;
+    </CacheProvider>
+  );
 }
-
-MyApp.propTypes = {
-  Component: PropTypes.elementType.isRequired,
-  pageProps: PropTypes.object.isRequired,
-};
 
 export default MyApp;
