@@ -1,11 +1,11 @@
-import { Home, NavigateNext, Book } from "@material-ui/icons";
+import { Home, NavigateNext, Book } from "@mui/icons-material";
 import {
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Typography,
-} from "@material-ui/core";
+} from "@mui/material";
 import Link from "@components/Link";
 
 interface sitemap {

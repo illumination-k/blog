@@ -9,7 +9,7 @@ import {
   Card,
   CardContent,
   Typography,
-} from "@material-ui/core";
+} from "@mui/material";
 
 // custom components
 import Layout from "@components/Layout";

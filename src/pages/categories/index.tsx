@@ -4,15 +4,15 @@ import Head from "next/head";
 import { NextSeo } from "next-seo";
 import Layout from "@components/DefaultLayout";
 
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
 
-import Typography from "@material-ui/core/Typography";
+import Typography from "@mui/material/Typography";
 
-import LabelIcon from "@material-ui/icons/Label";
+import LabelIcon from "@mui/icons-material/Label";
 import { getCategories } from "@libs/contentLoader";
-import { Grid } from "@material-ui/core";
+import { Grid } from "@mui/material";
 
 export const config = { amp: true };
 

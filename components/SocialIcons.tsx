@@ -1,9 +1,11 @@
-import IconButton from "@material-ui/core/IconButton";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import FacebookIcon from "@material-ui/icons/Facebook";
+import IconButton from "@mui/material/IconButton";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import FacebookIcon from "@mui/icons-material/Facebook";
 
-import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
+import { Theme } from "@mui/material/styles";
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     icons: {
@@ -15,38 +17,36 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 const SocialIcons = () => {
   const classes = useStyles();
-  return (
-    <>
-      <IconButton
-        href="https://twitter.com/IlluminationK"
-        color="inherit"
-        aria-label="mytwitter"
-        edge="end"
-      >
-        <TwitterIcon
-          style={{ color: "deepskyblue" }}
-          className={classes.icons}
-        />
-      </IconButton>
-      <IconButton
-        href="https://github.com/illumination-k"
-        aria-label="mygithub"
-        edge="end"
-      >
-        <GitHubIcon style={{ color: "black" }} className={classes.icons} />
-      </IconButton>
-      <IconButton
-        href="https://www.facebook.com/profile.php?id=100022204034661"
-        aria-label="myfacebook"
-        edge="end"
-      >
-        <FacebookIcon
-          style={{ color: "midnightblue" }}
-          className={classes.icons}
-        />
-      </IconButton>
-    </>
-  );
+  return <>
+    <IconButton
+      href="https://twitter.com/IlluminationK"
+      color="inherit"
+      aria-label="mytwitter"
+      edge="end"
+      size="large">
+      <TwitterIcon
+        style={{ color: "deepskyblue" }}
+        className={classes.icons}
+      />
+    </IconButton>
+    <IconButton
+      href="https://github.com/illumination-k"
+      aria-label="mygithub"
+      edge="end"
+      size="large">
+      <GitHubIcon style={{ color: "black" }} className={classes.icons} />
+    </IconButton>
+    <IconButton
+      href="https://www.facebook.com/profile.php?id=100022204034661"
+      aria-label="myfacebook"
+      edge="end"
+      size="large">
+      <FacebookIcon
+        style={{ color: "midnightblue" }}
+        className={classes.icons}
+      />
+    </IconButton>
+  </>;
 };
 
 export default SocialIcons;

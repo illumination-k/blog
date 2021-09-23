@@ -1,8 +1,11 @@
 import React from "react";
-import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
+import { Theme } from "@mui/material/styles";
 
-import Drawer from "@material-ui/core/Drawer";
-import Toolbar from "@material-ui/core/Toolbar";
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
+
+import Drawer from "@mui/material/Drawer";
+import Toolbar from "@mui/material/Toolbar";
 
 import AmpSearchForm from "@components/amp/AmpSearchForm";
 import Ofuse from "@components/Ofuse";

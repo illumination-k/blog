@@ -2,7 +2,7 @@ import { NextSeo } from "next-seo";
 
 import DefaultLayout from "@components/DefaultLayout";
 import BlogPostCard from "@components/BlogPostCard";
-import Grid from "@material-ui/core/Grid";
+import Grid from "@mui/material/Grid";
 import { getAllPosts } from "@libs/contentLoader";
 import { getDateKey, getMetaFromAllPosts, updateMapArray } from "@libs/utils";
 

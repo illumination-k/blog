@@ -1,14 +1,17 @@
 import React from "react";
 import Link from "next/link";
 import Head from "next/head";
-import Grid from "@material-ui/core/Grid";
-import Breadcrumbs from "@material-ui/core/Breadcrumbs";
-import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
+import Grid from "@mui/material/Grid";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 
-import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
+import { Theme } from "@mui/material/styles";
+
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { NextSeo } from "next-seo";
 

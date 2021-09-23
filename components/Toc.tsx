@@ -1,6 +1,6 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
-import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
+import Typography from "@mui/material/Typography";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 const Toc = ({ headings }) => {
   return (
     <>

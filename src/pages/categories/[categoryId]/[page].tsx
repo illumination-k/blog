@@ -1,7 +1,7 @@
 import Pager from "@components/Pager";
 import { NextSeo } from "next-seo";
 
-import Grid from "@material-ui/core/Grid";
+import Grid from "@mui/material/Grid";
 
 // custom components
 import Layout from "@components/DefaultLayout";
@@ -36,7 +36,11 @@ const CategoryPage = (props) => {
       <Grid container spacing={1}>
         {cards}
       </Grid>
-      <Pager path="/archive" page={page} total_pages={total_pages} />
+      <Pager
+        path={`/categories/${categoryId}`}
+        page={page}
+        total_pages={total_pages}
+      />
     </Layout>
   );
 };

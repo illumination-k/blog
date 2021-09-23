@@ -57,7 +57,7 @@ function toAmpImg() {
   }
 
   function transformer(ast) {
-    const gridImport = `import { Grid } from "@material-ui/core"`
+    const gridImport = `import { Grid } from "@mui/material"`
     const gridImportNode = {
       type: "import",
       value: gridImport

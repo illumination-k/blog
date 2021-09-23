@@ -15,7 +15,7 @@ const AmpSearchForm = () => {
           className="search"
         ></input>
       </form>
-      <style jsx>{`
+      {/* <style jsx>{`
         .search_container {
           box-sizing: border-box;
           position: relative;
@@ -33,7 +33,7 @@ const AmpSearchForm = () => {
         .search::placeholder {
           position: relative;
         }
-      `}</style>
+      `}</style> */}
     </>
   );
 };

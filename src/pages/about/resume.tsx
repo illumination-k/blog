@@ -13,9 +13,12 @@ import {
   ListItem,
   ListItemText,
   Divider,
-} from "@material-ui/core";
+} from "@mui/material";
 
-import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
+import { Theme } from "@mui/material/styles";
+
+import createStyles from "@mui/styles/createStyles";
+import makeStyles from "@mui/styles/makeStyles";
 
 export const config = { amp: true };
 
@@ -93,13 +96,13 @@ const Careers = ({ careers }) => {
           <>
             <ListItem key={index}>
               <Grid container spacing={2}>
-                <Grid xs={6}>
+                <Grid item xs={6}>
                   <ListItemText
                     primary={item.name}
                     secondary={`${item.period}, ${item.type}`}
                   />
                 </Grid>
-                <Grid xs={6}>
+                <Grid item xs={6}>
                   <ListItemText primary={item.title} />
                 </Grid>
               </Grid>
