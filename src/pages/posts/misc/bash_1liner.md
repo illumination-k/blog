@@ -85,9 +85,13 @@ echo $frac
 ```bash
 # 全ファイル
 files=$(ls)
+# 再帰的な全ファイル
+files=$(find . -type f)
 
 # 特定の拡張子のファイル
 files=$(ls *.csv)
+# 再帰的な特定の拡張子のファイル
+files=$(find . -type f -name '*.csv')
 
 # 特定の拡張子を除いたファイル
 files=$(ls | grep -v *.csv)
@@ -96,6 +100,8 @@ files=$(ls | grep -v *.csv)
 d=$(ls -d */)
 # 最後の/を除く場合
 d=$(ls -d */ | sed 's/\/$//')
+# 再帰的なディレクトリの取得
+d=$(find . -type d)
 
 #lsの全体のbasenameをとってくる
 d=$(ls | awk -F / 'print $NF')
@@ -230,6 +236,19 @@ shopt -s expand_aliases
 ```
 
 をすれば動く。関数で同様のことができるのでそっちを使った方が楽かもしれない。
+
+Dockerをカレントディレクトリをマウントしつつ動かす例。
+
+```bash
+shopt -s expand_aliases
+alias vdocker='docker run --rm -it -v $(pwd):$(pwd)'
+
+# or
+
+function vdocker {
+    docker run --rm -it -v $(pwd):$(pwd) $@
+}
+```
 
 ## 参考
 

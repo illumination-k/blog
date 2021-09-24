@@ -1,0 +1,92 @@
+import { Grid, Typography } from "@mui/material"
+import { Theme } from "@mui/material/styles";
+
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
+
+import ModificationRequest from "@components/BlogPostLayout/ModificationRequest";
+import AmpAdsense from "@components/amp/AmpAdsense";
+import RecommendPost from "@components/RecommendPost";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    contents: {
+      [theme.breakpoints.up("sm")]: {
+        marginRight: 240,
+      },
+    },
+    socialshare_container: {
+      textAlign: "left",
+      [theme.breakpoints.up("sm")]: {
+        textAlign: "right",
+      },
+    },
+    socialshare_button: {
+      borderRadius: "30px",
+      margin: "0.1rem",
+    },
+  })
+);
+
+const BlogPostContentFooter = ({meta}) => {
+    const classes = useStyles()
+    const { category, id } = meta;
+
+    return <Grid container spacing={2} className="markdown-body">
+        <Grid item xs={12}>
+        <div className={classes.socialshare_container}>
+            <amp-social-share
+              type="twitter"
+              className={classes.socialshare_button}
+              aria-label="twitterShare"
+              width="40"
+              height="40"
+            />
+            <amp-social-share
+              className={classes.socialshare_button}
+              type="facebook"
+              aria-label="facebookShare"
+              width="40"
+              height="40"
+            />
+            <amp-social-share
+              className={classes.socialshare_button}
+              type="line"
+              aria-label="lineShare"
+              width="40"
+              height="40"
+            />
+          </div>
+        </Grid>
+
+        <Grid item xs={12}>
+          <AmpAdsense />
+        </Grid>
+        <Grid item md={6} />
+        <Grid item xs={12} md={6}>
+          <ModificationRequest />
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h2">Other Articles</Typography>
+          <amp-list
+            width="auto"
+            height="200"
+            layout="fixed-height"
+            src={`/api/recommend?category=${category}&id=${id}`}
+            items="."
+          >
+            {/* @ts-ignore */}
+            <template type="amp-mustache">
+              <RecommendPost
+                title={"{{title}}"}
+                url={"{{url}}"}
+                category={"{{category}}"}
+                description={"{{description}}"}
+              />
+            </template>
+          </amp-list>       
+        </Grid>
+    </Grid>
+}
+
+export default BlogPostContentFooter;

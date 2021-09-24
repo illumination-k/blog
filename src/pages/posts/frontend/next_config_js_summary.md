@@ -140,4 +140,4 @@ module.exports = {
 
 > Redirect module requests when normal resolving fails.
 
-なので、読み込まないようにしているだけの可能性がある。`next build`は動くので多分大丈夫なんだけど、`target: 'node'`とかを使った方が妥当な可能性もある。
+なので、読み込まないようにしているだけの可能性がある。`next build`は動くので多分大丈夫問題ないと思われるが、`target: 'node'`とかを使った方が妥当な可能性もある。
