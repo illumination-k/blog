@@ -280,7 +280,6 @@
 .markdown-body pre {
   font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
   font-size: 12px;
-  
 }
 
 .markdown-body pre {
@@ -799,10 +798,10 @@
 }
 
 .markdown-body pre {
-  white-space: pre-wrap; 
-  white-space: moz-pre-wrap; 
-  white-space: -pre-wrap; 
-  white-space: -o-pre-wrap; 
+  white-space: pre-wrap;
+  white-space: moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
   word-wrap: break-word;
 }
 

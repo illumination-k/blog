@@ -3,8 +3,8 @@ import Drawer from "@components/Drawer";
 import AmpDisplay from "@components/amp/AmpDisplay";
 import Container from "@mui/material/Container";
 import { Theme } from "@mui/material/styles";
-import createStyles from '@mui/styles/createStyles';
-import makeStyles from '@mui/styles/makeStyles';
+import createStyles from "@mui/styles/createStyles";
+import makeStyles from "@mui/styles/makeStyles";
 import AmpSidebar from "./amp/AmpSidebar";
 import { Grid } from "@mui/material";
 

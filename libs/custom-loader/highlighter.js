@@ -52,7 +52,6 @@ refractor.register(require("refractor/lang/json"));
 refractor.register(require("refractor/lang/graphql"));
 refractor.register(require("refractor/lang/toml"));
 
-
 function highlighter() {
   return (ast) => {
     visit(ast, "code", (node) => {

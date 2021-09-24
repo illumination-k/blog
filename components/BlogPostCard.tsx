@@ -4,8 +4,8 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { Theme } from "@mui/material/styles";
 
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import makeStyles from "@mui/styles/makeStyles";
+import createStyles from "@mui/styles/createStyles";
 
 import Link from "@components/Link";
 import CategoryChip from "./CategoryChip";

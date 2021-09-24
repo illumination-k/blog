@@ -5,13 +5,13 @@ description: "Next.jsで作ってみたブログに形態素解析とflexsearch�
 
 ## TL;DR
 
-検索機能がやっぱり欲しかったので、とりあえず形態素解析と[flexsearch](https://github.com/nextapps-de/flexsearch)を使って実装してみた。やっぱり感度がなんかなあ、という感じなので、ngramとかを併用したほうがいいかもしれない。
+検索機能がやっぱり欲しかったので、とりあえず形態素解析と[flexsearch](https://github.com/nextapps-de/flexsearch)を使って実装してみた。やっぱり感度がなんかなあ、という感じなので、ngram とかを併用したほうがいいかもしれない。
 
 ## 基本戦略
 
-完全AMP対応させたいので、`getServerSideProps`内でqueryを受け取って、flexsearchにかける。検索対象は、サーバーに上げる前に`data.js`みたいな感じでキャッシュしておいて、そこを参照する。
+完全 AMP 対応させたいので、`getServerSideProps`内で query を受け取って、flexsearch にかける。検索対象は、サーバーに上げる前に`data.js`みたいな感じでキャッシュしておいて、そこを参照する。
 
-formはこんな感じで作成して、getでsearchページに`/search?q=word`みたいな感じで飛ばす。
+form はこんな感じで作成して、get で search ページに`/search?q=word`みたいな感じで飛ばす。
 
 ```jsx
 <form
@@ -25,15 +25,15 @@ target="_top"
 ></input>>
 ```
 
-ampのときにformで必要になってくるのは、`target`部分で`_top`か`_blank`を指定する必要があり、`_top`だとそのまま、`_blank`だと新しいタブで開くらしい。
+amp のときに form で必要になってくるのは、`target`部分で`_top`か`_blank`を指定する必要があり、`_top`だとそのまま、`_blank`だと新しいタブで開くらしい。
 
 ## 形態素解析
 
-[kuromojin](https://github.com/azu/kuromojin)を使った。まずはblog postを全部とってきて、markdownをtextに変換した後形態素解析して、それを`cache/data.js`のような形で保存する。markdown -> textには[strip-markdown](https://github.com/remarkjs/strip-markdown)を利用した。
+[kuromojin](https://github.com/azu/kuromojin)を使った。まずは blog post を全部とってきて、markdown を text に変換した後形態素解析して、それを`cache/data.js`のような形で保存する。markdown -> text には[strip-markdown](https://github.com/remarkjs/strip-markdown)を利用した。
 
-形態素解析した結果はregexに関わりそうな部分を抜いて（highlight機能とかのときに邪魔かなと思った）、検索に使用しそうな名詞、動詞、形容詞を残した。また、単語長は2以上のものだけにした。このへんは設定詰めたほうが良さそう。今回はタイトルと本体部分だけを検索するようにしているが、そのへんは足すだけなので足せばいいと思う。
+形態素解析した結果は regex に関わりそうな部分を抜いて（highlight 機能とかのときに邪魔かなと思った）、検索に使用しそうな名詞、動詞、形容詞を残した。また、単語長は 2 以上のものだけにした。このへんは設定詰めたほうが良さそう。今回はタイトルと本体部分だけを検索するようにしているが、そのへんは足すだけなので足せばいいと思う。
 
-大まかな流れは、`getAllPosts`で全体をとってきて、中身を`gray-matter`でよんで、`filterTocken`でほしいトークンだけとってきて、とってきたトークンを全部wordとして保存しているだけ。
+大まかな流れは、`getAllPosts`で全体をとってきて、中身を`gray-matter`でよんで、`filterTocken`でほしいトークンだけとってきて、とってきたトークンを全部 word として保存しているだけ。
 
 ```js:title=makeCache.js
 const fs = require("fs");
@@ -114,14 +114,14 @@ makePostsCache();
 
 毎回これを実行するなんて間違いなく忘れるので、[husky](https://github.com/typicode/husky)というパッケージを使った。
 
-package.jsonのbuildとかの部分を以下のように変更する。
+package.json の build とかの部分を以下のように変更する。
 
 ```json:title=package.json
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "cache-posts": "node script/makeCache.js" 
+    "cache-posts": "node script/makeCache.js"
   },
   "husky": {
     "hooks": {
@@ -130,9 +130,9 @@ package.jsonのbuildとかの部分を以下のように変更する。
   },
 ```
 
-こうすると、commitするたびに自動で`makeCache.js`が走るので楽。
+こうすると、commit するたびに自動で`makeCache.js`が走るので楽。
 
-huskyで設定した`pre-commit`の動作を走らせたくないときは、
+husky で設定した`pre-commit`の動作を走らせたくないときは、
 
 ```bash
 git commit -m "no-hooks!" --no-verify
@@ -142,12 +142,11 @@ git commit -m "no-hooks!" --no-verify
 
 ## search page
 
-ということでsearch pageを作っていく。`getServerSideProps`はctx変数をうけとる。ctxには大体の情報が入っている。今回はquery結果だけほしいので`ctx.query`だけ使う。
+ということで search page を作っていく。`getServerSideProps`は ctx 変数をうけとる。ctx には大体の情報が入っている。今回は query 結果だけほしいので`ctx.query`だけ使う。
 
 ```jsx
-import Link from "next/link"
+import Link from "next/link";
 import Layout from "@components/Layout";
-
 
 const SearchResult = (props) => {
   const { query, meta } = props;
@@ -163,9 +162,7 @@ const SearchResult = (props) => {
     <Layout>
       <h1>Search Results</h1>
       <h2>Query: {query}</h2>
-      <ul>
-        {listitems}
-      </ul>
+      <ul>{listitems}</ul>
     </Layout>
   );
 };
@@ -201,12 +198,11 @@ export async function getServerSideProps(ctx) {
 export default SearchResult;
 ```
 
-wordsはmakeCache.js時点でスペース区切りで保存してあるので、flexsearchのtokenizeはカスタムしたもの（空白区切りでarrayにするだけ）を使う。それ以外はflexsearchのドキュメントに書いてあるとおりだと思う。idがurl用のパスになっているので、そのまま渡している。
+words は makeCache.js 時点でスペース区切りで保存してあるので、flexsearch の tokenize はカスタムしたもの（空白区切りで array にするだけ）を使う。それ以外は flexsearch のドキュメントに書いてあるとおりだと思う。id が url 用のパスになっているので、そのまま渡している。
 
-
-ということで、とりあえずこんな形でサイト内の記事検索を実装してみた。Googleはすごい。
+ということで、とりあえずこんな形でサイト内の記事検索を実装してみた。Google はすごい。
 
 ## 参考
 
-- [Gridsomeでイチからブログを作る - サイト内全文検索機能をつける](https://blog.solunita.net/posts/develop-blog-by-gridsome-from-scratch-full-text-search/)
+- [Gridsome でイチからブログを作る - サイト内全文検索機能をつける](https://blog.solunita.net/posts/develop-blog-by-gridsome-from-scratch-full-text-search/)
 - [Building a search component for your Next.js markdown blog](https://medium.com/@matswainson/building-a-search-component-for-your-next-js-markdown-blog-9e75e0e7d210)

@@ -5,13 +5,13 @@ description: 知っておくと便利そうなbash知識をまとめていきま
 
 ## TL;DR
 
-便利そうなbashコマンドをまとめていきます。
+便利そうな bash コマンドをまとめていきます。
 
 ## 基本
 
 ### 長い文章を出力する
 
-```bash 
+```bash
 cat EOF<<
 long sentense!
 EOF
@@ -116,7 +116,7 @@ d=$(ls | awk -F / 'print $NF')
 ```bash
 filename="test.csv"
 base=${filename%.csv}
-# or 
+# or
 base=${filename%.*}
 echo $base
 # test
@@ -188,15 +188,15 @@ rename .txt .csv *.txt # linuxのみ？
 ls *.txt | sed -e s/\.txt// | awk '{print $1 ".txt " $1 ".csv"}' | xargs -n 2 mv
 ```
 
-## csvやtsvをある程度フォーマットした状態で読み込む
+## csv や tsv をある程度フォーマットした状態で読み込む
 
-`column`の`-s`はデフォルトだとtabなので、tsvなら`-s`以下が要らない。
+`column`の`-s`はデフォルトだと tab なので、tsv なら`-s`以下が要らない。
 
 ```bash
 cat sample.csv | column -t -s $"," | less -S
 ```
 
-## csvなどの区切り文字を変換する
+## csv などの区切り文字を変換する
 
 `csv` -> `tsv`
 
@@ -221,7 +221,7 @@ if [[ ! -v who ]]; then
 fi
 ```
 
-## シェルスクリプト内でaliasを使う
+## シェルスクリプト内で alias を使う
 
 非対話モードでは`alias`はデフォルトでは動かない。
 
@@ -229,7 +229,7 @@ fi
 man bash | grep "Alias"
 ```
 
->  Aliases are not expanded when the shell is not interactive, unless the expand_aliases shell option is set using shopt (see the description of shopt under SHELL BUILTIN COMMANDS below).
+> Aliases are not expanded when the shell is not interactive, unless the expand_aliases shell option is set using shopt (see the description of shopt under SHELL BUILTIN COMMANDS below).
 
 ```bash
 shopt -s expand_aliases
@@ -237,7 +237,7 @@ shopt -s expand_aliases
 
 をすれば動く。関数で同様のことができるのでそっちを使った方が楽かもしれない。
 
-Dockerをカレントディレクトリをマウントしつつ動かす例。
+Docker をカレントディレクトリをマウントしつつ動かす例。
 
 ```bash
 shopt -s expand_aliases
@@ -254,5 +254,5 @@ function vdocker {
 
 - [BashFAQ100](http://mywiki.wooledge.org/BashFAQ/100)
 - [ファイルの拡張子の一括置換](https://qiita.com/fujieee/items/6c3fcca4de52b84a03c1)
-- [set -uしてるときに変数が定義されてるかチェックする](https://qiita.com/tadsan/items/0109d651780844acce09)
-- [Bashシェルスクリプト内でaliasコマンドを使う方法](https://genzouw.com/entry/2020/03/16/090918/1947/)
+- [set -u してるときに変数が定義されてるかチェックする](https://qiita.com/tadsan/items/0109d651780844acce09)
+- [Bash シェルスクリプト内で alias コマンドを使う方法](https://genzouw.com/entry/2020/03/16/090918/1947/)

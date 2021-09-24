@@ -5,7 +5,7 @@ description: SQLに関するメモ
 
 ## TL;DR
 
-SQLに関するメモ。入門レベルです。
+SQL に関するメモ。入門レベルです。
 
 ## 基本構文
 
@@ -54,8 +54,8 @@ SELECT * FROM A
 
 ### IFNULL, COACESCE
 
-- `IFNULL`: NULLをとったときのデフォルト値を指定できる。
-- `COALESCE`: 複数列を調べて、NULLだったらデフォルト値を返す。
+- `IFNULL`: NULL をとったときのデフォルト値を指定できる。
+- `COALESCE`: 複数列を調べて、NULL だったらデフォルト値を返す。
 
 ```sql
 SELECT id, IFNULL(
@@ -79,7 +79,6 @@ SELECT id FROM A LIMIT 1
 SELECT id FROM A ORDER BY id OFFSET 1
 ```
 
-
 ### 変数定義
 
 `DECLARE`が必要？
@@ -91,7 +90,7 @@ SET N = 0;
 
 ### 判定
 
-NULLかどうか
+NULL かどうか
 
 ```sql
 N IS NULL --or
@@ -100,9 +99,9 @@ N IS NOT NULL
 
 大小比較などは普通の記号は使える。同一判定は`==`ではなく`=`を使う。
 
-## Window関数
+## Window 関数
 
-`GROUP BY`だとまとめられてしまうけど、まとめずに新しい列を作成する。`PARTITION BY`を使ってどの列を対象とするかを決定する。通常の集計関数と、Window関数専用の関数がある。
+`GROUP BY`だとまとめられてしまうけど、まとめずに新しい列を作成する。`PARTITION BY`を使ってどの列を対象とするかを決定する。通常の集計関数と、Window 関数専用の関数がある。
 
 ### 基本
 
@@ -116,7 +115,7 @@ SELECT gid, SUM(val) OVER (PARTITION BY gid) FROM t
 
 ### ORDER BY
 
-window関数内での`ORDER BY`はwindow関数が処理する順序を指定する。`SUM`を使うと、その行までの和が得られる。
+window 関数内での`ORDER BY`は window 関数が処理する順序を指定する。`SUM`を使うと、その行までの和が得られる。
 
 ```sql
 SELECT gid, SUM(val) OVER (PARTITION BY gid ORDER BY val) FROM t
@@ -128,10 +127,10 @@ SELECT gid, SUM(val) OVER (PARTITION BY gid ORDER BY val) FROM t
 
 開始位置、終了位置で使える変数は以下
 
-|name|description|
-|---|---|
-|CURRENT ROW|現在行|
-|UNBOUNDED PRECEDING|PARTITIONの最初|
-|UNBOUNDED FOLLOWING|PARTITIONの最後|
-|N(INT) PRECEDING|現在行のN行前|
-|N(INT) FOLLOWING|現在行のN行後|
+| name                | description      |
+| ------------------- | ---------------- |
+| CURRENT ROW         | 現在行           |
+| UNBOUNDED PRECEDING | PARTITION の最初 |
+| UNBOUNDED FOLLOWING | PARTITION の最後 |
+| N(INT) PRECEDING    | 現在行の N 行前  |
+| N(INT) FOLLOWING    | 現在行の N 行後  |

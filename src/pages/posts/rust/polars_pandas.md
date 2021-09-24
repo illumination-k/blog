@@ -5,23 +5,22 @@ description: rustにも実はpandas likeなcrateがあることを知ったの�
 
 ## TL;DR
 
-rustにも実はpandas likeなcrateがあることを知ったのでpandasとの対応関係をまとめてた。最善である保証はありません。またVersionごとに破壊的変更がそこそこあるので、Versionに注意する必要があります。
+rust にも実は pandas like な crate があることを知ったので pandas との対応関係をまとめてた。最善である保証はありません。また Version ごとに破壊的変更がそこそこあるので、Version に注意する必要があります。
 
-これを使えば大きなファイルを素早く処理できる可能性がありますが、さすがにrustなのでお手軽感はあまりありませんでした。
+これを使えば大きなファイルを素早く処理できる可能性がありますが、さすがに rust なのでお手軽感はあまりありませんでした。
 
-[excvr](https://github.com/google/evcxr)を使えばJupyter上で動かせます。Jupyter labを使うとPythonとRustの比較が非常にやりやすくて良かったです。
+[excvr](https://github.com/google/evcxr)を使えば Jupyter 上で動かせます。Jupyter lab を使うと Python と Rust の比較が非常にやりやすくて良かったです。
 
 ![jupyter-image](/images/polars_pandas/jupyter_image.PNG)
 
-
 ただ補完や型の推測が効かないので少し困りました。`rust-analyzer`対応してほしい。  
-サンプルノートブックはこちら。docker-composeで起動できます。
+サンプルノートブックはこちら。docker-compose で起動できます。
 
 ![github:illumination-k/polars-pandas](github:illumination-k/polars-pandas)
 
 ## polars
 
-[Apache Arrows](https://arrow.apache.org)をベースにしたデータフレームライブラリ。なんかpy-polarsみたいなのもあって、pandasより速いらしい。[polarsのgithub](https://github.com/ritchie46/polars)のREADMEにベンチマークテストがある。使い勝手としてはどちらかといえばRのtidyverseに似ている気がする。
+[Apache Arrows](https://arrow.apache.org)をベースにしたデータフレームライブラリ。なんか py-polars みたいなのもあって、pandas より速いらしい。[polars の github](https://github.com/ritchie46/polars)の README にベンチマークテストがある。使い勝手としてはどちらかといえば R の tidyverse に似ている気がする。
 
 ### ChunkedArray
 
@@ -29,7 +28,7 @@ rustにも実はpandas likeなcrateがあることを知ったのでpandasとの
 
 ## Install
 
-色々featureもあって、日付変換やndarrayへの変換、ランダムサンプリングなどに対応している。あとはjsonのserdeやApache Parquet formatとかのI/Oとか。今回はndarrayとランダムサンプリングを試してみる。あとエラーハンドリングにanyhowを入れておく。
+色々 feature もあって、日付変換や ndarray への変換、ランダムサンプリングなどに対応している。あとは json の serde や Apache Parquet format とかの I/O とか。今回は ndarray とランダムサンプリングを試してみる。あとエラーハンドリングに anyhow を入れておく。
 
 ```toml:title=Cargo.toml
 [dependencies]
@@ -37,21 +36,21 @@ anyhow = "1.0"
 polars = { version = "0.14.7", features = ["ndarray", "random"]}
 ```
 
-Jupyterを使う場合は、
+Jupyter を使う場合は、
 
 ```
 :dep polars = { version = "0.14.7", features = ["ndarray", "random"]}
 ```
 
-また、nightlyが必要なのでOverrideしておく。
+また、nightly が必要なので Override しておく。
 
 ```bash
 rustup override nightly
 ```
 
-pandasはお好みのパッケージ管理ツールでインストールしてください。
+pandas はお好みのパッケージ管理ツールでインストールしてください。
 
-rust側は下記の`todo!()`部分に相当する場所を書いているつもりです。
+rust 側は下記の`todo!()`部分に相当する場所を書いているつもりです。
 
 ```rust
 use polars::prelude::*;
@@ -63,7 +62,7 @@ fn main() -> Result<()> {
 }
 ```
 
-Python側も下記のimportを行っている前提です。
+Python 側も下記の import を行っている前提です。
 
 ```python
 import pandas as pd
@@ -71,84 +70,85 @@ print(pd.__version__)
 # 1.3.0
 ```
 
-## SeriesとDataFrameとChunkedArrayの演算
+## Series と DataFrame と ChunkedArray の演算
 
-非常に長いので畳んである。ChunkedArrayは大抵の演算ができる。Seriesの比較は条件による行選択の際に必要なので見ておくとよいです。
+非常に長いので畳んである。ChunkedArray は大抵の演算ができる。Series の比較は条件による行選択の際に必要なので見ておくとよいです。
 
 <details><summary>numberとSeries</summary><div>
 
-|演算名|vs number|
-|---|---|
-|add| `s + 1` |
-|sub| `s - 1` |
-|div| `s / 1` |
-|mul| `s * 1` |
+| 演算名 | vs number |
+| ------ | --------- |
+| add    | `s + 1`   |
+| sub    | `s - 1`   |
+| div    | `s / 1`   |
+| mul    | `s * 1`   |
 
 </div></details>
 
 <details><summary>SeriesとSeries</summary><div>
 
-|演算名|操作|
-|---|---|
-|add| `&s1 + &s2` |
-|sub| `&s1 - &s2` |
-|div| `&s1 / &s2` |
-|mul| `&s1 * &s2` |
-|mod| `&s1 % &s2` |
-|eq| `s1.series_equal(s2)` |
+| 演算名 | 操作                  |
+| ------ | --------------------- |
+| add    | `&s1 + &s2`           |
+| sub    | `&s1 - &s2`           |
+| div    | `&s1 / &s2`           |
+| mul    | `&s1 * &s2`           |
+| mod    | `&s1 % &s2`           |
+| eq     | `s1.series_equal(s2)` |
 
 </div></details>
 
 <details><summary>DataFrameとSeries</summary><div>
 
-|演算名|操作|
-|---|---|
-|add| `&df + &s` |
-|sub| `&df - &s` |
-|div| `&df / &s` |
-|mul| `&df * &s` |
-|mod| `&df % &s` |
+| 演算名 | 操作       |
+| ------ | ---------- |
+| add    | `&df + &s` |
+| sub    | `&df - &s` |
+| div    | `&df / &s` |
+| mul    | `&df * &s` |
+| mod    | `&df % &s` |
 
 </div></details>
 
 <details><summary>Seriesの演算</summary><div>
 
-|演算名|操作|
-|---|---|
-|sum|`s.sum<T>()`|
-|max|`s.max<T>()`|
-|min|`s.min<T>()`|
-|mean|`s.mean<T>()`|
+| 演算名 | 操作          |
+| ------ | ------------- |
+| sum    | `s.sum<T>()`  |
+| max    | `s.max<T>()`  |
+| min    | `s.min<T>()`  |
+| mean   | `s.mean<T>()` |
 
 </div></details>
 
 <details>
 <summary>Seriesの比較</summary>
 
-Series同士、Seriesとnumberを比較できる
+Series 同士、Series と number を比較できる
 
-|演算|vs Series|vs number|
-|---|---|---|
-|`=`|`s1.eq(s2)`|`s1.eq(1)`|
-|`!=`|`s1.neq(s2)`|`s1.neq(1)`|
-|`>`|`s1.gt(s2)`|`s1.gt(1)`|
-|`=>`|`s1.gt_eq(s2)`|`s1.gt_eq(1)`|
-|`<`|`s1.lt(s2)`|`s1.lt(1)`|
-|`<=`|`s1.lt_eq(s2)`|`s1.lt_eq(1)`|
+| 演算 | vs Series      | vs number     |
+| ---- | -------------- | ------------- |
+| `=`  | `s1.eq(s2)`    | `s1.eq(1)`    |
+| `!=` | `s1.neq(s2)`   | `s1.neq(1)`   |
+| `>`  | `s1.gt(s2)`    | `s1.gt(1)`    |
+| `=>` | `s1.gt_eq(s2)` | `s1.gt_eq(1)` |
+| `<`  | `s1.lt(s2)`    | `s1.lt(1)`    |
+| `<=` | `s1.lt_eq(s2)` | `s1.lt_eq(1)` |
+
 <div>
 </div></details>
 
 <details><summary>DataFrameの演算</summary><div>
 
-|演算名|操作|
-|---|---|
-|sum|`df.sum()`|
-|max|`df.max()`|
-|min|`df.min()`|
-|median|`df.median()`|
-|mean|`df.mean()`|
-|var|`df.var()`|
-|std|`df.std()`|
+| 演算名 | 操作          |
+| ------ | ------------- |
+| sum    | `df.sum()`    |
+| max    | `df.max()`    |
+| min    | `df.min()`    |
+| median | `df.median()` |
+| mean   | `df.mean()`   |
+| var    | `df.var()`    |
+| std    | `df.std()`    |
 
 </div></details>
 
@@ -163,15 +163,15 @@ Series同士、Seriesとnumberを比較できる
 - %
 - pow
 
-あたりです。また、`ChunkedArray<BooleanType>`は`&`と`|`のbit演算ができます。
+あたりです。また、`ChunkedArray<BooleanType>`は`&`と`|`の bit 演算ができます。
 
-比較はSeriesと同じ感じでやる必要があります。
+比較は Series と同じ感じでやる必要があります。
 
 ```rust
 c1.lt(c2);
 ```
 
-あとはIteratorとかVectorに処理する感じのものはできるものがあります。
+あとは Iterator とか Vector に処理する感じのものはできるものがあります。
 
 - map
 - fold
@@ -183,14 +183,14 @@ c1.lt(c2);
 
 また、`ChunkedArray<Utf8Type>`は`to_lowercase`や`to_upper_case`、`replace`なんかが使えます。
 
-default featureのtemporalがあれば、時間のパースもできます。
+default feature の temporal があれば、時間のパースもできます。
 
 <div>
 </div></details>
 
-## Seriesの作成
+## Series の作成
 
-nameは任意。
+name は任意。
 
 ```python
 s = pd.Series([1, 2, 3], name="s")
@@ -203,7 +203,7 @@ let s = Series::new("s", [1, 2, 3]);
 let t: Series = [1, 2, 3].iter().collect();
 ```
 
-## DataFrameの作成
+## DataFrame の作成
 
 ```python
 df = pd.DataFrame({
@@ -217,7 +217,7 @@ df = pd.DataFrame({
 マクロが便利
 
 ```rust
-let s = 
+let s =
 let mut df = df!("A" => &["a", "b", "a"],
              "B" => &[1, 3, 5],
              "C" => &[10, 11, 12],
@@ -232,7 +232,7 @@ df["A"]
 df[["A", "B"]]
 ```
 
-selectで選ぶと、`Result<DataFrame>`が返ってくる。
+select で選ぶと、`Result<DataFrame>`が返ってくる。
 
 ```rust
 df.select("A")?;
@@ -240,7 +240,7 @@ df.select(("A", "B"))?;
 df.select(vec!["A", "B", "C"])?;
 ```
 
-columnで選ぶと、`Result<Series>`が返ってくる。
+column で選ぶと、`Result<Series>`が返ってくる。
 
 ```rust
 df.column("A")?;
@@ -248,7 +248,7 @@ df.column("A")?;
 
 ## 条件に応じた列選択
 
-どちらもcolumnsをとってきてfilterなりなんなりをすればよい。多分strメソッドを使うのがpandasっぽくて好きです。 Rustは`get_columns`でcolumnsをもって来ることができます。もう少し何とかならないかな...
+どちらも columns をとってきて filter なりなんなりをすればよい。多分 str メソッドを使うのが pandas っぽくて好きです。 Rust は`get_columns`で columns をもって来ることができます。もう少し何とかならないかな...
 
 ```python
 df.loc[:, [c.startswith("A") for c in df.columns]]
@@ -282,9 +282,9 @@ df["F"] = df["B"].map(lambda x: x * 2)
 df = df.assign(G = lambda df: df.B * 2)
 ```
 
-polarsのcolumの追加は`with_column`関数や`replace_or_add`関数で行える。  
-assignみたいないい感じの関数が見つからなかった。四則演算や簡単な演算はSeriesにして計算すればいける。`to_owned()`2回やってるの解消できる気がするけどできなかった。  
-無名関数を使いたい際には、一端`ChunkedArray`に変換してからapplyやmapを使う。`Series`は型を持たないが、`ChunkedArray`は型があるので演算ができる。  
+polars の colum の追加は`with_column`関数や`replace_or_add`関数で行える。  
+assign みたいないい感じの関数が見つからなかった。四則演算や簡単な演算は Series にして計算すればいける。`to_owned()`2 回やってるの解消できる気がするけどできなかった。  
+無名関数を使いたい際には、一端`ChunkedArray`に変換してから apply や map を使う。`Series`は型を持たないが、`ChunkedArray`は型があるので演算ができる。  
 `DataFrame`構造体には`apply`が存在しているが、`&mut self`なので、本体が変わってしまう。なので`select`か`clone`してからみたいな処理になるけどどっちが早いのだろうか。
 
 ```rust
@@ -325,7 +325,7 @@ df.loc[(df["B"] == 1) | (df["C"] == 12)]
 df.query("B == 1 | C == 12")
 ```
 
-ChunkedArrayはbit演算ができます。
+ChunkedArray は bit 演算ができます。
 
 ```rust
 df.filter(&(
@@ -340,7 +340,7 @@ l = [1, 3]
 df.query("B in @l")
 ```
 
-たぶんChunkedArrayに変換してやる方法しか見つかりませんでした。applyはSelfを返すので、`ChunkedArray<Int32Type>`から`ChunkedArray<BooleanType>`に変換はできない。なので、mapを使った後collectする必要がある。
+たぶん ChunkedArray に変換してやる方法しか見つかりませんでした。apply は Self を返すので、`ChunkedArray<Int32Type>`から`ChunkedArray<BooleanType>`に変換はできない。なので、map を使った後 collect する必要がある。
 
 ```rust
 let v: Vec<i32> = vec![1, 2];
@@ -354,7 +354,7 @@ df.filter(&(
 
 ## GroupBy
 
-Groupby用にデータフレームを準備する。
+Groupby 用にデータフレームを準備する。
 
 ```python
 dates = [
@@ -418,9 +418,9 @@ println!("{:?}", df);
 // +--------------+------+------+
 ```
 
-### build-inの演算
+### build-in の演算
 
-polarsでは
+polars では
 
 - count
 - first
@@ -438,7 +438,7 @@ polarsでは
 
 ができる。使い方は
 
-1. 特定の列でGroupby
+1. 特定の列で Groupby
 2. 演算したい列を指定 (指定なしなら全部)
 3. 演算
 
@@ -472,7 +472,7 @@ df.groupby("date").unwrap()
 df.groupby("date").apply(lambda x: print(x))
 ```
 
-applyの返り値は`Result<DataFrame>`である必要がある。
+apply の返り値は`Result<DataFrame>`である必要がある。
 
 ```rust
 df.groupby("date").unwrap()
@@ -481,7 +481,7 @@ df.groupby("date").unwrap()
 
 ## hstack, vstack (concat)
 
-`pandas`の`concat`。pandasの`stack`とは機能が違うので注意が必要。pandasは合わない行があればNaNで埋めるがpolarsはエラーする。
+`pandas`の`concat`。pandas の`stack`とは機能が違うので注意が必要。pandas は合わない行があれば NaN で埋めるが polars はエラーする。
 
 データフレームを準備する。
 
@@ -552,7 +552,7 @@ df.filter(&df.is_duplicated()?)?;
 
 ## 重複行の削除
 
-両方ともsubsetを選ぶことで、同じように特定の列の重複行を削除できる。
+両方とも subset を選ぶことで、同じように特定の列の重複行を削除できる。
 
 ```python
 df.drop_duplicates()
@@ -562,7 +562,7 @@ df.drop_duplicates()
 df.drop_duplicates(true, None)? // maintain_order, subset;
 ```
 
-## numpy / ndarrayへの変換
+## numpy / ndarray への変換
 
 ```python
 df.values
@@ -576,15 +576,15 @@ df.to_ndarray<T>()?;
 
 ## read csv
 
-csv以外なら`sep = "\t"`とかしてください。
+csv 以外なら`sep = "\t"`とかしてください。
 
 ```python
 df = pd.read_csv(path)
 ```
 
-csv以外ならwith_delimiterの引数を好きに変えてください。なくても動きます。
+csv 以外なら with_delimiter の引数を好きに変えてください。なくても動きます。
 
-あとparalellのfeatureがあると、daskみたいな感じでCPUの上限コア数を使って読み込みます。いやな場合は、`.with_n_threads(Some(2))`とかしてください。`with_n_threads`は`from_path`を使って`CsvReader`を作った時しか使えないようです。
+あと paralell の feature があると、dask みたいな感じで CPU の上限コア数を使って読み込みます。いやな場合は、`.with_n_threads(Some(2))`とかしてください。`with_n_threads`は`from_path`を使って`CsvReader`を作った時しか使えないようです。
 
 ```rust
 let df = CsvReader::from_path(path)?
@@ -596,7 +596,7 @@ let df = CsvReader::from_path(path)?
 
 ## write csv
 
-readと同様。
+read と同様。
 
 ```python
 df.to_csv(path)
@@ -614,8 +614,8 @@ CsvWriter::new(&mut f)
 
 - [ ] pivot
 - [ ] melt
-- [ ] join系
-- [ ] fillna系
+- [ ] join 系
+- [ ] fillna 系
 - [ ] sample_n
 - [ ] macro
 
@@ -623,4 +623,4 @@ CsvWriter::new(&mut f)
 
 ## 感想
 
-できることは多い感じがします。pandasみたいに柔軟な処理をする用途では使いにくそうですが、決まりきった処理ならpolarsで記述すると生産効率向上に寄与する可能性があります。
+できることは多い感じがします。pandas みたいに柔軟な処理をする用途では使いにくそうですが、決まりきった処理なら polars で記述すると生産効率向上に寄与する可能性があります。

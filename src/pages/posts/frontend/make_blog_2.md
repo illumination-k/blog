@@ -2,36 +2,35 @@
 title: "MDX or Markdown ?"
 description: ブログ記事を書くのに、MDXを使うのか、Markdownを使うのか
 layout:
-    path: "@components/BlogPostLayout"
-    component: BlogPostLayout
+  path: "@components/BlogPostLayout"
+  component: BlogPostLayout
 ---
 
 ## TL;DR
 
-Next.jsを使ってブログを書く際に、Next.jsはmdxフォーマットをサポートしている[@next/mdx](https://github.com/vercel/next.js/tree/canary/packages/next-mdx)があります。
+Next.js を使ってブログを書く際に、Next.js は mdx フォーマットをサポートしている[@next/mdx](https://github.com/vercel/next.js/tree/canary/packages/next-mdx)があります。
 
-mdxの特徴として、
+mdx の特徴として、
 
-1. Markdown内でJSXがかける
-2. 外部のコンポーネントをimportできる
-3. 内部の変数などをexportできる
+1. Markdown 内で JSX がかける
+2. 外部のコンポーネントを import できる
+3. 内部の変数などを export できる
 
 というものがあります。しかし、ブログ記事を書くだけならこれらの機能はオーバースペックに見えます。
 
 記事書くだけならそんなに拡張性はいらない気がします。なので、今回は記事を書くときに`mdx`を採用しなかった理由について書きます。
 簡単にまとめると、以下です。
 
-1. `Next.js`の`dynamic import`が動かなかったので、メタデータのexportができない。
-2. VSCodeの拡張の補完がMarkdownと比べてかなり弱い。
+1. `Next.js`の`dynamic import`が動かなかったので、メタデータの export ができない。
+2. VSCode の拡張の補完が Markdown と比べてかなり弱い。
 
 これらの理由は単純に発展途上であることに起因する問題なので、これ以後の流行りによっては改善されていくと期待されます。しかし、現時点では問題です。
 
-なので、このブログでは`md`拡張子を使って記事を書き、レンダリングする際に`mdx`へと変換しています。また、`export`の代わりにfrontmatterを使うことでメタデータを表現しています。
+なので、このブログでは`md`拡張子を使って記事を書き、レンダリングする際に`mdx`へと変換しています。また、`export`の代わりに frontmatter を使うことでメタデータを表現しています。
 
+### mdx のデメリット
 
-### mdxのデメリット
-
-個人的にブログ書くときにmdxを使う際に不安だったのが、
+個人的にブログ書くときに mdx を使う際に不安だったのが、
 
 ```jsx
 import snowfallData from './snowfall.json'
@@ -43,7 +42,7 @@ import BarChart from './charts/BarChart'
 
 上のようなコードです。サイトなどを作る際にはすごく便利に見えます。しかし、記事のテンプレートとしての統一がしにくくて、`<BarChart>`とかをもし変更してしまうと割と容易にエラーが出たりしそうでちょっといやだなーという感じでした。
 
-また、もう1つの理由が、`mdx`は、
+また、もう 1 つの理由が、`mdx`は、
 
 ```jsx
 export meta = {
@@ -51,26 +50,26 @@ export meta = {
 }
 ```
 
-みたいなことができます。しかし、`dynamic import`するとうまくexportされたメタデータを取得できませんでした。
-いろんなブログとか見たんですけど、exampleが下の感じで、
+みたいなことができます。しかし、`dynamic import`するとうまく export されたメタデータを取得できませんでした。
+いろんなブログとか見たんですけど、example が下の感じで、
 
 ```jsx
 const meta = dynamic(() => import(`../_posts/${filename}`)).then((m) => m.meta);
 ```
 
-見た目いけそうなんですけど、実際にはエラーが起こってうまく動かない。なので、記事用のコンポーネントとして切り出すときにexportなどが使えないので日付やタイトルなどのメタデータを扱いにくいという問題点があります。
+見た目いけそうなんですけど、実際にはエラーが起こってうまく動かない。なので、記事用のコンポーネントとして切り出すときに export などが使えないので日付やタイトルなどのメタデータを扱いにくいという問題点があります。
 
-また、記事を書くときに不満なのが、VSCodeのmdx向けの拡張です。markdownならVSCodeのExtensionとかが充実しているので、補完やlintなども効いて生産効率が非常に高いです。しかし、mdxは補完がまだまだかなーという印象を受けました。
+また、記事を書くときに不満なのが、VSCode の mdx 向けの拡張です。markdown なら VSCode の Extension とかが充実しているので、補完や lint なども効いて生産効率が非常に高いです。しかし、mdx は補完がまだまだかなーという印象を受けました。
 
-なので、ブログ記事はできるだけ純粋なMarkdownで書けるようにしたいです。
+なので、ブログ記事はできるだけ純粋な Markdown で書けるようにしたいです。
 
-### mdxのメリット
+### mdx のメリット
 
-Next.jsでmdxを使うメリットとして、Next.jsのmdxに関するレンダリングシステムが挙げられます。Next.jsでは、mdxを`pages/posts/hoge.mdx`におくと`localhost:3000/posts/hoge`にmdxがページとしてレンダリングされます。また、`remark`とか`rehype`系のプラグインを`next.config.js`に書くだけでMdxに対して適用できます。
+Next.js で mdx を使うメリットとして、Next.js の mdx に関するレンダリングシステムが挙げられます。Next.js では、mdx を`pages/posts/hoge.mdx`におくと`localhost:3000/posts/hoge`に mdx がページとしてレンダリングされます。また、`remark`とか`rehype`系のプラグインを`next.config.js`に書くだけで Mdx に対して適用できます。
 
-とはいえ、これらのシステムはMarkdownにもNext.jsで適用できます。つまり、`next.config.js`に`remark`, `rehype`プラグインを書くだけでMarkdownを容易に拡張でき、ページとしてレンダリングできます。そのためにやることはシンプルで、`next.config.js`内の`pageExtensions`に`.md`を加えるだけです。
+とはいえ、これらのシステムは Markdown にも Next.js で適用できます。つまり、`next.config.js`に`remark`, `rehype`プラグインを書くだけで Markdown を容易に拡張でき、ページとしてレンダリングできます。そのためにやることはシンプルで、`next.config.js`内の`pageExtensions`に`.md`を加えるだけです。
 
-例えば、以下のような感じで、コードシンタクスとかkatexとかに対応でき、Markdownをレンダリングできます([参考](https://blog.hellorusk.net/posts/20191209))
+例えば、以下のような感じで、コードシンタクスとか katex とかに対応でき、Markdown をレンダリングできます([参考](https://blog.hellorusk.net/posts/20191209))
 
 ```js:title=next.config.js
 // remark plugins
@@ -98,11 +97,11 @@ module.exports = withMDX({
 })
 ```
 
-もしMarkdownを自前でレンダリングするなら、`react-markdown`を使ったり、remarkとrehypeでパースしたHTMLを`dangerousInnerHTML`で埋め込むことになります。それに比べると、`@next/mdx`を利用するのが非常に楽な方法だという印象を受けました。
+もし Markdown を自前でレンダリングするなら、`react-markdown`を使ったり、remark と rehype でパースした HTML を`dangerousInnerHTML`で埋め込むことになります。それに比べると、`@next/mdx`を利用するのが非常に楽な方法だという印象を受けました。
 
 ## レンダリングする方法
 
-Markdownをレンダリングする方法を一番素直に考えると、以下のようなコードが想定されます。`[postId].jsx`的な感じです。contentLoaderは名前で察してくれるとありがたいです。
+Markdown をレンダリングする方法を一番素直に考えると、以下のようなコードが想定されます。`[postId].jsx`的な感じです。contentLoader は名前で察してくれるとありがたいです。
 
 ```jsx
 import next/dynamic;
@@ -149,31 +148,30 @@ export async function getStaticPaths() {
 }
 ```
 
-`getStaticPaths`で`fs`モジュールを使ってmarkdownファイルの一覧を取得します。その後、`getStaticProps`でファイルの場所に戻して、ついでにメタデータをとってきて、そのパスに対応するmarkdownファイルと、Layoutにメタデータを渡します。
-このときにLayoutもメタデータで指定したいなら、
+`getStaticPaths`で`fs`モジュールを使って markdown ファイルの一覧を取得します。その後、`getStaticProps`でファイルの場所に戻して、ついでにメタデータをとってきて、そのパスに対応する markdown ファイルと、Layout にメタデータを渡します。
+このときに Layout もメタデータで指定したいなら、
 
 ```yaml
 layout:
-    path: /path/to/Layout.tsx
-    component: Layout
+  path: /path/to/Layout.tsx
+  component: Layout
 ```
 
 みたいなメタデータを作って`dynamic`を使えばそれも実現できます。
-もはや大体これでいいじゃん、って思ったのですが、サイドバーが作れない。headerをうまくとってきてそれを元にサイドバーが作りたい。
+もはや大体これでいいじゃん、って思ったのですが、サイドバーが作れない。header をうまくとってきてそれを元にサイドバーが作りたい。
 
-そこで考えたのが、remarkのcustom loaderを作る方法です。
-`remark-mdx`を使うと、だいたい下のmdxファイルは以下のようにパースされます。
+そこで考えたのが、remark の custom loader を作る方法です。
+`remark-mdx`を使うと、だいたい下の mdx ファイルは以下のようにパースされます。
 
-
-ただのfrontmatter付きのマークダウンファイルは以下のような感じでMDASTに変換されます。
+ただの frontmatter 付きのマークダウンファイルは以下のような感じで MDAST に変換されます。
 
 ```md
 ---
 title: A
 date: a/a/a/a
 layout:
-    path: ../../components/Layout
-    component: Layout
+  path: ../../components/Layout
+  component: Layout
 ---
 
 # a
@@ -183,10 +181,10 @@ layout:
 ### aaa
 ```
 
-`remark-frontmatter`を使うと、frontmatter部分は`type === yaml`のchildrenとして取得できるようになります。また、header部分は`type === headings`を探せば取得できます。つまり、MDASTをparseしてfrontmatter部分とheaderをmetadataとして取得できます。
-そして、layoutで指定されたコンポーネントを行頭でimportし、メタデータをexportし、importしたコンポーネントをexportします。
+`remark-frontmatter`を使うと、frontmatter 部分は`type === yaml`の children として取得できるようになります。また、header 部分は`type === headings`を探せば取得できます。つまり、MDAST を parse して frontmatter 部分と header を metadata として取得できます。
+そして、layout で指定されたコンポーネントを行頭で import し、メタデータを export し、import したコンポーネントを export します。
 
-つまり、上のようなfrontmatter付きのMarkdownを
+つまり、上のような frontmatter 付きの Markdown を
 
 ```jsx
 import Layout from "../../components/Layout"
@@ -220,14 +218,14 @@ export default ({meta, children}) => <Layout meta={meta} children={children} />
 
 ```
 
-こうすれば、markdownファイルを置くだけでカスタムコンポーネント付きのmdxに解釈されてレンダリングされるようになります。
+こうすれば、markdown ファイルを置くだけでカスタムコンポーネント付きの mdx に解釈されてレンダリングされるようになります。
 
-さらにheaderの情報を含んだmetadataをコンポーネントが受け取れるので、sidebarやtocをJSX側で作ることができます。リファクタリングがしたくなれば、ほとんどカスタムローダー側を触れば解決しそうなところもいけてる気がします。あとこの方法のメリットは突如として
+さらに header の情報を含んだ metadata をコンポーネントが受け取れるので、sidebar や toc を JSX 側で作ることができます。リファクタリングがしたくなれば、ほとんどカスタムローダー側を触れば解決しそうなところもいけてる気がします。あとこの方法のメリットは突如として
 
 ```jsx
 <button>Push!!!!!!!</button>
 ```
 
-とか入れたくなったときに入れられることです。パースは`mdx`に準拠してやってるので、突然mdxフォーマットで書いても自動で対応されます。
+とか入れたくなったときに入れられることです。パースは`mdx`に準拠してやってるので、突然 mdx フォーマットで書いても自動で対応されます。
 
 個人的にいい案だろって思ってるんですが、誰もこんなアプローチとってないので少し不安だったりします。なんか問題があるのだろうか（もっといい案が知りたい）。

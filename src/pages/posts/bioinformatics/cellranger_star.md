@@ -2,20 +2,20 @@
 title: "CellRangerでSTARのパラメータを変更する"
 description: "single cell RNA-seqを知ってる人ならまず知っているであろう、Cell Ranger。使ったことがなかったんですが、ちょっと使ってみようかなと思いました。しかし、これ内部的にはSTARを使ってマッピングするんですが、STARのパラメーターを引数でとれない、という問題（誰も問題にしていない）があります。公式の解答としては、自分でビルドしてね、責任は持たないけど、ってことらしいです。"
 layout:
-    path: "@components/BlogPostLayout"
-    component: BlogPostLayout
+  path: "@components/BlogPostLayout"
+  component: BlogPostLayout
 ---
 
 ## TL;DR
 
-single cell RNA-seqを知ってる人ならまず知っているであろう、Cell Ranger。使ったことがなかったんですが、ちょっと使ってみようかなと思いました。しかし、これ内部的にはSTARを使ってマッピングするんですが、STARのパラメーターを引数でとれない、という問題（誰も問題にしていない）があります。
+single cell RNA-seq を知ってる人ならまず知っているであろう、Cell Ranger。使ったことがなかったんですが、ちょっと使ってみようかなと思いました。しかし、これ内部的には STAR を使ってマッピングするんですが、STAR のパラメーターを引数でとれない、という問題（誰も問題にしていない）があります。
 
 [公式の解答](https://kb.10xgenomics.com/hc/en-us/articles/360003877352-How-can-I-modify-the-STAR-alignment-parameters-in-Cell-Ranger-)としては、自分でビルドしてね、責任は持たないけど、ってことらしいです。
 
 ## Dockerfile
 
 最初に完成品を貼っておくと、こんな感じでビルドしました。
-ソースコードを改変したいので、[公式Github](https://github.com/10XGenomics/cellranger)からソースコードは予めcloneして同一ディレクトリに置いてあります。
+ソースコードを改変したいので、[公式 Github](https://github.com/10XGenomics/cellranger)からソースコードは予め clone して同一ディレクトリに置いてあります。
 
 ```docker
 FROM debian
@@ -32,7 +32,7 @@ ENV PATH=/usr/lib/go-1.11/bin:$PATH
 ENV PATH=/root/.cargo/bin:$PATH
 
 RUN rustup install 1.28.0 && \
-    rustup default 1.28.0 
+    rustup default 1.28.0
 
 RUN pip install numpy docopt && \
     ln -s /usr/local/lib/python2.7/dist-packages/numpy/core/include/numpy /usr/include/numpy
@@ -61,7 +61,7 @@ ENV MROPATH=/cellranger/ranger-3.0.2/ranger-cs/3.0.2/tenkit/mro:/cellranger/rang
 ENV PYTHONPATH=/cellranger/ranger-3.0.2/ranger-cs/3.0.2/tenkit/lib/python:/cellranger/ranger-3.0.2/ranger-cs/3.0.2/lib/python:/cellranger/ranger-3.0.2/martian-cs/v3.2.0/adapters/python:/cellranger/lib/python:/cellranger/ranger-3.0.2/ranger-cs/3.0.2/tenkit/lib/python:/cellranger/ranger-3.0.2/ranger-cs/3.0.2/tenkit/lib/python:/cellranger/ranger-3.0.2/martian-cs/v3.2.0/adapters/python:/cellranger/ranger-3.0.2/ranger-cs/3.0.2/lib/python:/cellranger/lib/python:$PYTHONPATH
 ENV PYTHONUSERBASE=/cellranger/ranger-3.0.2/ranger-cs/3.0.2/lib
 
-ENV LD_LIBRARY_PATH=/cellranger/ranger-3.0.2/ranger-cs/3.0.2/../../miniconda-cr-cs/4.3.21-miniconda-cr-cs-c10/lib:$LD_LIBRARY_PATH 
+ENV LD_LIBRARY_PATH=/cellranger/ranger-3.0.2/ranger-cs/3.0.2/../../miniconda-cr-cs/4.3.21-miniconda-cr-cs-c10/lib:$LD_LIBRARY_PATH
 
 # others
 ENV MROFLAGS=--vdrmode=rolling
@@ -75,24 +75,25 @@ ENV LC_ALL=C
 - go 1.11
 - clang 6.0
 - martian 3.2.5 ?
-- その他必要なバイナリ（[公式](https://support.10xgenomics.com/developers/software/downloads/latest)からDL）
+- その他必要なバイナリ（[公式](https://support.10xgenomics.com/developers/software/downloads/latest)から DL）
 
-言語統一してほしい。martianは初めて見るのでよくわからなかった。
-巨大なDockerfileになってしまった。
+言語統一してほしい。martian は初めて見るのでよくわからなかった。
+巨大な Dockerfile になってしまった。
 
 ### 依存パッケージ
 
 - numpy
 - docopt
 
-特にREADMEには書いてないけど、入ってないとエラーになります。あとmakeのときに`/usr/include/numpy`に必要ファイルがないって怒られるので、シンボリックリンクを貼っています。
+特に README には書いてないけど、入ってないとエラーになります。あと make のときに`/usr/include/numpy`に必要ファイルがないって怒られるので、シンボリックリンクを貼っています。
 
 ### 環境変数
-`/cellranger/sourceme.bash` と `/cellranger/ranger-3.0.2/sourceme.bash`を`source`すればいいです。ENTRYPOINT使えば楽なんですが、`singularity`のイメージに変換するのでやめました（singularityってENTRYPOINTも解釈してくれるんですか？）
+
+`/cellranger/sourceme.bash` と `/cellranger/ranger-3.0.2/sourceme.bash`を`source`すればいいです。ENTRYPOINT 使えば楽なんですが、`singularity`のイメージに変換するのでやめました（singularity って ENTRYPOINT も解釈してくれるんですか？）
 
 ## ソースコードの改変
 
-[cellranger/lib/python/cellranger/reference.py](https://github.com/10XGenomics/cellranger/blob/master/lib/python/cellranger/reference.py)の439行目にSTARクラスが定義されています。Cell RangerはこのSTARクラスのalignメソッドを使うので、
+[cellranger/lib/python/cellranger/reference.py](https://github.com/10XGenomics/cellranger/blob/master/lib/python/cellranger/reference.py)の 439 行目に STAR クラスが定義されています。Cell Ranger はこの STAR クラスの align メソッドを使うので、
 
 ```python
 ...
@@ -120,4 +121,4 @@ ENV LC_ALL=C
 ...
 ```
 
-ここのargsに好きなパラメーターを入れれば無事STARのパラメーターを変更できます。
+ここの args に好きなパラメーターを入れれば無事 STAR のパラメーターを変更できます。

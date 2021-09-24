@@ -1,8 +1,9 @@
 import BlogPostContentHeader from "./BlogPostContentHeader";
 import Grid from "@mui/material/Grid";
 
-const BlogPostContent = ({meta, children}) => {
-    return <>
+const BlogPostContent = ({ meta, children }) => {
+  return (
+    <>
       <BlogPostContentHeader meta={meta} />
       <Grid container className="markdown-body">
         <Grid item xs={12}>
@@ -10,6 +11,7 @@ const BlogPostContent = ({meta, children}) => {
         </Grid>
       </Grid>
     </>
-}
+  );
+};
 
 export default BlogPostContent;

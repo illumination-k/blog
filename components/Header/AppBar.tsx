@@ -4,8 +4,8 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { Theme } from "@mui/material/styles";
-import createStyles from '@mui/styles/createStyles';
-import makeStyles from '@mui/styles/makeStyles';
+import createStyles from "@mui/styles/createStyles";
+import makeStyles from "@mui/styles/makeStyles";
 import HomeIcon from "@mui/icons-material/Home";
 import Container from "@mui/material/Container";
 
@@ -43,20 +43,22 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const IconButtons = () => {
-  return <>
-    <Link href="/about">
-      <Typography style={{ color: "white" }}>About</Typography>
-    </Link>
-    <IconButton href="/about" aria-label="about" edge="end" size="large">
-      <AmpAvator
-        width="27"
-        height="27"
-        src="/avatar/avatar_54x.webp"
-        srcset="/avatar/avatar_54x.webp"
-        alt="illumination-k"
-      />
-    </IconButton>
-  </>;
+  return (
+    <>
+      <Link href="/about">
+        <Typography style={{ color: "white" }}>About</Typography>
+      </Link>
+      <IconButton href="/about" aria-label="about" edge="end" size="large">
+        <AmpAvator
+          width="27"
+          height="27"
+          src="/avatar/avatar_54x.webp"
+          srcset="/avatar/avatar_54x.webp"
+          alt="illumination-k"
+        />
+      </IconButton>
+    </>
+  );
 };
 
 export default function HeaderAppBar() {
@@ -79,7 +81,13 @@ export default function HeaderAppBar() {
         <Container>
           <Toolbar>
             <div className={classes.menuButton}>
-              <IconButton edge="start" color="inherit" aria-label="menu" href="/" size="large">
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                href="/"
+                size="large"
+              >
                 <HomeIcon />
               </IconButton>
             </div>

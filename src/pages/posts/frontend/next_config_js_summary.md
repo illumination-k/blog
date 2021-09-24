@@ -5,7 +5,7 @@ description: next.jsを使っているとnext.config.jsを使って設定をカ�
 
 ## TL;DR
 
-next.jsを使っているとnext.config.jsを使って設定をカスタマイズすることが多いです。next.config.jsで設定できることと、その設定の仕方についてまとめておきます。
+next.js を使っていると next.config.js を使って設定をカスタマイズすることが多いです。next.config.js で設定できることと、その設定の仕方についてまとめておきます。
 
 ## 基本
 
@@ -13,11 +13,11 @@ next.jsを使っているとnext.config.jsを使って設定をカスタマイ�
 module.exports = {}
 ```
 
-のようにconfigをオブジェクト形式でエクスポートする。
+のように config をオブジェクト形式でエクスポートする。
 
 ## reactStrictMode
 
-Strict Modeを使用でき、嬉しい。
+Strict Mode を使用でき、嬉しい。
 
 ## redirect
 
@@ -39,7 +39,7 @@ module.exports = {
 
 ## assetPrefix
 
-JavaScriptとCSSを読み込む先を変える。DEFAULTでは、`/_next/static/`を読みに行くが、以下の例では、`https://cdn.mydomain.com/_next/static/`を読み込みにいく。
+JavaScript と CSS を読み込む先を変える。DEFAULT では、`/_next/static/`を読みに行くが、以下の例では、`https://cdn.mydomain.com/_next/static/`を読み込みにいく。
 
 ```javascript:title=next.config.js
 module.exports = {
@@ -52,7 +52,7 @@ module.exports = {
 
 ## publicRuntimeConfig, serverRuntimeConfig
 
-`getConfig`を使うことで、ページやコンポーネントで使いたい変数を定義できる。2種類の使い分けは以下。
+`getConfig`を使うことで、ページやコンポーネントで使いたい変数を定義できる。2 種類の使い分けは以下。
 
 - publicRuntimeConfig: Server or Client
 - serverRuntimeConfig: Server only
@@ -97,10 +97,10 @@ export default Link
 
 ## webpack
 
-webpackの`webpack.config.js`的な話ができる。`config`が`webpack`の`config`オブジェクトのような感じ。
+webpack の`webpack.config.js`的な話ができる。`config`が`webpack`の`config`オブジェクトのような感じ。
 
-`Next.js`のversionを`11.0.0`にすると`webpack5`が基本的に使われるようになる。この辺は`webpack5`に真偽値を入れることで設定できる。
-また、webpack5からエイリアスが自前で設定できるようになっている。
+`Next.js`の version を`11.0.0`にすると`webpack5`が基本的に使われるようになる。この辺は`webpack5`に真偽値を入れることで設定できる。
+また、webpack5 からエイリアスが自前で設定できるようになっている。
 
 ```javascript:title=next.config.js
 module.export = {
@@ -115,14 +115,14 @@ module.export = {
 }
 ```
 
-webpack5にしたとき、
+webpack5 にしたとき、
 
 ```
 error - ./node_modules/fs.realpath/index.js:8:0
 Module not found: Can't resolve 'fs'
 ```
 
-というエラーが出て困っていたが、[このissue](https://github.com/webpack-contrib/css-loader/issues/447#issuecomment-761853289)のとおりに
+というエラーが出て困っていたが、[この issue](https://github.com/webpack-contrib/css-loader/issues/447#issuecomment-761853289)のとおりに
 
 ```js
 module.exports = {
@@ -136,7 +136,7 @@ module.exports = {
 }
 ```
 
-にしたら治った。治ったが、[webpack5のドキュメント](https://webpack.js.org/configuration/resolve/#resolvefallback)読むと`fallback`の機能は
+にしたら治った。治ったが、[webpack5 のドキュメント](https://webpack.js.org/configuration/resolve/#resolvefallback)読むと`fallback`の機能は
 
 > Redirect module requests when normal resolving fails.
 

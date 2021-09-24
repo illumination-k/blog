@@ -2,24 +2,23 @@
 title: Next.jsでカスタムローダーを使ってmdxをAMP対応させる
 description: Wordpressでブログを作っていたが、パフォーマンスが遅いのでNext.jsで作り直した。mdxをレンダリングするときに使うカスタムローダーを自作してAMP対応させる話。
 layout:
-    path: "@components/BlogPostLayout"
-    component: BlogPostLayout
+  path: "@components/BlogPostLayout"
+  component: BlogPostLayout
 ---
-
 
 ## TL;DR
 
-markdownファイルやmdxファイルはそのままだと`<img>`タグなどを使う。さらにAMP下での数式のレンダリングやコードシンタクスに対応させることも出ない。なので、mdxのカスタムローダーを自作することでAMPに対応する。
+markdown ファイルや mdx ファイルはそのままだと`<img>`タグなどを使う。さらに AMP 下での数式のレンダリングやコードシンタクスに対応させることも出ない。なので、mdx のカスタムローダーを自作することで AMP に対応する。
 
-カスタムローダーに関しては[mdxの公式](https://mdxjs.com/guides/custom-loader)などが詳しい。
+カスタムローダーに関しては[mdx の公式](https://mdxjs.com/guides/custom-loader)などが詳しい。
 
-## JSXを使ってamp対応
+## JSX を使って amp 対応
 
-mdxフォーマットはjsxに対応している。そして、jsxにはamp-componentsが存在する。なので、amp対応するには、それぞれのdefaultのタグ(`img`など)をamp-components(`<amp-img ... />`)に変換してしまえば良い。
+mdx フォーマットは jsx に対応している。そして、jsx には amp-components が存在する。なので、amp 対応するには、それぞれの default のタグ(`img`など)を amp-components(`<amp-img ... />`)に変換してしまえば良い。
 
 ### 基本
 
-astの中でjsx記法は以下のように表される。
+ast の中で jsx 記法は以下のように表される。
 
 ```yaml
 type: "jsx"
@@ -27,11 +26,11 @@ value: "<button>push!!!!</button>"
 position: ...
 ```
 
-なので、あるタグを含むnodeを見つけたら、そのタグが対応するamp-componentsをvalueの中に埋め込んだJSXノードに変換してしまえばいい。
+なので、あるタグを含む node を見つけたら、そのタグが対応する amp-components を value の中に埋め込んだ JSX ノードに変換してしまえばいい。
 
 ### 数式
 
-数式をレンダリングするAMPタグは`<amp-mathml>`を使う。また、インラインの数式では`<amp-mathml inline>`すればインライン数式になる。
+数式をレンダリングする AMP タグは`<amp-mathml>`を使う。また、インラインの数式では`<amp-mathml inline>`すればインライン数式になる。
 
 `remark-math`を使えば、`$$`で囲まれた部分が`math`に`$`で囲まれた部分が`inlineMath`に変換されるので、`math`を`<amp-mathml>`に、`inlineMath`を`<amp-mathml inline>`に変換する。
 
@@ -77,15 +76,14 @@ function toMathml() {
 
 ### img
 
-数式に関しては単純に変換するだけなので単純で良かった。しかし、`img`タグに対応するのamp-componentsは`<amp-img />`なのだが、このタグは`width`と`height`が必須という特徴がある。一つの対応策としてはCSSなどでうまくresizeしてしまうことらしいのだが([参考](https://qiita.com/narikei/items/50c0c805846c0bd69423))、widthかheightのどちらかは固定する必要があり、固定された側の大きさに引っ張られる。なので、スマホとかを見ると画像の上下に不自然な空白が生まれてしまうことがある。
+数式に関しては単純に変換するだけなので単純で良かった。しかし、`img`タグに対応するの amp-components は`<amp-img />`なのだが、このタグは`width`と`height`が必須という特徴がある。一つの対応策としては CSS などでうまく resize してしまうことらしいのだが([参考](https://qiita.com/narikei/items/50c0c805846c0bd69423))、width か height のどちらかは固定する必要があり、固定された側の大きさに引っ張られる。なので、スマホとかを見ると画像の上下に不自然な空白が生まれてしまうことがある。
 
-今回は、どうせmdxをパースする作業はサーバーサイドでやるので、nodeモジュールで対応するイメージのsizeをとってきてちゃんとサイズを入れることにした。
+今回は、どうせ mdx をパースする作業はサーバーサイドでやるので、node モジュールで対応するイメージの size をとってきてちゃんとサイズを入れることにした。
 
-`image-size`というパッケージで簡単にサイズを取得できる。また、urlからサイズを取ってくるときが少しめんどうで、非同期処理を使えない。使ってしまうとparseが終わった後にやっとwidthとheightがわかる、みたいなことになるっぽい。このあたりしっかり理解しきれていないのだが、`sync-request`という同期処理でrequestするモジュールを使って強引に解決した。
-
+`image-size`というパッケージで簡単にサイズを取得できる。また、url からサイズを取ってくるときが少しめんどうで、非同期処理を使えない。使ってしまうと parse が終わった後にやっと width と height がわかる、みたいなことになるっぽい。このあたりしっかり理解しきれていないのだが、`sync-request`という同期処理で request するモジュールを使って強引に解決した。
 
 ** 注意 **
-ただ`sync-request`は非推奨らしいので([参考](https://designetwork.daichi703n.com/entry/2017/02/21/node-then-request))、使用する場合は自己責任で...。問題になってるのはクライアント側がクラッシュしやすくなるとかなので、buildするときに走るだけだから問題ないと思いたいのだが。`dynamic import`とか始めると問題になるかもしれない。
+ただ`sync-request`は非推奨らしいので([参考](https://designetwork.daichi703n.com/entry/2017/02/21/node-then-request))、使用する場合は自己責任で...。問題になってるのはクライアント側がクラッシュしやすくなるとかなので、build するときに走るだけだから問題ないと思いたいのだが。`dynamic import`とか始めると問題になるかもしれない。
 
 ```js
 const visit = require("unist-util-visit");
@@ -150,7 +148,7 @@ function toAmpImg() {
 
 ### syntax highlight
 
-prismjs側でやる処理であるTokenizeをカスタムローダー側でやるだけ。refactor.registerのところで使いたい言語をロードすればよい。これに関しては[amdx](https://github.com/mizchi/amdx)のコードをそのまま使用させていただいた。というかこのレポジトリは熟読させていただいています。ありがとうございます。
+prismjs 側でやる処理である Tokenize をカスタムローダー側でやるだけ。refactor.register のところで使いたい言語をロードすればよい。これに関しては[amdx](https://github.com/mizchi/amdx)のコードをそのまま使用させていただいた。というかこのレポジトリは熟読させていただいています。ありがとうございます。
 
 ```js
 const visit = require("unist-util-visit");
@@ -178,7 +176,7 @@ function highlighter() {
       }
     });
   };
-};
+}
 ```
 
 - [amdx](https://github.com/mizchi/amdx)

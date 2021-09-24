@@ -5,8 +5,8 @@ import Container from "@mui/material/Container";
 
 import { Theme } from "@mui/material/styles";
 
-import createStyles from '@mui/styles/createStyles';
-import makeStyles from '@mui/styles/makeStyles';
+import createStyles from "@mui/styles/createStyles";
+import makeStyles from "@mui/styles/makeStyles";
 
 import { NextSeo } from "next-seo";
 
@@ -16,7 +16,7 @@ import Drawer from "@components/Drawer";
 import AmpSidebar from "@components/amp/AmpSidebar";
 
 import BlogPostHeader from "./BlogPostHeader";
-import BlogPostFooter from "./BlogPostFooter"
+import BlogPostFooter from "./BlogPostFooter";
 import BlogPostContent from "./BlogPostContent";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.up("sm")]: {
         marginRight: 240,
       },
-    }
+    },
   })
 );
 
@@ -53,9 +53,7 @@ const BlogPostLayout = ({ meta, children }) => {
         <Container>
           <div className={classes.root}>
             <BlogPostHeader meta={meta} />
-            <BlogPostContent meta={meta}>
-              {children}
-            </BlogPostContent>
+            <BlogPostContent meta={meta}>{children}</BlogPostContent>
             <BlogPostFooter meta={meta} />
           </div>
         </Container>

@@ -3,13 +3,7 @@ import Head from "next/head";
 
 import { NextSeo } from "next-seo";
 
-import {
-  Grid,
-  Container,
-  Card,
-  CardContent,
-  Typography,
-} from "@mui/material";
+import { Grid, Container, Card, CardContent, Typography } from "@mui/material";
 
 // custom components
 import Layout from "@components/Layout";

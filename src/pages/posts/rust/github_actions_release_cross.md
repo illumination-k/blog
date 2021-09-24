@@ -5,15 +5,15 @@ description: Github Actionsとcrossを使ってReleaseでクロスコンパイ�
 
 ## TL;DR
 
-rustの用途として、コマンドラインツールを作成することが多い。コマンドラインツールを創るときにrustを使うメリットとしては、シングルバイナリで配布できるので利用しやすいということがある。
+rust の用途として、コマンドラインツールを作成することが多い。コマンドラインツールを創るときに rust を使うメリットとしては、シングルバイナリで配布できるので利用しやすいということがある。
 
-ソースコードはどうせgithubで管理するので、リリースするたびに最新のバイナリを配布できるようにしておくと便利。そして、複数プラットフォームで使えるようにクロスコンパイルを自動でできるようにしておくと更に便利なので、そのやり方について説明していく。
+ソースコードはどうせ github で管理するので、リリースするたびに最新のバイナリを配布できるようにしておくと便利。そして、複数プラットフォームで使えるようにクロスコンパイルを自動でできるようにしておくと更に便利なので、そのやり方について説明していく。
 
 ## cross build
 
-dockerを使ってcross buildしてくれる[cross](https://github.com/rust-embedded/cross)というパッケージを使う。rustのGithub Actionsの[actions-rs/cargo](https://github.com/actions-rs/cargo)を使うと簡単にGithub Actionsでcross buildを行うことができる。
+docker を使って cross build してくれる[cross](https://github.com/rust-embedded/cross)というパッケージを使う。rust の Github Actions の[actions-rs/cargo](https://github.com/actions-rs/cargo)を使うと簡単に Github Actions で cross build を行うことができる。
 
-使い方は非常に簡単で、`actions-rs/cargo@v1`を使う際に`with`の中で`use-cross`を`true`にするだけでcrossを利用できる。
+使い方は非常に簡単で、`actions-rs/cargo@v1`を使う際に`with`の中で`use-cross`を`true`にするだけで cross を利用できる。
 
 ```yaml
 - uses: actions-rs/cargo@v1
@@ -25,7 +25,7 @@ dockerを使ってcross buildしてくれる[cross](https://github.com/rust-embe
 
 ## release and upload
 
-releaseを作ったり、uploadしたりするアクションはあるが、バイナリをartifactにアップロードして...みたいな感じで結構長くなるので、[Upload files to a GitHub release](https://github.com/marketplace/actions/upload-files-to-a-github-release)を使う。公式サンプルは以下のような感じで、非常に簡単にrelease作成とバイナリアップロードができる。
+release を作ったり、upload したりするアクションはあるが、バイナリを artifact にアップロードして...みたいな感じで結構長くなるので、[Upload files to a GitHub release](https://github.com/marketplace/actions/upload-files-to-a-github-release)を使う。公式サンプルは以下のような感じで、非常に簡単に release 作成とバイナリアップロードができる。
 
 ```yml:title=simple_example.yml
 name: Publish
@@ -57,9 +57,9 @@ jobs:
 
 ## Release.yml
 
-最終的にクロスビルドとrelease and uploadをあわせたymlはこちら。matrixを使って複数のプラットフォームでのビルドをしている。muslを指定しないと古いCentOSでは動かないという致命的な問題があるのでmuslとgnuを両方指定している。普通はWindowsとか入れとくといいと思う。
+最終的にクロスビルドと release and upload をあわせた yml はこちら。matrix を使って複数のプラットフォームでのビルドをしている。musl を指定しないと古い CentOS では動かないという致命的な問題があるので musl と gnu を両方指定している。普通は Windows とか入れとくといいと思う。
 
-Windowsを入れる場合は、ubuntu上で普通にビルドできる。ただ出力ファイルに`.exe`が必要なのでそこだけ注意すればいい。
+Windows を入れる場合は、ubuntu 上で普通にビルドできる。ただ出力ファイルに`.exe`が必要なのでそこだけ注意すればいい。
 
 ```yml:title=Release.yml
 name: Release
@@ -108,7 +108,7 @@ jobs:
       - name: Cross build with all features
         uses: actions-rs/cargo@v1
         with:
-          use-cross: true 
+          use-cross: true
           command: build
           args: --release --target ${{ matrix.target }} --all-features --verbose
 

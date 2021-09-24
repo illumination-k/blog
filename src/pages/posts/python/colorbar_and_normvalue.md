@@ -2,15 +2,15 @@
 title: matplotlibでcolorbarのみplotし、ある値がどの色になるのか判定する
 description: matplotlibを使っていて、colorbarだけ作りたいとき、そして作ったcolorbarに対して、ある値がどの色になるのか知りたい、というニッチな状況への対応策
 ---
+
 ## TL;DR
 
-matplotlibを使っていて、colorbarだけ作りたい！そして、何らかの値がそのcolorbarのどの色になるのか知りたい！というようなことがあります。
+matplotlib を使っていて、colorbar だけ作りたい！そして、何らかの値がその colorbar のどの色になるのか知りたい！というようなことがあります。
 
 **ex)**
-何らかのSVGがあって、それに値に応じた色をつけたい、そしてカラーバーも欲しい
+何らかの SVG があって、それに値に応じた色をつけたい、そしてカラーバーも欲しい
 
- > 
- > Python 3.7.4
+> Python 3.7.4
 
 ## やり方
 
@@ -18,7 +18,7 @@ matplotlibを使っていて、colorbarだけ作りたい！そして、何ら�
 
 まず範囲を決めます。
 
-````python
+```python
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 
@@ -29,13 +29,13 @@ vmin = -10
 vmax = 10
 
 norm = mpl.colors.Normalize(vmin=vmin, vmax=vmax)
-````
+```
 
-カラーバーを書きます。[matplotlib.pyplot.get_cmap](https://matplotlib.org/3.3.1/tutorials/colors/colormaps.html)でcolormapの情報を持ってきます。範囲を決める際に、先程用意したnormを用います。
+カラーバーを書きます。[matplotlib.pyplot.get_cmap](https://matplotlib.org/3.3.1/tutorials/colors/colormaps.html)で colormap の情報を持ってきます。範囲を決める際に、先程用意した norm を用います。
 
-saveするときが少し注意が必要で、`bbox_inches="tight"`をオプションで指定しないとticksや、label情報が消えます。
+save するときが少し注意が必要で、`bbox_inches="tight"`をオプションで指定しないと ticks や、label 情報が消えます。
 
-````python
+```python
 fig, ax = plt.subplots(figsize=(1, 5))
 cmap = plt.get_cmap("Wistia")
 cbar = mpl.colorbar.ColorbarBase(
@@ -47,15 +47,15 @@ cbar = mpl.colorbar.ColorbarBase(
 )
 
 plt.savefig("sample_colormap.png", bbox_inches="tight")
-````
+```
 
 <amp-img src="/images/colorbar_sample.png" height="20rem" width="8rem" alt="sample_colorbar" />
 
-対応するrgbaカラーを取得します。
+対応する rgba カラーを取得します。
 
-````python
+```python
 norm_value = norm(5)
 rgba = cmap(norm_value)
 print(rgba)
 # (0.9998615916955017, 0.6259284890426758, 0.0, 1.0)
-````
+```

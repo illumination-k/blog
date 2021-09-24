@@ -5,18 +5,18 @@ description: RustでLinkedListを実装してみました。
 
 ## TL;DR
 
-最近、[データ構造とアルゴリズム](https://sites.google.com/view/open-data-structures-ja/home)をRustで始めてみようかなと思っていて、双方向連結リスト(`DLList`)を実装していたのですが、難しかったのでメモ。基本的には[公式のLinkedList](https://github.com/rust-lang/rust/blob/master/library/alloc/src/collections/linked_list.rs)を見ながら実装しました。
+最近、[データ構造とアルゴリズム](https://sites.google.com/view/open-data-structures-ja/home)を Rust で始めてみようかなと思っていて、双方向連結リスト(`DLList`)を実装していたのですが、難しかったのでメモ。基本的には[公式の LinkedList](https://github.com/rust-lang/rust/blob/master/library/alloc/src/collections/linked_list.rs)を見ながら実装しました。
 
 ## 要件
 
-|method名|挙動|
-|---|---|
-|`get(i)`|i番目の要素を見る|
-|`set(i, x)`|i番目の要素を`x`にする|
-|`add(i, x)`|i番目に`x`を加える|
-|`remove(i)`|i番目の要素を削除する|
+| method 名   | 挙動                    |
+| ----------- | ----------------------- |
+| `get(i)`    | i 番目の要素を見る      |
+| `set(i, x)` | i 番目の要素を`x`にする |
+| `add(i, x)` | i 番目に`x`を加える     |
+| `remove(i)` | i 番目の要素を削除する  |
 
-の4つのメソッドを実装します。
+の 4 つのメソッドを実装します。
 
 ## 実装
 
@@ -43,9 +43,9 @@ pub struct DLList<T> {
 }
 ```
 
-### getとsetの定義
+### get と set の定義
 
-最初に実装したいのは`i`番目の`NonNull<Node<T>>`を持ってくる処理です。公式をよく見ると、`Cursor`的な構造体を定義しています。現在のindexとその時点のポインタを持っていて、`next`と`prev`を移動できる感じのやつです。公式だと`CursorMut`も定義していてそっちのほうがRustっぽい気もしたんですが、なくても今回の要件的には問題なさそうだったので省略しています。
+最初に実装したいのは`i`番目の`NonNull<Node<T>>`を持ってくる処理です。公式をよく見ると、`Cursor`的な構造体を定義しています。現在の index とその時点のポインタを持っていて、`next`と`prev`を移動できる感じのやつです。公式だと`CursorMut`も定義していてそっちのほうが Rust っぽい気もしたんですが、なくても今回の要件的には問題なさそうだったので省略しています。
 
 ```rust
 pub struct Cursor<'a, T: 'a> {
@@ -83,7 +83,7 @@ impl<'a, T> Cursor<'a, T> {
 }
 ```
 
-`Cursor`を使って`i`番目のノードのポインタを持ってくる処理を書きます。headとtailの近いほうから見に行きます。`get`と`set`はこのポインタから値を取り出すか変更する処理なんですぐ書けます。
+`Cursor`を使って`i`番目のノードのポインタを持ってくる処理を書きます。head と tail の近いほうから見に行きます。`get`と`set`はこのポインタから値を取り出すか変更する処理なんですぐ書けます。
 
 ```rust
 impl<T> DLList<T> {
@@ -127,7 +127,7 @@ impl<T> DLList<T> {
 }
 ```
 
-### addの定義
+### add の定義
 
 `add`を行うためには、入れたいノード(`e`)の前に新しいノードを入れればいいです。つまり
 
@@ -136,7 +136,7 @@ e.prev -> e -> e.next
 e.prev -> added -> e -> e.next
 ```
 
-のような感じです。この処理の公式の実装は`splice_nodes`というメソッドで実装されているようです。この実装はもうちょっと複雑で、他のリストがあったとして、そのheadとtailのポインタを使うことで
+のような感じです。この処理の公式の実装は`splice_nodes`というメソッドで実装されているようです。この実装はもうちょっと複雑で、他のリストがあったとして、その head と tail のポインタを使うことで
 
 ```
 e.prev -> added_1 -> added_2 -> ... -> added_n -> e -> e.next
@@ -190,7 +190,7 @@ impl<T> DLList<T> {
 }
 ```
 
-### removeの実装
+### remove の実装
 
 消したいノードを`n_i`とすると、以下のようにすればいいことがわかります。
 
@@ -199,7 +199,7 @@ n_i.prev -> n_i -> n_i.next
 n_i.prev -> n_i.next
 ```
 
-この処理は`unlink_node`という関数で実装されています。やってる処理は上記そのままです。`remove`は`add`のときと同じく、i番目のノードのポインタを持ってきて、`unlink_node`に渡すだけですね。
+この処理は`unlink_node`という関数で実装されています。やってる処理は上記そのままです。`remove`は`add`のときと同じく、i 番目のノードのポインタを持ってきて、`unlink_node`に渡すだけですね。
 
 ```rust
 impl<T> DLList<T> {
