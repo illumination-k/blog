@@ -5,20 +5,20 @@ description: Actix-webを使ってみたかったので、DieselのGetting Start
 
 ## TL;DR
 
-型がほしい、Python の Typing とかじゃなくて型がほしい。ということで Actix-web に入門しています。とりあえず、Diesel を使って CRUD してみます。
+型がほしい、PythonのTypingとかじゃなくて型がほしい。ということでActix-webに入門しています。とりあえず、Dieselを使ってCRUDしてみます。
 
-基本的には、[Diesel の Getting Start](https://diesel.rs/guides/getting-started)を Actix-web を使って再現する、ということをします。
+基本的には、[DieselのGetting Start](https://diesel.rs/guides/getting-started)をActix-webを使って再現する、ということをします。
 
 ## 準備
 
-まず`Diesel`をインストールします。今回は Postgresql を使うので、feature は postgres のみです。postgres のために`libpq-dev`が必要なので最初に入れます。
+まず`Diesel`をインストールします。今回はPostgresqlを使うので、featureはpostgresのみです。postgresのために`libpq-dev`が必要なので最初に入れます。
 
 ```bash
 sudo apt install libpq-dev
 cargo install diesel_cli --no-default-features --features postgres
 ```
 
-Postgresql を立ち上げます。今回は`docker-compose`を使います。
+Postgresqlを立ち上げます。今回は`docker-compose`を使います。
 
 ```yaml:title=docker-compose.yaml
 version: "3.0"
@@ -46,7 +46,7 @@ volumes:
 echo 'DATABASE_URL=postgres://postgres:postgres@localhost/actix_web_crud' >> .env
 ```
 
-プロジェクトを作って migration します。
+プロジェクトを作ってmigrationします。
 
 ```bash
 cargo new actix-web-crud
@@ -56,7 +56,7 @@ diesel setup
 diesel generate create_posts
 ```
 
-`migrations/${date}_create_posts`というディレクトリの中に`up.sql`と`down.sql`ができているはずです。`up.sql`が migration run するときに使われるやつで、`down.sql`が migration redo するときに使われるやつです。これらを以下のように書き換えます。
+`migrations/${date}_create_posts`というディレクトリの中に`up.sql`と`down.sql`ができているはずです。`up.sql`がmigration runするときに使われるやつで、`down.sql`がmigration redoするときに使われるやつです。これらを以下のように書き換えます。
 
 ```sql:title=up.sql
 CREATE TABLE posts (
@@ -71,7 +71,7 @@ CREATE TABLE posts (
 DROP TABLE posts
 ```
 
-migration します。
+migrationします。
 
 ```bash
 diesel migration run
@@ -79,9 +79,9 @@ diesel migration run
 
 これでセットアップは終わりです。
 
-## Rust を書く
+## Rustを書く
 
-今回使うものを入れていきます。ORM として Diesel を、JSON を扱うために serde 類を、エラーハンドリングに anyhow を使っています。
+今回使うものを入れていきます。ORMとしてDieselを、JSONを扱うためにserde類を、エラーハンドリングにanyhowを使っています。
 
 ```toml:title=Cargo.tml
 [dependencies]
@@ -96,7 +96,7 @@ anyhow = "1.0"
 
 ### Hello, World
 
-まず、`Actix-Web`で Hello world しておきます。
+まず、`Actix-Web`でHello worldしておきます。
 
 ```rust
 use anyhow::Result;
@@ -123,7 +123,7 @@ async fn main() -> Result<()> {
 
 ```bash
 cargo run
-curl http://localhost:8080
+curl http://localhost:8080 
 # Hello, world!
 ```
 
@@ -145,7 +145,7 @@ src/
 └── schema.rs
 ```
 
-ディレクトリ構成は以上のものを想定しています。役割は名前のままですが、Routing のためにディレクトリを作ったくらいです。`publish`というところで PUT を実装します。
+ディレクトリ構成は以上のものを想定しています。役割は名前のままですが、Routingのためにディレクトリを作ったくらいです。`publish`というところでPUTを実装します。
 
 ### データベースの準備
 
@@ -178,7 +178,7 @@ pub fn establish_connection() -> Result<Pool> {
 }
 ```
 
-model を書きます。Get で返すときや Post で受け取るときに JSON に Serialize/Deserialize できる必要があります。Query とかで使うやつには`Queryable`、Post で使うやつに`Insertable`をつけます。
+modelを書きます。Getで返すときやPostで受け取るときにJSONにSerialize/Deserializeできる必要があります。Queryとかで使うやつには`Queryable`、Postで使うやつに`Insertable`をつけます。
 
 ```rust:title=models.rs
 use crate::schema::posts;
@@ -199,7 +199,7 @@ pub struct NewPost {
 }
 ```
 
-## CRUD の実装
+## CRUDの実装
 
 とりあえず`mod.rs`類を書きます。
 
@@ -216,6 +216,7 @@ pub mod publish;
 
 あとは`main.rs`に以下を追記します。
 
+
 ```rust:title=main.rs
 mod database;
 mod models;
@@ -223,9 +224,9 @@ mod routes;
 mod schema;
 ```
 
-### GET と Post の実装
+### GETとPostの実装
 
-すべての Posts を返します。diesel は tokio をサポートしてないらしいので、`web::lock`を使っています。
+すべてのPostsを返します。dieselはtokioをサポートしてないらしいので、`web::lock`を使っています。
 
 ```rust:title=routes/posts/get.rs
 use crate::database::Pool;
@@ -252,7 +253,7 @@ pub async fn index(pool: web::Data<Pool>) -> HttpResponse {
 }
 ```
 
-何も入れてないため、GET しても空リストしかもらえないので、POST も実装します。
+何も入れてないため、GETしても空リストしかもらえないので、POSTも実装します。
 
 ```rust:title=routes/posts/post.rs
 use crate::database::{Pool, PooledPgConnection};
@@ -294,7 +295,7 @@ pub async fn index(pool: web::Data<Pool>, form: web::Json<NewPost>) -> HttpRespo
 }
 ```
 
-`main.rs`を更新します。Routing の追加とデータベースへの接続を行います。
+`main.rs`を更新します。Routingの追加とデータベースへの接続を行います。
 
 ```rust:title=main.rs
 #[macro_use]
@@ -342,11 +343,11 @@ curl http://localhost:8080/posts
 # [{"id":1,"title":"First post","body":"this is first post for actix-web-crud","published":false}]
 ```
 
-### PUT の実装
+### PUTの実装
 
-publish 状態を変更する PUT を実装します。簡単のため`/posts/publish/$post_id`で Publish 状態になることにします。
+publish状態を変更するPUTを実装します。簡単のため`/posts/publish/$post_id`でPublish状態になることにします。
 
-`web::Path<T>`は`to_owned`で`T`になります。
+`web::Path<T>`は`to_owned`で`T`になります。 
 
 ```rust:title=routes/posts/publish.rs
 use crate::models::Post;
@@ -379,7 +380,7 @@ pub async fn index(pool: web::Data<Pool>, post_id: web::Path<i32>) -> HttpRespon
 }
 ```
 
-`main.rs`に Routing を足したあと実行してみます。
+`main.rs`にRoutingを足したあと実行してみます。
 
 ```bash
 curl -X PUT http://localhost:8080/posts/publish/1
@@ -389,9 +390,9 @@ curl http://localhost:8080/posts
 # [{"id":1,"title":"First post","body":"this is first post for actix-web-crud","published":true}]
 ```
 
-### DELETE の実装
+### DELETEの実装
 
-`/posts/$post_id`で DELETE します。
+`/posts/$post_id`でDELETEします。
 
 ```rust:routes/posts/delete.rs
 use crate::database::{Pool, PooledPgConnection};
@@ -421,16 +422,16 @@ pub async fn index(pool: web::Data<Pool>, post_id: web::Path<i32>) -> HttpRespon
 }
 ```
 
-Routing を追加して実行します。
+Routingを追加して実行します。
 
 ```bash
-curl -X DELETE http://localhost:8080/posts/1
+curl -X DELETE http://localhost:8080/posts/1 
 # Delete: 1
 curl http://localhost:8080/posts
 # []
 ```
 
-CRUD の完成です。
+CRUDの完成です。
 
 ## 終わりに
 

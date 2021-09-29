@@ -4,18 +4,17 @@ description: 自然言語処理技術では深層学習技術が非常に良い�
 ---
 
 ## TL;DR
-
-自然言語処理技術では深層学習技術が非常に良い成果をあげています。タンパク質配列から GO Term などのアノテーション行い、機能を推定する方法として、これまでの多くは BLAST などの相同性検索を用いていました。最近では、いくつかのツールが深層学習ベースで機能予測を行っています。今回は deepgoplus を試してみることにします。CNN ベースっぽいです。
+自然言語処理技術では深層学習技術が非常に良い成果をあげています。タンパク質配列からGO Termなどのアノテーション行い、機能を推定する方法として、これまでの多くはBLASTなどの相同性検索を用いていました。最近では、いくつかのツールが深層学習ベースで機能予測を行っています。今回はdeepgoplusを試してみることにします。CNNベースっぽいです。
 
 > Maxat Kulmanov, Robert Hoehndorf, DeepGOPlus: improved protein function prediction from sequence, Bioinformatics, Volume 36, Issue 2, 15 January 2020, Pages 422–429, https://doi.org/10.1093/bioinformatics/btz595
 
-[Web サイト](https://deepgo.cbrc.kaust.edu.sa/deepgo/)も作成されていて、Web で簡単に試してみることもできます。ただ、Web サイトは 10 タンパク質ずつしか解析できないので、ゲノムワイドにやろうとすると結構大変そうです。
+[Webサイト](https://deepgo.cbrc.kaust.edu.sa/deepgo/)も作成されていて、Webで簡単に試してみることもできます。ただ、Webサイトは10タンパク質ずつしか解析できないので、ゲノムワイドにやろうとすると結構大変そうです。
 
-そこで、今回は筆者らが提供しているモデルと Docker Image を使って予測してみます。([github](https://github.com/bio-ontology-research-group/deepgoplus))
+そこで、今回は筆者らが提供しているモデルとDocker Imageを使って予測してみます。([github](https://github.com/bio-ontology-research-group/deepgoplus))
 
 ## 必要なものの準備
 
-github に Dockerfile がおいてあるので、コピペして使います。README を見る限り Dockerhub にはおいてなさそうな感じです。中身は pip で deepgoplus をインストールしてるのと、diamond を使っているので、そのインストールをしているようです。
+githubにDockerfileがおいてあるので、コピペして使います。READMEを見る限りDockerhubにはおいてなさそうな感じです。中身はpipでdeepgoplusをインストールしてるのと、diamondを使っているので、そのインストールをしているようです。
 
 ```docker
 FROM python:3.6
@@ -40,7 +39,7 @@ wget http://deepgoplus.bio2vec.net/data/data.tar.gz
 tar zxvf data.tar.gz
 ```
 
-とりあえず動かすのが今回の目的なので、シロイヌナズナの fasta を使っておきます。
+とりあえず動かすのが今回の目的なので、シロイヌナズナのfastaを使っておきます。
 
 ```bash
 wget -O athaliana.fa https://www.arabidopsis.org/download_files/Proteins/TAIR10_protein_lists/TAIR10_pep_20101214
@@ -48,7 +47,7 @@ wget -O athaliana.fa https://www.arabidopsis.org/download_files/Proteins/TAIR10_
 
 ## 実際に動かす
 
-必要なのはモデルなどが置かれているディレクトリを指定する`--data-root`と、fasta ファイルがおいてある`--in-file`です。あとは output の名前と、信頼度的なものである threshold を指定しておきます。Website が 0.3 だったので 0.3 にしています。
+必要なのはモデルなどが置かれているディレクトリを指定する`--data-root`と、fastaファイルがおいてある`--in-file`です。あとはoutputの名前と、信頼度的なものであるthresholdを指定しておきます。Websiteが0.3だったので0.3にしています。
 
 ```bash
 docker run --rm -it -v $(pwd):/mnt \

@@ -5,15 +5,15 @@ description: Python、特にmatplotlibで作成したPNGファイルをJSONにSe
 
 ## TL;DR
 
-matplotlib は非常に優れた Python の Plot library であり、バックエンド側で png や svg を作成しフロントエンド側に送って表示させたい場合があります。そういう場合にどうすればいいのか、まとまっている情報があまりなかったのでメモ。
+matplotlibは非常に優れたPythonのPlot libraryであり、バックエンド側でpngやsvgを作成しフロントエンド側に送って表示させたい場合があります。そういう場合にどうすればいいのか、まとまっている情報があまりなかったのでメモ。
 
 > Python 3.7.4
 > Node v12.16.2
 
-## Python 側
+## Python側
 
-基本的に`BytesIO`を使って Buffer を読み込んで、その値を JSON に Serialize します。
-とりあえずサンプルプロットを作成します。JSON を送信する方法は flask なり django なりを使ってください。
+基本的に`BytesIO`を使ってBufferを読み込んで、その値をJSONにSerializeします。
+とりあえずサンプルプロットを作成します。JSONを送信する方法はflaskなりdjangoなりを使ってください。
 
 ```python
 import numpy as np
@@ -29,7 +29,7 @@ fig, ax = plt.subplots()
 ax.plot(x, np.sin(x))
 ```
 
-これについて、png/svg を JSON にシリアライズします。svg はそのままシリアライズできますが、png については base64 encoding が必要です。png じゃなくて jpeg とかでも同様です。
+これについて、png/svgをJSONにシリアライズします。svgはそのままシリアライズできますが、pngについてはbase64 encodingが必要です。pngじゃなくてjpegとかでも同様です。
 
 ### SVG to JSON
 
@@ -61,41 +61,42 @@ print(json.dumps({"png": png}))
 
 ## JavaScript (React)側
 
-こっちは色々方法があると思いますが、JSX 使うのが楽なので React を使います。JSON は fetch とか axios とかで持ってくるものとします。持ってきたデータを`json_data`としておきます。
+こっちは色々方法があると思いますが、JSX使うのが楽なのでReactを使います。JSONはfetchとかaxiosとかで持ってくるものとします。持ってきたデータを`json_data`としておきます。
 
 ### SVG rendering from JSON
 
-innerHTML として埋め込むこともできますが、今回は[react-inlinesvg](https://www.npmjs.com/package/react-inlinesvg)というパッケージを使ってしまいます。props で受け渡されていることにしましょう。
+innerHTMLとして埋め込むこともできますが、今回は[react-inlinesvg](https://www.npmjs.com/package/react-inlinesvg)というパッケージを使ってしまいます。propsで受け渡されていることにしましょう。
 
 ```bash
 npm i react-inlinesvg
 ```
 
 ```jsx
-import React from "react";
-import SVG from "react-inlinesvg";
+import React from 'react';
+import SVG from 'react-inlinesvg';
 
-const Svg = ({ json_data }) => {
-  return <SVG src={json_data.svg} />;
-};
+const Svg = ({json_data}) => {
+    return <SVG src={json_data.svg} />
+}
 ```
 
 ### PNG rendering from JSON
 
-こちらはデフォルトで`<img src={}>`に blob から作成した URI を入れればいいです。
+こちらはデフォルトで`<img src={}>`にblobから作成したURIを入れればいいです。
 
 ```jsx
-import React from "react";
+import React from 'react'
 
-const Png = ({ json_data }) => {
-  const buf = Buffer.from(json_data.png, "base64");
-  const blob = new Blob([buf], { type: "image/png" });
-  const uri = URL.createObjectURL(blob);
+const Png = ({json_data}) => {
+    const buf = Buffer.from(json_data.png, "base64")
+    const blob = new Blob([buf], { type: "image/png" })
+    const uri = URL.createObjectURL(blob)
 
-  return <img src={uri} />;
-};
+    return <img src={uri} />
+}
 ```
 
 ## 最後に
 
 まとまった情報が見つからなかったのでメモがてら残しておきます。
+

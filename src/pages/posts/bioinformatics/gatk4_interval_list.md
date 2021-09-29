@@ -4,28 +4,27 @@ description: GATK4は実行に時間がかかるツールですが、マシン�
 ---
 
 ## TL;DR
+GATK4は実行に時間がかかるツールですが、マシンパワーさえあればsplit intervalを使って高速化できます。split intervalについては日本語文献が見つからなかったのでまとめておきます。Sparkを使った実装も進められているようでうが、まだ全てに対応しているわけではないようです(2020/09/28現在)。
 
-GATK4 は実行に時間がかかるツールですが、マシンパワーさえあれば split interval を使って高速化できます。split interval については日本語文献が見つからなかったのでまとめておきます。Spark を使った実装も進められているようでうが、まだ全てに対応しているわけではないようです(2020/09/28 現在)。
+## split intervalディレクトリの作成
 
-## split interval ディレクトリの作成
-
-まず[picard ScatterIntervalsByNs](https://gatk.broadinstitute.org/hc/en-us/articles/360037430591-ScatterIntervalsByNs-Picard-)を使って interval list を作成します。リファレンスゲノムのからインターバルリスト形式のファイルに変換します。ポジションと ATGC、N の数で構成されたファイルです。
+まず[picard ScatterIntervalsByNs](https://gatk.broadinstitute.org/hc/en-us/articles/360037430591-ScatterIntervalsByNs-Picard-)を使ってinterval listを作成します。リファレンスゲノムのからインターバルリスト形式のファイルに変換します。ポジションとATGC、Nの数で構成されたファイルです。
 
 ```bash
 picard ScatterIntervalsByNs REFERENCE=ref.fa OUTPUT_TYPE=ACGT OUTPUT=ref.interval_list
 ```
 
-次に split interval を作成します。インターバルリストの分割です。最終的にすべての分割されたインターバルは同一の塩基数を持ちます。[gatk4 SplitIntervals](https://gatk.broadinstitute.org/hc/en-us/articles/360036899592-SplitIntervals)を使います。この例では 12 個に分割しています。
+次にsplit intervalを作成します。インターバルリストの分割です。最終的にすべての分割されたインターバルは同一の塩基数を持ちます。[gatk4 SplitIntervals](https://gatk.broadinstitute.org/hc/en-us/articles/360036899592-SplitIntervals)を使います。この例では12個に分割しています。
 
 ```bash
 gatk4 SplitIntervals -R ref.fa -L ref.interval_list --scatter-count 12 -O interval_list_12
 ```
 
-## split interval つきの GATK4 の実行例
+## split intervalつきのGATK4の実行例
 
-BQSR -> ApplyBQSR -> HaplotypeCaller くらいの実行例を載せておきます。基本的には、`-L`オプションでインターバルリストを指定する、for で分割されたものについて回す、という感じです。あと wait でちゃんと処理終了を待つ必要があります。
+BQSR -> ApplyBQSR -> HaplotypeCallerくらいの実行例を載せておきます。基本的には、`-L`オプションでインターバルリストを指定する、forで分割されたものについて回す、という感じです。あとwaitでちゃんと処理終了を待つ必要があります。
 
-最終的に分割された vcf を[picard GatherVcfs](https://gatk.broadinstitute.org/hc/en-us/articles/360037422071-GatherVcfs-Picard-)で集めています。
+最終的に分割されたvcfを[picard GatherVcfs](https://gatk.broadinstitute.org/hc/en-us/articles/360037422071-GatherVcfs-Picard-)で集めています。
 
 ```bash
 ref=/path/to/fasta
@@ -40,7 +39,7 @@ for i in `seq -f '%04g' 0 11`; do
         -R $ref \
         -I ${basename}.bam \
         --known-sites /path/to/known.vcf \
-        -O $outfile &
+        -O $outfile & 
 done
 wait
 
@@ -53,7 +52,7 @@ for i in `seq -f '%04g' 0 11`; do
         -R $ref \
         -I ${basename}.bam \
         -bqsr $bqfile \
-        -O $output &
+        -O $output & 
 done
 wait
 
@@ -66,7 +65,7 @@ for i in `seq -f '%04g' 0 11`; do
         -R $ref \
         -I $infile \
         -ERC GVCF \
-        -O $outfile &
+        -O $outfile & 
 done
 wait
 
@@ -77,7 +76,7 @@ for i in `seq -f '%04g' 0 11`; do
         -L $ref_dir/interval_list_12/${i}-scattered.interval_list \
         -R $ref \
         -V $infile \
-        -O ${basename}_$i.vcf &
+        -O ${basename}_$i.vcf & 
 done
 wait
 
@@ -93,7 +92,7 @@ picard \
 ## 参考
 
 - [A guide to GATK4
-  best practice pipeline
-  performance and
-  optimization on the IBM
-  OpenPOWER system](https://www.ibm.com/downloads/cas/ZJQD0QAL)
+best practice pipeline
+performance and
+optimization on the IBM
+OpenPOWER system](https://www.ibm.com/downloads/cas/ZJQD0QAL)

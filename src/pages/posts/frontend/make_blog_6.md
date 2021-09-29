@@ -5,9 +5,9 @@ description: "next.jsで作ってみたブログにtypescriptとmaterial-uiと�
 
 ## TL;DR
 
-モバイルページでもサイドバーはやはりほしい。そして最近のはやりは floating button みたいなやつを押すとサイドバーが開く、というものである...気がする。もちろん、`onClick`やらを使えばかんたんに実装できるのだが、amp に対応していると`onClick`は許されていない。
+モバイルページでもサイドバーはやはりほしい。そして最近のはやりはfloating buttonみたいなやつを押すとサイドバーが開く、というものである...気がする。もちろん、`onClick`やらを使えばかんたんに実装できるのだが、ampに対応していると`onClick`は許されていない。
 
-そういうときに使えるのが[amp-sidebar](https://amp.dev/ja/documentation/components/amp-sidebar/)である。しかし、React や next.js で amp-sidebar を導入している事例は少なく、material-ui や typescript と一緒にやっている例は見つからなかった。一応実装できたので、参考になる人がいることを祈って記事に残しておく。
+そういうときに使えるのが[amp-sidebar](https://amp.dev/ja/documentation/components/amp-sidebar/)である。しかし、Reactやnext.jsでamp-sidebarを導入している事例は少なく、material-uiやtypescriptと一緒にやっている例は見つからなかった。一応実装できたので、参考になる人がいることを祈って記事に残しておく。
 
 ## amp-sidebar
 
@@ -26,18 +26,18 @@ description: "next.jsで作ってみたブログにtypescriptとmaterial-uiと�
   </ul>
 </amp-sidebar>
 
-<button class="hamburger" on="tap:sidebar1.toggle"></button>
+<button class="hamburger" on='tap:sidebar1.toggle'></button>
 ```
 
-基本的には、`amp-sidebar`で`id`を指定し、button の`on`に`tap:{id}.toggle`をつければ、そのボタンで開閉ができるようになる。この`toggle`の部分は他にも可能で
+基本的には、`amp-sidebar`で`id`を指定し、buttonの`on`に`tap:{id}.toggle`をつければ、そのボタンで開閉ができるようになる。この`toggle`の部分は他にも可能で
 
-| action         | desc                 |
-| -------------- | -------------------- |
-| open (default) | サイドバーを開く     |
-| close          | サイドバーを閉じる   |
-| toggle         | サイドバーを開閉する |
+|action|desc|
+|---|---|
+|open (default)|サイドバーを開く|
+|close|サイドバーを閉じる|
+|toggle|サイドバーを開閉する|
 
-の 3 つが使える。基本的に toggle でいい気がする。
+の3つが使える。基本的にtoggleでいい気がする。
 
 なので、
 
@@ -46,15 +46,15 @@ description: "next.jsで作ってみたブログにtypescriptとmaterial-uiと�
 <button on="tap:sidebar1.toggle">toggle</button>
 ```
 
-のような jsx を書けばいいことがわかる。
+のようなjsxを書けばいいことがわかる。
 
-しかし、button に on 属性はないので、Typescript を使う場合は`on`を型定義する必要があることに注意が必要（ts-ignore でもいいかもしれないが...）。
+しかし、buttonにon属性はないので、Typescriptを使う場合は`on`を型定義する必要があることに注意が必要（ts-ignoreでもいいかもしれないが...）。
 
 ## Float Button
 
-こちらは簡単で[@material-ui/core/Fab](https://material-ui.com/components/floating-action-button/)を使えば OK。ただ、このままだと場所が固定されておらず、on が定義されていないのでそのへんを定義する必要がある。
+こちらは簡単で[@material-ui/core/Fab](https://material-ui.com/components/floating-action-button/)を使えばOK。ただ、このままだと場所が固定されておらず、onが定義されていないのでそのへんを定義する必要がある。
 
-まず型定義は基本的に同じところから export されている`xxxProps`というものを使う。今回の場合は`FabProps`を`Fab`と一緒に import する。この button は`on`を必ず使う用途だと考えているので defaultprops の拡張は行っていない。
+まず型定義は基本的に同じところからexportされている`xxxProps`というものを使う。今回の場合は`FabProps`を`Fab`と一緒にimportする。このbuttonは`on`を必ず使う用途だと考えているのでdefaultpropsの拡張は行っていない。
 
 ```tsx:title=AmpFab.tsx
 import React from "react";
@@ -78,7 +78,7 @@ export default AmpFab;
 
 ## AmpSidebar(amp-sidebar+float button)
 
-画面が大きいときは固定したサイドバーを表示するので、固定したサイドバーが表示されなくなったときに`Fab`が表示されるように設定してある。右下に固定するのに必要な部分は以下の css 部分。
+画面が大きいときは固定したサイドバーを表示するので、固定したサイドバーが表示されなくなったときに`Fab`が表示されるように設定してある。右下に固定するのに必要な部分は以下のcss部分。
 
 ```css
 margin: 0;
@@ -89,7 +89,7 @@ left: "auto";
 position: "fixed";
 ```
 
-注意が必要なのは、`amp-sidebar`は`<body>`の直下にないとだめなので、`<div>`などで囲ってしまうと、Warning が表示される。なので、Fragment で囲う必要がある。
+注意が必要なのは、`amp-sidebar`は`<body>`の直下にないとだめなので、`<div>`などで囲ってしまうと、Warningが表示される。なので、Fragmentで囲う必要がある。
 
 ```tsx:title=AmpSidebar.tsx
 import React from "react";
@@ -142,9 +142,9 @@ AmpSidebar.defaultProps = {
 export default AmpSidebar;
 ```
 
-## Layout に import する
+## Layoutにimportする
 
-デフォルトの`_document.js`は以下である。[このサイト](https://reacttricks.com/building-an-amp-website-with-react-and-next/)では、`_document.js`に`ampsidebar`を直接入れる必要がある、とされている。しかし、この pages の中身が入る部分である`<Main>`は fragment で囲われたものなので、この中に`amp-sidebar`を入れても Warning は表示されない。ただし、material-ui の`Container`やもっと単純に`div`などで囲ってしまうと Warning が表示されるので、できるだけ上の方のコンポーネントに`amp-sidebar`を入れる必要がある。
+デフォルトの`_document.js`は以下である。[このサイト](https://reacttricks.com/building-an-amp-website-with-react-and-next/)では、`_document.js`に`ampsidebar`を直接入れる必要がある、とされている。しかし、このpagesの中身が入る部分である`<Main>`はfragmentで囲われたものなので、この中に`amp-sidebar`を入れてもWarningは表示されない。ただし、material-uiの`Container`やもっと単純に`div`などで囲ってしまうとWarningが表示されるので、できるだけ上の方のコンポーネントに`amp-sidebar`を入れる必要がある。
 
 ```jsx:title=_document.js
 import Document, { Html, Head, Main, NextScript } from 'next/document'
@@ -171,7 +171,7 @@ class MyDocument extends Document {
 export default MyDocument
 ```
 
-例えば、以下のようにする。これを標準レイアウトにすれば Warning は表示されない。
+例えば、以下のようにする。これを標準レイアウトにすればWarningは表示されない。
 
 ```tsx:title=Layout.tsx
 import Header from "./Header";
@@ -194,5 +194,5 @@ export default Layout;
 
 ## 参考
 
-- [Material-UI で右下に浮いてるボタンを作る](https://k4h4shi.com/2017/11/28/make-material-ui-floatingbutton/)
+- [Material-UIで右下に浮いてるボタンを作る](https://k4h4shi.com/2017/11/28/make-material-ui-floatingbutton/)
 - [Building an AMP website with React & Next.js](https://reacttricks.com/building-an-amp-website-with-react-and-next/)

@@ -4,14 +4,13 @@ description: Pylanceは非常に優れたコーディング支援拡張機能で
 ---
 
 ## TL; DR
-
-Pylance は非常に優れたコーディング支援拡張機能ですが、import がよく解決されなくて困っていました。小規模開発のときはまあいいか、と思ったりするのですが、django とかで解決されないと結構手間なので、解決法を調べたら解決したので書いておきます。
+Pylanceは非常に優れたコーディング支援拡張機能ですが、importがよく解決されなくて困っていました。小規模開発のときはまあいいか、と思ったりするのですが、djangoとかで解決されないと結構手間なので、解決法を調べたら解決したので書いておきます。
 
 ## 状況
 
 ### ディレクトリ構成
 
-app が増えてくると、分割したくなります。よく作るのはこんな感じです。
+appが増えてくると、分割したくなります。よく作るのはこんな感じです。
 
 ```
 app
@@ -51,7 +50,7 @@ app
 from app1 import models
 ```
 
-しかし、これだと Pylance の補完が効かず`Import "app1" could not be resolved`という警告が表示されます。
+しかし、これだとPylanceの補完が効かず`Import "app1" could not be resolved`という警告が表示されます。
 
 じゃあ相対インポートにすれば解決するかな、と考えます。
 
@@ -59,15 +58,15 @@ from app1 import models
 from ..app1 import models
 ```
 
-Pylance は警告を出さなくなります。補完も効きます。
+Pylanceは警告を出さなくなります。補完も効きます。  
 
-しかし、いざ django を起動させようとすると`ValueError: attempted relative import beyond top-level package`が起こります。
+しかし、いざdjangoを起動させようとすると`ValueError: attempted relative import beyond top-level package`が起こります。
 
 `sys.path`を使う方法もありますが、毎回書くのは嫌です。
 
 ## 解決策
 
-コード側で解決する方法は調べてもわかりませんでした。そこで、Pylance 側の設定をどうにかすることで強引な解決を図りました。[Pylance のトラブルシューティング](https://github.com/microsoft/pylance-release/blob/main/TROUBLESHOOTING.md#unresolved-import-warnings)を読むと、**Unresolved import wanings**という項目があります。
+コード側で解決する方法は調べてもわかりませんでした。そこで、Pylance側の設定をどうにかすることで強引な解決を図りました。[Pylanceのトラブルシューティング](https://github.com/microsoft/pylance-release/blob/main/TROUBLESHOOTING.md#unresolved-import-warnings)を読むと、**Unresolved import wanings**という項目があります。
 
 これによると`.vscode/settings.json`の`python.analysis.extraPaths`を設定すればいいらしいです。
 
