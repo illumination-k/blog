@@ -5,32 +5,32 @@ description: 集合関係の包含関係を示すとき、ベン図より使い�
 
 ## TL;DR
 
-集合関係の包含関係を示す際、2 つや 3 つならベン図がわかりやすいですが、集合関係の数が増えてくるとベン図だと理解しにくくなることがあります。そこで便利なのが、Alexander Lex が 2014 年に提唱した UpSetPlot です。Python で利用する場合は以下のパッケージが定期的にメンテされており安心です（2021/8 現在）
+集合関係の包含関係を示す際、2つや3つならベン図がわかりやすいですが、集合関係の数が増えてくるとベン図だと理解しにくくなることがあります。そこで便利なのが、Alexander Lexが2014年に提唱したUpSetPlotです。Pythonで利用する場合は以下のパッケージが定期的にメンテされており安心です（2021/8現在）
 
 ![github:jnothman/UpSetPlot](github:jnothman/UpSetPlot)
 
-R での実装例は[こちらのサイト](https://stats.biopapyrus.jp/r/graph/upset.html)を参考にしてください。
+Rでの実装例は[こちらのサイト](https://stats.biopapyrus.jp/r/graph/upset.html)を参考にしてください。
 
-## upset plot とベン図
+## upset plotとベン図
 
-まず、ベン図と Upset Plot が比較されている図を見てみます。
+まず、ベン図とUpset Plotが比較されている図を見てみます。
 
 ![md={6}:upsetplot_venn](/images/upsetplot/upsetplot_venn.gif)
-図 1. venn 図と upsetplot(Lex et al., 2014 Fig. 4)
+図1. venn図とupsetplot(Lex et al., 2014 Fig. 4)
 
-3 つくらいだと一長一短という感じです。集合の量的関係を見る文には Upset Plot のほうが向いていそうです。
+3つくらいだと一長一短という感じです。集合の量的関係を見る文にはUpset Plotのほうが向いていそうです。
 
-また、upsetplot のメリットは、拡張性が高いということです。というのは、集合関係を行で表しているため、その行に別のデータを挿入できます。例えば以下のように拡張できます。
+また、upsetplotのメリットは、拡張性が高いということです。というのは、集合関係を行で表しているため、その行に別のデータを挿入できます。例えば以下のように拡張できます。
 
 ![upsetplot_extensions](/images/upsetplot/upsetplot_extensions.gif)
-図 2. upsetplot の拡張性(Lex et al., 2014 Fig. 1)
+図2. upsetplotの拡張性(Lex et al., 2014 Fig. 1)
 
 また、集合間の量的関係を表すため、集合に属する数によってソートをかけるといったことも可能です。もちろん、拡張したデータに対してソートできます。
 
 ![md={8}:upsetplot_sort](/images/upsetplot/upsetplot_sort.gif)
-図 3. upsetplot のソート(Lex et al., 2014 Fig. 6)
+図3. upsetplotのソート(Lex et al., 2014 Fig. 6)
 
-## Python による実装
+## Pythonによる実装
 
 ### Install
 
@@ -40,7 +40,7 @@ pip install upsetplot
 
 ### サンプルデータの生成
 
-upsetplot パッケージはサンプルデータを生成できるので、まずはサンプルデータで試してみます。
+upsetplotパッケージはサンプルデータを生成できるので、まずはサンプルデータで試してみます。
 
 ```python
 from upsetplot import generate_counts
@@ -49,7 +49,7 @@ examples = generate_counts()
 print(examples)
 
 """ 出力
-cat0   cat1   cat2
+cat0   cat1   cat2 
 False  False  False      56
               True      283
        True   False    1279
@@ -62,15 +62,15 @@ Name: value, dtype: int64
 """
 ```
 
-### 基本的な Upset Plot と Venn 図の描画
+### 基本的なUpset PlotとVenn図の描画
 
-#### venn 図
+#### venn図
 
-サンプルデータを使ってベン図を作成します。ベン図の作成には、matplotlib の venn3 を使用します。
+サンプルデータを使ってベン図を作成します。ベン図の作成には、matplotlibのvenn3を使用します。
 
 ```python
-from matplotlib_venn import venn3
-venn3(subsets=(24, 1279, 429, 28, 90, 5882, 1957),
+from matplotlib_venn import venn3 
+venn3(subsets=(24, 1279, 429, 28, 90, 5882, 1957), 
                 set_labels=("cat0", "cat1", "cat2"))
 plt.show()
 ```
@@ -82,7 +82,7 @@ plt.show()
 
 #### Upset Plot
 
-サンプルデータを使って、同様に Upset Plot を作成します。
+サンプルデータを使って、同様にUpset Plotを作成します。
 
 ```python
 from upsetplot import plot
@@ -109,11 +109,11 @@ plt.show()
 
 ![md={6}:upsetplot_basic_sort](/images/upsetplot/upsetplot_basic_sort.png)
 
-### Upset Plot の拡張
+### Upset Plotの拡張
 
-scikit-learn に登録されている boston の住宅データを使って upsetplot の拡張を試してみましょう。
+scikit-learnに登録されているbostonの住宅データを使ってupsetplotの拡張を試してみましょう。
 
-scikit-learn がない場合はインストールします。またデータ操作に pandas を使うので pandas もインストールします。
+scikit-learnがない場合はインストールします。またデータ操作にpandasを使うのでpandasもインストールします。
 
 ```bash
 pip install scikit-learn pandas
@@ -124,7 +124,7 @@ pip install scikit-learn pandas
 ```python
 import pandas as pd
 from sklearn.datasets import load_boston
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt 
 from upsetplot import UpSet
 
 boston = load_boston()
@@ -140,7 +140,7 @@ boston_above_avg = boston_above_avg[top_features]
 boston_above_avg = boston_above_avg.rename(columns=lambda x: x + '>')
 
 # True or Falseでとってきたものをmulti indexとして設定
-boston_df = pd.concat((boston_df, boston_above_avg), axis=1)
+boston_df = pd.concat((boston_df, boston_above_avg), axis=1) 
 boston_df = boston_df.set_index(list(boston_above_avg.columns))
 boston_df = boston_df.assign(median_value=boston.target)
 
@@ -154,11 +154,11 @@ plt.show()
 
 ![upsetplot_ext_python](/images/upsetplot/upsetplot_ext_python.png)
 
-### カテゴリのリストから Upset Plot を作成する
+### カテゴリのリストからUpset Plotを作成する
 
-実際のデータ(RNA-seq の発現変動遺伝子 etc.,)などでは、カテゴリ列から集合関係を作成する事が多いです。そのため、カテゴリが含まれる集合から Upset Plot を作成する方法につていも記載しておきます。
+実際のデータ(RNA-seqの発現変動遺伝子etc.,)などでは、カテゴリ列から集合関係を作成する事が多いです。そのため、カテゴリが含まれる集合からUpset Plotを作成する方法につていも記載しておきます。
 
-カテゴリの集合をそれぞれ`category_n`として、3 つのカテゴリの集合について Upset Plot を作成します。
+カテゴリの集合をそれぞれ`category_n`として、3つのカテゴリの集合についてUpset Plotを作成します。
 
 ```python
 import pandas as pd
@@ -183,7 +183,7 @@ upsetplot.plot(upset_data, subset_size="count", show_counts="%d", sort_categorie
 
 ![md={6}:upsetplot_category_examples](/images/upsetplot/upsetplot_category_examples.png)
 
-慣れてしまえばデータフレーム操作は簡単ですが、最初結構戸惑ったのでメモ代わりに残しておきます。最初に True で初期化するのが重要です。
+慣れてしまえばデータフレーム操作は簡単ですが、最初結構戸惑ったのでメモ代わりに残しておきます。最初にTrueで初期化するのが重要です。
 
 ## Reference
 

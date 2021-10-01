@@ -5,24 +5,24 @@ description: Next.jsで作ったAMPオンリーのブログをPWAにも対応さ
 
 ## TL;DR
 
-Next.js の PWA 対応というと[next-offline](https://github.com/hanford/next-offline)とか[next-pwa](https://github.com/shadowwalker/next-pwa)が有名かと思います。しかし、AMP ページのキャッシュはこれらがデフォルトで対応していないので、自前でやる必要があります([参考 issue](https://github.com/shadowwalker/next-pwa/issues/65))。自分はこの 2 つのパッケージを使って色々やってて永遠に PWA 対応できなかったので、AMP と同時に対応しようとしている人は注意が必要です。
+Next.jsのPWA対応というと[next-offline](https://github.com/hanford/next-offline)とか[next-pwa](https://github.com/shadowwalker/next-pwa)が有名かと思います。しかし、AMPページのキャッシュはこれらがデフォルトで対応していないので、自前でやる必要があります([参考issue](https://github.com/shadowwalker/next-pwa/issues/65))。自分はこの2つのパッケージを使って色々やってて永遠にPWA対応できなかったので、AMPと同時に対応しようとしている人は注意が必要です。
 
 とはいえ、やることはほとんど[example/amp-first](https://github.com/vercel/next.js/tree/ebd1434a847bb086d13fe4e6671b3b9f482e32c6/examples/amp-first)をコピペするだけなのですが...。
 
-## public フォルダの準備
+## publicフォルダの準備
 
 ### manifest.json
 
-まず、manifest.json を用意します。何で用意してもいいですが、必要なものとして以下が挙げられます([参考](https://web.dev/installable-manifest/?utm_source=lighthouse&utm_medium=lr))。icon とか用意するのはめんどうなので、[PWA manifest generator](https://www.simicart.com/manifest-generator.html/)を使いました。
+まず、manifest.jsonを用意します。何で用意してもいいですが、必要なものとして以下が挙げられます([参考](https://web.dev/installable-manifest/?utm_source=lighthouse&utm_medium=lr))。iconとか用意するのはめんどうなので、[PWA manifest generator](https://www.simicart.com/manifest-generator.html/)を使いました。
 
 - `start_url`
 - `name` or `shortname`
 - `icons` (192 - 512 px)
 - `display`
 
-また、この icon は maskable である必要があるので、[Maskable.app Editor](https://maskable.app/editor)で変換した後、`"purpose": "any maskable"`を icon のプロパティに足します。
+また、このiconはmaskableである必要があるので、[Maskable.app Editor](https://maskable.app/editor)で変換した後、`"purpose": "any maskable"`をiconのプロパティに足します。
 
-とりあえずこのサイトの manifest.json は以下のような感じです。
+とりあえずこのサイトのmanifest.jsonは以下のような感じです。
 
 ```json:title=manifest.json
 {
@@ -64,13 +64,13 @@ Next.js の PWA 対応というと[next-offline](https://github.com/hanford/next
 
 ### apple touch icon
 
-[ここ](https://web.dev/apple-touch-icon/?utm_source=lighthouse&utm_medium=lr)を見てもらったほうが早いですが、PWA 対応したいページのヘッダーに
+[ここ](https://web.dev/apple-touch-icon/?utm_source=lighthouse&utm_medium=lr)を見てもらったほうが早いですが、PWA対応したいページのヘッダーに
 
 ```jsx
 <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
 ```
 
-を加えておきます。アイコンのサイズは 192x192 か 180x180 である必要があります。
+を加えておきます。アイコンのサイズは192x192か180x180である必要があります。
 
 ### serviceworker.js
 
@@ -105,9 +105,9 @@ AMP_SW.init({
 })
 ```
 
-### serviceworker の register
+### serviceworkerのregister
 
-[examples/amp-first/public/install-serviceworker.html](https://github.com/vercel/next.js/blob/ebd1434a847bb086d13fe4e6671b3b9f482e32c6/examples/amp-first/public/install-serviceworker.html)をコピペして public に置きます。
+[examples/amp-first/public/install-serviceworker.html](https://github.com/vercel/next.js/blob/ebd1434a847bb086d13fe4e6671b3b9f482e32c6/examples/amp-first/public/install-serviceworker.html)をコピペしてpublicに置きます。
 
 ```html:title=install-serviceworker.html
 <!DOCTYPE html>
@@ -119,23 +119,23 @@ AMP_SW.init({
 </script>
 ```
 
-### PWA 対応したいページで serviceworker をインストールする
+### PWA対応したいページでserviceworkerをインストールする
 
-amp では serviceworker のインストールは[amp-install-serviceworker](https://amp.dev/documentation/examples/components/amp-install-serviceworker/)で行えます。
+ampではserviceworkerのインストールは[amp-install-serviceworker](https://amp.dev/documentation/examples/components/amp-install-serviceworker/)で行えます。
 
-PWA 対応したいコンポーネントの body に以下を入れます。
+PWA対応したいコンポーネントのbodyに以下を入れます。
 
 ```jsx
 <amp-install-serviceworker
-  src="/serviceworker.js"
-  data-iframe-src="/install-serviceworker.html"
-  layout="nodisplay"
+    src="/serviceworker.js"
+    data-iframe-src="/install-serviceworker.html"
+    layout="nodisplay"
 />
 ```
 
-### offline ページの作成
+### offlineページの作成
 
-これよくわかってないので後で調べるかもしれませんが、amp-first の例では offline ページが準備されています。コピペして置いておきましょう。serviceworker の offlinePageOption なんでしょう。
+これよくわかってないので後で調べるかもしれませんが、amp-firstの例ではofflineページが準備されています。コピペして置いておきましょう。serviceworkerのofflinePageOptionなんでしょう。
 
 ```jsx:title=offline.js
 import Layout from '../components/Layout'
@@ -154,10 +154,10 @@ export default Home
 
 ## 結果
 
-以上で PWA 対応は完了です。当サイト top の 2020/09/30 現在の lighthouse performance です。
+以上でPWA対応は完了です。当サイトtopの2020/09/30現在のlighthouse performanceです。
 
 ![lighthouse-next-blog](/images/lighthouse-nextblog-top.PNG)
 
-ちなみに Wordpress 時代はこんなんなので、非常に成長していると言えるでしょう。all 100 は難しいですね...。
+ちなみにWordpress時代はこんなんなので、非常に成長していると言えるでしょう。all 100は難しいですね...。
 
 ![lighthouse-wordpress-top](/images/lighthouse-wordpress-top.PNG)

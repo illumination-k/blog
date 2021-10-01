@@ -5,15 +5,15 @@ description: 思ったよりFastAPI、PostgresでHerokuにデプロイすると�
 
 ## TL;DR
 
-FastAPI は Restful な API を Python で構築するときに非常に便利なマイクロウェブフレームワークで、パフォーマンスにも優れています。また、型についてサポートしており、Swagger UI で API ドキュメントが自動的に生成される点も素晴らしいです。
+FastAPIはRestfulなAPIをPythonで構築するときに非常に便利なマイクロウェブフレームワークで、パフォーマンスにも優れています。また、型についてサポートしており、Swagger UIでAPIドキュメントが自動的に生成される点も素晴らしいです。
 
-実際に API を構築するにあたって、Heroku は無料で利用でき、デプロイも簡単なのでテストサーバーを作成するときに重宝します。Heroku が無料枠でサポートしているのは Postgres SQL だけなので、もしデータベースを絡めようと思うと、必然的に Postgres を使う必要があります。
+実際にAPIを構築するにあたって、Herokuは無料で利用でき、デプロイも簡単なのでテストサーバーを作成するときに重宝します。Herokuが無料枠でサポートしているのはPostgres SQLだけなので、もしデータベースを絡めようと思うと、必然的にPostgresを使う必要があります。
 
 使い方を書いてある記事はあるのですが、単純にデプロイするだけ、といったことに焦点を当てた記事がなかったので書きました。
 
 ## Dependencies
 
-ORM として`sqlalchemy`を利用します。また、postgres と接続するために`psycopg2-binary`を使います。個人的に`pipenv`を使っているので、`Pipfile`を用意します。あとは post のデータには型がついていてほしいので`pydantic`を使います。
+ORMとして`sqlalchemy`を利用します。また、postgresと接続するために`psycopg2-binary`を使います。個人的に`pipenv`を使っているので、`Pipfile`を用意します。あとはpostのデータには型がついていてほしいので`pydantic`を使います。
 
 ```toml:title=Pipfile
 [[source]]
@@ -35,9 +35,9 @@ python_version = "3.8"
 allow_prereleases = true
 ```
 
-### FastAPI を試運転
+### FastAPIを試運転
 
-依存関係をインストールします。個人的にいつも`app/`下に python ファイルとかを作成しているので、今回もそうします。
+依存関係をインストールします。個人的にいつも`app/`下にpythonファイルとかを作成しているので、今回もそうします。
 
 ```bash
 pipenv install
@@ -64,9 +64,9 @@ uvicorn app.main:app --reload --host=0.0.0.0 --port=8002
 
 `https://localhost:8002`で`{"message": "Hello World"}`で見えていれば成功です。
 
-### local 環境の構築
+### local環境の構築
 
-`docker`を使ってローカルで DB に関してもテストできるようにします。
+`docker`を使ってローカルでDBに関してもテストできるようにします。
 
 ```docker:title=Dockerfile
 FROM python:3.9.2-slim
@@ -114,7 +114,7 @@ services:
 
 ## モデルの定義
 
-SQLalechemy のためにモデルを定義します。今回は TODO テーブルを作成します。
+SQLalechemyのためにモデルを定義します。今回はTODOテーブルを作成します。
 テーブルは自動で作成されてほしいので、
 
 ```python:title=app/model.py
@@ -169,7 +169,7 @@ def to_dict(model) -> dict:
     return dict((col.name, getattr(model, col.name)) for col in model.__table__.columns)
 ```
 
-`TODO`に対する`POST`と`GET`を定義します。`Post`の際に、必ず`title`と`description`をリクエストボディに入れてほしいので、`pydantic`で Data クラスを定義しています。
+`TODO`に対する`POST`と`GET`を定義します。`Post`の際に、必ず`title`と`description`をリクエストボディに入れてほしいので、`pydantic`でDataクラスを定義しています。
 
 ```python:title=app/main.py
 from app.model import db_session, Todo, to_dict
@@ -214,13 +214,13 @@ async def post_todos(data: Data):
     return JSONResponse(status_code=status.HTTP_201_CREATED, content="created!")
 ```
 
-`http://localhost:8002/docs`にアクセスして Swagger UI で Get と Post のテストをしてみてください。[このへんまでの commit](https://github.com/illumination-k/fastapi-heroku/tree/14c99ef3be19ee7af66e154d41cd74cab7fab840)です。
+`http://localhost:8002/docs`にアクセスしてSwagger UIでGetとPostのテストをしてみてください。[このへんまでのcommit](https://github.com/illumination-k/fastapi-heroku/tree/14c99ef3be19ee7af66e154d41cd74cab7fab840)です。
 
-## Heroku にデプロイ
+## Herokuにデプロイ
 
-好みのやり方でプロジェクトを作って、Postgres SQL のアドオンを有効にしてください。
+好みのやり方でプロジェクトを作って、Postgres SQLのアドオンを有効にしてください。
 
-ちょっとハマりどころなのが、`heroku`で Postgres SQL アドオンを追加すると環境変数として`DATABASE_URL`が提供されるんですが、これをそのまま`create_engine`に入れてもうまく行かないという点です。というのは`DATABASE_URL`は`postgres://....`みたいな感じなんですが、`create_engine`の引数としては`postgresql://...`みたいな感じである必要があります。
+ちょっとハマりどころなのが、`heroku`でPostgres SQLアドオンを追加すると環境変数として`DATABASE_URL`が提供されるんですが、これをそのまま`create_engine`に入れてもうまく行かないという点です。というのは`DATABASE_URL`は`postgres://....`みたいな感じなんですが、`create_engine`の引数としては`postgresql://...`みたいな感じである必要があります。
 
 この点を考慮して、`create_engine`を書き直します。
 

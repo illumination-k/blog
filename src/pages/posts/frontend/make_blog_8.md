@@ -7,53 +7,51 @@ description: ブログでよくある、関係のある記事をランダムで�
 
 ブログでよくある、関係のある記事をランダムで記事の一番下につけたかったのですが、静的サイトだとどうすればいいのかよくわかりませんでした。一つは毎回`ServersideProps`呼ぶ、ということだと思うんですが、それと`getStaticsProps`の併用、どうやるんだ？ってところでよくわからなくなりました。毎回サーバーサイドレンダリングしてると、遅くなりそうで嫌なので...
 
-そこで、今回とったアプローチは、Next.js で API をまず実装し、それを`amp-list`を使って fetch してその結果をレンダリングするというアプローチを取りました。
+そこで、今回とったアプローチは、Next.jsでAPIをまず実装し、それを`amp-list`を使ってfetchしてその結果をレンダリングするというアプローチを取りました。
 
-## amp-list と amp-mustache
+## amp-listとamp-mustache
 
-`amp-list`は、AMP の拡張コンポーネントで JSON エンドポイントから動的にデータを取得し、`amp-mustache`の template を使用してレンダリングを行うことができます。
+`amp-list`は、AMPの拡張コンポーネントでJSONエンドポイントから動的にデータを取得し、`amp-mustache`のtemplateを使用してレンダリングを行うことができます。
 
 公式ドキュメント([amp-list](https://amp.dev/ja/documentation/components/amp-list/), [amp-mustache](https://amp.dev/ja/documentation/components/amp-mustache/))の例は以下の感じです。
 
 ```html
-<amp-list
-  width="auto"
+<amp-list width="auto"
   height="100"
   layout="fixed-height"
-  src="/static/inline-examples/data/amp-list-urls.json"
->
+  src="/static/inline-examples/data/amp-list-urls.json">
   <template type="amp-mustache">
     <div class="url-entry">
       <a href="{{url}}">{{title}}</a>
     </div>
-  </template>
+</template>
 </amp-list>
 ```
 
 [公式プレイグランド](https://playground.amp.dev/?url=https%3A%2F%2Fpreview.amp.dev%2Fja%2Fdocumentation%2Fcomponents%2Famp-list.example.1.html%3Fformat%3Dwebsites&format=websites)
 
-使用している JSON は以下
+使用しているJSONは以下
 
 ```json
 {
-  "items": [
-    {
-      "title": "AMP YouTube Channel",
-      "url": "https://www.youtube.com/channel/UCXPBsjgKKG2HqsKBhWA4uQw"
-    },
-    {
-      "title": "AMP.dev",
-      "url": "https://amp.dev/"
-    },
-    {
-      "title": "AMP Validator",
-      "url": "https://validator.amp.dev/"
-    },
-    {
-      "title": "AMP Playground",
-      "url": "https://playground.amp.dev/"
-    }
-  ]
+ "items": [
+   {
+     "title": "AMP YouTube Channel",
+     "url": "https://www.youtube.com/channel/UCXPBsjgKKG2HqsKBhWA4uQw"
+   },
+   {
+     "title": "AMP.dev",
+     "url": "https://amp.dev/"
+   },
+   {
+     "title": "AMP Validator",
+     "url": "https://validator.amp.dev/"
+   },
+   {
+     "title": "AMP Playground",
+     "url": "https://playground.amp.dev/"
+   }
+ ]
 }
 ```
 
@@ -67,7 +65,9 @@ description: ブログでよくある、関係のある記事をランダムで�
 
 ```html
 <!-- Using template tag. -->
-<template type="amp-mustache"> Hello {{world}}! </template>
+<template type="amp-mustache">
+  Hello {{world}}!
+</template>
 ```
 
 2. 変数が存在していればレンダリング
@@ -77,7 +77,9 @@ description: ブログでよくある、関係のある記事をランダムで�
 ```html
 <!-- Using template tag. -->
 <template type="amp-mustache">
-  {{#world}} Hello {{world}}! {{/#world}}
+    {{#world}}
+        Hello {{world}}!
+    {{/#world}}
 </template>
 ```
 
@@ -87,15 +89,21 @@ description: ブログでよくある、関係のある記事をランダムで�
 
 ```html
 <!-- Using template tag. -->
-<template type="amp-mustache"> {{^world}} No World! {{/#world}} </template>
+<template type="amp-mustache">
+    {{^world}}
+        No World!
+    {{/#world}}
+</template>
 ```
 
-### JSX 内でのテンプレート
+### JSX内でのテンプレート
 
-JSX 内ではこれらのテンプレートは
+JSX内ではこれらのテンプレートは
 
 ```jsx
-<template type="amp-mustache">Hello {"{{world}}"}!</template>
+<template type="amp-mustache">
+    Hello {"{{world}}"}!
+</template>
 ```
 
 のように利用できます。
@@ -106,10 +114,10 @@ JSX 内ではこれらのテンプレートは
 
 ```json
 [
-  {
-    "title": "test post",
-    "url": "/posts/test"
-  }
+    {
+        "title": "test post",
+        "url": "/posts/test"
+    }
 ]
 ```
 
@@ -119,25 +127,25 @@ JSX 内ではこれらのテンプレートは
 
 ```jsx
 <amp-list
-  width="auto"
-  height="200"
-  layout="fixed-height"
-  src={`/api/otherarticles`}
-  items="."
+    width="auto"
+    height="200"
+    layout="fixed-height"
+    src={`/api/otherarticles`}
+    items="."
 >
-  {/* @ts-ignore */}
-  <template type="amp-mustache">
+{/* @ts-ignore */}
+<template type="amp-mustache">
     title={"{{title}}"}
     url={"{{url}}"}
-  </template>
+</template>
 </amp-list>
 ```
 
 のようにすればよいです。
 
-## API の実装
+## APIの実装
 
-Next.js の API は、`pages/api/`下に`ts`などのファイルを作ればエンドポイントが作成できます。
+Next.jsのAPIは、`pages/api/`下に`ts`などのファイルを作ればエンドポイントが作成できます。
 
 ```js:title=pages/api/otherarticles.js
 export default function handler(req, res) {
@@ -146,10 +154,10 @@ export default function handler(req, res) {
         url: "/posts/test"
     }
 
-    res.status(200).json(articles)
+    res.status(200).json(articles) 
 }
 ```
 
 のような感じです。
 
-実際の実装では、[Next.js で作ってみたブログに検索機能を導入する](/posts/frontend/make_blog_5)のような感じでキャッシュを作成しておいて、そのキャッシュを参照してランダムな配列から規定数のファイルを取り出しています。このブログのその部分の実装は[github](https://github.com/illumination-k/blog/blob/master/src/pages/api/recommend.ts)にあります。
+実際の実装では、[Next.jsで作ってみたブログに検索機能を導入する](/posts/frontend/make_blog_5)のような感じでキャッシュを作成しておいて、そのキャッシュを参照してランダムな配列から規定数のファイルを取り出しています。このブログのその部分の実装は[github](https://github.com/illumination-k/blog/blob/master/src/pages/api/recommend.ts)にあります。

@@ -5,7 +5,7 @@ description: salmonの出力ファイルはquant.sfですが、その加工は�
 
 ## TL;DR
 
-salmon や kalsto などは、速く、正確な発現量の定量ソフトウェアです。しかし、単純なカウントデータと違って、その加工と用途は様々です。そこで、salmon の出力ファイルである quant.sf とその加工ができる tximport についてまとめておきたいと思います。
+salmonやkalstoなどは、速く、正確な発現量の定量ソフトウェアです。しかし、単純なカウントデータと違って、その加工と用途は様々です。そこで、salmonの出力ファイルであるquant.sfとその加工ができるtximportについてまとめておきたいと思います。
 
 ## quant.sf
 
@@ -15,17 +15,17 @@ salmon や kalsto などは、速く、正確な発現量の定量ソフトウ�
 Name    Length  EffectiveLength TPM     NumReads
 ```
 
-上の 5 つの値を持っています。[公式 Docs Ver1.40](https://salmon.readthedocs.io/en/latest/file_formats.html)を読むと、これらの値は以下のように定義されています。
+上の5つの値を持っています。[公式Docs Ver1.40](https://salmon.readthedocs.io/en/latest/file_formats.html)を読むと、これらの値は以下のように定義されています。
 
-| 名称            | 定義                                                                                                                      |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Name            | 転写産物の名前。fasta のヘッダ行                                                                                          |
-| Length          | 転写産物の塩基長                                                                                                          |
-| EffectiveLength | fragment distribution や sequence-specific、gc-fragment bias などを考慮した`effective length`。TPM の計算とかに使われる。 |
-| TPM             | 正しい意味での TPM。この値をこの後の解析に使うことが推奨されている                                                        |
-| NumReads        | salmon によって転写産物にマップされたリード数                                                                             |
+|名称|定義|
+|---|---|
+|Name|転写産物の名前。fastaのヘッダ行|
+|Length|転写産物の塩基長|
+|EffectiveLength|fragment distributionやsequence-specific、gc-fragment biasなどを考慮した`effective length`。TPMの計算とかに使われる。|
+|TPM|正しい意味でのTPM。この値をこの後の解析に使うことが推奨されている|
+|NumReads|salmonによって転写産物にマップされたリード数|
 
-## tximport でファイルを読み込む
+## tximportでファイルを読み込む
 
 `quant.sf`ファイルを読み込めます。
 
@@ -35,7 +35,7 @@ ls
 # DRRxxxxxx_exp
 ```
 
-のような末尾に exp がついたディレクトリに salmon の出力が入っているとします。
+のような末尾にexpがついたディレクトリにsalmonの出力が入っているとします。
 
 ```r
 library(tximport)
@@ -65,12 +65,13 @@ gene.exp <- tximport(salmon.files, type = "salmon", tx2gene = tx2gene)
 gene_from_tx.exp <- summarizeToGene(tx.exp, tx2gene)
 ```
 
-## tximport されたものの中身を csv 形式で書き出す
+## tximportされたものの中身をcsv形式で書き出す
 
-workspace は続いている感じです。
+workspaceは続いている感じです。
 読み込みはできたんですが、目的のものを取り出す操作が必要です。
 
-tximport に何が入っているかは`names(tximportObject)`で確認できます。
+
+tximportに何が入っているかは`names(tximportObject)`で確認できます。
 
 ```r
 names(tx.exp)
@@ -79,14 +80,13 @@ names(tx.exp)
 ```
 
 中身は
-
 - abundance: TPM
 - counts: NumReads
 - length: EffectiveLength
 - countsFromAbundance: `"no"`, `"scaledTPM"`, `"lengthScaledTPM"` or `"dtuScaledTPM"`
 
-です。`countsFromAbundance`の default は`"no"`です。
-面倒な話なのですが、`scaledTPM`、`lengthScaledTPM`、`dtuScaledTPM`は TPM とは別物で、
+です。`countsFromAbundance`のdefaultは`"no"`です。
+面倒な話なのですが、`scaledTPM`、`lengthScaledTPM`、`dtuScaledTPM`はTPMとは別物で、
 
 ```r
 gene.scaled <- summarizeToGene(tx.exp, tx2gene, countsFromAbundance = "scaledTPM")
@@ -94,20 +94,20 @@ gene.scaled <- summarizeToGene(tx.exp, tx2gene, countsFromAbundance = "scaledTPM
 scaledTPM <- gene.scaled$counts
 ```
 
-などのようにして得られるカウント値のようなものです。NumReads からカウントするのではなく、abundance(この場合は TPM)からカウントして、それをライブラリサイズによってスケーリングしたものです。この場合の`xxxxTPM`は TPM 由来ということで、TPM のように扱うのは好ましくないです。
+などのようにして得られるカウント値のようなものです。NumReadsからカウントするのではなく、abundance(この場合はTPM)からカウントして、それをライブラリサイズによってスケーリングしたものです。この場合の`xxxxTPM`はTPM由来ということで、TPMのように扱うのは好ましくないです。
 
-ちなみにですが、それぞれの scale 方法は以下です。また、`tximportObject$counts`で得られるものは、サンプルごとに sum をとるとすべて NumReads の総数と等しくなります。
+ちなみにですが、それぞれのscale方法は以下です。また、`tximportObject$counts`で得られるものは、サンプルごとにsumをとるとすべてNumReadsの総数と等しくなります。
 
-| 名称              | 方法                                               |
-| ----------------- | -------------------------------------------------- |
-| `no`              | simplesum                                          |
-| `scaledTPM`       | ライブラリサイズに補正                             |
-| `lengthScaledTPM` | 転写産物の平均長を補正したライブラリサイズに補正   |
-| `dtuScaledTPM`    | 転写産物の中央値長で補正したライブラリサイズに補正 |
+|名称|方法|
+|---|---|
+|`no`|simplesum|
+|`scaledTPM`|ライブラリサイズに補正|
+|`lengthScaledTPM`|転写産物の平均長を補正したライブラリサイズに補正|
+|`dtuScaledTPM`|転写産物の中央値長で補正したライブラリサイズに補正|
 
-また`dtuScaledTPM`は Differential Transcripts Usage (DTU) 解析のときに最も優れた補正方法らしいです。これらの scale した値、もしくはそのままのカウントを Differential Expression Gene (DEG) 解析などには用います。
+また`dtuScaledTPM`はDifferential Transcripts Usage (DTU) 解析のときに最も優れた補正方法らしいです。これらのscaleした値、もしくはそのままのカウントをDifferential Expression Gene (DEG) 解析などには用います。
 
-csv などで書き出したければ以下のようにすれば良いと思います。
+csvなどで書き出したければ以下のようにすれば良いと思います。
 
 ```r
 # count
@@ -117,13 +117,13 @@ write.csv(gene.exp$counts, file = "gene_count.csv", row.names = TRUE)
 write.csv(gene.exp$abundance, file = "gene_tpm.csv", row.names = TRUE)
 ```
 
-## DEG 解析の際にどうすればいいのか
+## DEG解析の際にどうすればいいのか
 
-3' tagged RNAseq のようなものの場合は、length 長を入れるとむしろ補正がかかってよくないので、countFromAbundance を使わずに、そのままの count 値を入れたほうがいいです。
+3' tagged RNAseqのようなものの場合は、length長を入れるとむしろ補正がかかってよくないので、countFromAbundanceを使わずに、そのままのcount値を入れたほうがいいです。
 
-しかし、普通の full-transcripts-length な RNA-seq では転写産物の長さを補正したほうがいい結果が得られるらしいです。
+しかし、普通のfull-transcripts-lengthなRNA-seqでは転写産物の長さを補正したほうがいい結果が得られるらしいです。
 
-ここからは[公式 doc](https://bioconductor.org/packages/devel/bioc/vignettes/tximport/inst/doc/tximport.html#Do)のコードを少しだけ改変したものをメモ用に貼っておきます。
+ここからは[公式doc](https://bioconductor.org/packages/devel/bioc/vignettes/tximport/inst/doc/tximport.html#Do)のコードを少しだけ改変したものをメモ用に貼っておきます。
 
 ### edgeR
 
@@ -166,10 +166,10 @@ dds <- DESeq(dds)
 res <- results(dds)
 ```
 
-DESeq2 の`DESeqDataSetFromTximport`を読むと
+DESeq2の`DESeqDataSetFromTximport`を読むと
 
 ```r
-DESeqDataSetFromTximport <- function(txi, colData, design, ...)
+DESeqDataSetFromTximport <- function(txi, colData, design, ...) 
 {
   stopifnot(is(txi, "list"))
   counts <- round(txi$counts)
@@ -189,13 +189,13 @@ DESeqDataSetFromTximport <- function(txi, colData, design, ...)
 }
 ```
 
-なので、`countAbundance = "scaledTPM"`とかなら csv とかにした後そのまま読み込ませても良さそう。
+なので、`countAbundance = "scaledTPM"`とかならcsvとかにした後そのまま読み込ませても良さそう。
 
 ## 感想
 
 `scaledTPM`系列ががややこしい。
 
-limma-voom って使ったことないんですけどどういうメリットがあるんですかね。
+limma-voomって使ったことないんですけどどういうメリットがあるんですかね。
 
 ## Reference
 

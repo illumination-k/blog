@@ -1,4 +1,5 @@
 import BlogPostContentHeader from "./BlogPostContentHeader";
+import BlogPostContentFooter from "./BlogPostContentFooter";
 import Grid from "@mui/material/Grid";
 
 const BlogPostContent = ({ meta, children }) => {
@@ -10,6 +11,7 @@ const BlogPostContent = ({ meta, children }) => {
           {children}
         </Grid>
       </Grid>
+      <BlogPostContentFooter meta={meta} />
     </>
   );
 };

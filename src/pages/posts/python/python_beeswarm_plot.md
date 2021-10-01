@@ -5,15 +5,15 @@ description: 統計要約量とかを特に考慮せずに、ただデータを�
 
 ## TL;DR
 
-統計要約量とかを特に考慮せずに、ただデータを概観したいということがあります。データの分布を概観するときには、ビースウォームプロットが便利です。seaborn を使うことで Python でもビースウォームプロットを簡単に使えます。
+統計要約量とかを特に考慮せずに、ただデータを概観したいということがあります。データの分布を概観するときには、ビースウォームプロットが便利です。seabornを使うことでPythonでもビースウォームプロットを簡単に使えます。
 
 また、ビースウォームプロットは、ヴァイオリンプロットなどと同時に使うことで、データの分布と統計要約量をスマートに表現できます。
 
-R については、[このサイト](https://stats.biopapyrus.jp/r/graph/beeswarm.html)で解説されているので参照してください。また、[公式 Docs](https://seaborn.pydata.org/generated/seaborn.swarmplot.html)もわかりやすいのでおすすめです。
+Rについては、[このサイト](https://stats.biopapyrus.jp/r/graph/beeswarm.html)で解説されているので参照してください。また、[公式Docs](https://seaborn.pydata.org/generated/seaborn.swarmplot.html)もわかりやすいのでおすすめです。
 
 ## 準備
 
-### seaborn のインストール
+### seabornのインストール
 
 ```bash
 pip install seaborn
@@ -37,7 +37,7 @@ print(tips.head())
 """
 ```
 
-この tips データセット、公式が提供しているだけあって非常に seaborn のデモに向います。sklearn のなんかで置き換えようかと思ったのですが、tips が強すぎました。
+このtipsデータセット、公式が提供しているだけあって非常にseabornのデモに向います。sklearnのなんかで置き換えようかと思ったのですが、tipsが強すぎました。
 
 ## 基本のプロット
 
@@ -58,9 +58,9 @@ plt.show()
 
 ![beeswarm1](/images/beeswarm/beeswarm1.png)
 
-## hue で分離
+## hueで分離
 
-seaborn の他のグラフと同様、hue を使うことで色分けできます。また、dodge 引数を使えば、グラフ内で混在させるか分けて表示するかを選択できます。
+seabornの他のグラフと同様、hueを使うことで色分けできます。また、dodge引数を使えば、グラフ内で混在させるか分けて表示するかを選択できます。
 
 ```python
 fig = plt.figure(figsize=(20, 5))
@@ -81,10 +81,11 @@ plt.show()
 
 ![beeswarm2](/images/beeswarm/beeswarm2.png)
 
-## violinplot と合わせて表示する
+## violinplotと合わせて表示する
 
 他のプロットとあわせるとデータサイエンスしてる感が出てきます。
-ヴァイオリンプロットを使います。また、こういう時に同様の用途で使われる stripplot と比較してみます。
+ヴァイオリンプロットを使います。また、こういう時に同様の用途で使われるstripplotと比較してみます。
+
 
 ```python
 fig = plt.figure(figsize=(20, 5))
@@ -107,7 +108,7 @@ plt.show()
 
 ![beeswarm3](/images/beeswarm/beeswarm3.png)
 
-なんとなく分布感まで見られる beeswarm plot のほうが見やすい感じを受けます。数が多すぎると表示しきれなくなるのが難点です。この辺は表現したいデータによっても変わりそうで難しいところですが、beeswarm plot も選択肢としては有力です。
+なんとなく分布感まで見られるbeeswarm plotのほうが見やすい感じを受けます。数が多すぎると表示しきれなくなるのが難点です。この辺は表現したいデータによっても変わりそうで難しいところですが、beeswarm plotも選択肢としては有力です。
 
 ## Reference
 

@@ -5,9 +5,9 @@ description: "rust-bioを使ってfastq/fastq.gzを読み書きします。"
 
 ## TL;DR
 
-fastq とかのファイルを処理するときに、Python だとサイズが大きめの fastq ファイル群を扱ってると時間がかかりすぎて辛い気分になります。fastq をパースするくらいなら自前で書いてもいいんですが、[rust-bio]()なる crate があるのでそれを使います。
+fastqとかのファイルを処理するときに、Pythonだとサイズが大きめのfastqファイル群を扱ってると時間がかかりすぎて辛い気分になります。fastqをパースするくらいなら自前で書いてもいいんですが、[rust-bio]()なるcrateがあるのでそれを使います。
 
-使い方は[docs](https://docs.rs/bio/0.32.0/bio/)読めばわかるんですが、gz 形式で読み書きするのが rust-bio 単独では使えなかったので、そのあたりもフォローしておきます。
+使い方は[docs](https://docs.rs/bio/0.32.0/bio/)読めばわかるんですが、gz形式で読み書きするのがrust-bio単独では使えなかったので、そのあたりもフォローしておきます。
 
 ## dependencies
 
@@ -15,15 +15,15 @@ fastq とかのファイルを処理するときに、Python だとサイズが�
 bio = "*"
 ```
 
-### rust-bio の io::fastq に関する注意
+### rust-bioのio::fastqに関する注意
 
-rust-bio には fastq パーサーがおいてあります。Record が String とかを持つ仕様なので、アロケーションの償却とかそういう意味だとちょっと速度は微妙な可能性があります。Error ハンドリングとかは参考になるので、高速化したいなら自分で書いたほうがいいかもしれません。
+rust-bioにはfastqパーサーがおいてあります。RecordがStringとかを持つ仕様なので、アロケーションの償却とかそういう意味だとちょっと速度は微妙な可能性があります。Errorハンドリングとかは参考になるので、高速化したいなら自分で書いたほうがいいかもしれません。
 
-## fastq の読み書き
+## fastqの読み書き
 
 ### Record
 
-fastq の 1 read に相当する Record の定義は以下のようになっています。
+fastqの1 readに相当するRecordの定義は以下のようになっています。
 
 ```rust
 // from https://docs.rs/crate/bio/0.32.0/source/src/io/fastq.rs
@@ -37,11 +37,12 @@ pub struct Record {
 }
 ```
 
-それぞれのメンバは同名の関数（`ex id()`）などでアクセスできます。ただ、`seq()`関数だけ Byte のスライスを返してきます。もうそれなら最初から全部`&[u8]`で読み込んでほしい...。
+それぞれのメンバは同名の関数（`ex id()`）などでアクセスできます。ただ、`seq()`関数だけByteのスライスを返してきます。もうそれなら最初から全部`&[u8]`で読み込んでほしい...。
 
 ### Reader
 
 [docs](https://docs.rs/bio/0.32.0/bio/io/fastq/index.html)のほぼコピペを貼ります。
+
 
 ```rust
 use std::io;
@@ -71,7 +72,7 @@ fn main() {
 let mut reader = fastq::Reader::from_file(path).unwrap();
 ```
 
-で Reader を作成できます。
+でReaderを作成できます。
 
 ### Write
 
@@ -102,7 +103,7 @@ fn main() {
 }
 ```
 
-Reader と同じで、ファイルに書き込みたい場合は、
+Readerと同じで、ファイルに書き込みたい場合は、
 
 ```rust
 let mut wtr = fastq::Writer::to_file(path).unwrap()
@@ -110,9 +111,9 @@ let mut wtr = fastq::Writer::to_file(path).unwrap()
 
 を使います。
 
-## fastq.gz の読み書き
+## fastq.gzの読み書き
 
-flate2 という gz とか zip とかの圧縮を扱える crate を使います。`?`を使いたいので、anyhow というエラーハンドリングクレートを使用しています。
+flate2というgzとかzipとかの圧縮を扱えるcrateを使います。`?`を使いたいので、anyhowというエラーハンドリングクレートを使用しています。
 
 ```toml:title=Cargo.toml
 bio = "*"
@@ -122,9 +123,10 @@ flate2 = "0.2"
 
 ### Read
 
-`fastq::Reader::new`は trait として`std::io::BufRead`を持っている必要があります。
+`fastq::Reader::new`はtraitとして`std::io::BufRead`を持っている必要があります。
 
-gz が拡張子についていれば、gzdecoder で読み込んで、そうでなければ普通に Bufread で読み込む関数を作成しておきます。decoder には flate2 の MultiGzDecoder を使用します。
+gzが拡張子についていれば、gzdecoderで読み込んで、そうでなければ普通にBufreadで読み込む関数を作成しておきます。decoderにはflate2のMultiGzDecoderを使用します。
+
 
 ```rust
 use anyhow::Result;
@@ -147,18 +149,18 @@ pub fn open_with_gz<P: AsRef<Path>>(p: P) -> Result<Box<dyn BufRead>> {
 }
 ```
 
-これで gz からの読み込みの準備は整いました。あとは
+これでgzからの読み込みの準備は整いました。あとは
 
 ```rust
 let path = "a.fastq.gz";
 let mut rdr = fastq::Reader::new(open_with_gz(path).unwrap());
 ```
 
-のような形で Reader を生成できます。
+のような形でReaderを生成できます。
 
 ### Write
 
-Writer も Reader と同じような感じで BufWrite を生成して、`fastq::io::Writer::new()`すればいいです。同じ用にラッパー関数を作ればよいですが、ちょっとこっちは gz で書き出さないメリットが思い浮かばないので、作ったことがないので、直接 gzencoder を入れるコードをおいておきます。そのうち書くかもしれません。
+WriterもReaderと同じような感じでBufWriteを生成して、`fastq::io::Writer::new()`すればいいです。同じ用にラッパー関数を作ればよいですが、ちょっとこっちはgzで書き出さないメリットが思い浮かばないので、作ったことがないので、直接gzencoderを入れるコードをおいておきます。そのうち書くかもしれません。
 
 ```rust
 use anyhow::Result;
@@ -185,5 +187,4 @@ fn main() -> Result<()> {
 ```
 
 ## まとめ
-
-docs を読めばいいと思います。
+docsを読めばいいと思います。
