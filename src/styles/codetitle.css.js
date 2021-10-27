@@ -1,9 +1,4 @@
-.avator {
-  border-radius: 50%; /* 角丸半径を50%にする(=円形にする) */
-  width: 180rem; /* ※縦横を同値に */
-  height: 180rem; /* ※縦横を同値に */
-}
-
+export const codeTitleCss = `
 .code-title {
   background: #2e96b5;
   color: #eee;
@@ -86,3 +81,4 @@ Language Name on Code Block
   content: "css";
   opacity: 0.8;
 }
+`

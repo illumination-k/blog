@@ -13,6 +13,15 @@ import CssBaseline from "@mui/material/CssBaseline";
 import theme from "@libs/theme";
 import createEmotionCache from "@libs/createEmotionCache";
 
+// @ts-ignore
+import css from "../styles/github_markdown.css?raw";
+// @ts-ignore
+import prismCss from "../styles/prism.css?raw";
+// @ts-ignore
+import globalCss from "../styles/global.css?raw";
+// @ts-ignore
+import ampSelectorCss from "../styles/amp_selector.css?raw";
+
 import * as gtag from "@libs/gtag";
 Router.events.on("routeChangeComplete", (url) => gtag.pageview(url));
 
