@@ -34,6 +34,12 @@ const Header = () => {
 
 - [Material-UIの「Data Grid」で高さを自動設定する](https://tech-it.r-net.info/program/react/309/)
 
+## Buttonの中身を大文字にしない
+
+`text-transform: 'none'`を使う。
+
+- [Paper-Button always as upper case](https://stackoverflow.com/questions/25158435/paper-button-always-as-upper-case)
+
 ## Material-UI 4 -> 5のmigration
 
 ```bash
@@ -45,4 +51,4 @@ yarn add @emotion/server
 npx @mui/codemod v5.0.0/preset-safe .
 ```
 
-で基本的には置換される。エラーは起きなくなるが、推奨されていないものが残ったりはするので適宜修正していく。`Next.js`の場合は、
+で基本的には置換される。エラーは起きなくなるが、推奨されていないものが残ったりはするので適宜修正していく。
