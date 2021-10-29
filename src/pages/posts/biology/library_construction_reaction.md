@@ -76,7 +76,7 @@ ligationはDNA同士をつなげる反応で、ライブラリ調製以外にも
 
 Uracil DNA GlycosylaseとEndonuclease VIIIの両方の活性を持つ酵素です。二本鎖DNAの中のUを除去し、nickを入れることができます。
 
-![md={6}:USER](https://international.neb.com/-/media/nebus/page-images/products/cloning-strains/user_mechanism_0118.png?rev=8746dafdeb3d4d32bb8bb3846ab372b4&hash=CFBC863E2CCBBCCF5A99E09D145FD1FF)
+![md={6}:USER](/public/images/library_construction/USER_Mechanism.png)
 
 Adaptorの切断やUSER cloningなどに使われることがあります。
 

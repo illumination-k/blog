@@ -10,15 +10,6 @@ import theme from "@libs/theme";
 import AmpAnalytics from "@components/amp/AmpAnalytics";
 import { GA_TRACKING_ID } from "@libs/gtag";
 
-// @ts-ignore
-import css from "../styles/github_markdown.css?raw";
-// @ts-ignore
-import prismCss from "../styles/prism.css?raw";
-// @ts-ignore
-import globalCss from "../styles/global.css?raw";
-// @ts-ignore
-import ampSelectorCss from "../styles/amp_selector.css?raw";
-
 export default class MyDocument extends Document {
   render() {
     return (
@@ -116,12 +107,6 @@ MyDocument.getInitialProps = async (ctx) => {
     styles: [
       ...React.Children.toArray(initialProps.styles),
       ...emotionStyleTags,
-      <style
-        key="custom"
-        dangerouslySetInnerHTML={{
-          __html: `${globalCss}\n${css}\n${prismCss}\n${ampSelectorCss}`,
-        }}
-      />,
       sheets.getStyleElement(),
     ],
   };

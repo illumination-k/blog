@@ -19,6 +19,8 @@ import BlogPostHeader from "./BlogPostHeader";
 import BlogPostFooter from "./BlogPostFooter";
 import BlogPostContent from "./BlogPostContent";
 
+import { githubMarkdownCss } from "../../src/styles/github_markdown";
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
