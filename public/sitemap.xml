@@ -21,7 +21,22 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/about/resume.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/about</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/about.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/api/recommend.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -56,7 +71,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/archive/[page].js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/archive</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/archive.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -111,7 +136,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/categories/[categoryId]/[page].js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/categories</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/categories.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -121,7 +156,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/index.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/offline</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/offline.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -161,7 +206,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/algorithm/AtCoderLogs.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/algorithm/bitsearch</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/algorithm/bitsearch.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -171,7 +226,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/algorithm/competitive_memo.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/algorithm/dfs_tree</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/algorithm/dfs_tree.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -181,7 +246,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/algorithm/diktstra_2d_rust.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/algorithm/event_sort</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/algorithm/event_sort.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -191,7 +266,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/algorithm/inclusion_and_exclusion_principle.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/algorithm/manhattan</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/algorithm/manhattan.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -201,7 +286,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/backend/aws_elasticapi.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/backend/fastapi_sqlarchemy_heroku</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/backend/fastapi_sqlarchemy_heroku.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -211,7 +306,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/backend/sql_memo.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/bioinformatics/bioinformatics_file_format</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/bioinformatics/bioinformatics_file_format.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -221,7 +326,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/bioinformatics/cellranger_star.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/bioinformatics/gatk4_interval_list</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/bioinformatics/gatk4_interval_list.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -231,7 +346,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/bioinformatics/gatk4_ranseq_bestpractice.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/bioinformatics/go_anno_deepgoplus</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/bioinformatics/go_anno_deepgoplus.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -241,7 +366,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/bioinformatics/phylo_raxmlng.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/bioinformatics/qsubpy_easy</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/bioinformatics/qsubpy_easy.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -251,7 +386,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/bioinformatics/rust_fastqgz.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/bioinformatics/salmon_tximport</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/bioinformatics/salmon_tximport.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -261,7 +406,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/bioinformatics/sra_upload_aspera.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/biology/library_construction_reaction</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/biology/library_construction_reaction.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -271,7 +426,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/biology/ngs_matome.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/biology/seq_summary</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/biology/seq_summary.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -281,7 +446,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/development/todo_1.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/frontend/codeblock_langname</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/frontend/codeblock_langname.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -291,7 +466,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/frontend/javascript_random.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/frontend/json_png</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/frontend/json_png.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -301,7 +486,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/frontend/make_blog_1.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/frontend/make_blog_2</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/frontend/make_blog_2.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -311,7 +506,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/frontend/make_blog_3.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/frontend/make_blog_4</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/frontend/make_blog_4.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -321,7 +526,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/frontend/make_blog_5.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/frontend/make_blog_6</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/frontend/make_blog_6.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -331,7 +546,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/frontend/make_blog_7.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/frontend/make_blog_8</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/frontend/make_blog_8.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -341,7 +566,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/frontend/material_ui_scraps.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/frontend/next_config_js_summary</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/frontend/next_config_js_summary.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -351,7 +586,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/frontend/react_plotly_bundle.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/misc/bash_1liner</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/misc/bash_1liner.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -361,7 +606,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/misc/bash_permission.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/misc/git_scrapts</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/misc/git_scrapts.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -371,7 +626,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/misc/peco_powershell.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/misc/utility_webservice</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/misc/utility_webservice.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -381,7 +646,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/python/colorbar_and_normvalue.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/python/django_pylance_import</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/python/django_pylance_import.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -391,7 +666,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/python/python_beeswarm_plot.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/python/python_class_init</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/python/python_class_init.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -401,7 +686,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/python/upsetplot_python.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/rust/actix_web_diesel</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/rust/actix_web_diesel.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -411,7 +706,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/rust/cmfmt.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/rust/github_actions_release_cross</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/rust/github_actions_release_cross.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -421,7 +726,17 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/rust/impl_ops.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/rust/linked_list</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/rust/linked_list.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
@@ -431,12 +746,37 @@
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/rust/polars_pandas.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/posts/rust/rust_tips</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 
 	<url>
+		<loc>https://illumination-k.dev/posts/rust/rust_tips.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/posts/[page].js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
 		<loc>https://illumination-k.dev/privacypolicy</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/privacypolicy.js.nft</loc>
+		<lastmod>2021-10-30</lastmod>
+	</url>
+
+	<url>
+		<loc>https://illumination-k.dev/search.js.nft</loc>
 		<lastmod>2021-10-30</lastmod>
 	</url>
 </urlset>

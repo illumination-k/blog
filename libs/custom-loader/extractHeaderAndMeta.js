@@ -79,11 +79,14 @@ function extractHeaderAndMeta(options) {
       meta_obj["category"] = category;
     }
 
+    
+
     const headings = ast.children
       .filter((t) => t.type === "heading")
       .filter((t) => t.depth <= depth);
 
     const toc = headings.map((h) => {
+      // urlにはremark-auto-headingが必要
       return {
         depth: h.depth,
         url: h.children[0].url,
@@ -92,14 +95,16 @@ function extractHeaderAndMeta(options) {
     });
 
     meta_obj["toc"] = toc;
+    
+    
 
     const meta_value = `export const meta = ${JSON.stringify(meta_obj)}`;
-
     const meta = {
       default: false,
       type: "export",
       value: meta_value,
     };
+
 
     // import layout
     const { import_layout, component } = getLayout(meta_obj);

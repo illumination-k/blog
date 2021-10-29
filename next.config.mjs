@@ -1,26 +1,34 @@
+import path from "path"
+
+// dirname is not supported in esm:
+// refer to https://stackoverflow.com/questions/46745014/alternative-for-dirname-in-node-when-using-the-experimental-modules-flag
+import { fileURLToPath } from 'url';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 // remark plugins
-const stringify = require("remark-stringify");
-const remarkMath = require("remark-math");
-const remarkFrontmatter = require("remark-frontmatter");
-const remarkSlug = require("remark-slug");
-const remarkHeadings = require("remark-autolink-headings");
-const remarkFootnotes = require("remark-footnotes");
-const remarkGfm = require("remark-gfm");
+import stringify from "remark-stringify"
+import remarkMath from "remark-math"
+import remarkFrontmatter from "remark-frontmatter";
+import remarkSlug from "remark-slug"
+import remarkHeadings from "remark-autolink-headings"
+import remarkFootnotes from "remark-footnotes";
+import remarkGfm from "remark-gfm"
 
 // custom loader
-const extractHeaderAndMeta = require("./libs/custom-loader/extractHeaderAndMeta");
-const toMathml = require("./libs/custom-loader/toMathml");
-const toGithubRepoImage = require("./libs/custom-loader/toGithubRepoImage");
-const toAmpImg = require("./libs/custom-loader/toAmpImg");
-const highlighter = require("./libs/custom-loader/highlighter");
-const codeTitle = require("./libs/custom-loader/codeTitle");
 
-const path = require("path");
+import extractHeaderAndMeta from "./libs/custom-loader/extractHeaderAndMeta.js";
+import toMathml from "./libs/custom-loader/toMathml.js";
+import toGithubRepoImage from "./libs/custom-loader/toGithubRepoImage.js";
+import toAmpImg from "./libs/custom-loader/toAmpImg.js";
+import highlighter from "./libs/custom-loader/highlighter.js";
+import codeTitle from "./libs/custom-loader/codeTitle.js";
+
+
 
 // rehype plugins
 // const rehypeKatex = require('rehype-katex')
 // const rehypePrism = require('@mapbox/rehype-prism');
-const _withMDX = require("@next/mdx")
+import _withMDX from "@next/mdx"
 const withMDX = _withMDX({
   extension: /\.mdx?$/,
   options: {
@@ -48,7 +56,7 @@ const i18n = {
   defaultLocale: "ja"
 }
 
-module.exports = withMDX({
+const nextConfig = withMDX({
   // i18n: i18n,
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   async redirects() {
@@ -75,8 +83,7 @@ module.exports = withMDX({
       fs: false,
     };
     return config;
-  },
-
-  // future: { webpack5: true }
-  webpack5: true,
+  }
 });
+
+export default nextConfig;
