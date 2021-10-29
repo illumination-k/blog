@@ -53,6 +53,8 @@ git reset --hard HEAD^
 git reset --hard HEAD
 # 直前のresetを取り消す
 git reset --hard ORIG_HEAD
+# remote branchのHEADで上書き (間違ってamendしてpushしたときなどに)
+git reset origin/${branch_name}
 ```
 
 - [[git reset (--hard/--soft)]ワーキングツリー、インデックス、HEADを使いこなす方法](https://qiita.com/shuntaro_tamura/items/db1aef9cf9d78db50ffe)
