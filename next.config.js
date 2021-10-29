@@ -20,8 +20,8 @@ const path = require("path");
 // rehype plugins
 // const rehypeKatex = require('rehype-katex')
 // const rehypePrism = require('@mapbox/rehype-prism');
-
-const withMDX = require("@next/mdx")({
+const _withMDX = require("@next/mdx")
+const withMDX = _withMDX({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [
@@ -38,10 +38,10 @@ const withMDX = require("@next/mdx")({
       toGithubRepoImage,
       toAmpImg,
       remarkGfm,
-    ],
-    // rehypePlugins: [rehypeKatex, katexToMathml, highlighter],
+    ]
   },
-});
+})
+
 
 const i18n = {
   locales: ["ja"],
@@ -70,12 +70,6 @@ module.exports = withMDX({
     config.resolve.alias["@component"] = path.join(__dirname, "component");
     config.resolve.alias["@libs"] = path.join(__dirname, "libs");
 
-    // console.log(config.module.rules)
-    config.module.rules.push({
-      test: /\.css/,
-      resourceQuery: /raw/,
-      type: "asset/source",
-    });
     config.resolve.fallback = {
       ...config.resolve.fallback,
       fs: false,

@@ -30,7 +30,7 @@
     "baseUrl": ".",
     "paths": {
       "@libs/*": ["./libs/*"],
-      "@components/*": ["./components/*"]
+      "@components/*": ["./components/*"],
     }
   },
   "include": [

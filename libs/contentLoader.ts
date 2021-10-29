@@ -1,22 +1,20 @@
 import fs from "fs";
 import path from "path";
 
-//@ts-ignore
 import glob from "glob";
 
-//@ts-ignore
 import matter from "gray-matter";
 
 const POSTDIRPATH = path.join(process.cwd(), "src", "pages", "posts");
 
-export async function getFilePath(filename, categoryId) {
+export function getFilePath(filename: string, categoryId: string): string {
   return path.join(POSTDIRPATH, categoryId, filename);
 }
 
-export async function getFileNames(categories) {
+export function getFileNames(categories) {
   // return mdx filenames (eg., make_blog_1.mdx)
   const postsDirPath = path.join(POSTDIRPATH, categories);
-  const fileNames = await fs
+  const fileNames = fs
     .readdirSync(postsDirPath)
     .filter(
       (filename) =>
@@ -27,9 +25,9 @@ export async function getFileNames(categories) {
   return fileNames;
 }
 
-export async function getPathToFiles(categories) {
+export function getPathToFiles(categories) {
   // return full path to mdx files (eg., )
-  const mdxFileNames = await getFileNames(categories);
+  const mdxFileNames = getFileNames(categories);
   const pathToMdxFiles = mdxFileNames.map((filename) =>
     path.join(POSTDIRPATH, filename)
   );
@@ -37,9 +35,9 @@ export async function getPathToFiles(categories) {
   return pathToMdxFiles;
 }
 
-export async function getNames(categories) {
+export function getNames(categories) {
   // remove extensions from mdxFileNames (eg., make_blog_1)
-  const mdxFileNames = await getFileNames(categories);
+  const mdxFileNames = getFileNames(categories);
   const mdxNames = mdxFileNames.map((filename) =>
     filename.replace(/\.mdx*/, "")
   );
@@ -47,9 +45,9 @@ export async function getNames(categories) {
   return mdxNames;
 }
 
-export async function getCategories() {
+export function getCategories() {
   const dirPath = path.join(process.cwd(), "src", "pages", "posts");
-  const categories = await fs.readdirSync(dirPath).filter((name) => {
+  const categories = fs.readdirSync(dirPath).filter((name) => {
     const stats = fs.statSync(path.join(dirPath, name));
     return stats.isDirectory();
   });
@@ -57,13 +55,12 @@ export async function getCategories() {
   return categories;
 }
 
-export async function getAllPosts(rootPath: string = POSTDIRPATH) {
-  const posts = await glob.sync(path.join(rootPath, "**", "*.md"));
+export function getAllPosts(rootPath: string = POSTDIRPATH) {
+  const posts = glob.sync(path.join(rootPath, "**", "*.md"));
   return posts;
 }
 
 export async function getMeta(filepath: string) {
-  const fs = require("fs");
   const file = fs.readFileSync(filepath);
   const cachePath = path.join(process.cwd(), "cache", "data.json");
   const posts = JSON.parse(fs.readFileSync(cachePath).toString());
