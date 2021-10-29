@@ -1,4 +1,4 @@
-const path = require("path");
+import path from "path"
 import { getMeta } from "./contentLoader";
 
 export function updateMapArray<K, V>(map: Map<K, V[]>, key: K, value: V) {
@@ -6,7 +6,12 @@ export function updateMapArray<K, V>(map: Map<K, V[]>, key: K, value: V) {
   map.set(key, [...old, value]);
 }
 
-export function range(stop) {
+/**
+ * return array until stop from 1
+ * @param stop number 
+ * @returns number[] 
+ */
+export function range(stop): number[] {
   return Array.from({ length: stop }, (_, i) => i + 1);
 }
 
@@ -69,14 +74,12 @@ export async function getPageInfo(
   };
 }
 
-export function get_formatted_date(date_string: string) {
+export function get_formatted_date(date_string: string): string {
   if (date_string === "") {
     return date_string;
   }
   const date = new Date(date_string);
-  const formatted = `
-  ${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}
-  `.replace(/\n|\r/g, "");
+  const formatted = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`.replace(/\n|\r/g, "");
 
   return formatted;
 }
@@ -87,7 +90,7 @@ export function getDateKey(date_string: string): string {
   return dateKey;
 }
 
-export function trimDescription(description: string, maxLength: number) {
+export function trimDescription(description: string, maxLength: number): string {
   if (description.length > maxLength) {
     return description.substring(0, maxLength) + "...";
   } else {
