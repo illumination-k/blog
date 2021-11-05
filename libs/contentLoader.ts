@@ -7,13 +7,9 @@ import matter from "gray-matter";
 
 const POSTDIRPATH = path.join(process.cwd(), "src", "pages", "posts");
 
-export function getFilePath(filename: string, categoryId: string): string {
-  return path.join(POSTDIRPATH, categoryId, filename);
-}
-
-export function getFileNames(categories) {
+export function getFileNames(categories, root = POSTDIRPATH) {
   // return mdx filenames (eg., make_blog_1.mdx)
-  const postsDirPath = path.join(POSTDIRPATH, categories);
+  const postsDirPath = path.join(root, categories);
   const fileNames = fs
     .readdirSync(postsDirPath)
     .filter(
@@ -25,28 +21,8 @@ export function getFileNames(categories) {
   return fileNames;
 }
 
-export function getPathToFiles(categories) {
-  // return full path to mdx files (eg., )
-  const mdxFileNames = getFileNames(categories);
-  const pathToMdxFiles = mdxFileNames.map((filename) =>
-    path.join(POSTDIRPATH, filename)
-  );
 
-  return pathToMdxFiles;
-}
-
-export function getNames(categories) {
-  // remove extensions from mdxFileNames (eg., make_blog_1)
-  const mdxFileNames = getFileNames(categories);
-  const mdxNames = mdxFileNames.map((filename) =>
-    filename.replace(/\.mdx*/, "")
-  );
-
-  return mdxNames;
-}
-
-export function getCategories() {
-  const dirPath = path.join(process.cwd(), "src", "pages", "posts");
+export function getCategories(dirPath = path.join(process.cwd(), "src", "pages", "posts")) {
   const categories = fs.readdirSync(dirPath).filter((name) => {
     const stats = fs.statSync(path.join(dirPath, name));
     return stats.isDirectory();
@@ -55,16 +31,14 @@ export function getCategories() {
   return categories;
 }
 
-export function getAllPosts(rootPath: string = POSTDIRPATH) {
-  const posts = glob.sync(path.join(rootPath, "**", "*.md"));
+export function getAllPosts(root: string = POSTDIRPATH) {
+  const posts = glob.sync(path.join(root, "**", "*.md"));
   return posts;
 }
 
-export async function getMeta(filepath: string) {
+export function getMeta(filepath: string, cachePath: string = path.join(process.cwd(), "cache", "data.json")) {
   const file = fs.readFileSync(filepath);
-  const cachePath = path.join(process.cwd(), "cache", "data.json");
   const posts = JSON.parse(fs.readFileSync(cachePath).toString());
-  // const date = getGitHistory(filepath);
 
   const raw = matter(file);
   const { title, description } = raw.data;

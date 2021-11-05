@@ -8,11 +8,7 @@ layout:
 
 ## TL;DR
 
-<<<<<<< HEAD
 前回の記事で、markdown をうまくレンダリングできるようになったので、次は Style を適用していく。適用すべき対象は、最初の記事に書いたように、
-=======
-前回の記事で、markdownをうまくレンダリングできるようになったので、次はStyleを適用していく。適用すべき対象は、最初の記事でに書いたように、
->>>>>>> 39593778217a31612159b2fabb584d8e7f845e1e
 
 - material-ui
 - Prism.jsでのcode syntax
@@ -27,7 +23,35 @@ layout:
 
 [prism.js](https://prismjs.com)公式サイトからcssをダウンロードしておく。[github-markdown-css](https://github.com/sindresorhus/github-markdown-css)からダウンロードする。`github-markdown-css`は自動生成なので`!important`とかが使われていてAMPに対応できないのでそのへんは除いてしまう。
 
-**2021/07/01改稿**
+Next.js 12になって、`_document.js`でcssをロードすると怒られるようになってしまった。
+仕方ないので、現状はcssをjsのstringとして保存しておいて、componentでimportし、sytled-jsxで表現している。
+
+```js:title=css.js
+export const css = `
+  css
+`
+```
+
+上のようなファイルを作成しておき
+
+```jsx:title=component.jsx
+import {css} from "css.js"
+
+export default function Component() {
+  return (
+    <>
+      <div>styled</div>
+      <style jsx>{css}</style>
+    </>
+  )
+}
+```
+
+componentで読み込んで、そのままsytled-jsxに突っ込むことで、一応対応できている。
+
+<details>
+<summary>2021/07/01改稿 Next.js v11</summary>
+
 
 webpack5を使っていると`asset modules`を使うことで`raw-loader`の機能が実装できる。まずは`next.config.js`に設定を書く。フルAMPなので、cssをimportすることは想定していない。
 
@@ -106,6 +130,7 @@ MyDocument.getInitialProps = async (ctx) => {
   };
 };
 ```
+</details>
 
 <details>
   <summary>2020/9/7 raw-loaderを使った実装</summary>
