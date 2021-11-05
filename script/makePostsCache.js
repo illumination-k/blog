@@ -31,24 +31,24 @@ function markdownToText(content) {
 
 async function filterToken(text) {
   // tokenize が Promiseを返すのでasyncは必要
-  const res = tokenize(text).then(
-    (res) => {
+  const res = tokenize(text)
+    .then((res) => {
       return res
-      .filter((token) => POS_LIST.includes(token.pos))
-      .map((token) => token.surface_form)
-      .filter((word) => !IGNORE_REGEX.test(word))
-      .filter((word) => { 
+        .filter((token) => POS_LIST.includes(token.pos))
+        .map((token) => token.surface_form)
+        .filter((word) => !IGNORE_REGEX.test(word))
+        .filter((word) => {
           if (word) {
-            return word.length >= 2 
+            return word.length >= 2;
           }
-          return false
+          return false;
         })
-      .map((word) => word.toLowerCase());
-    }
-  ).catch(
-    (error) => {console.log(error)}
-  )
-  return res
+        .map((word) => word.toLowerCase());
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  return res;
 }
 
 async function makePostsCache() {
@@ -56,7 +56,7 @@ async function makePostsCache() {
 
   const posts = await Promise.all(
     filepaths.map(async (filepath) => {
-      console.log(filepath)
+      console.log(filepath);
       const { update, published } = getGitHistory(filepath);
       const id = path.parse(filepath).base.replace(".md", "");
       const category = path.basename(path.parse(filepath).dir);
@@ -91,7 +91,7 @@ async function makePostsCache() {
       };
     })
   );
-  
+
   // const index = posts.map((v) => ({ title: v.data.title, url: v.url, body: v.data.words }))
   // const indexJson = `${JSON.stringify(index)}`
 

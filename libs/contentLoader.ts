@@ -6,6 +6,7 @@ import glob from "glob";
 import matter from "gray-matter";
 
 const POSTDIRPATH = path.join(process.cwd(), "src", "pages", "posts");
+import { CachedPost, Meta } from "./types";
 
 export function getFileNames(categories, root = POSTDIRPATH) {
   // return mdx filenames (eg., make_blog_1.mdx)
@@ -44,7 +45,7 @@ export function getMeta(
   cachePath: string = path.join(process.cwd(), "cache", "data.json")
 ) {
   const file = fs.readFileSync(filepath);
-  const posts = JSON.parse(fs.readFileSync(cachePath).toString());
+  const posts: CachedPost[] = JSON.parse(fs.readFileSync(cachePath).toString());
 
   const raw = matter(file);
   const { title, description } = raw.data;
@@ -57,7 +58,7 @@ export function getMeta(
   }
   const { update, published, category } = post[0];
 
-  const meta = Object.assign(raw.data, {
+  const meta: Meta = Object.assign(raw.data, {
     update: update,
     published: published,
     category: category,
