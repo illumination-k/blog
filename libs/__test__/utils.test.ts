@@ -1,4 +1,11 @@
-import { getDateKey, getFormattedDate, range, trimDescription } from "../utils";
+import {
+  getDateKey,
+  getFormattedDate,
+  range,
+  sortPost,
+  trimDescription,
+} from "../utils";
+import { PostInfo } from "../types";
 
 describe("lib/utils.ts", () => {
   it("range: return array until stop from 1", () => {
@@ -31,5 +38,33 @@ describe("lib/utils.ts", () => {
   it("trimDescription: larger than maxLength", () => {
     const actual = trimDescription("abcde", 3);
     expect(actual).toEqual("abc...");
+  });
+
+  it("sortPost: simple", () => {
+    const posts: PostInfo[] = [
+      {
+        categoryId: "b",
+        name: "2",
+        meta: {
+          update: "Sat Nov 5 06:24:45 2021 +0900",
+          published: "Sat Nov 5 06:24:45 2021 +0900",
+          category: "b",
+        },
+      },
+      {
+        categoryId: "a",
+        name: "1",
+        meta: {
+          update: "Sat Nov 6 06:34:36 2021 +0900",
+          published: "Sat Nov 6 06:34:36 2021 +0900",
+          category: "a",
+        },
+      },
+    ];
+
+    const actual = sortPost(posts);
+    const expected = posts.reverse();
+
+    expect(actual).toStrictEqual(expected);
   });
 });

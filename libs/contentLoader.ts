@@ -8,7 +8,7 @@ import matter from "gray-matter";
 const POSTDIRPATH = path.join(process.cwd(), "src", "pages", "posts");
 import { CachedPost, Meta } from "./types";
 
-export function getFileNames(categories, root = POSTDIRPATH) {
+export function getFileNames(categories: string, root = POSTDIRPATH) {
   // return mdx filenames (eg., make_blog_1.mdx)
   const postsDirPath = path.join(root, categories);
   const fileNames = fs
@@ -53,9 +53,10 @@ export function getMeta(
     (post) => post.data.title == title && post.data.description == description
   );
 
-  if (posts.length === 0) {
+  if (post.length === 0) {
     throw "Error in libs/contentLoader/getMeta! There is no post in cache corresponding to title and description";
   }
+
   const { update, published, category } = post[0];
 
   const meta: Meta = Object.assign(raw.data, {

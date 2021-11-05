@@ -1,6 +1,6 @@
 import path from "path";
 import { getMeta } from "./contentLoader";
-import { Meta, PostInfo } from "./types";
+import { PostInfo } from "./types";
 
 export function updateMapArray<K, V>(map: Map<K, V[]>, key: K, value: V) {
   const old: V[] = map.get(key) ?? new Array<V>();
@@ -17,7 +17,7 @@ export function range(stop): number[] {
 }
 
 export function sortPost(
-  post_info,
+  post_info: PostInfo[],
   sortedBy: "update" | "published" = "update"
 ) {
   return post_info.sort(function (a: PostInfo, b: PostInfo) {

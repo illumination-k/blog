@@ -12,10 +12,26 @@ const POSTDIRPATH = path.join(process.cwd(), "src", "pages", "posts");
 const POS_LIST = [`名詞`, `動詞`, `形容詞`];
 const IGNORE_REGEX = /^[!-/:-@[-`{-~、-〜”’・]+$/;
 
-function getAllPostsPath() {
-  const pattern = path.join(POSTDIRPATH, "**", "*.md");
+function getAllPostsPath(root = POSTDIRPATH) {
+  const pattern = path.join(root, "**", "*.md");
   const posts = glob.sync(pattern);
   return posts;
+}
+
+function parseArgv() {
+  const argv = process.argv;
+
+  if (argv.length < 3) {
+    return "prd";
+  }
+
+  if (argv[2] === "test") {
+    return "test";
+  } else if (argv[2] === "prd") {
+    return "prd";
+  } else {
+    throw "Please use prd or test for argv";
+  }
 }
 
 function markdownToText(content) {
@@ -51,8 +67,11 @@ async function filterToken(text) {
   return res;
 }
 
-async function makePostsCache() {
-  const filepaths = getAllPostsPath();
+async function makePostsCache(
+  root = POSTDIRPATH,
+  outdir = path.join(process.cwd(), "cache")
+) {
+  const filepaths = getAllPostsPath(root);
 
   const posts = await Promise.all(
     filepaths.map(async (filepath) => {
@@ -97,10 +116,23 @@ async function makePostsCache() {
 
   const jsonFileContents = `${JSON.stringify(posts)}`;
   const jsFileContents = `export const posts = ${jsonFileContents}`;
-  const outdir = path.join(process.cwd(), "cache");
+  // const outdir = path.join(process.cwd(), "cache");
   // fs.writeFileSync(path.join(outdir, "index.json"), indexJson)
   fs.writeFileSync(path.join(outdir, "data.json"), jsonFileContents);
   fs.writeFileSync(path.join(outdir, "data.js"), jsFileContents);
 }
 
-makePostsCache();
+const mode = parseArgv()
+
+let root;
+let outdir;
+
+if (mode === "prd") {
+  root = POSTDIRPATH
+  outdir = path.join(process.cwd(), "cache")
+} else {
+  root = path.join(process.cwd(), "test", "posts")
+  outdir = path.join(process.cwd(), "test", "cache")
+}
+
+makePostsCache(root, outdir);
