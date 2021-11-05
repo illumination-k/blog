@@ -49,8 +49,8 @@ const ArchivePage = (props) => {
 
 export async function getStaticProps({ params }) {
   const page = parseInt(params.page, 10);
-  const all_posts = await getAllPosts();
-  const props = await getPageInfo(all_posts, page, COUNT_PER_PAGE);
+  const all_posts = getAllPosts();
+  const props = getPageInfo(all_posts, page, COUNT_PER_PAGE);
 
   return {
     props: props,
@@ -58,7 +58,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const posts = await getAllPosts();
+  const posts = getAllPosts();
   const pages = range(Math.ceil(posts.length / COUNT_PER_PAGE));
   const paths = pages.map((page) => ({
     params: { page: `${page}` },

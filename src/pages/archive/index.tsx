@@ -56,8 +56,8 @@ const Archive = (props) => {
 };
 
 export async function getStaticProps() {
-  const all_posts = await getAllPosts();
-  let all_post_info = await getMetaFromAllPosts(all_posts);
+  const all_posts = getAllPosts();
+  let all_post_info = getMetaFromAllPosts(all_posts);
   let publishedMap = new Map();
   let updateMap = new Map();
   all_post_info.forEach((post) => {

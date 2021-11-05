@@ -50,22 +50,20 @@ export default CategoryPage;
 export async function getStaticProps({ params }) {
   const path = require("path");
   const page = parseInt(params.page, 10);
-  const categoryIdPostsNames = await getFileNames(params.categoryId);
-  const categoryIdPosts = await Promise.all(
-    categoryIdPostsNames.map(async (categoryIdPostName) => {
-      const filePath = path.join(
-        process.cwd(),
-        "src",
-        "pages",
-        "posts",
-        params.categoryId,
-        categoryIdPostName
-      );
-      return filePath;
-    })
-  );
+  const categoryIdPostsNames = getFileNames(params.categoryId);
+  const categoryIdPosts = categoryIdPostsNames.map((categoryIdPostName) => {
+    const filePath = path.join(
+      process.cwd(),
+      "src",
+      "pages",
+      "posts",
+      params.categoryId,
+      categoryIdPostName
+    );
+    return filePath;
+  });
 
-  let props = await getPageInfo(categoryIdPosts, page, COUNT_PER_PAGE);
+  let props = getPageInfo(categoryIdPosts, page, COUNT_PER_PAGE);
   props["categoryId"] = params.categoryId;
 
   return {
@@ -74,23 +72,21 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const categories = await getCategories();
-  var paths: Array<any> = [];
+  const categories = getCategories();
+  let paths: Array<any> = [];
 
-  await Promise.all(
-    categories.map(async (categoryId) => {
-      const posts = await getFileNames(categoryId);
-      const pages = range(Math.ceil(posts.length / COUNT_PER_PAGE));
-      pages.forEach((page) => {
-        paths.push({
-          params: {
-            page: `${page}`,
-            categoryId: categoryId,
-          },
-        });
+  categories.forEach((categoryId) => {
+    const posts = getFileNames(categoryId);
+    const pages = range(Math.ceil(posts.length / COUNT_PER_PAGE));
+    pages.forEach((page) => {
+      paths.push({
+        params: {
+          page: `${page}`,
+          categoryId: categoryId,
+        },
       });
-    })
-  );
+    });
+  });
 
   return {
     paths: paths,

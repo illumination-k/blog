@@ -21,8 +21,9 @@ export function getFileNames(categories, root = POSTDIRPATH) {
   return fileNames;
 }
 
-
-export function getCategories(dirPath = path.join(process.cwd(), "src", "pages", "posts")) {
+export function getCategories(
+  dirPath = path.join(process.cwd(), "src", "pages", "posts")
+) {
   const categories = fs.readdirSync(dirPath).filter((name) => {
     const stats = fs.statSync(path.join(dirPath, name));
     return stats.isDirectory();
@@ -36,7 +37,10 @@ export function getAllPosts(root: string = POSTDIRPATH) {
   return posts;
 }
 
-export function getMeta(filepath: string, cachePath: string = path.join(process.cwd(), "cache", "data.json")) {
+export function getMeta(
+  filepath: string,
+  cachePath: string = path.join(process.cwd(), "cache", "data.json")
+) {
   const file = fs.readFileSync(filepath);
   const posts = JSON.parse(fs.readFileSync(cachePath).toString());
 
