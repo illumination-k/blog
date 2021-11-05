@@ -22,18 +22,20 @@ export function getFileNames(categories, root = POSTDIRPATH) {
 }
 
 export function getCategories(
-  dirPath = path.join(process.cwd(), "src", "pages", "posts")
+  root = path.join(process.cwd(), "src", "pages", "posts")
 ) {
-  const categories = fs.readdirSync(dirPath).filter((name) => {
-    const stats = fs.statSync(path.join(dirPath, name));
+  const categories = fs.readdirSync(root).filter((name) => {
+    const stats = fs.statSync(path.join(root, name));
     return stats.isDirectory();
   });
 
   return categories;
 }
 
-export function getAllPosts(root: string = POSTDIRPATH) {
-  const posts = glob.sync(path.join(root, "**", "*.md"));
+export function getAllPostsPath(root: string = POSTDIRPATH): string[] {
+  const posts = glob
+    .sync(path.join(root, "**", "*.md"))
+    .map((p) => path.resolve(p));
   return posts;
 }
 
@@ -50,6 +52,9 @@ export function getMeta(
     (post) => post.data.title == title && post.data.description == description
   );
 
+  if (posts.length === 0) {
+    throw "Error in libs/contentLoader/getMeta! There is no post in cache corresponding to title and description";
+  }
   const { update, published, category } = post[0];
 
   const meta = Object.assign(raw.data, {

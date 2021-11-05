@@ -47,16 +47,8 @@ export function getPageInfo(
   const end = page * COUNT_PER_PAGE;
   const start = end - COUNT_PER_PAGE;
 
-  const all_post_info = all_posts.map((post) => {
-    const meta = getMeta(post);
-    const { dir, name } = path.parse(post);
-    const categoryId = path.basename(dir);
-    return {
-      name,
-      categoryId,
-      meta,
-    };
-  });
+  const all_post_info = getMetaFromAllPosts(all_posts);
+
   const all_sorted_post_info = sortPost(all_post_info);
 
   const post_info = all_sorted_post_info.slice(start, end);
@@ -69,7 +61,7 @@ export function getPageInfo(
   };
 }
 
-export function get_formatted_date(date_string: string): string {
+export function getFormattedDate(date_string: string): string {
   if (date_string === "") {
     return date_string;
   }

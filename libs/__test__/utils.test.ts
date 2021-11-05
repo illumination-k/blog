@@ -1,9 +1,4 @@
-import {
-  getDateKey,
-  get_formatted_date,
-  range,
-  trimDescription,
-} from "../utils";
+import { getDateKey, getFormattedDate, range, trimDescription } from "../utils";
 
 describe("lib/utils.ts", () => {
   it("range: return array until stop from 1", () => {
@@ -14,12 +9,12 @@ describe("lib/utils.ts", () => {
   });
 
   it("get formatted date: get formated date from empty string", () => {
-    const actual = get_formatted_date("");
+    const actual = getFormattedDate("");
     expect(actual).toEqual("");
   });
 
   it("get formated date: get formated date from git log date string", () => {
-    const actual = get_formatted_date("Thu Oct 28 07:55:05 2021 +0900");
+    const actual = getFormattedDate("Thu Oct 28 07:55:05 2021 +0900");
     expect(actual).toEqual("2021/10/28");
   });
 
