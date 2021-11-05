@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 import ListLayout from "@components/DefaultLayout";
 import BlogPostCard from "@components/BlogPostCard";
 
-import { getAllPosts } from "@libs/contentLoader";
+import { getAllPostsPath } from "@libs/contentLoader";
 import { range, getPageInfo } from "@libs/utils";
 
 export const config = { amp: true };
@@ -42,7 +42,7 @@ const ArchivePage = (props) => {
 
 export async function getStaticProps({ params }) {
   const page = parseInt(params.page, 10);
-  const all_posts = getAllPosts();
+  const all_posts = getAllPostsPath();
   const props = getPageInfo(all_posts, page, COUNT_PER_PAGE);
 
   return {
@@ -51,7 +51,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts();
+  const posts = getAllPostsPath();
   const pages = range(Math.ceil(posts.length / COUNT_PER_PAGE));
   const paths = pages.map((page) => ({
     params: { page: `${page}` },

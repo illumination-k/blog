@@ -48,7 +48,7 @@ const Category = (props) => {
 };
 
 export async function getStaticProps() {
-  const categories = await getCategories();
+  const categories = getCategories();
 
   return {
     props: {

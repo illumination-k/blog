@@ -3,7 +3,7 @@ import { NextSeo } from "next-seo";
 import DefaultLayout from "@components/DefaultLayout";
 import BlogPostCard from "@components/BlogPostCard";
 import Grid from "@mui/material/Grid";
-import { getAllPosts } from "@libs/contentLoader";
+import { getAllPostsPath } from "@libs/contentLoader";
 import { getDateKey, getMetaFromAllPosts, updateMapArray } from "@libs/utils";
 
 export const config = { amp: true };
@@ -56,7 +56,7 @@ const Archive = (props) => {
 };
 
 export async function getStaticProps() {
-  const all_posts = getAllPosts();
+  const all_posts = getAllPostsPath();
   let all_post_info = getMetaFromAllPosts(all_posts);
   let publishedMap = new Map();
   let updateMap = new Map();

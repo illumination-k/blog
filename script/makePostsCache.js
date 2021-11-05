@@ -12,7 +12,7 @@ const POSTDIRPATH = path.join(process.cwd(), "src", "pages", "posts");
 const POS_LIST = [`名詞`, `動詞`, `形容詞`];
 const IGNORE_REGEX = /^[!-/:-@[-`{-~、-〜”’・]+$/;
 
-function getAllPosts() {
+function getAllPostsPath() {
   const pattern = path.join(POSTDIRPATH, "**", "*.md");
   const posts = glob.sync(pattern);
   return posts;
@@ -30,6 +30,7 @@ function markdownToText(content) {
 }
 
 async function filterToken(text) {
+  // tokenize が Promiseを返すのでasyncは必要
   const res = tokenize(text).then(
     (res) => {
       return res
@@ -51,7 +52,7 @@ async function filterToken(text) {
 }
 
 async function makePostsCache() {
-  const filepaths = getAllPosts();
+  const filepaths = getAllPostsPath();
 
   const posts = await Promise.all(
     filepaths.map(async (filepath) => {
