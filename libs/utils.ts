@@ -1,4 +1,4 @@
-import path from "path"
+import path from "path";
 import { getMeta } from "./contentLoader";
 
 export function updateMapArray<K, V>(map: Map<K, V[]>, key: K, value: V) {
@@ -8,8 +8,8 @@ export function updateMapArray<K, V>(map: Map<K, V[]>, key: K, value: V) {
 
 /**
  * return array until stop from 1
- * @param stop number 
- * @returns number[] 
+ * @param stop number
+ * @returns number[]
  */
 export function range(stop): number[] {
   return Array.from({ length: stop }, (_, i) => i + 1);
@@ -26,22 +26,20 @@ export function sortPost(
   });
 }
 
-export async function getMetaFromAllPosts(all_posts: Array<string>) {
-  return await Promise.all(
-    all_posts.map(async (post) => {
-      const meta = await getMeta(post);
-      const { dir, name } = path.parse(post);
-      const categoryId = path.basename(dir);
-      return {
-        name,
-        categoryId,
-        meta,
-      };
-    })
-  );
+export function getMetaFromAllPosts(all_posts: Array<string>) {
+  return all_posts.map((post) => {
+    const meta = getMeta(post);
+    const { dir, name } = path.parse(post);
+    const categoryId = path.basename(dir);
+    return {
+      name,
+      categoryId,
+      meta,
+    };
+  });
 }
 
-export async function getPageInfo(
+export function getPageInfo(
   all_posts: Array<string>,
   page: number,
   COUNT_PER_PAGE: number
@@ -49,18 +47,16 @@ export async function getPageInfo(
   const end = page * COUNT_PER_PAGE;
   const start = end - COUNT_PER_PAGE;
 
-  const all_post_info = await Promise.all(
-    all_posts.map(async (post) => {
-      const meta = await getMeta(post);
-      const { dir, name } = path.parse(post);
-      const categoryId = path.basename(dir);
-      return {
-        name,
-        categoryId,
-        meta,
-      };
-    })
-  );
+  const all_post_info = all_posts.map((post) => {
+    const meta = getMeta(post);
+    const { dir, name } = path.parse(post);
+    const categoryId = path.basename(dir);
+    return {
+      name,
+      categoryId,
+      meta,
+    };
+  });
 
   const all_sorted_post_info = sortPost(all_post_info);
 
@@ -79,7 +75,9 @@ export function get_formatted_date(date_string: string): string {
     return date_string;
   }
   const date = new Date(date_string);
-  const formatted = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`.replace(/\n|\r/g, "");
+  const formatted = `${date.getFullYear()}/${
+    date.getMonth() + 1
+  }/${date.getDate()}`.replace(/\n|\r/g, "");
 
   return formatted;
 }
@@ -90,7 +88,10 @@ export function getDateKey(date_string: string): string {
   return dateKey;
 }
 
-export function trimDescription(description: string, maxLength: number): string {
+export function trimDescription(
+  description: string,
+  maxLength: number
+): string {
   if (description.length > maxLength) {
     return description.substring(0, maxLength) + "...";
   } else {

@@ -79,8 +79,6 @@ function extractHeaderAndMeta(options) {
       meta_obj["category"] = category;
     }
 
-    
-
     const headings = ast.children
       .filter((t) => t.type === "heading")
       .filter((t) => t.depth <= depth);
@@ -95,8 +93,6 @@ function extractHeaderAndMeta(options) {
     });
 
     meta_obj["toc"] = toc;
-    
-    
 
     const meta_value = `export const meta = ${JSON.stringify(meta_obj)}`;
     const meta = {
@@ -104,7 +100,6 @@ function extractHeaderAndMeta(options) {
       type: "export",
       value: meta_value,
     };
-
 
     // import layout
     const { import_layout, component } = getLayout(meta_obj);

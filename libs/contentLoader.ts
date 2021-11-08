@@ -60,11 +60,12 @@ export function getAllPosts(rootPath: string = POSTDIRPATH) {
   return posts;
 }
 
-export async function getMeta(filepath: string) {
+export function getMeta(
+  filepath: string,
+  cachePath: string = path.join(process.cwd(), "cache", "data.json")
+) {
   const file = fs.readFileSync(filepath);
-  const cachePath = path.join(process.cwd(), "cache", "data.json");
   const posts = JSON.parse(fs.readFileSync(cachePath).toString());
-  // const date = getGitHistory(filepath);
 
   const raw = matter(file);
   const { title, description } = raw.data;
