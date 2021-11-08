@@ -9,7 +9,7 @@ import createStyles from "@mui/styles/createStyles";
 
 import Link from "@components/Link";
 import CategoryChip from "./CategoryChip";
-import { get_formatted_date, trimDescription } from "@libs/utils";
+import { getFormattedDate, trimDescription } from "@libs/utils";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -50,8 +50,8 @@ const BlogPostCard = ({ meta, url }) => {
   );
 
   // date settings
-  const published = get_formatted_date(meta.published);
-  const update = get_formatted_date(meta.update);
+  const published = getFormattedDate(meta.published);
+  const update = getFormattedDate(meta.update);
 
   return (
     <Card variant="outlined">

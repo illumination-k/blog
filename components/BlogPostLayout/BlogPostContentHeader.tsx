@@ -1,10 +1,10 @@
 import { Grid, Typography } from "@mui/material";
-import { get_formatted_date } from "@libs/utils";
+import { getFormattedDate } from "@libs/utils";
 
 const BlogPostContentHeader = ({ meta }) => {
   // date settings
-  const published = get_formatted_date(meta.published);
-  const update = get_formatted_date(meta.update);
+  const published = getFormattedDate(meta.published);
+  const update = getFormattedDate(meta.update);
   return (
     <Grid container className="markdown-body">
       <Grid item xs={12}>

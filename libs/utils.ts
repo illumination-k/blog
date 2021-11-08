@@ -1,5 +1,6 @@
 import path from "path";
 import { getMeta } from "./contentLoader";
+import { PostInfo } from "./types";
 
 export function updateMapArray<K, V>(map: Map<K, V[]>, key: K, value: V) {
   const old: V[] = map.get(key) ?? new Array<V>();
@@ -16,10 +17,10 @@ export function range(stop): number[] {
 }
 
 export function sortPost(
-  post_info,
+  post_info: PostInfo[],
   sortedBy: "update" | "published" = "update"
 ) {
-  return post_info.sort(function (a: any, b: any) {
+  return post_info.sort(function (a: PostInfo, b: PostInfo) {
     const a_date = new Date(a.meta[sortedBy]);
     const b_date = new Date(b.meta[sortedBy]);
     return b_date.valueOf() - a_date.valueOf();
@@ -47,16 +48,7 @@ export function getPageInfo(
   const end = page * COUNT_PER_PAGE;
   const start = end - COUNT_PER_PAGE;
 
-  const all_post_info = all_posts.map((post) => {
-    const meta = getMeta(post);
-    const { dir, name } = path.parse(post);
-    const categoryId = path.basename(dir);
-    return {
-      name,
-      categoryId,
-      meta,
-    };
-  });
+  const all_post_info = getMetaFromAllPosts(all_posts);
 
   const all_sorted_post_info = sortPost(all_post_info);
 
@@ -70,7 +62,7 @@ export function getPageInfo(
   };
 }
 
-export function get_formatted_date(date_string: string): string {
+export function getFormattedDate(date_string: string): string {
   if (date_string === "") {
     return date_string;
   }

@@ -6,14 +6,11 @@ import glob from "glob";
 import matter from "gray-matter";
 
 const POSTDIRPATH = path.join(process.cwd(), "src", "pages", "posts");
+import { CachedPost, Meta } from "./types";
 
-export function getFilePath(filename: string, categoryId: string): string {
-  return path.join(POSTDIRPATH, categoryId, filename);
-}
-
-export function getFileNames(categories) {
+export function getFileNames(categories: string, root = POSTDIRPATH) {
   // return mdx filenames (eg., make_blog_1.mdx)
-  const postsDirPath = path.join(POSTDIRPATH, categories);
+  const postsDirPath = path.join(root, categories);
   const fileNames = fs
     .readdirSync(postsDirPath)
     .filter(
@@ -25,38 +22,21 @@ export function getFileNames(categories) {
   return fileNames;
 }
 
-export function getPathToFiles(categories) {
-  // return full path to mdx files (eg., )
-  const mdxFileNames = getFileNames(categories);
-  const pathToMdxFiles = mdxFileNames.map((filename) =>
-    path.join(POSTDIRPATH, filename)
-  );
-
-  return pathToMdxFiles;
-}
-
-export function getNames(categories) {
-  // remove extensions from mdxFileNames (eg., make_blog_1)
-  const mdxFileNames = getFileNames(categories);
-  const mdxNames = mdxFileNames.map((filename) =>
-    filename.replace(/\.mdx*/, "")
-  );
-
-  return mdxNames;
-}
-
-export function getCategories() {
-  const dirPath = path.join(process.cwd(), "src", "pages", "posts");
-  const categories = fs.readdirSync(dirPath).filter((name) => {
-    const stats = fs.statSync(path.join(dirPath, name));
+export function getCategories(
+  root = path.join(process.cwd(), "src", "pages", "posts")
+) {
+  const categories = fs.readdirSync(root).filter((name) => {
+    const stats = fs.statSync(path.join(root, name));
     return stats.isDirectory();
   });
 
   return categories;
 }
 
-export function getAllPosts(rootPath: string = POSTDIRPATH) {
-  const posts = glob.sync(path.join(rootPath, "**", "*.md"));
+export function getAllPostsPath(root: string = POSTDIRPATH): string[] {
+  const posts = glob
+    .sync(path.join(root, "**", "*.md"))
+    .map((p) => path.resolve(p));
   return posts;
 }
 
@@ -65,7 +45,7 @@ export function getMeta(
   cachePath: string = path.join(process.cwd(), "cache", "data.json")
 ) {
   const file = fs.readFileSync(filepath);
-  const posts = JSON.parse(fs.readFileSync(cachePath).toString());
+  const posts: CachedPost[] = JSON.parse(fs.readFileSync(cachePath).toString());
 
   const raw = matter(file);
   const { title, description } = raw.data;
@@ -73,9 +53,13 @@ export function getMeta(
     (post) => post.data.title == title && post.data.description == description
   );
 
+  if (post.length === 0) {
+    throw "Error in libs/contentLoader/getMeta! There is no post in cache corresponding to title and description";
+  }
+
   const { update, published, category } = post[0];
 
-  const meta = Object.assign(raw.data, {
+  const meta: Meta = Object.assign(raw.data, {
     update: update,
     published: published,
     category: category,

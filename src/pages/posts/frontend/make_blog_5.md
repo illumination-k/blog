@@ -33,7 +33,7 @@ ampのときにformで必要になってくるのは、`target`部分で`_top`�
 
 形態素解析した結果はregexに関わりそうな部分を抜いて（highlight機能とかのときに邪魔かなと思った）、検索に使用しそうな名詞、動詞、形容詞を残した。また、単語長は2以上のものだけにした。このへんは設定詰めたほうが良さそう。今回はタイトルと本体部分だけを検索するようにしているが、そのへんは足すだけなので足せばいいと思う。
 
-大まかな流れは、`getAllPosts`で全体をとってきて、中身を`gray-matter`でよんで、`filterTocken`でほしいトークンだけとってきて、とってきたトークンを全部wordとして保存しているだけ。
+大まかな流れは、`getAllPostsPath`で全体をとってきて、中身を`gray-matter`でよんで、`filterTocken`でほしいトークンだけとってきて、とってきたトークンを全部wordとして保存しているだけ。
 
 ```js:title=makeCache.js
 const fs = require("fs");
@@ -46,7 +46,7 @@ const { tokenize } = require(`kuromojin`);
 
 const POSTDIRPATH = path.join(process.cwd(), "src", "pages", "posts");
 
-function getAllPosts() {
+function getAllPostsPath() {
   const pattern = path.join(POSTDIRPATH, "**", "*.md");
   const posts = glob.sync(pattern);
   return posts;
@@ -75,7 +75,7 @@ async function filterToken(text) {
 }
 
 async function makePostsCache() {
-  const filepaths = getAllPosts();
+  const filepaths = getAllPostsPath();
 
   const posts = await Promise.all(
     filepaths.map(async (filepath) => {

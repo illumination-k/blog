@@ -15,7 +15,6 @@ import remarkFootnotes from "remark-footnotes";
 import remarkGfm from "remark-gfm"
 
 // custom loader
-
 import extractHeaderAndMeta from "./libs/custom-loader/extractHeaderAndMeta.js";
 import toMathml from "./libs/custom-loader/toMathml.js";
 import toGithubRepoImage from "./libs/custom-loader/toGithubRepoImage.js";
