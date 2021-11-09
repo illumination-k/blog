@@ -17,8 +17,6 @@ yarn create next-app --typescript
 
 ## prismaのセットアップ
 
-今回は`sqlite3`を使います。
-
 ### prismaをインストール
 
 ```bash
@@ -30,7 +28,7 @@ yarn add prisma --dev
 npx prisma init
 ```
 
-`.env`が作成され、その中にDATABASE_URLが設定されています。portを今回はいじっているのと、パスワード、ユーザーネームが設定されているので以下のように変更しておきます。
+`.env`が作成され、その中にDATABASE_URLが設定されています。今回は`sqlite3`を使います。
 
 ```env:title=.env
 DATABASE_URL="file:./dev.db"
@@ -133,7 +131,7 @@ export * from "@prisma/client";
 
 まず、Todoを作成する`create-todo`を作成します。
 
-```ts
+```ts::title=pages/api/create-todo.ts
 import type { NextApiHandler } from "next"
 import prisma from "../../libs/prisma"
 
@@ -161,7 +159,7 @@ curl -X POST -H "Content-Type: application/json" -d '{ "title": "test", "content
 
 TODO LISTを取得するEND POINTを作成します。
 
-```ts
+```ts:title=pages/api/get-todos.ts
 import type { NextApiHandler } from "next"
 import prisma from "../../libs/prisma"
 
@@ -200,7 +198,7 @@ curl localhost:3000/api/get-todos | jq
 
 UPDATE用のAPIを作ります。
 
-```ts
+```ts:title=pages/api/update-todo.ts
 import type { NextApiHandler } from "next"
 import prisma from "../../libs/prisma"
 
@@ -247,7 +245,7 @@ contentとupdatedAtがたしかに更新されています。
 
 最後にDelete部分を実装します。
 
-```ts
+```ts:title=pages/api/delete-todo.ts
 import type { NextApiHandler } from "next"
 import prisma from "../../libs/prisma"
 

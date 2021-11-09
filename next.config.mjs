@@ -49,13 +49,17 @@ const withMDX = _withMDX({
   },
 })
 
+import _withBundleAnalyzer from "@next/bundle-analyzer"
+const withBundleAnalyzer = _withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true'
+})
 
 const i18n = {
   locales: ["ja"],
   defaultLocale: "ja"
 }
 
-const nextConfig = withMDX({
+const nextConfig = withBundleAnalyzer(withMDX({
   // i18n: i18n,
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   async redirects() {
@@ -83,6 +87,6 @@ const nextConfig = withMDX({
     };
     return config;
   }
-});
+}));
 
 export default nextConfig;
