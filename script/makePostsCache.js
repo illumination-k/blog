@@ -83,6 +83,10 @@ async function makePostsCache(
       const matterResult = matter(contents);
       const text = markdownToText(matterResult.content);
 
+      if (!text || !matterResult.data.title || !matterResult.data.description) {
+        throw `Error in ${filepath}. title: ${matterResult.data.title}, description: ${matterResult.data.description}, text: ${text}, `
+      }
+
       const text_words = await filterToken(text);
       const title_words = await filterToken(matterResult.data.title);
       const description_words = await filterToken(
