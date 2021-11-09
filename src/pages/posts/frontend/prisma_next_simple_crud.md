@@ -1,5 +1,5 @@
 ---
-titile: Prisma + Next.jsでシンプルなCRUD APIを作成する
+title: Prisma + Next.jsでシンプルなCRUD APIを作成する
 description: O/Rマッパとしてprismaを使用して、簡単なCRUDをNext.jsと一緒に作成します。
 ---
 
