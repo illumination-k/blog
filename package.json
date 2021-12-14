@@ -11,11 +11,12 @@
     "cov": "yarn cache-posts test && jest --collect-coverage",
     "make-sitemap": "node sitemap.js",
     "cache-posts": "node script/makePostsCache.js",
+    "preprocessing": "yarn cache-posts && git add cache/data.json cache/data.js && yarn build && yarn make-sitemap && git add public/sitemap.xml",
     "analyzer": "ANALYZE=true next build && cd .next/analyze && python -m http.server"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn cache-posts && git add cache/data.json cache/data.js && yarn build && yarn make-sitemap && git add public/sitemap.xml"
+      "pre-commit": "yarn preprocessing"
     }
   },
   "author": "illumination-k",
