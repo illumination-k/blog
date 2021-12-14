@@ -14,7 +14,7 @@ rustにも実はpandas likeなcrateがあることを知ったのでpandasとの
 ![jupyter-image](/images/polars_pandas/jupyter_image.PNG)
 
 
-ただ補完や型の推測が効かないので少し困りました。`rust-analyzer`対応してほしい。  
+ただ補完や型の推測が効かないので少し困りました。`rust-analyzer`対応もしてみました。補完は効くようになりましたが、やはりVSCodeなどに比べると微妙。  
 サンプルノートブックはこちら。docker-composeで起動できます。
 
 ![github:illumination-k/polars-pandas](github:illumination-k/polars-pandas)
@@ -29,18 +29,18 @@ rustにも実はpandas likeなcrateがあることを知ったのでpandasとの
 
 ## Install
 
-色々featureもあって、日付変換やndarrayへの変換、ランダムサンプリングなどに対応している。あとはjsonのserdeやApache Parquet formatとかのI/Oとか。今回はndarrayとランダムサンプリングを試してみる。あとエラーハンドリングにanyhowを入れておく。
+featureを選ぶことで、日付変換やndarrayへの変換、ランダムサンプリングなどに対応できる。今回はndarrayとランダムサンプリングを試してみる。あとエラーハンドリングにanyhowを入れておく。
 
 ```toml:title=Cargo.toml
 [dependencies]
 anyhow = "1.0"
-polars = { version = "0.18.0", features = ["ndarray", "random", "pivot"] }
+polars = { version = "0.18.0", features = ["ndarray", "random"] }
 ```
 
 Jupyterを使う場合は、
 
 ```
-:dep polars = { version = "0.18.0", features = ["ndarray", "random", "pivot"]}
+:dep polars = { version = "0.18.0", features = ["ndarray", "random"]}
 ```
 
 Rustのバージョンは1.52以上が必要です。
@@ -64,7 +64,7 @@ Python側も下記のimportを行っている前提です。
 ```python
 import pandas as pd
 print(pd.__version__)
-# 1.3.0
+# 1.3.4
 ```
 
 ## SeriesとDataFrameとChunkedArrayの演算
@@ -210,7 +210,7 @@ df = pd.DataFrame({
 })
 ```
 
-マクロが便利
+マクロが便利です。
 
 ```rust
 let s = 
@@ -228,7 +228,7 @@ df["A"]
 df[["A", "B"]]
 ```
 
-selectで選ぶと、`Result<DataFrame>`が返ってくる。
+selectで選ぶと、`Result<DataFrame>`が返ってきます。
 
 ```rust
 df.select("A")?;
@@ -236,7 +236,7 @@ df.select(("A", "B"))?;
 df.select(vec!["A", "B", "C"])?;
 ```
 
-columnで選ぶと、`Result<Series>`が返ってくる。
+columnで選ぶと、`Result<Series>`が返ってきます。
 
 ```rust
 df.column("A")?;
@@ -671,10 +671,9 @@ CsvWriter::new(&mut f)
 
 - [ ] pivot
 - [ ] melt
-- [ ] join系
 - [ ] fillna系
 - [ ] sample_n
-- [ ] macro
+- [ ] io系
 
 気長に埋めていきます。
 
