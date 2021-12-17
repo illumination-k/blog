@@ -16,6 +16,7 @@ excvrを使うことでJupyter上でRustを使うことができるようにな�
 ## excvr用のimageの作成
 
 evcxr_jupyter自体のインストールは[公式](https://github.com/google/evcxr/blob/main/evcxr_jupyter/README.md)が詳しいです。
+`libzmq3-dev`がないとエラーしたので、加えてあります。
 
 今回はevcxr_jupyterのインストールに加えて、`jupyter-lab`、`jupyter-lsp`、`rust-analyzer`のインストールを行っています。
 
@@ -24,17 +25,21 @@ FROM rust:1.56 as rust
 
 USER root
 
+# 依存ライブラリのインストール
 RUN apt-get update -y --fix-missing && \
     apt-get install -y build-essential cmake jupyter-notebook libzmq3-dev
 
+# evcxr_jupyterのインストール
 RUN rustup component add rust-src && \
     cargo install evcxr_jupyter && \
     evcxr_jupyter --install
 
+# pipのインストール
 RUN wget https://bootstrap.pypa.io/get-pip.py && \
     python3 get-pip.py && rm -f get-pip.py && \
     pip install jupyterlab && pip install -U jupyter_client
 
+# lsp関連のインストール
 RUN pip install jupyter-lsp jupyterlab-lsp && \
     curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | \
     gunzip -c - > /usr/local/bin/rust-analyzer && \
@@ -45,7 +50,9 @@ CMD [ "jupyter", "lab", "--port", "8888", "--ip=0.0.0.0", "--allow-root" ]
 
 ## jupyter-lsp用の設定
 
-[jupyter-lsp configuring](https://github.com/jupyter-lsp/jupyterlab-lsp/blob/master/docs/Configuring.ipynb)を参考に設定ファイルを作成します。
+`python`や`r`など、jupyterでメジャーな言語のものは自動でlspを検出してくれるようですが、rustの場合は自前で設定を書く必要があります。
+
+[jupyter-lsp configuring](https://github.com/jupyter-lsp/jupyterlab-lsp/blob/master/docs/Configuring.ipynb)のScalaの例を参考に設定ファイルを作成します。
 以下のファイルを`jupyter --paths`で表示されるディレクトリのどれか以下に`jupyter_server_config.d`を作成し、それ以下に配置します。
 
 今回は`${HOME}/.jupyter/jupyter_server_config.d/rust-analyzer.json`というように配置します。
@@ -91,7 +98,7 @@ services:
 
 ### Cargo.tomlの作成
 
-`rust-analyzer`自体はCargoがないプロジェクトでも動かせるらしいですが([参考](https://rust-analyzer.github.io/manual.html#non-cargo-based-projects))、今回は面倒なので、`Cargo.toml`を使って`work`を作成します。
+`rust-analyzer`自体はCargoがないプロジェクトでも動かせるらしいですが([参考](https://rust-analyzer.github.io/manual.html#non-cargo-based-projects))、今回は面倒なので、`Cargo.toml`を使って`docker-compse.yml`で共有するための`work`ディレクトリを作成します。
 
 ```bash
 cargo new work
@@ -103,3 +110,5 @@ cargo new work
 以下のように補完が効くようになります。
 
 ![evxcr_jupyter_lsp_example](/public/images/evcxr_jupyter_lsp.PNG)
+
+VSCodeほどではないですが、tab補完よりは快適な気がします。
