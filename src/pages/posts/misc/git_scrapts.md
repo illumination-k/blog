@@ -5,12 +5,12 @@ description: Gitに関してコマンドをよく忘れるのでメモ
 
 ## HEADの種類
 
-|名前|意味|
-|---|---|
-|HEAD|最新のコミット|
-|ORIG_HEAD|最新のコミットの1つ手前|
-|FETCH_HEAD|リモートブランチの最新のコミット|
-|MERGE_HEAD|MERGEした対象の最新のコミット|
+| 名前       | 意味                             |
+| ---------- | -------------------------------- |
+| HEAD       | 最新のコミット                   |
+| ORIG_HEAD  | 最新のコミットの1つ手前          |
+| FETCH_HEAD | リモートブランチの最新のコミット |
+| MERGE_HEAD | MERGEした対象の最新のコミット    |
 
 - [GitのHEAD, ORIG_HEAD, FETCH_HEAD, MERGE_HEADとは？](https://qiita.com/t-mochizuki/items/347cba461fd570bca03c)
 
@@ -65,3 +65,25 @@ git reset origin/${branch_name}
 
 - [履歴の書き換え](https://www.atlassian.com/ja/git/tutorials/rewriting-history)
 - [What's the difference between git reflog and log?](https://stackoverflow.com/questions/17857723/whats-the-difference-between-git-reflog-and-log)
+
+## git pushがフリーズ
+
+```bash
+unset SSH_ASKPASS && unset GIT_ASKPASS
+```
+
+- [git pushでフリーズする](https://www.mazn.net/blog/2020/10/25/2099.html)
+
+## git credentialsのreset
+
+`--local`, `--system`あたりは任意で変更。
+
+```bash
+git config --global --unset credential.helper
+```
+
+## 現在のbranch名の取得
+
+```bash
+git symbolic-ref --short HEAD
+```
