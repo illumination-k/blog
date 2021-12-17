@@ -73,48 +73,48 @@ print(pd.__version__)
 
 <details><summary>numberとSeries</summary><div>
 
-|演算名|vs number|
-|---|---|
-|add| `s + 1` |
-|sub| `s - 1` |
-|div| `s / 1` |
-|mul| `s * 1` |
+| 演算名 | vs number |
+| ------ | --------- |
+| add    | `s + 1`   |
+| sub    | `s - 1`   |
+| div    | `s / 1`   |
+| mul    | `s * 1`   |
 
 </div></details>
 
 <details><summary>SeriesとSeries</summary><div>
 
-|演算名|操作|
-|---|---|
-|add| `&s1 + &s2` |
-|sub| `&s1 - &s2` |
-|div| `&s1 / &s2` |
-|mul| `&s1 * &s2` |
-|mod| `&s1 % &s2` |
-|eq| `s1.series_equal(s2)` |
+| 演算名 | 操作                  |
+| ------ | --------------------- |
+| add    | `&s1 + &s2`           |
+| sub    | `&s1 - &s2`           |
+| div    | `&s1 / &s2`           |
+| mul    | `&s1 * &s2`           |
+| mod    | `&s1 % &s2`           |
+| eq     | `s1.series_equal(s2)` |
 
 </div></details>
 
 <details><summary>DataFrameとSeries</summary><div>
 
-|演算名|操作|
-|---|---|
-|add| `&df + &s` |
-|sub| `&df - &s` |
-|div| `&df / &s` |
-|mul| `&df * &s` |
-|mod| `&df % &s` |
+| 演算名 | 操作       |
+| ------ | ---------- |
+| add    | `&df + &s` |
+| sub    | `&df - &s` |
+| div    | `&df / &s` |
+| mul    | `&df * &s` |
+| mod    | `&df % &s` |
 
 </div></details>
 
 <details><summary>Seriesの演算</summary><div>
 
-|演算名|操作|
-|---|---|
-|sum|`s.sum<T>()`|
-|max|`s.max<T>()`|
-|min|`s.min<T>()`|
-|mean|`s.mean<T>()`|
+| 演算名 | 操作          |
+| ------ | ------------- |
+| sum    | `s.sum<T>()`  |
+| max    | `s.max<T>()`  |
+| min    | `s.min<T>()`  |
+| mean   | `s.mean<T>()` |
 
 </div></details>
 
@@ -123,28 +123,28 @@ print(pd.__version__)
 
 Series同士、Seriesとnumberを比較できる
 
-|演算|vs Series|vs number|
-|---|---|---|
-|`=`|`s1.equal(s2)`|`s1.equal(1)`|
-|`!=`|`s1.not_equal(s2)`|`s1.not_equal(1)`|
-|`>`|`s1.gt(s2)`|`s1.gt(1)`|
-|`=>`|`s1.gt_eq(s2)`|`s1.gt_eq(1)`|
-|`<`|`s1.lt(s2)`|`s1.lt(1)`|
-|`<=`|`s1.lt_eq(s2)`|`s1.lt_eq(1)`|
+| 演算 | vs Series          | vs number         |
+| ---- | ------------------ | ----------------- |
+| `=`  | `s1.equal(s2)`     | `s1.equal(1)`     |
+| `!=` | `s1.not_equal(s2)` | `s1.not_equal(1)` |
+| `>`  | `s1.gt(s2)`        | `s1.gt(1)`        |
+| `=>` | `s1.gt_eq(s2)`     | `s1.gt_eq(1)`     |
+| `<`  | `s1.lt(s2)`        | `s1.lt(1)`        |
+| `<=` | `s1.lt_eq(s2)`     | `s1.lt_eq(1)`     |
 <div>
 </div></details>
 
 <details><summary>DataFrameの演算</summary><div>
 
-|演算名|操作|
-|---|---|
-|sum|`df.sum()`|
-|max|`df.max()`|
-|min|`df.min()`|
-|median|`df.median()`|
-|mean|`df.mean()`|
-|var|`df.var()`|
-|std|`df.std()`|
+| 演算名 | 操作          |
+| ------ | ------------- |
+| sum    | `df.sum()`    |
+| max    | `df.max()`    |
+| min    | `df.min()`    |
+| median | `df.median()` |
+| mean   | `df.mean()`   |
+| var    | `df.var()`    |
+| std    | `df.std()`    |
 
 </div></details>
 
