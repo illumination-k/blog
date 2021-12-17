@@ -14,7 +14,7 @@ rustにも実はpandas likeなcrateがあることを知ったのでpandasとの
 ![jupyter-image](/images/polars_pandas/jupyter_image.PNG)
 
 
-ただ補完や型の推測が効かないので少し困りました。`rust-analyzer`対応してほしい。  
+ただ補完や型の推測が効かないので少し困りました。`rust-analyzer`対応もしてみました。補完は効くようになりましたが、やはりVSCodeなどに比べると微妙。  
 サンプルノートブックはこちら。docker-composeで起動できます。
 
 ![github:illumination-k/polars-pandas](github:illumination-k/polars-pandas)
@@ -29,25 +29,21 @@ rustにも実はpandas likeなcrateがあることを知ったのでpandasとの
 
 ## Install
 
-色々featureもあって、日付変換やndarrayへの変換、ランダムサンプリングなどに対応している。あとはjsonのserdeやApache Parquet formatとかのI/Oとか。今回はndarrayとランダムサンプリングを試してみる。あとエラーハンドリングにanyhowを入れておく。
+featureを選ぶことで、日付変換やndarrayへの変換、ランダムサンプリングなどに対応できる。今回はndarrayとランダムサンプリングを試してみる。あとエラーハンドリングにanyhowを入れておく。
 
 ```toml:title=Cargo.toml
 [dependencies]
 anyhow = "1.0"
-polars = { version = "0.14.7", features = ["ndarray", "random"]}
+polars = { version = "0.18.0", features = ["ndarray", "random"] }
 ```
 
 Jupyterを使う場合は、
 
 ```
-:dep polars = { version = "0.14.7", features = ["ndarray", "random"]}
+:dep polars = { version = "0.18.0", features = ["ndarray", "random"]}
 ```
 
-また、nightlyが必要なのでOverrideしておく。
-
-```bash
-rustup override nightly
-```
+Rustのバージョンは1.52以上が必要です。
 
 pandasはお好みのパッケージ管理ツールでインストールしてください。
 
@@ -68,7 +64,7 @@ Python側も下記のimportを行っている前提です。
 ```python
 import pandas as pd
 print(pd.__version__)
-# 1.3.0
+# 1.3.4
 ```
 
 ## SeriesとDataFrameとChunkedArrayの演算
@@ -129,8 +125,8 @@ Series同士、Seriesとnumberを比較できる
 
 |演算|vs Series|vs number|
 |---|---|---|
-|`=`|`s1.eq(s2)`|`s1.eq(1)`|
-|`!=`|`s1.neq(s2)`|`s1.neq(1)`|
+|`=`|`s1.equal(s2)`|`s1.equal(1)`|
+|`!=`|`s1.not_equal(s2)`|`s1.not_equal(1)`|
 |`>`|`s1.gt(s2)`|`s1.gt(1)`|
 |`=>`|`s1.gt_eq(s2)`|`s1.gt_eq(1)`|
 |`<`|`s1.lt(s2)`|`s1.lt(1)`|
@@ -214,7 +210,7 @@ df = pd.DataFrame({
 })
 ```
 
-マクロが便利
+マクロが便利です。
 
 ```rust
 let s = 
@@ -232,7 +228,7 @@ df["A"]
 df[["A", "B"]]
 ```
 
-selectで選ぶと、`Result<DataFrame>`が返ってくる。
+selectで選ぶと、`Result<DataFrame>`が返ってきます。
 
 ```rust
 df.select("A")?;
@@ -240,7 +236,7 @@ df.select(("A", "B"))?;
 df.select(vec!["A", "B", "C"])?;
 ```
 
-columnで選ぶと、`Result<Series>`が返ってくる。
+columnで選ぶと、`Result<Series>`が返ってきます。
 
 ```rust
 df.column("A")?;
@@ -344,12 +340,9 @@ df.query("B in @l")
 
 ```rust
 let v: Vec<i32> = vec![1, 2];
-df.filter(&(
-    df.column("B")?
-        .i32()?
-        .map(|x| v.contains(&x))?
-        .collect()
-))?;
+let mask: ChunkedArray<BooleanType> = df.column("B").unwrap().i32()
+            .unwrap().into_iter().map(|x| v.contains(&x.unwrap())).collect();
+df.filter(&mask)
 ```
 
 ## GroupBy
@@ -390,7 +383,7 @@ let dates = &[
 // date format
 let fmt = "%Y-%m-%d";
 // create date series
-let s0 = Date32Chunked::parse_from_str_slice("date", dates, fmt)
+let s0 = DateChunked::parse_from_str_slice("date", dates, fmt)
         .into_series();
 // create temperature series
 let s1 = Series::new("temp", [20, 10, 7, 9, 1].as_ref());
@@ -540,6 +533,66 @@ df1.vstack(&df2) // error
 df1.vstack(&df1_t)
 ```
 
+## Join
+
+pandasはDataframeのjoinメソッドもありますが、mergeのほうがよく使うのでこちらで。
+
+```python
+df1 = pd.DataFrame({
+    "Fruit": ["Apple", "Banana", "Pear"],
+    "Origin": ["America", "Hawai", "Italy"],
+    "Phosphorus (mg/100g)": [11, 22, 12]
+})
+
+df2 = pd.DataFrame({
+    "Name": ["Apple", "Banana", "Pear"],
+    "Origin": ["France", "Hawai", "Italy"],
+    "Potassium (mg/100g)": [107, 358, 115]})
+
+pd.merge(
+    df1, df2, 
+    left_on="Fruit", right_on="Name", 
+how="inner")
+
+pd.merge(
+    df1, df2, 
+    left_on=["Fruit", "Origin"], right_on=["Name", "Origin"], 
+    how="outer"
+)
+
+pd.merge(
+    df1, df2, 
+    left_on="Origin", right_on="Origin", 
+    how="left"
+)
+```
+
+polarsでは、Dataframeの`join`メソッドが使えます。`inner_join`, `left_join`, `outer_join`は`join`のラッパーです。
+引数の`S: Selection`は`&str`と、`&[&str], Vec<&str>`あたりを取れます。
+
+```rust
+let df1: DataFrame = df!("Fruit" => &["Apple", "Banana", "Pear"],
+                         "Origin" => &["America", "Hawai", "Italy"],
+                         "Phosphorus (mg/100g)" => &[11, 22, 12]).unwrap();
+let df2: DataFrame = df!("Name" => &["Apple", "Banana", "Pear"],
+                         "Origin" => &["France", "Hawai", "Italy"],
+                         "Potassium (mg/100g)" => &[107, 358, 115]).unwrap();
+
+// df1.inner_join(&df2, "Fruit", "Name")
+df1.join(&df2, "Fruit", "Name", JoinType::Inner, None)
+
+// df1.outer_join(&df2, &["Fruit", "Origin"], &["Name", "Origin"])
+df1.join(&df2, &["Fruit", "Origin"], &["Name", "Origin"], JoinType::Outer, None)
+
+// df1.left_join(&df2, "Origin", "Origin")
+df1.join(&df2, "Origin", "Origin", JoinType::Left, None)
+```
+
+### 注意点
+
+pandasとpolarsの異なる点として、完全に要素が一致のcolumnがどうなるかの挙動が変わります。
+polarsでは、列名が異なっていても左側の列名で統合されます。pandasのmergeでは列名が異なっていれば、要素が同じでも統合はされません。
+
 ## 重複行の抽出
 
 ```python
@@ -574,7 +627,11 @@ df.values
 df.to_ndarray<T>()?;
 ```
 
-## read csv
+## io
+
+csvはdefaultで読むことができます。featuresを指定することで、`json`, `parquet`, `ipc`なども読むことができるようになります。
+
+### read csv
 
 csv以外なら`sep = "\t"`とかしてください。
 
@@ -594,7 +651,7 @@ let df = CsvReader::from_path(path)?
         .finish()?
 ```
 
-## write csv
+### write csv
 
 readと同様。
 
@@ -614,10 +671,9 @@ CsvWriter::new(&mut f)
 
 - [ ] pivot
 - [ ] melt
-- [ ] join系
 - [ ] fillna系
 - [ ] sample_n
-- [ ] macro
+- [ ] io系
 
 気長に埋めていきます。
 

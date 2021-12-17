@@ -55,12 +55,12 @@ const withBundleAnalyzer = _withBundleAnalyzer({
 })
 
 const i18n = {
-  locales: ["ja"],
+  locales: ["ja", "en"],
   defaultLocale: "ja"
 }
 
 const nextConfig = withBundleAnalyzer(withMDX({
-  // i18n: i18n,
+  i18n: i18n,
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   async redirects() {
     return [
