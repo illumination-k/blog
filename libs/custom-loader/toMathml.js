@@ -8,7 +8,7 @@ function toMathml() {
 
   function transformToJsxNode(parent, index, value, position) {
     const newNode = {
-      type: "mdxJsxFlowElement",
+      type: "jsx",
       value: value,
       position: position,
     };
@@ -30,16 +30,7 @@ function toMathml() {
                             inline
                             data-formula="\\[${node.value}\\]"
                             />`;
-      const newNode = {
-        type: "mdxJsxFlowElement",
-        name: "amp-mathml",
-        attributes: [
-          {type: "mdxJsxAttribute", name: "layout", value: "container"},
-          {type: "mdxJsxAttribute", name: "data-formula", value: `[${node.value}]`}
-        ]
-      }
-      parent.children[index] = newNode;
-      // transformToJsxNode(parent, index, value, node.position);
+      transformToJsxNode(parent, index, value, node.position);
     }
   }
 }
