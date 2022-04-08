@@ -1,13 +1,12 @@
 import axios from "axios";
 import * as runtime from "react/jsx-runtime";
-import { compile, runSync } from "xdm";
+import { compile, runSync } from "@mdx-js/mdx";
+import { MDXProvider } from "@mdx-js/react";
 
 // remark plugins
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkMath from "remark-math";
-import remarkSlug from "remark-slug";
-import remarkHeadings from "remark-autolink-headings";
 import remarkFootnotes from "remark-footnotes";
 import remarkGfm from "remark-gfm";
 
@@ -18,9 +17,11 @@ import {
   toMathml,
   extractHeader,
   highlighter,
+  codeTitle,
 } from "blog-remark";
 import { githubMarkdownCss } from "src/styles/github_markdown";
 import { prismCss } from "src/styles/prism.css.js";
+import { codeTitleCss } from "src/styles/codetitle.css.js";
 
 import Layout from "@components/Layout";
 import BlogPostLayout from "@components/BlogPostLayout";
@@ -32,7 +33,7 @@ export const config = { amp: true };
 const BlogPost = (props) => {
   const { code, body, ...meta } = props;
 
-  const css = `${githubMarkdownCss}${prismCss}`;
+  const css = `${githubMarkdownCss}${prismCss}${codeTitleCss}`;
   //@ts-ignore
   const Content = runSync(code, runtime).default;
 
@@ -40,7 +41,7 @@ const BlogPost = (props) => {
     <Layout>
       <Grid container className="markdown-body">
         <Grid item xs={12}>
-          <Content components={Grid} />
+          <Content components={{ Grid }} />
           <amp-mathml
             data-formula="[f(a) = \frac{1}{2\pi i} \oint\frac{f(z)}{z-a}dz]"
             layout="container"
@@ -70,8 +71,8 @@ export async function getStaticProps({ params, locale }) {
     .use(extractHeader);
 
   const vfile = await prosessor.process(post.body);
-  console.log(vfile.data.headings);
 
+  console.log(vfile.data.headings);
   const code = String(
     await compile(post.body, {
       outputFormat: "function-body",
@@ -79,10 +80,9 @@ export async function getStaticProps({ params, locale }) {
       remarkPlugins: [
         remarkMath,
         remarkFootnotes,
-        // // extractHeaderAndMeta,
+        // codeTitle,
         highlighter,
         toMathml,
-        // toGithubRepoImage,
         remarkGfm,
         toGithubRepoImage,
         [
@@ -91,7 +91,7 @@ export async function getStaticProps({ params, locale }) {
             height: 500,
             width: 500,
             replacePattern: {
-              pattern: /^\/images\/|^\/public\/images\//,
+              pattern: /^\/images\/|^\/public\/|^\.\.\/\.\.\/public\//,
               to: "http://localhost:8080/public/",
             },
           },
