@@ -8,8 +8,8 @@ import BackendApi from "@libs/api";
 import ListLayout from "@components/DefaultLayout";
 import BlogPostCard from "@components/BlogPostCard";
 
-import { getPageInfo, PageInfo, post2meta, range } from "@libs/utils";
-
+import { post2meta } from "@libs/utils";
+import { getPageInfo, PageInfo, range } from "@libs/pager";
 export const config = { amp: true };
 
 const COUNT_PER_PAGE = 10;
@@ -28,8 +28,8 @@ const Page: React.VFC<PageInfo> = (props) => {
   return (
     <ListLayout>
       <NextSeo
-        title="illumination-dev Blog: Archive"
-        description={`illumination-dev Blog : Archive ${page}`}
+        title="illumination-dev tech blog: Home"
+        description={`illumination-dev tech blog : Page ${page}`}
       />
       <h1>Recent Posts</h1>
       <Grid container spacing={1}>
