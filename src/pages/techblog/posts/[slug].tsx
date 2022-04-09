@@ -15,6 +15,7 @@ import {
   toMathml,
   highlighter,
   codeTitle,
+  autoHeadings,
 } from "blog-remark";
 
 import Seq, { P5, P7, S5, S7, T7, Me } from "@components/seq/Seq";
@@ -69,8 +70,10 @@ export async function getStaticProps({ params, locale }) {
       outputFormat: "function-body",
       format: "mdx",
       remarkPlugins: [
+        autoHeadings,
         remarkMath,
         remarkFootnotes,
+        codeTitle,
         highlighter,
         toMathml,
         remarkGfm,

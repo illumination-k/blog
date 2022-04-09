@@ -1,13 +1,14 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+
 const Toc = ({ headings }) => {
   return (
     <>
       {headings.map((heading, idx) => {
         return (
           <Typography key={idx}>
-            <a href={heading.value}>
+            <a href={heading.url}>
               {`\xa0`.repeat((heading.depth - 1) * 2)}{" "}
               <FiberManualRecordIcon
                 color="primary"

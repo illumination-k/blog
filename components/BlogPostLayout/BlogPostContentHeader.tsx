@@ -18,7 +18,7 @@ const BlogPostContentHeader: React.VFC<Meta> = (meta) => {
           {meta.headings.map((heading, idx) => {
             return (
               <div key={idx}>
-                <a href={heading.value}>
+                <a href={heading.url}>
                   {`\xa0`.repeat((heading.depth - 1) * 2) + "-"}
                   &nbsp;
                   {heading.value}

@@ -13,10 +13,16 @@ export function post2meta(post: Post): Meta {
     .use(remarkStringify)
     .use(extractHeader);
 
-  const vfile = prosessor.processSync(post.body || "");
+  const vfile = prosessor.processSync(post.body);
   //@ts-ignore
-  const headings: Heading[] = vfile.data.headings;
-  const now = new Date();
+  const headings: Heading[] = vfile.data.headings.map((heading, i) => {
+    return {
+      depth: heading.depth,
+      value: heading.value,
+      url: `/techblog/posts/${post.slug}#${i}`,
+    };
+  });
+
   return {
     headings,
     title: post.title,

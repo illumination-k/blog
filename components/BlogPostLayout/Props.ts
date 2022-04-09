@@ -8,6 +8,7 @@ export type MetaWithChildren = {
 export type Heading = {
   depth: number;
   value: string;
+  url: string;
 };
 
 export type Meta = {
