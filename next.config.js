@@ -7,7 +7,8 @@ const i18n = {
 
 const nextConfig = {
   i18n: i18n,
-  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+  pageExtensions: ["js", "jsx", "ts", "tsx"],
+  staticPageGenerationTimeout: 1000,
   async redirects() {
     return [
       // {

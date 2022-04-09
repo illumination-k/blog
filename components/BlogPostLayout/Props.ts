@@ -5,7 +5,7 @@ export type MetaWithChildren = {
   children: React.ReactNode;
 };
 
-type Heading = {
+export type Heading = {
   depth: number;
   value: string;
 };

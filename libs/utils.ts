@@ -1,5 +1,5 @@
 import { Post } from "./axios";
-import { Meta } from "@components/BlogPostLayout/Props";
+import { Meta, Heading } from "@components/BlogPostLayout/Props";
 
 import { extractHeader } from "blog-remark/build";
 import { unified } from "unified";
@@ -14,7 +14,8 @@ export function post2meta(post: Post): Meta {
     .use(extractHeader);
 
   const vfile = prosessor.processSync(post.body || "");
-  const headings = vfile.data.headings;
+  //@ts-ignore
+  const headings: Heading[] = vfile.data.headings;
   const now = new Date();
   return {
     headings,

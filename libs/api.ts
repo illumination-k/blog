@@ -1,6 +1,7 @@
 import { DefaultApi, Configuration, ConfigurationParameters } from "./axios";
 
-const basePath = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
+export const basePath =
+  process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
 
 const conf: ConfigurationParameters = {
   basePath: basePath,

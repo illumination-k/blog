@@ -2,31 +2,32 @@ import * as runtime from "react/jsx-runtime";
 import { compile, runSync } from "@mdx-js/mdx";
 
 // remark plugins
-import { unified } from "unified";
-import remarkParse from "remark-parse";
 import remarkMath from "remark-math";
 import remarkFootnotes from "remark-footnotes";
 import remarkGfm from "remark-gfm";
 
-import Api from "@libs/api";
+import Api, { basePath } from "@libs/api";
 
 // custom loader
 import {
   toAmpImage,
   toGithubRepoImage,
   toMathml,
-  extractHeader,
   highlighter,
   codeTitle,
 } from "blog-remark";
+
+import Seq, { P5, P7, S5, S7, T7, Me } from "@components/seq/Seq";
+
 import { githubMarkdownCss } from "src/styles/github_markdown";
 import { prismCss } from "src/styles/prism.css.js";
 import { codeTitleCss } from "src/styles/codetitle.css.js";
 
 import BlogPostLayout from "@components/BlogPostLayout";
 import { Grid } from "@mui/material";
-import remarkStringify from "remark-stringify";
+
 import { Meta } from "@components/BlogPostLayout/Props";
+import { post2meta } from "@libs/utils";
 
 export const config = { amp: true };
 
@@ -46,7 +47,7 @@ const BlogPost: React.VFC<Props> = (props) => {
     <BlogPostLayout meta={meta}>
       <Grid container>
         <Grid item xs={12} className="markdown-body">
-          <Content components={{ Grid }} />
+          <Content components={{ Grid, Seq, P5, P7, S5, S7, T7, Me }} />
           <style jsx global>
             {css}
           </style>
@@ -60,15 +61,6 @@ export default BlogPost;
 
 export async function getStaticProps({ params, locale }) {
   const post = (await Api.postSlugGet(params.slug, locale)).data;
-
-  const prosessor = unified()
-    //@ts-ignore
-    .use(remarkParse)
-    .use(remarkStringify)
-    .use(extractHeader);
-
-  const vfile = await prosessor.process(post.body || "");
-  const headings = vfile.data.headings;
 
   const code = String(
     await compile(post.body || "", {
@@ -89,7 +81,7 @@ export async function getStaticProps({ params, locale }) {
             width: 500,
             replacePattern: {
               pattern: /^\/images\/|^\/public\/|^\.\.\/\.\.\/public\//,
-              to: "http://localhost:8080/public/",
+              to: `${basePath}/public/`,
             },
           },
         ],
@@ -97,8 +89,7 @@ export async function getStaticProps({ params, locale }) {
     })
   );
 
-  const { body, ...postMeta } = post;
-  const meta = { headings, ...postMeta };
+  const meta = post2meta(post);
 
   return {
     props: { meta, code },
