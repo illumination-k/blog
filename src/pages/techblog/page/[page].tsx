@@ -51,8 +51,8 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const posts = (await BackendApi.postsGet()).data;
-  const pages = range(Math.ceil(posts.length / COUNT_PER_PAGE));
+  const post_count = (await BackendApi.postCountGet()).data.count;
+  const pages = range(Math.ceil(post_count / COUNT_PER_PAGE));
   const paths = pages.map((page) => ({
     params: { page: `${page}` },
   }));

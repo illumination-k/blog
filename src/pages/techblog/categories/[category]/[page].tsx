@@ -66,8 +66,9 @@ export async function getStaticPaths() {
 
   const paths_arr = await Promise.all(
     categories.map(async (category) => {
-      const posts = (await BackendApi.postsGet(undefined, category)).data;
-      const pages = range(Math.ceil(posts.length / COUNT_PER_PAGE));
+      const post_count = (await BackendApi.postCountGet(undefined, category))
+        .data.count;
+      const pages = range(Math.ceil(post_count / COUNT_PER_PAGE));
 
       return pages.map((page) => {
         return { params: { page: page.toString(), category } };
