@@ -33,8 +33,8 @@ const index = () => {
           <Grid item xs={6}>
             <Card>
               <CardContent>
-                <Link href="/posts">
-                  <Typography variant="h6">Blog</Typography>
+                <Link href="/techblog/page/1">
+                  <Typography variant="h6">Tech blog</Typography>
                 </Link>
               </CardContent>
             </Card>

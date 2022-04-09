@@ -35,7 +35,7 @@ const Sitemap = () => {
     },
     {
       icon: <NavigateNext />,
-      href: "/archive",
+      href: "/techblog/archive",
       a: "Archive",
     },
   ];

@@ -20,7 +20,7 @@ const Page: React.VFC<PageInfo> = (props) => {
     <Grid item xs={12} key={i}>
       <BlogPostCard
         meta={post2meta(post)}
-        url={`/techblog/${post.slug}`}
+        url={`/techblog/posts/${post.slug}`}
       ></BlogPostCard>
     </Grid>
   ));

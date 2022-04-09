@@ -42,7 +42,7 @@ async function getRecommend(
     return {
       title: p.title,
       description: trimDescription(p.description || "", 120),
-      url: `/techblog/${p.slug}`,
+      url: `/techblog/posts/${p.slug}`,
       update: p.update_at,
       published: p.created_at,
       category: p.category,

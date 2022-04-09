@@ -50,7 +50,7 @@ const BlogPostLayout: React.FC<MetaWithChildren> = (props) => {
       <Head>
         <link
           rel="canonical"
-          href={`https://illumination-k.dev/techblog/${meta.slug}`}
+          href={`https://illumination-k.dev/techblog/posts/${meta.slug}`}
         />
       </Head>
       <NextSeo title={meta.title} description={meta.description} />

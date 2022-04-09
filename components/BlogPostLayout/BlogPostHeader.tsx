@@ -9,8 +9,10 @@ const BlogPostHeader: React.VFC<Meta> = (meta) => {
       <Grid item xs={12}>
         <Breadcrumbs aria-label="breadcrumb">
           <Link href="/"> Home </Link>
-          <Link href="/categories">Categories</Link>
-          <Link href={`/categories/${meta.category}/1`}>{meta.category}</Link>
+          <Link href="/techblog/categories">Categories</Link>
+          <Link href={`/techblog/categories/${meta.category}/1`}>
+            {meta.category}
+          </Link>
           <p>{meta.title}</p>
         </Breadcrumbs>
       </Grid>

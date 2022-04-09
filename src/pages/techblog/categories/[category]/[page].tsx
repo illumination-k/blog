@@ -23,7 +23,7 @@ const CategoryPage = (props) => {
       <BlogPostCard
         key={idx}
         meta={post2meta(post)}
-        url={`/techblog/${post.slug}`}
+        url={`/techblog/posts/${post.slug}`}
       />
     </Grid>
   ));
