@@ -1,10 +1,11 @@
 import { Grid, Typography } from "@mui/material";
 import { getFormattedDate } from "@libs/utils";
+import { Meta } from "./Props";
 
-const BlogPostContentHeader = ({ meta }) => {
+const BlogPostContentHeader: React.VFC<Meta> = (meta) => {
   // date settings
-  const published = getFormattedDate(meta.published);
-  const update = getFormattedDate(meta.update);
+  const published = getFormattedDate(meta.created_at);
+  const update = getFormattedDate(meta.updated_at);
   return (
     <Grid container className="markdown-body">
       <Grid item xs={12}>
@@ -14,13 +15,13 @@ const BlogPostContentHeader = ({ meta }) => {
         </Typography>
         <details>
           <summary>Table of Contents</summary>
-          {meta.toc.map((heading, idx) => {
+          {meta.headings.map((heading, idx) => {
             return (
               <div key={idx}>
-                <a href={heading.url}>
+                <a href={heading.value}>
                   {`\xa0`.repeat((heading.depth - 1) * 2) + "-"}
                   &nbsp;
-                  {heading.text}
+                  {heading.value}
                 </a>
               </div>
             );

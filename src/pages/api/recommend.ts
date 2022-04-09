@@ -1,4 +1,6 @@
 import { trimDescription } from "@libs/utils";
+import BackendApi from "@libs/api";
+import { Post } from "@libs/axios";
 
 function shuffle(array) {
   for (let i = array.length; i > 1; i--) {
@@ -11,24 +13,19 @@ function shuffle(array) {
   return array;
 }
 
-function getRecommend(
-  category: string | null,
-  id: string | null,
+async function getRecommend(
+  category: string | undefined,
+  uuid: string | undefined,
   size: number
 ) {
-  let { posts } = require("../../../cache/data");
-  let recommend_post: any[] = [];
+  let posts = await (
+    await BackendApi.postsGet(undefined, undefined, undefined, undefined)
+  ).data;
+  let recommend_post: Post[] = [];
 
   posts = shuffle(posts);
-  if (id) {
-    posts = posts.filter((p) => p.id !== id);
-  }
-
-  if (category) {
-    recommend_post = posts.filter((p) => {
-      return p.category === category;
-    });
-    posts = posts.filter((p) => p.category !== category);
+  if (uuid) {
+    posts = posts.filter((p) => p.uuid !== uuid);
   }
 
   const left = size - recommend_post.length;
@@ -42,11 +39,11 @@ function getRecommend(
   }
 
   const recommend = recommend_post.map((p) => ({
-    title: p.data.title,
-    description: trimDescription(p.data.description, 120),
-    url: `/posts/${p.category}/${p.id}`,
-    update: p.update,
-    published: p.published,
+    title: p.title || "",
+    description: trimDescription(p.description || "", 120),
+    url: `/techblog/${p.slug}`,
+    update: p.update_at,
+    published: p.created_at,
     category: p.category,
   }));
 
@@ -55,8 +52,8 @@ function getRecommend(
 
 export default function handler(req, res) {
   const category = req.query.category;
-  const id = req.query.id;
-  const recommend = getRecommend(category, id, 5);
+  const uuid = req.query.uuid;
+  const recommend = getRecommend(category, uuid, 5);
 
   res.status(200).json(recommend);
 }

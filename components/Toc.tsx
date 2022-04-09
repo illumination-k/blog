@@ -7,14 +7,14 @@ const Toc = ({ headings }) => {
       {headings.map((heading, idx) => {
         return (
           <Typography key={idx}>
-            <a href={heading.url}>
+            <a href={heading.value}>
               {`\xa0`.repeat((heading.depth - 1) * 2)}{" "}
               <FiberManualRecordIcon
                 color="primary"
                 style={{ paddingTop: "0.7rem" }}
               />
               &nbsp;
-              {heading.text}
+              {heading.value}
             </a>
           </Typography>
         );

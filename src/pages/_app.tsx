@@ -41,6 +41,7 @@ function MyApp(props: MyAppProps) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        {/* @ts-ignore */}
         <Component {...pageProps} />
       </ThemeProvider>
     </CacheProvider>

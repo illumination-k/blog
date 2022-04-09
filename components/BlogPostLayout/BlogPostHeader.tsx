@@ -1,8 +1,9 @@
 import { Grid, Breadcrumbs } from "@mui/material";
 import Link from "../Link";
 import AmpAdsense from "../amp/AmpAdsense";
+import { Meta } from "./Props";
 
-const BlogPostHeader = ({ meta }) => {
+const BlogPostHeader: React.VFC<Meta> = (meta) => {
   return (
     <Grid container className="markdown-body">
       <Grid item xs={12}>
