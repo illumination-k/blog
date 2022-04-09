@@ -41,9 +41,8 @@ async function getRecommend(
   const recommend = recommend_post.map((p) => {
     return {
       title: p.title,
-      description: trimDescription(p.description || "", 120),
+      description: trimDescription(p.description, 120),
       url: `/techblog/posts/${p.slug}`,
-      //@ts-ignore
       update: p.updated_at,
       published: p.created_at,
       category: p.category,

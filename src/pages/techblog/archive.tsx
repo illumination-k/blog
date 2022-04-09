@@ -62,9 +62,8 @@ export async function getStaticProps() {
   let publishedMap = new Map();
   let updateMap = new Map();
   posts.forEach((post) => {
-    const publishedKey = getDateKey(post.created_at || "");
-    //@ts-ignore
-    const updateKey = getDateKey(post.updated_at || "");
+    const publishedKey = getDateKey(post.created_at);
+    const updateKey = getDateKey(post.updated_at);
 
     updateMapArray(publishedMap, publishedKey, post);
     updateMapArray(updateMap, updateKey, post);

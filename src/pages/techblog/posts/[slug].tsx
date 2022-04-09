@@ -71,7 +71,6 @@ export async function getStaticProps({ params, locale }) {
       remarkPlugins: [
         remarkMath,
         remarkFootnotes,
-        // codeTitle,
         highlighter,
         toMathml,
         remarkGfm,

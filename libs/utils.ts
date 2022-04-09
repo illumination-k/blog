@@ -19,15 +19,15 @@ export function post2meta(post: Post): Meta {
   const now = new Date();
   return {
     headings,
-    title: post.title || "no title",
-    description: post.description || "no description",
-    slug: post.slug || "no slug",
-    uuid: post.uuid || "no uuid",
-    category: post.category || "no category",
-    tags: post.tags || [],
-    lang: post.lang || "ja",
-    created_at: post.created_at || now.toString(),
-    updated_at: post.update_at || now.toString(),
+    title: post.title,
+    description: post.description,
+    slug: post.slug,
+    uuid: post.uuid,
+    category: post.category,
+    tags: post.tags,
+    lang: post.lang,
+    created_at: post.created_at,
+    updated_at: post.updated_at,
   };
 }
 
