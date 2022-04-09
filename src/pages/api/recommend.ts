@@ -1,4 +1,4 @@
-import { trimDescription } from "@libs/utils";
+import { post2meta, trimDescription } from "@libs/utils";
 import BackendApi from "@libs/api";
 import { Post } from "@libs/axios";
 
@@ -18,34 +18,36 @@ async function getRecommend(
   uuid: string | undefined,
   size: number
 ) {
-  let posts = await (
-    await BackendApi.postsGet(undefined, undefined, undefined, undefined)
-  ).data;
-  let recommend_post: Post[] = [];
+  let allPosts = (await BackendApi.postsGet()).data;
 
-  posts = shuffle(posts);
+  allPosts = shuffle(allPosts);
+
   if (uuid) {
-    posts = posts.filter((p) => p.uuid !== uuid);
+    allPosts = allPosts.filter((p) => p.uuid !== uuid);
   }
+
+  let recommend_post = allPosts.filter((p) => p.category === category);
 
   const left = size - recommend_post.length;
 
   if (left > 0) {
     for (let i = 0; i < left; i++) {
-      recommend_post.push(posts[i]);
+      recommend_post.push(allPosts[i]);
     }
   } else {
-    recommend_post = recommend_post.slice(0, size);
+    recommend_post = allPosts.slice(0, size);
   }
 
-  const recommend = recommend_post.map((p) => ({
-    title: p.title || "",
-    description: trimDescription(p.description || "", 120),
-    url: `/techblog/${p.slug}`,
-    update: p.update_at,
-    published: p.created_at,
-    category: p.category,
-  }));
+  const recommend = recommend_post.map((p) => {
+    return {
+      title: p.title,
+      description: trimDescription(p.description || "", 120),
+      url: `/techblog/${p.slug}`,
+      update: p.update_at,
+      published: p.created_at,
+      category: p.category,
+    };
+  });
 
   return recommend;
 }
