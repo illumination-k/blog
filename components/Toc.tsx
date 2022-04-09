@@ -1,6 +1,7 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+
 const Toc = ({ headings }) => {
   return (
     <>
@@ -14,7 +15,7 @@ const Toc = ({ headings }) => {
                 style={{ paddingTop: "0.7rem" }}
               />
               &nbsp;
-              {heading.text}
+              {heading.value}
             </a>
           </Typography>
         );

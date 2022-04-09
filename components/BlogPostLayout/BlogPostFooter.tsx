@@ -8,6 +8,8 @@ import ModificationRequest from "@components/BlogPostLayout/ModificationRequest"
 import AmpAdsense from "@components/amp/AmpAdsense";
 import RecommendPost from "@components/RecommendPost";
 
+import { Meta } from "./Props";
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     contents: {
@@ -28,9 +30,9 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const BlogPostContentFooter = ({ meta }) => {
+const BlogPostContentFooter: React.VFC<Meta> = (meta) => {
   const classes = useStyles();
-  const { category, id } = meta;
+  const { category, uuid } = meta;
 
   return (
     <Grid container spacing={2} className="markdown-body">
@@ -73,7 +75,7 @@ const BlogPostContentFooter = ({ meta }) => {
           width="auto"
           height="200"
           layout="fixed-height"
-          src={`/api/recommend?category=${category}&id=${id}`}
+          src={`/api/recommend?category=${category}&uuid=${uuid}`}
           items="."
         >
           {/* @ts-ignore */}

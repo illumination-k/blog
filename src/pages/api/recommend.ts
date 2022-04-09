@@ -1,4 +1,6 @@
-import { trimDescription } from "@libs/utils";
+import { post2meta, trimDescription } from "@libs/utils";
+import BackendApi from "@libs/api";
+import { Post } from "@libs/axios";
 
 function shuffle(array) {
   for (let i = array.length; i > 1; i--) {
@@ -11,52 +13,49 @@ function shuffle(array) {
   return array;
 }
 
-function getRecommend(
-  category: string | null,
-  id: string | null,
+async function getRecommend(
+  category: string | undefined,
+  uuid: string | undefined,
   size: number
 ) {
-  let { posts } = require("../../../cache/data");
-  let recommend_post: any[] = [];
+  let allPosts = (await BackendApi.postsGet()).data;
 
-  posts = shuffle(posts);
-  if (id) {
-    posts = posts.filter((p) => p.id !== id);
+  allPosts = shuffle(allPosts);
+
+  if (uuid) {
+    allPosts = allPosts.filter((p) => p.uuid !== uuid);
   }
 
-  if (category) {
-    recommend_post = posts.filter((p) => {
-      return p.category === category;
-    });
-    posts = posts.filter((p) => p.category !== category);
-  }
+  let recommend_post = allPosts.filter((p) => p.category === category);
 
   const left = size - recommend_post.length;
 
   if (left > 0) {
     for (let i = 0; i < left; i++) {
-      recommend_post.push(posts[i]);
+      recommend_post.push(allPosts[i]);
     }
   } else {
-    recommend_post = recommend_post.slice(0, size);
+    recommend_post = allPosts.slice(0, size);
   }
 
-  const recommend = recommend_post.map((p) => ({
-    title: p.data.title,
-    description: trimDescription(p.data.description, 120),
-    url: `/posts/${p.category}/${p.id}`,
-    update: p.update,
-    published: p.published,
-    category: p.category,
-  }));
+  const recommend = recommend_post.map((p) => {
+    return {
+      title: p.title,
+      description: trimDescription(p.description, 120),
+      url: `/techblog/posts/${p.slug}`,
+      update: p.updated_at,
+      published: p.created_at,
+      category: p.category,
+    };
+  });
 
   return recommend;
 }
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   const category = req.query.category;
-  const id = req.query.id;
-  const recommend = getRecommend(category, id, 5);
+  const uuid = req.query.uuid;
+  const recommend = await getRecommend(category, uuid, 5);
 
   res.status(200).json(recommend);
 }

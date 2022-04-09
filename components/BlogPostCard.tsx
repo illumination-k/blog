@@ -10,6 +10,7 @@ import createStyles from "@mui/styles/createStyles";
 import Link from "@components/Link";
 import CategoryChip from "./CategoryChip";
 import { getFormattedDate, trimDescription } from "@libs/utils";
+import { Meta } from "./BlogPostLayout/Props";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -24,7 +25,12 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const BlogPostCard = ({ meta, url }) => {
+type Props = {
+  meta: Meta;
+  url: string;
+};
+
+const BlogPostCard: React.VFC<Props> = ({ meta, url }) => {
   const classes = useStyles();
 
   // description settings
@@ -50,8 +56,8 @@ const BlogPostCard = ({ meta, url }) => {
   );
 
   // date settings
-  const published = getFormattedDate(meta.published);
-  const update = getFormattedDate(meta.update);
+  const published = getFormattedDate(meta.created_at);
+  const update = getFormattedDate(meta.updated_at);
 
   return (
     <Card variant="outlined">

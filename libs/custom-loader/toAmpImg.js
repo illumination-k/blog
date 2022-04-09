@@ -46,6 +46,36 @@ function toAmpImg() {
     return value;
   }
 
+  function makeAmpImgNode(url, alt, dimensions, meta = null) {
+    const value = {
+      type: "mdxJsxFlowElement",
+      name: "amp-img",
+      attributes: [
+        {type: "mdxJsxAttribute", name: "layout", value: "responsive"},
+        {type: "mdxJsxAttribute", name: "src", value: url},
+        {type: "mdxJsxAttribute", name: "height", value: dimensions.height},
+        {type: "mdxJsxAttribute", name: "width", value: dimensions.width}
+      ]
+    }
+
+    let newNode;
+    if (meta) {
+      newNode = {
+        type: "mdxJsxFlowElement",
+        name: "Grid",
+        children: value,
+        attributes: [
+          {type: "mdxJsxAttribute", name: "item"},
+          {type: "mdxJsxAttribute", name: "xs", value: 6}
+        ]
+      }
+    } else {
+      newNode = value
+    }
+
+    return newNode
+  }
+
   function transformToJsxNode(parent, index, value, position) {
     const newNode = {
       type: "jsx",
@@ -57,13 +87,6 @@ function toAmpImg() {
   }
 
   function transformer(ast) {
-    const gridImport = `import { Grid } from "@mui/material"`;
-    const gridImportNode = {
-      type: "import",
-      value: gridImport,
-    };
-    ast.children.unshift(gridImportNode);
-
     visit(ast, "image", visitor);
     function visitor(node, index, parent) {
       let url = node.url;
@@ -85,9 +108,9 @@ function toAmpImg() {
         dimensions = sizeOf(buf);
       }
 
-      const value = makeValue(url, alt, dimensions, meta);
+      const newNode = makeAmpImgNode(url, alt, dimensions, meta)
 
-      transformToJsxNode(parent, index, value, position);
+      parent.children[index] = newNode;
     }
   }
 }

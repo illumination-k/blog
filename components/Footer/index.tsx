@@ -3,20 +3,18 @@ import Copyright from "./Copyright";
 
 const Footer = () => {
   return (
-    <div style={{ marginTop: "1rem" }}>
-      <div style={{ textAlign: "center" }}>
-        <Link href="/privacypolicy">
-          <a>Privacy Policy</a>
-        </Link>
-      </div>
+    <div
+      style={{
+        marginTop: "1rem",
+        textAlign: "center",
+        textDecoration: "none",
+        color: "gray",
+      }}
+    >
+      <Link href="/privacypolicy" rel="canonical">
+        Privacy Policy
+      </Link>
       <Copyright />
-      <style jsx>{`
-        a {
-          text-decoration: none;
-          font-size: 1em;
-          color: gray;
-        }
-      `}</style>
     </div>
   );
 };

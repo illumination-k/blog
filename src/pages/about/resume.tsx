@@ -208,7 +208,7 @@ export async function getStaticProps() {
   const yaml = require("js-yaml");
   const profilePath = path.join(process.cwd(), "data", "profiles.yaml");
   const profilesFile = fs.readFileSync(profilePath);
-  const profile = yaml.safeLoad(profilesFile);
+  const profile = yaml.load(profilesFile);
 
   return {
     props: { profile: profile },

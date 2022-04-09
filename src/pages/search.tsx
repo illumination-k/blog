@@ -4,25 +4,21 @@ import Layout from "@components/DefaultLayout";
 import BlogPostCard from "@components/BlogPostCard";
 import Grid from "@mui/material/Grid";
 
+import BackendApi from "@libs/api";
+import { post2meta } from "@libs/utils";
+
 export const config = { amp: true };
 
 const SearchResult = (props) => {
-  // console.log(props.meta);
-  const listitems = props.meta.map((res, idx) => {
-    const meta = {
-      title: res.title,
-      description: res.description,
-      published: res.published,
-      update: res.update,
-      category: res.category,
-    };
-    const url = `/posts/${res.category}/${res.id}`;
+  const listitems = props.metas.map((meta, idx) => {
+    const url = `/techblog/posts/${meta.slug}`;
     return (
       <Grid key={idx} item xs={12}>
         <BlogPostCard key={idx} meta={meta} url={url} />
       </Grid>
     );
   });
+
   return (
     <Layout>
       <NextSeo
@@ -39,55 +35,12 @@ const SearchResult = (props) => {
 };
 
 export async function getServerSideProps(ctx) {
-  const { Document } = require("flexsearch");
-
-  function newIndex() {
-    const config = {
-      tokenize: function (str) {
-        return str.split(" ");
-      },
-      document: {
-        id: "id",
-        field: ["data:words"],
-        store: [
-          "category",
-          "data:title",
-          "data:description",
-          "update",
-          "published",
-        ],
-      },
-    };
-
-    const index = new Document(config);
-
-    return index;
-  }
-
   const query = ctx.query.q;
 
-  const { posts } = require("../../cache/data");
-
-  let index = newIndex();
-
-  for (const post of posts) {
-    await index.add(post);
-  }
-
-  const res = await index.search(query, { enrich: true });
-  const meta = res[0].result.map((r) => {
-    return {
-      id: r.id,
-      category: r.doc.category,
-      title: r.doc.data.title,
-      description: r.doc.data.description,
-      update: r.doc.update,
-      published: r.doc.published,
-    };
-  });
-
+  const posts = (await BackendApi.searchGet(query)).data;
+  const metas = posts.map((p) => post2meta(p));
   return {
-    props: { query: query, meta: meta },
+    props: { query: query, metas },
   };
 }
 

@@ -25,17 +25,17 @@ const Sitemap = () => {
     },
     {
       icon: <Book />,
-      href: "/posts",
+      href: "/techblog/page/1",
       a: "Blog",
     },
     {
       icon: <NavigateNext />,
-      href: "/categories",
+      href: "/techblog/categories",
       a: "Categories",
     },
     {
       icon: <NavigateNext />,
-      href: "/archive",
+      href: "/techblog/archive",
       a: "Archive",
     },
   ];
