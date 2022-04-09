@@ -43,7 +43,8 @@ async function getRecommend(
       title: p.title,
       description: trimDescription(p.description || "", 120),
       url: `/techblog/posts/${p.slug}`,
-      update: p.update_at,
+      //@ts-ignore
+      update: p.updated_at,
       published: p.created_at,
       category: p.category,
     };
@@ -52,10 +53,10 @@ async function getRecommend(
   return recommend;
 }
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   const category = req.query.category;
   const uuid = req.query.uuid;
-  const recommend = getRecommend(category, uuid, 5);
+  const recommend = await getRecommend(category, uuid, 5);
 
   res.status(200).json(recommend);
 }

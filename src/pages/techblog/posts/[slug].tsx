@@ -25,7 +25,7 @@ import { codeTitleCss } from "src/styles/codetitle.css.js";
 
 import BlogPostLayout from "@components/BlogPostLayout";
 import { Grid } from "@mui/material";
-
+import RecommendPost from "@components/RecommendPost";
 import { Meta } from "@components/BlogPostLayout/Props";
 import { post2meta } from "@libs/utils";
 
@@ -47,7 +47,9 @@ const BlogPost: React.VFC<Props> = (props) => {
     <BlogPostLayout meta={meta}>
       <Grid container>
         <Grid item xs={12} className="markdown-body">
-          <Content components={{ Grid, Seq, P5, P7, S5, S7, T7, Me }} />
+          <Content
+            components={{ Grid, Seq, P5, P7, S5, S7, T7, Me, RecommendPost }}
+          />
           <style jsx global>
             {css}
           </style>
