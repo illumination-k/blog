@@ -4,20 +4,13 @@
   "main": "index.tsx",
   "scripts": {
     "dev": "next",
-    "build": "next build",
+    "sitemap": "node sitemap.js",
+    "build-only": "next build",
+    "build": "next build && node sitemap.js",
     "start": "next start",
     "lint": "next lint",
-    "test": "yarn cache-posts test && jest",
-    "cov": "yarn cache-posts test && jest --collect-coverage",
-    "make-sitemap": "node sitemap.js",
-    "cache-posts": "node script/makePostsCache.js",
-    "preprocessing": "yarn cache-posts && git add cache/data.json cache/data.js && yarn build && yarn make-sitemap && git add public/sitemap.xml && git commit -m 'preprocess' --no-verify",
-    "analyzer": "ANALYZE=true next build && cd .next/analyze && python -m http.server"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn preprocessing"
-    }
+    "test": "jest",
+    "cov": "jest --collect-coverage"
   },
   "author": "illumination-k",
   "license": "MIT",
