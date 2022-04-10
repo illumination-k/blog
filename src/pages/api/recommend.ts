@@ -19,7 +19,14 @@ async function getRecommends(
   uuid: string | undefined,
   size: number
 ) {
-  let allPosts: Post[] = (await BackendApi.postsGet()).data;
+  const resp = await BackendApi.postsGet();
+
+  if (resp.status !== 200) {
+    console.error(resp);
+    return [];
+  }
+
+  let allPosts: Post[] = resp.data;
 
   allPosts = shuffle(allPosts);
 
