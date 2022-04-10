@@ -8,13 +8,13 @@ const About = () => {
     <AboutMe>
       <h1>About Me</h1>
       <p>
-        Hi, I am a Ph.D. student majoring in plant molecular biology in
+        Hi, I am a Ph.D. student majoring in plant molecular biology in{" "}
         <a href="http://www.plantmb.lif.kyoto-u.ac.jp">
           Laboratory of Plant Molecular Biology, Graduate School of Biostudies,
           Kyoto University
         </a>
         . My research themes are to develop the expression database and
-        elucidate the gibberellin system in the basal land plant, the liverwort
+        elucidate the gibberellin system in the basal land plant, the liverwort{" "}
         <i>Marchantia polymorpha</i>. I love both biology and programing,
         especially bioinformatics. I have skills both of wet and dry. In
         biology, I am interested in the evolution, development, and omics
