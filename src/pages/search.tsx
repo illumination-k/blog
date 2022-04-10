@@ -1,46 +1,63 @@
 import { NextSeo } from "next-seo";
 
 import Layout from "@components/DefaultLayout";
-import BlogPostCard from "@components/BlogPostCard";
-import Grid from "@mui/material/Grid";
 
-import BackendApi from "@libs/api";
-import { post2meta } from "@libs/utils";
+import { NextPageContext } from "next";
+import SearchResultPost from "@components/SearchResultPost";
 
 export const config = { amp: true };
 
 const SearchResult = (props) => {
-  const listitems = props.metas.map((meta, idx) => {
-    const url = `/techblog/posts/${meta.slug}`;
-    return (
-      <Grid key={idx} item xs={12}>
-        <BlogPostCard key={idx} meta={meta} url={url} />
-      </Grid>
-    );
-  });
+  const { query } = props;
 
   return (
     <Layout>
       <NextSeo
         title="search results"
-        description={`search result, query=${props.query}`}
+        description={`search result, query=${query}`}
       />
       <h1>Search Results</h1>
       <h2>Query: {props.query}</h2>
-      <Grid container spacing={1}>
-        {listitems}
-      </Grid>
+
+      <amp-list
+        width="400"
+        height="400"
+        layout="responsive"
+        src={`/api/search?q=${query}`}
+        items="."
+      >
+        {/* @ts-ignore */}
+        <template type="amp-mustache">
+          <SearchResultPost
+            title="{{title}}"
+            description="{{description}}"
+            url="{{url}}"
+            category="{{category}}"
+            category_url="{{category_url}}"
+            updated_at="{{updated_at}}"
+            created_at="{{created_at}}"
+          />
+        </template>
+      </amp-list>
     </Layout>
   );
 };
 
-export async function getServerSideProps(ctx) {
-  const query = ctx.query.q;
+export async function getServerSideProps(ctx: NextPageContext) {
+  let query;
 
-  const posts = (await BackendApi.searchGet(query)).data;
-  const metas = posts.map((p) => post2meta(p));
+  if ("q" in ctx.query) {
+    if (typeof ctx.query.q === "string") {
+      query = ctx.query.q;
+    } else {
+      query = "";
+    }
+  } else {
+    query = "";
+  }
+
   return {
-    props: { query: query, metas },
+    props: { query },
   };
 }
 

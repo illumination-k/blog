@@ -1,8 +1,9 @@
-import { post2meta, trimDescription } from "@libs/utils";
+import { trimDescription } from "@libs/utils";
 import BackendApi from "@libs/api";
 import { Post } from "@libs/axios";
+import { NextApiRequest, NextApiResponse } from "next/types";
 
-function shuffle(array) {
+function shuffle<T>(array: T[]): T[] {
   for (let i = array.length; i > 1; i--) {
     const r = Math.floor(Math.random() * i);
     const temp = array[r];
@@ -13,12 +14,19 @@ function shuffle(array) {
   return array;
 }
 
-async function getRecommend(
+async function getRecommends(
   category: string | undefined,
   uuid: string | undefined,
   size: number
 ) {
-  let allPosts = (await BackendApi.postsGet()).data;
+  const resp = await BackendApi.postsGet();
+
+  if (resp.status !== 200) {
+    console.error(resp);
+    return [];
+  }
+
+  let allPosts: Post[] = resp.data;
 
   allPosts = shuffle(allPosts);
 
@@ -26,19 +34,19 @@ async function getRecommend(
     allPosts = allPosts.filter((p) => p.uuid !== uuid);
   }
 
-  let recommend_post = allPosts.filter((p) => p.category === category);
+  let recommend_posts = allPosts.filter((p) => p.category === category);
 
-  const left = size - recommend_post.length;
+  const left = size - recommend_posts.length;
 
   if (left > 0) {
     for (let i = 0; i < left; i++) {
-      recommend_post.push(allPosts[i]);
+      recommend_posts.push(allPosts[i]);
     }
   } else {
-    recommend_post = allPosts.slice(0, size);
+    recommend_posts = allPosts.slice(0, size);
   }
 
-  const recommend = recommend_post.map((p) => {
+  const recommends = recommend_posts.map((p) => {
     return {
       title: p.title,
       description: trimDescription(p.description, 120),
@@ -49,13 +57,34 @@ async function getRecommend(
     };
   });
 
-  return recommend;
+  return recommends;
 }
 
-export default async function handler(req, res) {
-  const category = req.query.category;
-  const uuid = req.query.uuid;
-  const recommend = await getRecommend(category, uuid, 5);
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  let category: string | undefined = undefined;
+  let uuid: string | undefined = undefined;
+  if ("category" in req.query) {
+    if (typeof req.query.category === "string") {
+      category = req.query.category;
+    } else {
+      res.status(400).json("Bad Request");
+      return;
+    }
+  }
 
-  res.status(200).json(recommend);
+  if ("uuid" in req.query) {
+    if (typeof req.query.uuid === "string") {
+      uuid = req.query.uuid;
+    } else {
+      res.status(400).json("Bad Request");
+      return;
+    }
+  }
+
+  const recommends = await getRecommends(category, uuid, 5);
+
+  res.status(200).json(recommends);
 }

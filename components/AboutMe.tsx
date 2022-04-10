@@ -3,7 +3,8 @@ import Head from "next/head";
 import { NextSeo } from "next-seo";
 import { Container } from "@mui/material";
 import IconButtons from "@components/SocialIcons";
-const AboutMe: React.FC = ({ children }) => {
+import React from "react";
+const AboutMe: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <>
       <Head>

@@ -11,11 +11,6 @@ const nextConfig = {
   staticPageGenerationTimeout: 1000,
   async redirects() {
     return [
-      // {
-      //   source: "/posts",
-      //   destination: "/posts/1",
-      //   permanent: true,
-      // },
       {
         source: "/posts/:category/:slug*",
         destination: "/techblog/posts/:slug*",

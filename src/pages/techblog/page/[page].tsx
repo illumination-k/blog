@@ -16,12 +16,10 @@ const COUNT_PER_PAGE = 10;
 
 const Page: React.VFC<PageInfo> = (props) => {
   const { posts, page, totalPages } = props;
+
   const cards = posts.map((post, i) => (
     <Grid item xs={12} key={i}>
-      <BlogPostCard
-        meta={post2meta(post)}
-        url={`/techblog/posts/${post.slug}`}
-      ></BlogPostCard>
+      <BlogPostCard {...post2meta(post)}></BlogPostCard>
     </Grid>
   ));
 

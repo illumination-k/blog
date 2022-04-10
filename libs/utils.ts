@@ -23,17 +23,11 @@ export function post2meta(post: Post): Meta {
     };
   });
 
+  const { body, ...meta } = post;
+
   return {
     headings,
-    title: post.title,
-    description: post.description,
-    slug: post.slug,
-    uuid: post.uuid,
-    category: post.category,
-    tags: post.tags,
-    lang: post.lang,
-    created_at: post.created_at,
-    updated_at: post.updated_at,
+    ...meta,
   };
 }
 
