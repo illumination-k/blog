@@ -20,11 +20,7 @@ const CategoryPage = (props) => {
 
   const cards = posts.map((post, idx) => (
     <Grid item xs={12} key={idx}>
-      <BlogPostCard
-        key={idx}
-        meta={post2meta(post)}
-        url={`/techblog/posts/${post.slug}`}
-      />
+      <BlogPostCard key={idx} {...post2meta(post)} />
     </Grid>
   ));
 

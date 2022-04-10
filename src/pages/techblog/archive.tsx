@@ -13,11 +13,7 @@ function makeSections(datePostMap) {
   const sections = datePostMap.map((m, i) => {
     const cards = m[1].map((post, index) => (
       <Grid item xs={12} key={index}>
-        <BlogPostCard
-          key={index}
-          meta={post2meta(post)}
-          url={`/techblog/posts/${post.slug}`}
-        />
+        <BlogPostCard key={index} {...post2meta(post)} />
       </Grid>
     ));
     return (
@@ -68,8 +64,6 @@ export async function getStaticProps() {
     updateMapArray(publishedMap, publishedKey, post);
     updateMapArray(updateMap, updateKey, post);
   });
-
-  // console.log(publishedMap);
 
   let publishedArr = [...publishedMap];
   publishedArr = publishedArr.sort(function (a, b) {

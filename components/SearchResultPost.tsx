@@ -1,3 +1,4 @@
+import Chip from "@mui/material/Chip";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -8,14 +9,23 @@ import makeStyles from "@mui/styles/makeStyles";
 import createStyles from "@mui/styles/createStyles";
 
 import Link from "@components/Link";
-import CategoryChip from "./CategoryChip";
-import { getFormattedDate, trimDescription } from "@libs/utils";
+
+type Props = {
+  title: string;
+  description: string;
+  url: string;
+  category: string;
+  category_url: string;
+  created_at: string;
+  updated_at: string;
+};
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     container: {
       flexGrow: 1,
     },
+    chip: { marginTop: "0.1rem" },
     title: { color: "black", fontSize: "1.8em", marginBottom: "0.5rem" },
     date: {
       color: "gray",
@@ -24,36 +34,33 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-type Props = {
-  title: string;
-  category: string;
-  description: string;
-  created_at: string;
-  updated_at: string;
-  slug: string;
-};
-
-const BlogPostCard: React.VFC<Props> = ({
+const SearchResultPost: React.VFC<Props> = ({
   title,
-  slug,
-  category,
   description,
+  url,
+  category,
+  category_url,
   created_at,
   updated_at,
 }) => {
   const classes = useStyles();
-
-  // description settings
-  const maxLength = 120;
-  const trimedDescription = trimDescription(description, maxLength);
-  const url = `/techblog/posts/${slug}`;
+  const chip = (
+    <Chip
+      label={category}
+      clickable
+      component="a"
+      size="small"
+      href={category_url}
+      variant="outlined"
+      color="primary"
+      className={classes.chip}
+    />
+  );
 
   // title settings
   const titleChips = (
     <>
-      <Grid item>
-        <CategoryChip category={category} style={{ marginTop: "0.1rem" }} />
-      </Grid>
+      <Grid item>{chip}</Grid>
       <Grid item>
         <Link href={url} rel="canonical">
           <Typography variant="h2" className={classes.title}>
@@ -64,21 +71,17 @@ const BlogPostCard: React.VFC<Props> = ({
     </>
   );
 
-  // date settings
-  const published = getFormattedDate(created_at);
-  const update = getFormattedDate(updated_at);
-
   return (
     <Card variant="outlined">
       <CardContent>
         <Grid container spacing={1}>
           {titleChips}
           <Grid item xs={12}>
-            <Typography>{trimedDescription}</Typography>
+            <Typography>{description}</Typography>
           </Grid>
           <Grid item xs={12}>
             <Typography className={classes.date}>
-              published: {published} update: {update}
+              published: {created_at} update: {updated_at}
             </Typography>
           </Grid>
         </Grid>
@@ -87,4 +90,4 @@ const BlogPostCard: React.VFC<Props> = ({
   );
 };
 
-export default BlogPostCard;
+export default SearchResultPost;
