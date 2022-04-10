@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 
 import BackendApi from "@libs/api";
 import { post2meta } from "@libs/utils";
+import { NextPageContext } from "next";
 
 export const config = { amp: true };
 
@@ -34,13 +35,26 @@ const SearchResult = (props) => {
   );
 };
 
-export async function getServerSideProps(ctx) {
-  const query = ctx.query.q;
+export async function getServerSideProps(ctx: NextPageContext) {
+  let query;
+  if ("q" in ctx.query) {
+    if (typeof ctx.query.q === "string") {
+      query = ctx.query.q;
+    } else {
+      return { query: "", metas: [] };
+    }
+  }
 
-  const posts = (await BackendApi.searchGet(query)).data;
+  const resp = await BackendApi.searchGet(query);
+
+  if (resp.status !== 200) {
+    console.error(resp);
+  }
+
+  const posts = resp.data;
   const metas = posts.map((p) => post2meta(p));
   return {
-    props: { query: query, metas },
+    props: { query, metas },
   };
 }
 

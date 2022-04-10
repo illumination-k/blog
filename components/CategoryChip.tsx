@@ -2,10 +2,11 @@ import Chip from "@mui/material/Chip";
 
 const CategoryChip = (props) => {
   const { category, ...rest } = props;
-  const categoryURL = `/categories/${category}/1`;
+  const categoryURL = `/techblog/categories/${category}/1`;
 
   return (
     <Chip
+      {...rest}
       label={category}
       clickable
       component="a"
@@ -13,7 +14,6 @@ const CategoryChip = (props) => {
       href={categoryURL}
       variant="outlined"
       color="primary"
-      {...rest}
     />
   );
 };
