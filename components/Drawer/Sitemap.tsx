@@ -26,7 +26,7 @@ const Sitemap = () => {
     {
       icon: <Book />,
       href: "/techblog/page/1",
-      a: "Blog",
+      a: "Tech blog",
     },
     {
       icon: <NavigateNext />,
