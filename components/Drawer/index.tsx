@@ -7,7 +7,6 @@ import makeStyles from "@mui/styles/makeStyles";
 import Drawer from "@mui/material/Drawer";
 import Toolbar from "@mui/material/Toolbar";
 
-import AmpSearchForm from "@components/amp/AmpSearchForm";
 import Ofuse from "@components/Ofuse";
 import Sitemap from "@components/Drawer/Sitemap";
 
@@ -54,7 +53,6 @@ const ClippedDrawer = ({ listitems }) => {
         <Toolbar />
         <div className={classes.drawerContainer}>
           <Sitemap />
-          <AmpSearchForm />
           {listitems}
           <br></br>
           <Ofuse />

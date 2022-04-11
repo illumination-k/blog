@@ -1,7 +1,6 @@
 import React from "react";
 import Toolbar from "@mui/material/Toolbar";
 
-import AmpSearchForm from "@components/amp/AmpSearchForm";
 import AmpFab from "./AmpFab";
 import Sitemap from "@components/Drawer/Sitemap";
 
@@ -44,7 +43,6 @@ const AmpSidebar = ({ listitems }) => {
       <amp-sidebar id="ampsidebar" className="ampsidebar" layout="nodisplay">
         <div style={{ padding: "1rem", backgroundColor: "white" }}>
           <Toolbar />
-          <AmpSearchForm />
           <Sitemap />
           <Ofuse />
           {listitems}
