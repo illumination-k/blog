@@ -8,8 +8,6 @@ import ModificationRequest from "@components/BlogPostLayout/ModificationRequest"
 import AmpAdsense from "@components/amp/AmpAdsense";
 import RecommendPost from "@components/RecommendPost";
 
-import { basePath } from "@libs/api";
-
 import { Meta } from "./Props";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -70,6 +68,26 @@ const BlogPostContentFooter: React.VFC<Meta> = (meta) => {
       <Grid item md={6} />
       <Grid item xs={12} md={6}>
         <ModificationRequest />
+      </Grid>
+      <Grid item xs={12}>
+        <Typography variant="h2">Other Articles</Typography>
+        <amp-list
+          width="auto"
+          height="200"
+          layout="fixed-height"
+          src={`/api/recommend?category=${category}&uuid=${uuid}`}
+          items="."
+        >
+          {/* @ts-ignore */}
+          <template type="amp-mustache">
+            <RecommendPost
+              title={`$test/{{title}}`}
+              url={"{{url}}"}
+              category={`{{category}}`}
+              description={"{{description}}"}
+            />
+          </template>
+        </amp-list>
       </Grid>
     </Grid>
   );

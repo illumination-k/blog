@@ -1,0 +1,11 @@
+steps:
+  - id: install packages
+    name: node:14
+    entrypoint: yarn
+    args: ["install"]
+  - id: build
+    name: node:14
+    entrypoint: yarn
+    args: ["build"]
+  - name: gcr.io/cloud-builders/gcloud
+    args: ["app", "deploy", "app.yaml", "--project=foo", "--quiet"]
