@@ -1,12 +1,13 @@
 export default function AmpAnalytics(props) {
+  const { type, script, ...rest } = props;
   return (
     <>
-      <amp-analytics type={props.type}>
-        {props.script && (
+      <amp-analytics type={type} {...rest}>
+        {script && (
           <script
             type="application/json"
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify(props.script),
+              __html: JSON.stringify(script),
             }}
           />
         )}
