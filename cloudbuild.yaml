@@ -8,4 +8,4 @@ steps:
     entrypoint: yarn
     args: ["build"]
   - name: gcr.io/cloud-builders/gcloud
-    args: ["app", "deploy", "app.yaml", "--project=blog-350118", "--quiet"]
+    args: ["app", "deploy", "app.yaml", "--project=$PROJECT_ID", "--quiet"]
