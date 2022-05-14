@@ -45,7 +45,7 @@
     "components",
     "libs/theme.tsx",
     "jest.config.js"
-, "search.tsx", "tmp/api/search.ts", "tmp/api"  ],
+, "search.tsx", "src/pages/api/search.ts", "src/pages/api"  ],
   "exclude": [
     "node_modules",
     "tmp"
