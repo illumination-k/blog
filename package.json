@@ -45,6 +45,7 @@
     "@types/react-dom": "^18.0.0",
     "eslint": "^8.13.0",
     "eslint-config-next": "^12.1.5-canary.4",
+    "feed": "^4.2.2",
     "husky": "^7.0.4",
     "jest": "^27.5.1",
     "jest-fetch-mock": "^3.0.3",
