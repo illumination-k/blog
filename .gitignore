@@ -25,6 +25,9 @@ log*
 #report?
 report.*
 
+# rss
+public/rss/
+
 # tool
 cmfmt.exe
 
