@@ -81,7 +81,7 @@ const BlogPostContentFooter: React.VFC<Meta> = (meta) => {
           {/* @ts-ignore */}
           <template type="amp-mustache">
             <RecommendPost
-              title={`$test/{{title}}`}
+              title={`{{title}}`}
               url={"{{url}}"}
               category={`{{category}}`}
               description={"{{description}}"}
