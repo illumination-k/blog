@@ -16,7 +16,7 @@ export const config = { amp: true };
 const COUNT_PER_PAGE = 10;
 
 const CategoryPage = (props) => {
-  const { posts, page, totalPages, category } = props;
+  const { posts, page, totalPages, tag } = props;
 
   const cards = posts.map((post, idx) => (
     <Grid item xs={12} key={idx}>
@@ -27,15 +27,15 @@ const CategoryPage = (props) => {
   return (
     <Layout>
       <NextSeo
-        title={`illumination-dev: ${category}`}
-        description={`illumination-dev: Category ${page}`}
+        title={`illumination-dev: ${tag}`}
+        description={`illumination-dev: Tag ${page}`}
       />
-      <h1>{`Recent Posts: ${category}`}</h1>
+      <h1>{`Recent Posts: ${tag}`}</h1>
       <Grid container spacing={1}>
         {cards}
       </Grid>
       <Pager
-        path={`/techblog/categories/${category}`}
+        path={`/techblog/tags/${tag}`}
         page={page}
         total_pages={totalPages}
       />
@@ -47,10 +47,11 @@ export default CategoryPage;
 
 export async function getStaticProps({ params }) {
   const page = parseInt(params.page, 10);
-  const posts = (await BackendApi.postsGet(undefined, params.category)).data;
+  const posts = (await BackendApi.postsGet(undefined, "techblog", params.tag))
+    .data;
 
   let props = getPageInfo(posts, page, COUNT_PER_PAGE);
-  props["category"] = params.category;
+  props["tag"] = params.tag;
 
   return {
     props,
@@ -58,16 +59,17 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const categories = (await BackendApi.categoriesGet()).data;
+  const tags = (await BackendApi.tagsGet()).data;
 
   const paths_arr = await Promise.all(
-    categories.map(async (category) => {
-      const post_count = (await BackendApi.postCountGet(undefined, category))
-        .data.count;
+    tags.map(async (tag) => {
+      const post_count = (
+        await BackendApi.postCountGet(undefined, "techblog", tag)
+      ).data.count;
       const pages = range(Math.ceil(post_count / COUNT_PER_PAGE));
 
       return pages.map((page) => {
-        return { params: { page: page.toString(), category } };
+        return { params: { page: page.toString(), tag } };
       });
     })
   );
