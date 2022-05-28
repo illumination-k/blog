@@ -30,8 +30,8 @@ const Sitemap = () => {
     },
     {
       icon: <NavigateNext />,
-      href: "/techblog/categories",
-      a: "Categories",
+      href: "/techblog/tags",
+      a: "Tags",
     },
     {
       icon: <NavigateNext />,
