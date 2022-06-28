@@ -9,6 +9,8 @@ import { Grid, Container, Card, CardContent, Typography } from "@mui/material";
 import Layout from "@components/Layout";
 import Link from "@components/Link";
 import SocialIcons from "@components/SocialIcons";
+import { GetStaticProps } from "next";
+import generateRssFeed from "@libs/generateRssFeed";
 
 export const config = { amp: true };
 
@@ -57,6 +59,11 @@ const index = () => {
       </Container>
     </Layout>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  await generateRssFeed();
+  return { props: {} };
 };
 
 export default index;

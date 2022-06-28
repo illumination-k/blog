@@ -8,8 +8,8 @@ import makeStyles from "@mui/styles/makeStyles";
 import createStyles from "@mui/styles/createStyles";
 
 import Link from "@components/Link";
-import CategoryChip from "./CategoryChip";
 import { getFormattedDate, trimDescription } from "@libs/utils";
+import TagChip from "./TagChip";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,6 +31,7 @@ type Props = {
   created_at: string;
   updated_at: string;
   slug: string;
+  tags: string[];
 };
 
 const BlogPostCard: React.VFC<Props> = ({
@@ -40,6 +41,7 @@ const BlogPostCard: React.VFC<Props> = ({
   description,
   created_at,
   updated_at,
+  tags,
 }) => {
   const classes = useStyles();
 
@@ -48,18 +50,20 @@ const BlogPostCard: React.VFC<Props> = ({
   const trimedDescription = trimDescription(description, maxLength);
   const url = `/techblog/posts/${slug}`;
 
+  const tagChips = tags.map((tag, i) => {
+    return <TagChip tag={tag} key={i} style={{ margin: "0.1rem" }} />;
+  });
+
   // title settings
   const titleChips = (
     <>
-      <Grid item>
-        <CategoryChip category={category} style={{ marginTop: "0.1rem" }} />
-      </Grid>
       <Grid item>
         <Link href={url} rel="canonical">
           <Typography variant="h2" className={classes.title}>
             {title}
           </Typography>
         </Link>
+        <Grid item>{tagChips}</Grid>
       </Grid>
     </>
   );

@@ -9,3 +9,5 @@ steps:
     args: ["build"]
   - name: gcr.io/cloud-builders/gcloud
     args: ["app", "deploy", "app.yaml", "--project=$PROJECT_ID", "--quiet"]
+
+timeout: 900s

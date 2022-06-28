@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import BackendApi from "@libs/api";
 
 // custom components
-import ListLayout from "@components/DefaultLayout";
+import TechblogLayout from "@components/DefaultLayout";
 import BlogPostCard from "@components/BlogPostCard";
 
 import { post2meta } from "@libs/utils";
@@ -24,7 +24,7 @@ const Page: React.VFC<PageInfo> = (props) => {
   ));
 
   return (
-    <ListLayout>
+    <TechblogLayout>
       <NextSeo
         title="illumination-dev tech blog: Home"
         description={`illumination-dev tech blog : Page ${page}`}
@@ -34,7 +34,7 @@ const Page: React.VFC<PageInfo> = (props) => {
         {cards}
       </Grid>
       <Pager path="/techblog/page" page={page} total_pages={totalPages} />
-    </ListLayout>
+    </TechblogLayout>
   );
 };
 

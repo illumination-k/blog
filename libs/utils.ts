@@ -64,3 +64,10 @@ export function trimDescription(
     return description;
   }
 }
+
+export function createTechblogPostUrl(
+  slug: string,
+  baseUrl: string = ""
+): string {
+  return `${baseUrl}/techblog/posts/${slug}`;
+}

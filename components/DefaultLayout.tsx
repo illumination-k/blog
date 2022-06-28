@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const ListLayout = ({ children }) => {
+const TechblogLayout = ({ children }) => {
   const classes = useStyles();
   return (
     <Layout>
@@ -35,4 +35,4 @@ const ListLayout = ({ children }) => {
   );
 };
 
-export default ListLayout;
+export default TechblogLayout;
