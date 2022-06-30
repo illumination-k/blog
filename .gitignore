@@ -28,6 +28,9 @@ report.*
 # rss
 public/rss/
 
+# sitemap
+public/sitemap.xml
+
 # tool
 cmfmt.exe
 

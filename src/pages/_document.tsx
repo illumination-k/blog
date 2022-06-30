@@ -25,13 +25,16 @@ export default class MyDocument extends Document {
           <NextScript />
           <AmpAnalytics
             type="googleanalytics"
+            config="https://amp.analytics-debugger.com/ga4.json"
+            data-credentials="include"
             script={{
               vars: {
-                account: GA_TRACKING_ID,
-                gtag_id: GA_TRACKING_ID,
-                config: {
-                  [GA_TRACKING_ID]: { groups: "default" },
-                },
+                GA4_MEASUREMENT_ID: "G-5X44HTLX5D",
+                GA4_ENDPOINT_HOSTNAME: "www.google-analytics.com",
+                DEFAULT_PAGEVIEW_ENABLED: true,
+                GOOGLE_CONSENT_ENABLED: false,
+                WEBVITALS_TRACKING: false,
+                PERFORMANCE_TIMING_TRACKING: false,
               },
               triggers: {
                 trackPageview: {
