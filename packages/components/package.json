@@ -1,0 +1,9 @@
+{
+  "name": "components",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "twind": "^0.16.17"
+  }
+}
