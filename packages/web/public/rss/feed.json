@@ -1,0 +1,489 @@
+{
+  "version": "https://jsonfeed.org/version/1",
+  "title": "illumination-k.dev",
+  "home_page_url": "https://www.illumination-k.dev",
+  "feed_url": "https://www.illumination-k.dev/rss/feed.json",
+  "description": "Feed/Rss/Atom for illumination-k.dev",
+  "author": {
+    "name": "illumination-k",
+    "url": "https://www.illumination-k.dev"
+  },
+  "items": [
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/dfs_tree",
+      "url": "https://www.illumination-k.dev/techblog/posts/dfs_tree",
+      "title": "RustでDFSとDFS木",
+      "summary": "rustで木上のDFSとDFS木",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/aws_elasticapi",
+      "url": "https://www.illumination-k.dev/techblog/posts/aws_elasticapi",
+      "title": "AWSでElastic IPアドレスを開放していなかったばっかりに損した話",
+      "summary": "AWS使って遊び終わったあと放置していると請求が来るという怖い話",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/inclusion_and_exclusion_principle",
+      "url": "https://www.illumination-k.dev/techblog/posts/inclusion_and_exclusion_principle",
+      "title": "包除原理とオイラー関数について",
+      "summary": "包除原理とその実装、オイラー関数に関するメモ",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/bitsearch",
+      "url": "https://www.illumination-k.dev/techblog/posts/bitsearch",
+      "title": "bit全探索を理解するために",
+      "summary": "bit全探索が何をやっているのか理解するのが難しかったので、何が起こっているのかをまとめた",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/diktstra_2d_rust",
+      "url": "https://www.illumination-k.dev/techblog/posts/diktstra_2d_rust",
+      "title": "平面上でのダイクトストラ (rust)",
+      "summary": "二次元平面上でダイクトストラやりたいってときのための覚書",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/competitive_memo",
+      "url": "https://www.illumination-k.dev/techblog/posts/competitive_memo",
+      "title": "競技プログラミングに関するメモ",
+      "summary": "競技プログラミングに関する自分用のメモ",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/manhattan",
+      "url": "https://www.illumination-k.dev/techblog/posts/manhattan",
+      "title": "Manhattan Distance Memo",
+      "summary": "マンハッタン距離に関するメモ",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/event_sort",
+      "url": "https://www.illumination-k.dev/techblog/posts/event_sort",
+      "title": "イベントソート",
+      "summary": "イベントソートの自分なりの解釈",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/go_anno_deepgoplus",
+      "url": "https://www.illumination-k.dev/techblog/posts/go_anno_deepgoplus",
+      "title": "深層学習ベースのGO termアノテーションを試してみる",
+      "summary": "自然言語処理技術では深層学習技術が非常に良い成果をあげています。タンパク質配列からGO Termなどのアノテーション行い、機能を推定する方法として、これまでの多くはBLASTなどの相同性検索を用いていました。最近では、いくつかのツールが深層学習ベースで機能予測を行っています。今回はdeepgoplusを試してみることにします。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/gatk4_interval_list",
+      "url": "https://www.illumination-k.dev/techblog/posts/gatk4_interval_list",
+      "title": "GATK4をsplit intervalを使って高速化する",
+      "summary": "GATK4は実行に時間がかかるツールですが、マシンパワーさえあればsplit intervalを使って高速化できます。interval listについては日本語文献が見つからなかったのでまとめておきます。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/gatk4_ranseq_bestpractice",
+      "url": "https://www.illumination-k.dev/techblog/posts/gatk4_ranseq_bestpractice",
+      "title": "gatk4のRNA-seq bestpractice",
+      "summary": "genomic sequenceと少しRNA-seqのパイプラインは違うので、bestpracticeをbashで実行するメモ",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/fastapi_sqlarchemy_heroku",
+      "url": "https://www.illumination-k.dev/techblog/posts/fastapi_sqlarchemy_heroku",
+      "title": "FastAPI + SQLAlchemy (Postgres) でHerokuにデプロイ",
+      "summary": "思ったよりFastAPI、PostgresでHerokuにデプロイするということにだけ焦点を当てた記事が見つからなかったので書いておきました。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/phylo_raxmlng",
+      "url": "https://www.illumination-k.dev/techblog/posts/phylo_raxmlng",
+      "title": "MUSCLE + trimal + RAxML-ng-mpiを使って最尤法で系統解析",
+      "summary": "遺伝子の機能や、進化を考察する上でタンパク質を用いた系統解析は重要な解析手法の一つとして知られている。今回は、MUSCLEを用いてマルチプルアラインメントを作成し、非保存領域をTrimAlで除去したあと、RAxMLを用いて最尤法によって系統解析を行う。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/rust_fastqgz",
+      "url": "https://www.illumination-k.dev/techblog/posts/rust_fastqgz",
+      "title": "Rustでfastq/fastq.gzを読み書きする",
+      "summary": "rust-bioを使ってfastq/fastq.gzを読み書きします。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/go_term_basic",
+      "url": "https://www.illumination-k.dev/techblog/posts/go_term_basic",
+      "title": "GO Termに関する基礎",
+      "summary": "GO解析はよく使われる解析手法ですが、正確に理解するには、まずGOそのものに関する理解が必要になります。GO Termの基本についてまとめていきます。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/qsubpy_easy",
+      "url": "https://www.illumination-k.dev/techblog/posts/qsubpy_easy",
+      "title": "コマンドをqsubで直接ジョブに投げられるようにする",
+      "summary": "スパコンを使っていると、qsubを使ってジョブを投げることがあるのではないかと思います。このときに、ワンライナーを実行したいときなど、一回ファイル作ってからコマンドを投げるのが非常にめんどくさいことがあります。そこで、Pythonのargparseとsubprocessを使って擬似的にコマンドからジョブを投げられるようにしました。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/salmon_tximport",
+      "url": "https://www.illumination-k.dev/techblog/posts/salmon_tximport",
+      "title": "salmonの出力ファイルをtximportで加工する",
+      "summary": "salmonの出力ファイルはquant.sfですが、その加工は非常に多岐に渡り、結構難しいです。tximportで加工できる先と用途についてまとめていきたいと思います。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/codeblock_langname",
+      "url": "https://www.illumination-k.dev/techblog/posts/codeblock_langname",
+      "title": "CSSでコードブロックの右上に言語名を表示する",
+      "summary": "コードを書くときに書いてる言語が何なのか表示すると、見るときに便利です。CSSだけで実現できます。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/library_construction_reaction",
+      "url": "https://www.illumination-k.dev/techblog/posts/library_construction_reaction",
+      "title": "NGSライブラリ調製の時に使用される反応まとめ",
+      "summary": "NGSライブラリ調製の際には多様な反応が使用されている。それらのうち、知っているものについて原理をまとめていきたい。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/sra_upload_aspera",
+      "url": "https://www.illumination-k.dev/techblog/posts/sra_upload_aspera",
+      "title": "SRAにAsperaを使ってデータをアップロードする",
+      "summary": "httpやftpによるSRAへのデータアップロードは遅すぎるので、IBMのaspera connectを使ってデータをアップロードするやり方を使おう。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/todo_1",
+      "url": "https://www.illumination-k.dev/techblog/posts/todo_1",
+      "title": "自分専用のTODOアプリを作る",
+      "summary": "世の中にはたくさんのTODOアプリが溢れていますが、自分がやりたいことをすべてできるアプリはありませんでした。じゃあ作ってみよう、という話です。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/seq_summary",
+      "url": "https://www.illumination-k.dev/techblog/posts/seq_summary",
+      "title": "ライブラリ調整とシーケンスの基本について",
+      "summary": "次世代シーケンサー(NGS)解析技術の発展に伴い、比較的安価にシーケンスを行うことができるようになってきています。NGS解析を行うにあたって重要なライブラリ調整の原理と、シーケンサーの挙動についてまとめていきます。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/ngs_matome",
+      "url": "https://www.illumination-k.dev/techblog/posts/ngs_matome",
+      "title": "NGS解析に関するまとめ",
+      "summary": "次世代シーケンサーの解析って言ってもピンとこない人が多いような気がするので、知識の整理も兼ねてその辺から軽く書いていこうと思います。生物わかんない人にわかるように頑張ろうと思います。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/sra_download",
+      "url": "https://www.illumination-k.dev/techblog/posts/sra_download",
+      "title": "SRAからfastqをダウンロードする時の関連知識",
+      "summary": "SRAからfastqファイルをダウンロードする時の関連知識",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/javascript_random",
+      "url": "https://www.illumination-k.dev/techblog/posts/javascript_random",
+      "title": "JavaScriptでのrandomに関するまとめ",
+      "summary": "JavaScriptのランダムは非常に使い勝手が悪いので選択肢とか、よく使う関数などのまとめです。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/bash_1liner",
+      "url": "https://www.illumination-k.dev/techblog/posts/bash_1liner",
+      "title": "知っておくと便利なbash知識",
+      "summary": "知っておくと便利そうなbash知識をまとめていきます。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/utility_webservice",
+      "url": "https://www.illumination-k.dev/techblog/posts/utility_webservice",
+      "title": "便利なWebサービスについてのまとめ",
+      "summary": "プログラミングの勉強や開発する時に便利なWebサービスについてまとめていきます。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/bash_permission",
+      "url": "https://www.illumination-k.dev/techblog/posts/bash_permission",
+      "title": "bashのPermission関連についてのまとめ",
+      "summary": "bashのPermission関連について、すぐ忘れてしまうのでまとめておきます。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/peco_powershell",
+      "url": "https://www.illumination-k.dev/techblog/posts/peco_powershell",
+      "title": "Windows(Powershell)でpecoを使ってみる (履歴のインクリメンタルサーチ)",
+      "summary": "Powershellでpecoを使って履歴をインクリメンタルサーチしてみます。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/git_scrapts",
+      "url": "https://www.illumination-k.dev/techblog/posts/git_scrapts",
+      "title": "Gitに関するスクラップ",
+      "summary": "Gitに関してコマンドをよく忘れるのでメモ",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/wsl_alittele_comfortable",
+      "url": "https://www.illumination-k.dev/techblog/posts/wsl_alittele_comfortable",
+      "title": "WSL2を少しだけ快適にするTips",
+      "summary": "WSL2をもう少しだけ快適に使うためのTips",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/cmfmt",
+      "url": "https://www.illumination-k.dev/techblog/posts/cmfmt",
+      "title": "Markdownの中のコードをフォーマットするツールを作った",
+      "summary": "Markdown内のコードをフォーマットしたいので、作りました。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/django_pylance_import",
+      "url": "https://www.illumination-k.dev/techblog/posts/django_pylance_import",
+      "title": "DjangoでPylanceがimportを解決しない問題の対処法",
+      "summary": "Pylanceは非常に優れたコーディング支援拡張機能ですが、importがよく解決されなくて困っていました。小規模開発のときはまあいいか、と思ったりするのですが、djangoとかで解決されないと結構手間なので、解決法を調べたら解決したので書いておきます。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/upsetplot_python",
+      "url": "https://www.illumination-k.dev/techblog/posts/upsetplot_python",
+      "title": "Pythonでupsetplotを使う",
+      "summary": "集合関係の包含関係を示すとき、ベン図より使いやすいことのあるupset plotをPythonで使用するやり方です",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/python_class_init",
+      "url": "https://www.illumination-k.dev/techblog/posts/python_class_init",
+      "title": "PythonのClassの生成に関してまとめてみた",
+      "summary": "PythonのClassは色々難しいので、勉強のためにまとめておきます。まずはClassの生成に関してです。__new__と__init__を中心にまとめています。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/polars_pandas",
+      "url": "https://www.illumination-k.dev/techblog/posts/polars_pandas",
+      "title": "Rustのデータフレームcrateのpolarsとpandasの比較",
+      "summary": "rustにも実はpandas likeなcrateがあることを知ったのでpandasとの対応関係をまとめてた。最善である保証はありません。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/make_blog_1",
+      "url": "https://www.illumination-k.dev/techblog/posts/make_blog_1",
+      "title": "Next.jsでブログを作ってみた",
+      "summary": "Wordpressでブログを作っていたが、パフォーマンスが遅いのでNext.jsで作り直した。ほしい要件、使うフレームワークの選定など。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/impl_ops",
+      "url": "https://www.illumination-k.dev/techblog/posts/impl_ops",
+      "title": "macroを使ってopを実装する",
+      "summary": "構造体に対して演算子を実装するときに、マクロを使わないとすごく長くなるのでマクロの使い方についてまとめておく。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/rust_tips",
+      "url": "https://www.illumination-k.dev/techblog/posts/rust_tips",
+      "title": "Rust Tips",
+      "summary": "rustで覚えておきたいことのメモ",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/excvr_rust_analyzer",
+      "url": "https://www.illumination-k.dev/techblog/posts/excvr_rust_analyzer",
+      "title": "Excvrとrust-analyzerでJupyterでRust",
+      "summary": "RustでJupyter環境を構築して、rust-analyzerで補完できるようにします。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/linked_list",
+      "url": "https://www.illumination-k.dev/techblog/posts/linked_list",
+      "title": "RustでLinkedListを実装してみた",
+      "summary": "RustでLinkedListを実装してみました。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/make_blog_2",
+      "url": "https://www.illumination-k.dev/techblog/posts/make_blog_2",
+      "title": "MDX or Markdown ?",
+      "summary": "ブログ記事を書くのに、MDXを使うのか、Markdownを使うのか",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/make_blog_7",
+      "url": "https://www.illumination-k.dev/techblog/posts/make_blog_7",
+      "title": "Next.jsで作ったブログをAMPとPWAに対応させる",
+      "summary": "Next.jsで作ったAMPオンリーのブログをPWAにも対応させてみた。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/make_blog_6",
+      "url": "https://www.illumination-k.dev/techblog/posts/make_blog_6",
+      "title": "next.jsで作ってみたブログにamp-sidebarを導入する",
+      "summary": "next.jsで作ってみたブログにtypescriptとmaterial-uiと一緒にamp-sidebarを導入してみた。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/make_blog_3",
+      "url": "https://www.illumination-k.dev/techblog/posts/make_blog_3",
+      "title": "Next.jsで作ったブログにStyleを適用していく",
+      "summary": "Wordpressでブログを作っていたが、パフォーマンスが遅いのでNext.jsで作り直した。markdwonでレンダリングできるようになったので、Styleを適用していく。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/make_blog_5",
+      "url": "https://www.illumination-k.dev/techblog/posts/make_blog_5",
+      "title": "Next.jsで作ってみたブログに検索機能を導入する",
+      "summary": "Next.jsで作ってみたブログに形態素解析とflexsearchで検索機能を導入する",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/make_blog_4",
+      "url": "https://www.illumination-k.dev/techblog/posts/make_blog_4",
+      "title": "Next.jsでカスタムローダーを使ってmdxをAMP対応させる",
+      "summary": "Wordpressでブログを作っていたが、パフォーマンスが遅いのでNext.jsで作り直した。mdxをレンダリングするときに使うカスタムローダーを自作してAMP対応させる話。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/sql_memo",
+      "url": "https://www.illumination-k.dev/techblog/posts/sql_memo",
+      "title": "SQLに関するメモ書き",
+      "summary": "SQLに関するメモ",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/github_actions_release_cross",
+      "url": "https://www.illumination-k.dev/techblog/posts/github_actions_release_cross",
+      "title": "Github Actionsとcrossを使ってReleaseでクロスコンパイルしてバイナリをアップロードする",
+      "summary": "Github Actionsとcrossを使ってReleaseでクロスコンパイルしてバイナリをアップロードする",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/material_ui_scraps",
+      "url": "https://www.illumination-k.dev/techblog/posts/material_ui_scraps",
+      "title": "material-uiに関するスクラップ",
+      "summary": "material-uiに関するスクラップ",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/actix_web_diesel",
+      "url": "https://www.illumination-k.dev/techblog/posts/actix_web_diesel",
+      "title": "Actix-Web + Diesel + PostgresでCRUDしてみた",
+      "summary": "Actix-webを使ってみたかったので、DieselのGetting StartをActix-webで実装しました。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/cellranger_star",
+      "url": "https://www.illumination-k.dev/techblog/posts/cellranger_star",
+      "title": "CellRangerでSTARのパラメータを変更する",
+      "summary": "single cell RNA-seqを知ってる人ならまず知っているであろう、Cell Ranger。使ったことがなかったんですが、ちょっと使ってみようかなと思いました。しかし、これ内部的にはSTARを使ってマッピングするんですが、STARのパラメーターを引数でとれない、という問題（誰も問題にしていない）があります。公式の解答としては、自分でビルドしてね、責任は持たないけど、ってことらしいです。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/next_config_js_summary",
+      "url": "https://www.illumination-k.dev/techblog/posts/next_config_js_summary",
+      "title": "next.config.jsで設定することのまとめ",
+      "summary": "next.jsを使っているとnext.config.jsを使って設定をカスタマイズすることが多いです。next.config.jsで設定できることと、その設定の仕方についてまとめておきます。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/nextjs_gae",
+      "url": "https://www.illumination-k.dev/techblog/posts/nextjs_gae",
+      "title": "Next.jsをCloudbuildでGAEにデプロイ",
+      "summary": "Next.jsをGoogle App Engine上にCloudBuild経由でデプロイするまで",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/rust_slice_clone",
+      "url": "https://www.illumination-k.dev/techblog/posts/rust_slice_clone",
+      "title": "Rustで高速にsliceの一部をCloneする",
+      "summary": "Rustで配列をコピーしたいとき、実際問題何をするのが早いのかという話です。結論だけ書いておくと、`clone_from_slice`を使えばいいはずです。",
+      "date_modified": "2022-06-04T11:51:17.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/react_plotly_bundle",
+      "url": "https://www.illumination-k.dev/techblog/posts/react_plotly_bundle",
+      "title": "plotly.jsのbundle sizeを削減する",
+      "summary": "plotlyはJavascriptだけでなくPythonやRでも使われている非常に利便性の高いライブラリです。しかし、フロントエンドで使うにはバンドルサイズが大きすぎるという問題があります。plotlyのバンドルサイズの削減方法と、react-plotly.jsでの適用方法をまとめておきます。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/bioinformatics_file_format",
+      "url": "https://www.illumination-k.dev/techblog/posts/bioinformatics_file_format",
+      "title": "Bioinformaticsで使うファイルフォーマットまとめ",
+      "summary": "バイオインフォマティクスをしていて、障壁になることの1つにファイルフォーマットが多すぎる、という問題があると思います。ツールを動かそうとするとこれとこれとこれが必要となって、どうやってこの形式のファイルを作ればいいんだ？ということはよくあります。備忘録を兼ねて、よく使うフォーマットと関連するツールについてまとめておきます。",
+      "date_modified": "2022-06-12T15:55:38.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/prisma_next_simple_crud",
+      "url": "https://www.illumination-k.dev/techblog/posts/prisma_next_simple_crud",
+      "title": "Prisma + Next.jsでシンプルなCRUD APIを作成する",
+      "summary": "O/Rマッパとしてprismaを使用して、簡単なCRUDをNext.jsと一緒に作成します。",
+      "date_modified": "2022-05-20T18:42:50.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/phylogenetic_analysis",
+      "url": "https://www.illumination-k.dev/techblog/posts/phylogenetic_analysis",
+      "title": "Phylogenetic Analysisに関するまとめ",
+      "summary": "Phylogenetic Analysis各種ステップのAlignment, Trim, Model選択, Tree Constructionに関する情報、ツールに関してまとめ",
+      "date_modified": "2022-06-12T15:55:39.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/python_beeswarm_plot",
+      "url": "https://www.illumination-k.dev/techblog/posts/python_beeswarm_plot",
+      "title": "Pythonでビースウォーム(beeswarm)プロットを使ってみる",
+      "summary": "統計要約量とかを特に考慮せずに、ただデータを概観したいということがあると思います。データの分布を概観するときには、ビースウォームプロットが便利です。seabornを使うことでPythonでもビースウォームプロットを簡単に使えます。",
+      "date_modified": "2022-06-12T15:55:40.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/go_enrich_plot_python",
+      "url": "https://www.illumination-k.dev/techblog/posts/go_enrich_plot_python",
+      "title": "PythonでGO Enrichmentの結果を図示する",
+      "summary": "RにはGO Enrichmentの結果をいい感じに図示してくれるライブラリがいくつかありますが、Pythonにはありません。似たような図の作成方法をまとめます。",
+      "date_modified": "2022-06-12T15:55:39.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/json_png",
+      "url": "https://www.illumination-k.dev/techblog/posts/json_png",
+      "title": "JSONで画像をやりとりする python <-> JavaScript (React)",
+      "summary": "Python、特にmatplotlibで作成したPNGファイルをJSONにSerializeしてフロントエンド側に送りたいときにどうすればいいのかについて",
+      "date_modified": "2022-06-12T15:55:39.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/colorbar_and_normvalue",
+      "url": "https://www.illumination-k.dev/techblog/posts/colorbar_and_normvalue",
+      "title": "matplotlibでcolorbarのみplotし、ある値がどの色になるのか判定する",
+      "summary": "matplotlibを使っていて、colorbarだけ作りたいとき、そして作ったcolorbarに対して、ある値がどの色になるのか知りたい、というニッチな状況への対応策",
+      "date_modified": "2022-06-12T15:55:40.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/interval_data_query",
+      "url": "https://www.illumination-k.dev/techblog/posts/interval_data_query",
+      "title": "区間に関するクエリ",
+      "summary": "区間に関するクエリを行うためのツールやデータ構造に関するメモ",
+      "date_modified": "2022-06-12T15:55:39.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/javascript_class_shallow_copy",
+      "url": "https://www.illumination-k.dev/techblog/posts/javascript_class_shallow_copy",
+      "title": "JavascriptのClassをShallow Copyする",
+      "summary": "JavascriptのclassをReactで使いたいときのuseStateなどを扱う際に便利なので、Shallow Copyのやり方をまとめる",
+      "date_modified": "2022-08-19T11:42:43.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/make_blog_8",
+      "url": "https://www.illumination-k.dev/techblog/posts/make_blog_8",
+      "title": "amp-listを使ってNext.jsの静的サイトに他のブログ記事への誘導をランダムでつける",
+      "summary": "ブログでよくある、関係のある記事をランダムで記事の一番下につけるために、Next.jsでAPIを実装したあと、amp-listを使って動的にそれらを作成します。",
+      "date_modified": "2022-08-19T11:42:42.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/setup_sqlalchemy",
+      "url": "https://www.illumination-k.dev/techblog/posts/setup_sqlalchemy",
+      "title": "SQLAlchemy + mypy + pytestの環境を整える",
+      "summary": "SQLAlchemyは素晴らしいORMですが、`django`等と違ってテストや、migrationは自分でセットアップする必要があります。この記事では、alembic, pytest, mypyを使った環境をセットアップします。",
+      "date_modified": "2022-08-08T17:49:14.000Z"
+    },
+    {
+      "id": "https://www.illumination-k.dev/techblog/posts/matplotlib_scraps",
+      "url": "https://www.illumination-k.dev/techblog/posts/matplotlib_scraps",
+      "title": "Matploblibでよくやるけどよく忘れることまとめ",
+      "summary": "個人的にMatploblibでよく使うけど毎回探しに行っていることをまとめておく",
+      "date_modified": "2022-08-08T17:49:14.000Z"
+    }
+  ]
+}

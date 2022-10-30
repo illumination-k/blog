@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://www.illumination-k.dev</id>
+    <title>illumination-k.dev</title>
+    <updated>2022-10-30T16:19:00.423Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <author>
+        <name>illumination-k</name>
+        <email>illumination-k@gmail.com</email>
+        <uri>https://www.illumination-k.dev</uri>
+    </author>
+    <link rel="alternate" href="https://www.illumination-k.dev"/>
+    <link rel="self" href="https://www.illumination-k.dev/rss/atom.xml"/>
+    <subtitle>Feed/Rss/Atom for illumination-k.dev</subtitle>
+    <rights>All rights reserved 2022, illumination-k</rights>
+    <entry>
+        <title type="html"><![CDATA[RustでDFSとDFS木]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/dfs_tree</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/dfs_tree"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[rustで木上のDFSとDFS木]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[AWSでElastic IPアドレスを開放していなかったばっかりに損した話]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/aws_elasticapi</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/aws_elasticapi"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[AWS使って遊び終わったあと放置していると請求が来るという怖い話]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[包除原理とオイラー関数について]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/inclusion_and_exclusion_principle</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/inclusion_and_exclusion_principle"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[包除原理とその実装、オイラー関数に関するメモ]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[bit全探索を理解するために]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/bitsearch</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/bitsearch"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[bit全探索が何をやっているのか理解するのが難しかったので、何が起こっているのかをまとめた]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[平面上でのダイクトストラ (rust)]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/diktstra_2d_rust</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/diktstra_2d_rust"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[二次元平面上でダイクトストラやりたいってときのための覚書]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[競技プログラミングに関するメモ]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/competitive_memo</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/competitive_memo"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[競技プログラミングに関する自分用のメモ]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Manhattan Distance Memo]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/manhattan</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/manhattan"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[マンハッタン距離に関するメモ]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[イベントソート]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/event_sort</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/event_sort"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[イベントソートの自分なりの解釈]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[深層学習ベースのGO termアノテーションを試してみる]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/go_anno_deepgoplus</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/go_anno_deepgoplus"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[自然言語処理技術では深層学習技術が非常に良い成果をあげています。タンパク質配列からGO Termなどのアノテーション行い、機能を推定する方法として、これまでの多くはBLASTなどの相同性検索を用いていました。最近では、いくつかのツールが深層学習ベースで機能予測を行っています。今回はdeepgoplusを試してみることにします。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[GATK4をsplit intervalを使って高速化する]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/gatk4_interval_list</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/gatk4_interval_list"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[GATK4は実行に時間がかかるツールですが、マシンパワーさえあればsplit intervalを使って高速化できます。interval listについては日本語文献が見つからなかったのでまとめておきます。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[gatk4のRNA-seq bestpractice]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/gatk4_ranseq_bestpractice</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/gatk4_ranseq_bestpractice"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[genomic sequenceと少しRNA-seqのパイプラインは違うので、bestpracticeをbashで実行するメモ]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[FastAPI + SQLAlchemy (Postgres) でHerokuにデプロイ]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/fastapi_sqlarchemy_heroku</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/fastapi_sqlarchemy_heroku"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[思ったよりFastAPI、PostgresでHerokuにデプロイするということにだけ焦点を当てた記事が見つからなかったので書いておきました。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MUSCLE + trimal + RAxML-ng-mpiを使って最尤法で系統解析]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/phylo_raxmlng</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/phylo_raxmlng"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[遺伝子の機能や、進化を考察する上でタンパク質を用いた系統解析は重要な解析手法の一つとして知られている。今回は、MUSCLEを用いてマルチプルアラインメントを作成し、非保存領域をTrimAlで除去したあと、RAxMLを用いて最尤法によって系統解析を行う。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Rustでfastq/fastq.gzを読み書きする]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/rust_fastqgz</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/rust_fastqgz"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[rust-bioを使ってfastq/fastq.gzを読み書きします。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[GO Termに関する基礎]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/go_term_basic</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/go_term_basic"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[GO解析はよく使われる解析手法ですが、正確に理解するには、まずGOそのものに関する理解が必要になります。GO Termの基本についてまとめていきます。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[コマンドをqsubで直接ジョブに投げられるようにする]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/qsubpy_easy</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/qsubpy_easy"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[スパコンを使っていると、qsubを使ってジョブを投げることがあるのではないかと思います。このときに、ワンライナーを実行したいときなど、一回ファイル作ってからコマンドを投げるのが非常にめんどくさいことがあります。そこで、Pythonのargparseとsubprocessを使って擬似的にコマンドからジョブを投げられるようにしました。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[salmonの出力ファイルをtximportで加工する]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/salmon_tximport</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/salmon_tximport"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[salmonの出力ファイルはquant.sfですが、その加工は非常に多岐に渡り、結構難しいです。tximportで加工できる先と用途についてまとめていきたいと思います。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CSSでコードブロックの右上に言語名を表示する]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/codeblock_langname</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/codeblock_langname"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[コードを書くときに書いてる言語が何なのか表示すると、見るときに便利です。CSSだけで実現できます。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[NGSライブラリ調製の時に使用される反応まとめ]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/library_construction_reaction</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/library_construction_reaction"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[NGSライブラリ調製の際には多様な反応が使用されている。それらのうち、知っているものについて原理をまとめていきたい。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[SRAにAsperaを使ってデータをアップロードする]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/sra_upload_aspera</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/sra_upload_aspera"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[httpやftpによるSRAへのデータアップロードは遅すぎるので、IBMのaspera connectを使ってデータをアップロードするやり方を使おう。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[自分専用のTODOアプリを作る]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/todo_1</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/todo_1"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[世の中にはたくさんのTODOアプリが溢れていますが、自分がやりたいことをすべてできるアプリはありませんでした。じゃあ作ってみよう、という話です。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ライブラリ調整とシーケンスの基本について]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/seq_summary</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/seq_summary"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[次世代シーケンサー(NGS)解析技術の発展に伴い、比較的安価にシーケンスを行うことができるようになってきています。NGS解析を行うにあたって重要なライブラリ調整の原理と、シーケンサーの挙動についてまとめていきます。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[NGS解析に関するまとめ]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/ngs_matome</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/ngs_matome"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[次世代シーケンサーの解析って言ってもピンとこない人が多いような気がするので、知識の整理も兼ねてその辺から軽く書いていこうと思います。生物わかんない人にわかるように頑張ろうと思います。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[SRAからfastqをダウンロードする時の関連知識]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/sra_download</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/sra_download"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[SRAからfastqファイルをダウンロードする時の関連知識]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[JavaScriptでのrandomに関するまとめ]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/javascript_random</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/javascript_random"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[JavaScriptのランダムは非常に使い勝手が悪いので選択肢とか、よく使う関数などのまとめです。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[知っておくと便利なbash知識]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/bash_1liner</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/bash_1liner"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[知っておくと便利そうなbash知識をまとめていきます。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[便利なWebサービスについてのまとめ]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/utility_webservice</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/utility_webservice"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[プログラミングの勉強や開発する時に便利なWebサービスについてまとめていきます。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[bashのPermission関連についてのまとめ]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/bash_permission</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/bash_permission"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[bashのPermission関連について、すぐ忘れてしまうのでまとめておきます。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Windows(Powershell)でpecoを使ってみる (履歴のインクリメンタルサーチ)]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/peco_powershell</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/peco_powershell"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[Powershellでpecoを使って履歴をインクリメンタルサーチしてみます。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Gitに関するスクラップ]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/git_scrapts</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/git_scrapts"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[Gitに関してコマンドをよく忘れるのでメモ]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[WSL2を少しだけ快適にするTips]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/wsl_alittele_comfortable</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/wsl_alittele_comfortable"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[WSL2をもう少しだけ快適に使うためのTips]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Markdownの中のコードをフォーマットするツールを作った]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/cmfmt</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/cmfmt"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[Markdown内のコードをフォーマットしたいので、作りました。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[DjangoでPylanceがimportを解決しない問題の対処法]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/django_pylance_import</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/django_pylance_import"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[Pylanceは非常に優れたコーディング支援拡張機能ですが、importがよく解決されなくて困っていました。小規模開発のときはまあいいか、と思ったりするのですが、djangoとかで解決されないと結構手間なので、解決法を調べたら解決したので書いておきます。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Pythonでupsetplotを使う]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/upsetplot_python</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/upsetplot_python"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[集合関係の包含関係を示すとき、ベン図より使いやすいことのあるupset plotをPythonで使用するやり方です]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[PythonのClassの生成に関してまとめてみた]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/python_class_init</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/python_class_init"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[PythonのClassは色々難しいので、勉強のためにまとめておきます。まずはClassの生成に関してです。__new__と__init__を中心にまとめています。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Rustのデータフレームcrateのpolarsとpandasの比較]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/polars_pandas</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/polars_pandas"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[rustにも実はpandas likeなcrateがあることを知ったのでpandasとの対応関係をまとめてた。最善である保証はありません。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Next.jsでブログを作ってみた]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/make_blog_1</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/make_blog_1"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[Wordpressでブログを作っていたが、パフォーマンスが遅いのでNext.jsで作り直した。ほしい要件、使うフレームワークの選定など。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[macroを使ってopを実装する]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/impl_ops</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/impl_ops"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[構造体に対して演算子を実装するときに、マクロを使わないとすごく長くなるのでマクロの使い方についてまとめておく。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Rust Tips]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/rust_tips</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/rust_tips"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[rustで覚えておきたいことのメモ]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Excvrとrust-analyzerでJupyterでRust]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/excvr_rust_analyzer</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/excvr_rust_analyzer"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[RustでJupyter環境を構築して、rust-analyzerで補完できるようにします。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RustでLinkedListを実装してみた]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/linked_list</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/linked_list"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[RustでLinkedListを実装してみました。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MDX or Markdown ?]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/make_blog_2</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/make_blog_2"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[ブログ記事を書くのに、MDXを使うのか、Markdownを使うのか]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Next.jsで作ったブログをAMPとPWAに対応させる]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/make_blog_7</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/make_blog_7"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[Next.jsで作ったAMPオンリーのブログをPWAにも対応させてみた。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[next.jsで作ってみたブログにamp-sidebarを導入する]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/make_blog_6</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/make_blog_6"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[next.jsで作ってみたブログにtypescriptとmaterial-uiと一緒にamp-sidebarを導入してみた。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Next.jsで作ったブログにStyleを適用していく]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/make_blog_3</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/make_blog_3"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[Wordpressでブログを作っていたが、パフォーマンスが遅いのでNext.jsで作り直した。markdwonでレンダリングできるようになったので、Styleを適用していく。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Next.jsで作ってみたブログに検索機能を導入する]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/make_blog_5</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/make_blog_5"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[Next.jsで作ってみたブログに形態素解析とflexsearchで検索機能を導入する]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Next.jsでカスタムローダーを使ってmdxをAMP対応させる]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/make_blog_4</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/make_blog_4"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[Wordpressでブログを作っていたが、パフォーマンスが遅いのでNext.jsで作り直した。mdxをレンダリングするときに使うカスタムローダーを自作してAMP対応させる話。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[SQLに関するメモ書き]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/sql_memo</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/sql_memo"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[SQLに関するメモ]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Github Actionsとcrossを使ってReleaseでクロスコンパイルしてバイナリをアップロードする]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/github_actions_release_cross</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/github_actions_release_cross"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[Github Actionsとcrossを使ってReleaseでクロスコンパイルしてバイナリをアップロードする]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[material-uiに関するスクラップ]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/material_ui_scraps</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/material_ui_scraps"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[material-uiに関するスクラップ]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Actix-Web + Diesel + PostgresでCRUDしてみた]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/actix_web_diesel</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/actix_web_diesel"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[Actix-webを使ってみたかったので、DieselのGetting StartをActix-webで実装しました。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CellRangerでSTARのパラメータを変更する]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/cellranger_star</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/cellranger_star"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[single cell RNA-seqを知ってる人ならまず知っているであろう、Cell Ranger。使ったことがなかったんですが、ちょっと使ってみようかなと思いました。しかし、これ内部的にはSTARを使ってマッピングするんですが、STARのパラメーターを引数でとれない、という問題（誰も問題にしていない）があります。公式の解答としては、自分でビルドしてね、責任は持たないけど、ってことらしいです。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[next.config.jsで設定することのまとめ]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/next_config_js_summary</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/next_config_js_summary"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[next.jsを使っているとnext.config.jsを使って設定をカスタマイズすることが多いです。next.config.jsで設定できることと、その設定の仕方についてまとめておきます。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Next.jsをCloudbuildでGAEにデプロイ]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/nextjs_gae</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/nextjs_gae"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[Next.jsをGoogle App Engine上にCloudBuild経由でデプロイするまで]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Rustで高速にsliceの一部をCloneする]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/rust_slice_clone</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/rust_slice_clone"/>
+        <updated>2022-06-04T11:51:17.000Z</updated>
+        <summary type="html"><![CDATA[Rustで配列をコピーしたいとき、実際問題何をするのが早いのかという話です。結論だけ書いておくと、`clone_from_slice`を使えばいいはずです。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[plotly.jsのbundle sizeを削減する]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/react_plotly_bundle</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/react_plotly_bundle"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[plotlyはJavascriptだけでなくPythonやRでも使われている非常に利便性の高いライブラリです。しかし、フロントエンドで使うにはバンドルサイズが大きすぎるという問題があります。plotlyのバンドルサイズの削減方法と、react-plotly.jsでの適用方法をまとめておきます。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Bioinformaticsで使うファイルフォーマットまとめ]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/bioinformatics_file_format</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/bioinformatics_file_format"/>
+        <updated>2022-06-12T15:55:38.000Z</updated>
+        <summary type="html"><![CDATA[バイオインフォマティクスをしていて、障壁になることの1つにファイルフォーマットが多すぎる、という問題があると思います。ツールを動かそうとするとこれとこれとこれが必要となって、どうやってこの形式のファイルを作ればいいんだ？ということはよくあります。備忘録を兼ねて、よく使うフォーマットと関連するツールについてまとめておきます。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Prisma + Next.jsでシンプルなCRUD APIを作成する]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/prisma_next_simple_crud</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/prisma_next_simple_crud"/>
+        <updated>2022-05-20T18:42:50.000Z</updated>
+        <summary type="html"><![CDATA[O/Rマッパとしてprismaを使用して、簡単なCRUDをNext.jsと一緒に作成します。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Phylogenetic Analysisに関するまとめ]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/phylogenetic_analysis</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/phylogenetic_analysis"/>
+        <updated>2022-06-12T15:55:39.000Z</updated>
+        <summary type="html"><![CDATA[Phylogenetic Analysis各種ステップのAlignment, Trim, Model選択, Tree Constructionに関する情報、ツールに関してまとめ]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Pythonでビースウォーム(beeswarm)プロットを使ってみる]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/python_beeswarm_plot</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/python_beeswarm_plot"/>
+        <updated>2022-06-12T15:55:40.000Z</updated>
+        <summary type="html"><![CDATA[統計要約量とかを特に考慮せずに、ただデータを概観したいということがあると思います。データの分布を概観するときには、ビースウォームプロットが便利です。seabornを使うことでPythonでもビースウォームプロットを簡単に使えます。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[PythonでGO Enrichmentの結果を図示する]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/go_enrich_plot_python</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/go_enrich_plot_python"/>
+        <updated>2022-06-12T15:55:39.000Z</updated>
+        <summary type="html"><![CDATA[RにはGO Enrichmentの結果をいい感じに図示してくれるライブラリがいくつかありますが、Pythonにはありません。似たような図の作成方法をまとめます。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[JSONで画像をやりとりする python <-> JavaScript (React)]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/json_png</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/json_png"/>
+        <updated>2022-06-12T15:55:39.000Z</updated>
+        <summary type="html"><![CDATA[Python、特にmatplotlibで作成したPNGファイルをJSONにSerializeしてフロントエンド側に送りたいときにどうすればいいのかについて]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[matplotlibでcolorbarのみplotし、ある値がどの色になるのか判定する]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/colorbar_and_normvalue</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/colorbar_and_normvalue"/>
+        <updated>2022-06-12T15:55:40.000Z</updated>
+        <summary type="html"><![CDATA[matplotlibを使っていて、colorbarだけ作りたいとき、そして作ったcolorbarに対して、ある値がどの色になるのか知りたい、というニッチな状況への対応策]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[区間に関するクエリ]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/interval_data_query</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/interval_data_query"/>
+        <updated>2022-06-12T15:55:39.000Z</updated>
+        <summary type="html"><![CDATA[区間に関するクエリを行うためのツールやデータ構造に関するメモ]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[JavascriptのClassをShallow Copyする]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/javascript_class_shallow_copy</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/javascript_class_shallow_copy"/>
+        <updated>2022-08-19T11:42:43.000Z</updated>
+        <summary type="html"><![CDATA[JavascriptのclassをReactで使いたいときのuseStateなどを扱う際に便利なので、Shallow Copyのやり方をまとめる]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[amp-listを使ってNext.jsの静的サイトに他のブログ記事への誘導をランダムでつける]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/make_blog_8</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/make_blog_8"/>
+        <updated>2022-08-19T11:42:42.000Z</updated>
+        <summary type="html"><![CDATA[ブログでよくある、関係のある記事をランダムで記事の一番下につけるために、Next.jsでAPIを実装したあと、amp-listを使って動的にそれらを作成します。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[SQLAlchemy + mypy + pytestの環境を整える]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/setup_sqlalchemy</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/setup_sqlalchemy"/>
+        <updated>2022-08-08T17:49:14.000Z</updated>
+        <summary type="html"><![CDATA[SQLAlchemyは素晴らしいORMですが、`django`等と違ってテストや、migrationは自分でセットアップする必要があります。この記事では、alembic, pytest, mypyを使った環境をセットアップします。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Matploblibでよくやるけどよく忘れることまとめ]]></title>
+        <id>https://www.illumination-k.dev/techblog/posts/matplotlib_scraps</id>
+        <link href="https://www.illumination-k.dev/techblog/posts/matplotlib_scraps"/>
+        <updated>2022-08-08T17:49:14.000Z</updated>
+        <summary type="html"><![CDATA[個人的にMatploblibでよく使うけど毎回探しに行っていることをまとめておく]]></summary>
+    </entry>
+</feed>
