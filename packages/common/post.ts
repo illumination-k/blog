@@ -12,4 +12,12 @@ const postMetaSchema = z.object({
 
 export type PostMeta = z.infer<typeof postMetaSchema>;
 
-export type Post = PostMeta & { content: string };
+export type Post = PostMeta & { markdown: string; rawText: string };
+
+export interface PostRepository {
+  retrive: (uuid: string) => Post;
+  list: (tag?: string[], category?: string) => Post[];
+  all: () => Post[];
+  recommends: (post: Post) => Post[];
+  search: (words: string) => Post[];
+}
