@@ -1,4 +1,4 @@
-/node_modules
+node_modules/
 /.pnp
 .pnp.js
 .next/
@@ -20,7 +20,6 @@ yarn-debug.log*
 yarn-error.log*
 nohup*
 log*
-.vscode/
 
 #report?
 report.*
