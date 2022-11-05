@@ -1,0 +1,10 @@
+{
+  "name": "myconfigs",
+  "version": "0.0.0",
+  "main": "index.js",
+  "files": [
+    "base.json",
+    "nextjs.json",
+    "react-library.json"
+  ]
+}

@@ -1,12 +1,13 @@
-/node_modules
+node_modules/
 /.pnp
 .pnp.js
 .next/
 out/
 tmp/
+build/
 
 # testing
-/coverage
+coverage/
 
 # misc
 .DS_Store
@@ -20,7 +21,6 @@ yarn-debug.log*
 yarn-error.log*
 nohup*
 log*
-.vscode/
 
 #report?
 report.*

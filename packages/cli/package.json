@@ -1,0 +1,17 @@
+{
+  "name": "cli",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.11.7",
+    "@types/yargs": "^17.0.13",
+    "ts-node": "^10.9.1",
+    "myconfigs": "*",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "common": "*",
+    "yargs": "^17.6.0"
+  }
+}
