@@ -1,7 +1,7 @@
-import { Parent, visit } from "unist-util-visit";
 import { Code } from "mdast";
-import { Plugin } from "unified";
 import { MdxJsxTextElement } from "mdast-util-mdx-jsx";
+import { Plugin } from "unified";
+import { Parent, visit } from "unist-util-visit";
 
 export default function codeTitle(): Plugin {
   return transformer;

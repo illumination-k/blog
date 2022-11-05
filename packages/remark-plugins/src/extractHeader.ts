@@ -1,7 +1,7 @@
 import { Heading as AstHeading } from "mdast";
-import { Node } from "unist";
 import { toString } from "mdast-util-to-string";
 import { Plugin, VFileWithOutput } from "unified";
+import { Node } from "unist";
 import { visit } from "unist-util-visit";
 
 type Heading = {

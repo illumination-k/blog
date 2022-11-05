@@ -13,7 +13,7 @@ describe("createHeadingWithId", () => {
       // 1 <= i <= 6
       const node: Heading = {
         type: "heading",
-        //@ts-ignore
+        // @ts-ignore
         depth: i,
         children: [text],
       };
@@ -26,7 +26,7 @@ describe("createHeadingWithId", () => {
         attributes: [{ type: "mdxJsxAttribute", name: "id", value: "0" }],
         children: [{ type: "text", value: "heading text" }],
       };
-      
+
       strictEqual(newNode.type, expected.type);
       strictEqual(newNode.name, expected.name);
       deepEqual(newNode.attributes, expected.attributes);

@@ -1,6 +1,6 @@
-import { Node, visit } from "unist-util-visit";
-import { refractor } from "refractor/lib/core.js";
 import { Code } from "mdast";
+import { refractor } from "refractor/lib/core.js";
+import { Node, visit } from "unist-util-visit";
 
 import { Plugin } from "unified";
 
@@ -8,8 +8,8 @@ import js from "refractor/lang/javascript.js";
 refractor.register(js);
 refractor.alias({ javascript: ["js"] });
 
-import ts from "refractor/lang/typescript.js";
 import tsx from "refractor/lang/tsx.js";
+import ts from "refractor/lang/typescript.js";
 refractor.register(ts);
 refractor.register(tsx);
 refractor.alias({ typescript: ["ts"] });

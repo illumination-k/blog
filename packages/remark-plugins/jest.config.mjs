@@ -2,14 +2,14 @@ export default {
   collectCoverage: true,
   coverageDirectory: "coverage",
   roots: [
-    "<rootDir>/src"
+    "<rootDir>/src",
   ],
   transform: {
-    "^.+\\.(ts|tsx)$": ["ts-jest", { useESM: true, }]
+    "^.+\\.(ts|tsx)$": ["ts-jest", { useESM: true }],
   },
-  preset: 'ts-jest/presets/default-esm',
-  extensionsToTreatAsEsm: ['.ts'],
+  preset: "ts-jest/presets/default-esm",
+  extensionsToTreatAsEsm: [".ts"],
   moduleNameMapper: {
-    '^(\\.{1,2}/.*)\\.js$': '$1',
+    "^(\\.{1,2}/.*)\\.js$": "$1",
   },
 };

@@ -1,8 +1,8 @@
 import { Heading as AstHeading, Text } from "mdast";
-import { toString } from "mdast-util-to-string";
-import { visit, Parent } from "unist-util-visit";
-import { Plugin } from "unified";
 import { MdxJsxAttribute, MdxJsxTextElement } from "mdast-util-mdx-jsx";
+import { toString } from "mdast-util-to-string";
+import { Plugin } from "unified";
+import { Parent, visit } from "unist-util-visit";
 
 type Option = {
   depth: number;
@@ -10,7 +10,7 @@ type Option = {
 
 export function createHeadingWithId(
   node: AstHeading,
-  id: number
+  id: number,
 ): MdxJsxTextElement {
   const attributes: MdxJsxAttribute[] = [
     {
@@ -35,7 +35,7 @@ export function createHeadingWithId(
   };
 }
 
-export default function (option: Option = { depth: 3 }): Plugin {
+export default function(option: Option = { depth: 3 }): Plugin {
   let id = 0;
 
   return (ast: Parent) => {
