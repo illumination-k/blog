@@ -4,9 +4,10 @@ node_modules/
 .next/
 out/
 tmp/
+build/
 
 # testing
-/coverage
+coverage/
 
 # misc
 .DS_Store

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const postMetaSchema = z.object({
+export const postMetaSchema = z.object({
   id: z.string().uuid(),
   title: z.string(),
   description: z.string(),

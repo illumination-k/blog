@@ -1,5 +1,7 @@
 import yargs from "yargs";
 
+import { Post, PostMeta } from "common/post"
+
 const args = yargs.command(
   "* <posts_root_dir>",
   "parsing all markdown posts in the root directory and output them as json",
