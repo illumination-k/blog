@@ -15,7 +15,9 @@
     "image-size": "^1.0.1",
     "mdast-util-to-string": "^3.1.0",
     "refractor": "^4.8.0",
+    "remark-frontmatter": "^4.0.1",
     "remark-math": "^5.1.1",
+    "strip-markdown": "^5.0.0",
     "sync-request": "^6.1.0",
     "unist-util-visit": "^4.1.1"
   },
