@@ -1,8 +1,11 @@
 {
-  "name": "cli",
+  "name": "cmd",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "run": "npx ts-node index.ts"
+  },
   "devDependencies": {
     "@types/glob": "^8.0.0",
     "@types/node": "^18.11.7",
@@ -14,13 +17,9 @@
   "dependencies": {
     "common": "*",
     "glob": "^8.0.3",
+    "install": "^0.13.0",
     "kuromojin": "^3.0.0",
-    "remark-frontmatter": "^4.0.1",
-    "remark-parse": "^10.0.1",
-    "remark-stringify": "^10.0.2",
-    "strip-markdown": "^5.0.0",
-    "to-vfile": "^7.2.3",
-    "unified": "^10.1.2",
+    "remark-plugins": "*",
     "yargs": "^17.6.0"
   }
 }

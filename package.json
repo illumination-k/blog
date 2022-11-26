@@ -11,6 +11,10 @@
       "packages/*"
     ]
   },
+  "scripts": {
+    "fmt": "npx dprint fmt",
+    "cmd:run": "yarn workspace cmd run"
+  },
   "devDependencies": {
     "dprint": "^0.32.2"
   }

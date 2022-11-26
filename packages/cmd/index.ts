@@ -1,6 +1,7 @@
 import yargs from "yargs";
 
 import { Post, PostMeta } from "common/post";
+import glob from "glob";
 
 const args = yargs.command(
   "* <posts_root_dir>",

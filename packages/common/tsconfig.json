@@ -1,5 +1,8 @@
 {
   "extends": "myconfigs/base.json",
-  "include": ["."],
-  "exclude": ["dist", "build", "node_modules"]
+  "include": [".", "../cmd/image.ts"],
+  "exclude": ["dist", "build", "node_modules"],
+  "compilerOptions": {
+    "target": "ES2015"
+  }
 }
